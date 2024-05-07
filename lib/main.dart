@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:service_app/themes/dark_theme.dart';
 import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/message.dart';
+import 'package:service_app/views/screen/Auth/signUpScreen/InnerWidget/sign_up_screen.dart';
 import 'package:service_app/views/screen/OnBoarding/onboarding_screen.dart';
-import 'package:service_app/views/screen/OnBoarding/onboarding_screen.dart';
+import 'package:service_app/views/screen/Splash/splash_screen.dart';
 
 
 import 'controllers/localization_controller.dart';
@@ -21,13 +22,13 @@ void main()async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.languages});
   final Map<String, Map<String, String>> languages;
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
   return  GetBuilder<ThemeController>(builder: (themeController) {
       return GetBuilder<LocalizationController>(builder: (localizeController) {
         return ScreenUtilInit(
-            designSize: const Size(393, 852),
+            designSize: const Size(393, 853),
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (_ , child) {
@@ -43,8 +44,8 @@ class MyApp extends StatelessWidget {
               fallbackLocale: Locale(AppConstants.languages[0].languageCode, AppConstants.languages[0].countryCode),
               transitionDuration: const Duration(milliseconds: 500),
               getPages: AppRoutes.page,
-              initialRoute: AppRoutes.onBoardingScreen,
-              home:  const OnBoardingScreen(),
+              initialRoute: AppRoutes.signUpScreen,
+              home:  const SignUpScreen(),
             );
           }
         );

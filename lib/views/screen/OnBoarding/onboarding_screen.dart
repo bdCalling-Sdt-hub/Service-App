@@ -1,8 +1,11 @@
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:service_app/utils/app_images.dart';
 import 'package:service_app/utils/app_strings.dart';
+
+import '../../../utils/app_colors.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -14,49 +17,93 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
-          PageView(
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    Image(
-                      width: 900.w,
-                      height: 765.h,
-                        //=======================================> On Boarding Image Section  <==========================================
-                        image: AssetImage(AppImages.onboarding),
-                    ),
-                    // Column(
-                    //   children: [
-                    //     SizedBox(
-                    //       width: 393.w,
-                    //       height: 742.h,
-                    //       //=======================================> App Logo Section <==========================================
-                    //       child: Center(
-                    //           child:
-                    //           Image.asset(AppImages.appLogo1, width: 168.w, height: 48.h,)),
-                    //     ),
-                    //   ],
-                    // ),
-                    Text(AppString.togetherText,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                      textAlign: TextAlign.center,
-                    ),
-
+          Image.asset(
+            AppImages.onboarding,
+            fit: BoxFit.fill,
+            width: double.infinity,
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
+            child: Container(
+              width: double.infinity,
+              alignment: Alignment.centerLeft,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  end: Alignment.topLeft,
+                  begin: Alignment.bottomRight,
+                  colors: [
+                    Color.fromRGBO(255, 255, 255, 0),
+                    Color.fromRGBO(17, 24, 39, 0.9),
+                    Color.fromRGBO(17, 24, 39, 0.9),
+                    Color.fromRGBO(17, 24, 39, 0.9),
                   ],
+                  stops: [0.0409, 0.5783, 0.671, 0.7438],
+                  transform: GradientRotation(173.37 * 3.1415926535897932 / 180),
                 ),
-              )
-            ],
-          )
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Center(child: Image.asset(AppImages.appLogo1, width: 191.w, height: 68.h)),
+                  SizedBox(height: 24.h,),
+                  Text(AppString.togetherText,
+                      style: TextStyle(
+                          color:AppColors.backgroundColor,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                          fontSize:16.h),
+                      textAlign: TextAlign.center),
+                  SizedBox(height: 21.h,),
+                  Text(AppString.joinText,
+                    style: TextStyle(
+                        color:AppColors.backgroundColor,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins',
+                      fontSize:14.h),),
+                  SizedBox(height: 21.h,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 24),
+                    child: Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Container(
+                            color: AppColors.primaryColor,
+                            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 50),
+                            child: const Text(
+                              AppString.buttonUser,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13.0),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Container(
+                            color: AppColors.backgroundColor,
+                            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
+                            child: const Text(
+                              AppString.buttonProvider,
+                              style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: 13),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ), // Adjust opacity as needed
+            ),
+          ),
         ],
-      )
-
-
-
-
+      ),
     );
   }
 }
