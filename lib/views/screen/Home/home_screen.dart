@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +12,9 @@ import 'package:service_app/utils/app_images.dart';
 import 'package:service_app/utils/app_strings.dart';
 import 'package:service_app/views/base/custom_text.dart';
 import 'package:service_app/views/base/custom_text_field.dart';
+
+import '../../base/category_card.dart';
+import '../../base/service_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -128,6 +132,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
 
+
+                ///===============================Category Section====================>
                 SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -137,11 +143,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontsize: 18.h,
                       fontWeight: FontWeight.w500,
                     ),
-                    CustomText(
-                        text: AppString.seeAll,
-                        fontsize: Dimensions.fontSizeDefault.h,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.primaryColor),
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.categoryScreen);
+                      },
+                      child: CustomText(
+                          text: AppString.seeAll,
+                          fontsize: Dimensions.fontSizeDefault.h,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.primaryColor),
+                    ),
                   ],
                 ),
 
@@ -266,152 +277,3 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ServiceCard extends StatelessWidget {
-  final String? image;
-  final String? reting;
-  final String? distance;
-  final String? serviceName;
-  final String? personName;
-
-  const ServiceCard(
-      {super.key,
-      this.image,
-      this.reting,
-      this.distance,
-      this.serviceName,
-      this.personName});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 202.w,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(color: AppColors.primaryColor)),
-      child: Padding(
-        padding: EdgeInsets.all(12.r),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-                clipBehavior: Clip.antiAlias,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(4.r)),
-                child: Image.asset(AppImages.serviceImage,
-                    height: 112.h, fit: BoxFit.cover, width: double.infinity)),
-
-            ///========================rating and distance=====================>
-            SizedBox(height: 8.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    SvgPicture.asset(AppIcons.star,fit: BoxFit.cover,),
-                    CustomText(
-                        text: " $reting",
-                        fontsize: 10.h,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.subTextColor5c5c5c)
-                  ],
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      AppIcons.location,
-                      color: AppColors.primaryColor,
-                    ),
-                    CustomText(
-                        text: " $distance",
-                        fontsize: 12.h,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.subTextColor5c5c5c)
-                  ],
-                ),
-              ],
-            ),
-
-            Flexible(
-              child: CustomText(
-                  text: "$serviceName",
-                  fontsize: Dimensions.fontSizeDefault.h,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textColor2D2F32,
-                  top: 4.h,
-                  bottom: 4.h),
-            ),
-
-            Row(
-              children: [
-                SvgPicture.asset(AppIcons.person,height: 12.h,color: AppColors.subTextColor5c5c5c,),
-                Expanded(
-                  child: CustomText(
-                      text: " $personName",
-                      fontsize: 12.h,
-                      color: AppColors.subTextColor5c5c5c),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CategoryCard extends StatelessWidget {
-  final String? categorIcon;
-  final String? categorName;
-  final bool? isSelected;
-  final Function()? onTap;
-
-  const CategoryCard(
-      {super.key,
-      this.categorIcon,
-      this.categorName,
-      this.isSelected,
-      this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 78.w,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.r),
-          color:
-              isSelected! ? AppColors.primaryColor : const Color(0xffF4F9EC)),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: onTap,
-            child: Padding(
-              padding: EdgeInsets.all(14.r),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.r)),
-                child: Padding(
-                  padding: EdgeInsets.all(5.r),
-                  child: SvgPicture.asset(
-                    categorIcon!,
-                    color: isSelected!
-                        ? AppColors.primaryColor
-                        : const Color(0xff9DA0A3),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: CustomText(
-              text: "$categorName",
-              fontsize: 12.h,
-              fontWeight: FontWeight.w500,
-              color: isSelected! ? Colors.white : Colors.black,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}

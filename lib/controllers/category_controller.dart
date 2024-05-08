@@ -7,7 +7,7 @@ class CategoryController extends GetxController{
   RxList cetegoryList = [
     {
       "categoryIcon" : AppIcons.reparing,
-      "categoryName" : "Cleaning dasffffffffff"
+      "categoryName" : "Cleaning"
     },
     {
       "categoryIcon" : AppIcons.reparing,
