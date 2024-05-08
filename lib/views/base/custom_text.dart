@@ -51,7 +51,7 @@ class CustomText extends StatelessWidget {
           decorationColor: AppColors.backgroundColor,
           fontFamily: fontName ?? "Poppins",
           fontWeight: fontWeight,
-          color: color ?? AppColors.textColor,
+          color: color ?? AppColors.black333333,
         ),
       ),
     );
