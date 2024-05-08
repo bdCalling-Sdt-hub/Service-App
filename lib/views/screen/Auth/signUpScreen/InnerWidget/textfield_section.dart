@@ -1,13 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_icons.dart';
+import 'package:service_app/views/base/custom_text.dart';
 
 import '../../../../../utils/app_strings.dart';
 import '../../../../base/custom_text_field.dart';
 
 class TextfieldSection extends StatelessWidget {
   TextfieldSection({super.key});
+  bool isChecked = true;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -28,6 +32,7 @@ class TextfieldSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //===============================> Full Name Text-field <===============================
                 CustomTextField(
                   hintText: AppString.fullName,
                   controller: nameController,
@@ -42,14 +47,15 @@ class TextfieldSection extends StatelessWidget {
                           child: SvgPicture.asset(AppIcons.personIcon),
                         )),
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please enter your full name";
-                    }
-                    return null;
-                  },
+                  // validator: (value) {
+                  //   if (value == null || value.isEmpty) {
+                  //     return "Please enter your full name";
+                  //   }
+                  //   return null;
+                  // },
                 ),
                 SizedBox(height: 16.h),
+                //===============================> Email Text-field <===============================
                 CustomTextField(
                   hintText: AppString.email,
                   controller: emailController,
@@ -66,6 +72,7 @@ class TextfieldSection extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 16.h),
+                //===============================> Phone Number Text-field <===============================
                 CustomTextField(
                   hintText: AppString.phoneNumber,
                   controller: phoneController,
@@ -82,6 +89,7 @@ class TextfieldSection extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 16.h),
+                //===============================> Create Password Text-field <===============================
                 CustomTextField(
                   hintText: AppString.createPassword,
                   controller: createPasswordController,
@@ -111,6 +119,7 @@ class TextfieldSection extends StatelessWidget {
 
                 ),
                 SizedBox(height: 16.h),
+                //===============================> Re-Enter Password Text-field <===============================
                 CustomTextField(
                   hintText: AppString.reEnterPassword,
                   controller: reEnterPasswordController,
@@ -139,6 +148,31 @@ class TextfieldSection extends StatelessWidget {
                   ),
 
                 ),
+                SizedBox(height: 16.h),
+                //===============================> Terms and Conditions Check Box <===============================
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 24.w,
+                      height: 25.h,
+                      child: Checkbox(
+                        value: isChecked,
+                        checkColor: AppColors.whiteF4F9EC,
+                        onChanged: (value) {
+
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 16.h,),
+                    Text.rich(TextSpan(
+                      children: [
+
+                      ]
+
+                    ))
+                  ],
+                ),
+                SizedBox(height: 16.h,),
 
               ],
             ),
@@ -148,6 +182,10 @@ class TextfieldSection extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 
 
