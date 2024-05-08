@@ -29,4 +29,8 @@ class AppIcons{
   static String search ="$path/search.svg";
   static String person ="$path/person.svg";
 
+  static String reparing ="$path/reparing.svg";
+  static String star ="$path/stat.svg";
+
+
 }
