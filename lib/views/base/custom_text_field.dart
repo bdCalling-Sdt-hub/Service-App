@@ -82,7 +82,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             }
             return null;
           },
-      cursorColor: AppColors.subTextColor,
+      cursorColor: AppColors.subTextColor5c5c5c,
       obscureText: widget.isPassword ? obscureText : false,
       style: TextStyle(color: AppColors.hintextColorA1A1A1, fontSize: 16.h),
       decoration: InputDecoration(

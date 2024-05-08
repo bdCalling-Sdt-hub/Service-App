@@ -38,7 +38,7 @@ class Themes {
           EdgeInsets.symmetric(vertical: 14.h, horizontal: 10.h),
           isDense: true,
           hintStyle: TextStyle(
-              fontSize: 12.h, fontWeight: FontWeight.w400, color: Colors.white),
+              fontSize: 12.h, fontWeight: FontWeight.w400, color: AppColors.hintextColorA1A1A1),
           focusedBorder:OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.r),
             borderSide:BorderSide(
