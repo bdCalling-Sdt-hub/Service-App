@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:service_app/views/screen/Auth/signUpScreen/InnerWidget/sign_up_screen.dart';
+import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 
 import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';

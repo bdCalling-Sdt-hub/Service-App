@@ -9,6 +9,15 @@ class AppIcons{
 
 
 
+  static String mailIcon="assets/icons/mail_icon.svg";
+  static String lockIcon="assets/icons/lock_icon.svg";
+  static String eyeIcon="assets/icons/eye_icon.svg";
+  static String vectorIcon="assets/icons/vector_icon.svg";
+  static String personIcon="assets/icons/person_icon.svg";
+  static String phoneIcon="assets/icons/phone_icon.svg";
+
+
+
   ///========================bottom nav bar ===================>?
   static String homeBottomNavbar="$path/home_bottom_nav_bar.svg";
   static String serviecIcon="$path/serviec_icon.svg";
@@ -19,6 +28,9 @@ class AppIcons{
   static String dropdown ="$path/drop_down.svg";
   static String search ="$path/search.svg";
   static String person ="$path/person.svg";
+
   static String reparing ="$path/reparing.svg";
   static String star ="$path/stat.svg";
+
+
 }
