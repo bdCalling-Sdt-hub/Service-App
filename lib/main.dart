@@ -12,50 +12,46 @@ import 'controllers/theme_controller.dart';
 import 'helpers/di.dart' as di;
 import 'helpers/route.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Map<String, Map<String, String>> _languages = await di.init();
-  runApp( MyApp(languages:_languages,));
+  runApp(MyApp(
+    languages: _languages,
+  ));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.languages});
+
   final Map<String, Map<String, String>> languages;
 
   @override
   Widget build(BuildContext context) {
-  return  GetBuilder<ThemeController>(builder: (themeController) {
+    return GetBuilder<ThemeController>(builder: (themeController) {
       return GetBuilder<LocalizationController>(builder: (localizeController) {
         return ScreenUtilInit(
             designSize: const Size(393, 853),
             minTextAdapt: true,
             splitScreenMode: true,
-            builder: (_ , child) {
-            return GetMaterialApp(
-              title: AppConstants.APP_NAME,
-              debugShowCheckedModeBanner: false,
-              navigatorKey: Get.key,
-              theme: Themes().lightTheme,
-              darkTheme: Themes().lightTheme,
-              defaultTransition: Transition.topLevel,
-              locale: localizeController.locale,
-              translations: Messages(languages: languages),
-              fallbackLocale: Locale(AppConstants.languages[0].languageCode, AppConstants.languages[0].countryCode),
-              transitionDuration: const Duration(milliseconds: 500),
-              getPages: AppRoutes.page,
-              initialRoute: AppRoutes.signUpScreen,
-              home:  const SignUpScreen(),
-            );
-          }
-        );
-      }
-    );
-
-    }
-    );
-
+            builder: (_, child) {
+              return GetMaterialApp(
+                title: AppConstants.APP_NAME,
+                debugShowCheckedModeBanner: false,
+                navigatorKey: Get.key,
+                theme: Themes().lightTheme,
+                darkTheme: Themes().lightTheme,
+                defaultTransition: Transition.topLevel,
+                locale: localizeController.locale,
+                translations: Messages(languages: languages),
+                fallbackLocale: Locale(AppConstants.languages[0].languageCode,
+                    AppConstants.languages[0].countryCode),
+                transitionDuration: const Duration(milliseconds: 500),
+                getPages: AppRoutes.page,
+                initialRoute: AppRoutes.signUpScreen,
+                home: const SignUpScreen(),
+              );
+            });
+      });
+    });
   }
-
 }
-
-
