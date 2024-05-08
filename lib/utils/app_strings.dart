@@ -11,5 +11,14 @@ class AppString {
   static String password = "Password";
 
 
+
+  ///========================Home screen====================>
+  static const String wellComeEnrique = "Welcome, Enrique";
+  static const String whatYouAreLooking = "What you are looking for today?";
+  static const String searchForYourNearby = "Search for your nearby services.";
+  static const String categories = "Categories";
+  static const String seeAll = "See all";
+  static const String nearbyHelps = "Nearby Helps";
+  static const String popularHelps = "Popular Helps";
 }
 

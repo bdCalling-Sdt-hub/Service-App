@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:service_app/themes/dark_theme.dart';
+import 'package:service_app/themes/themes.dart';
 import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/message.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/InnerWidget/sign_up_screen.dart';
 import 'package:service_app/views/screen/OnBoarding/onboarding_screen.dart';
 import 'package:service_app/views/screen/Splash/splash_screen.dart';
+import 'package:service_app/views/screen/bottom_nav_bar/bottom_nav_bar.dart';
 
 
 import 'controllers/localization_controller.dart';
@@ -36,16 +37,16 @@ class MyApp extends StatelessWidget {
               title: AppConstants.APP_NAME,
               debugShowCheckedModeBanner: false,
               navigatorKey: Get.key,
-             // theme: themeController.darkTheme ? dark(): light(),
-              theme: dark(),
+              theme: Themes().lightTheme,
+              darkTheme: Themes().lightTheme,
               defaultTransition: Transition.topLevel,
               locale: localizeController.locale,
               translations: Messages(languages: languages),
               fallbackLocale: Locale(AppConstants.languages[0].languageCode, AppConstants.languages[0].countryCode),
               transitionDuration: const Duration(milliseconds: 500),
               getPages: AppRoutes.page,
-              initialRoute: AppRoutes.signUpScreen,
-              home:  const SignUpScreen(),
+              initialRoute: AppRoutes.bottomNavBar,
+              home:  const BottomNavBar(),
             );
           }
         );

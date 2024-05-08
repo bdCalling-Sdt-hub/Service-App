@@ -14,7 +14,6 @@ class SignUpScreen extends StatelessWidget {
       appBar: AppBar(
         title: CustomText(
           text: AppString.signup,
-          fontName: 'Lato/M 18',
           fontsize: 18.sp,
           fontWeight: FontWeight.w500,
         ),

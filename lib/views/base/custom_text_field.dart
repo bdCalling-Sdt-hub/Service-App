@@ -10,6 +10,7 @@ class CustomTextField extends StatefulWidget {
   final bool? isObscureText;
   final String? obscure;
   final Color? filColor;
+  final Color? borderColor;
   final Widget? prefixIcon;
   final String? labelText;
   final String? hintText;
@@ -28,6 +29,7 @@ class CustomTextField extends StatefulWidget {
       this.prefixIcon,
       this.suffixIcon,
       this.validator,
+        this.borderColor,
       this.isEmail,
       required this.controller,
       this.keyboardType = TextInputType.text,
@@ -80,14 +82,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
             }
             return null;
           },
-      cursorColor: AppColors.primaryColor,
+      cursorColor: AppColors.subTextColor,
       obscureText: widget.isPassword ? obscureText : false,
-      style: TextStyle(color: Colors.white, fontSize: 16.sp),
+      style: TextStyle(color: AppColors.hintextColorA1A1A1, fontSize: 16.h),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
             horizontal: widget.contentPaddingHorizontal ?? 20.w,
             vertical: widget.contentPaddingVertical ?? 20.w),
-        fillColor: widget.filColor,
+        fillColor: Colors.white,
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.isPassword
             ? GestureDetector(
@@ -99,11 +101,32 @@ class _CustomTextFieldState extends State<CustomTextField> {
         prefixIconConstraints: BoxConstraints(minHeight: 24.w, minWidth: 24.w),
         labelText: widget.labelText,
         hintText: widget.hintText,
+
+        focusedBorder: focusedBorder(),
+        enabledBorder: enabledBorder()
       ),
     );
   }
 
   _suffixIcon(IconData icon) {
     return Padding(padding: const EdgeInsets.all(12.0), child: Icon(icon));
+  }
+
+  OutlineInputBorder focusedBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.r),
+      borderSide:BorderSide(
+        color: widget.borderColor ?? AppColors.borderColor
+      ),
+    );
+  }
+
+  OutlineInputBorder enabledBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.r),
+      borderSide:BorderSide(
+          color: widget.borderColor ?? AppColors.borderColor
+      ),
+    );
   }
 }
