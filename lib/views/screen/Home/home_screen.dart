@@ -1,11 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:service_app/controllers/category_controller.dart';
+import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
@@ -15,7 +13,7 @@ import 'package:service_app/views/base/custom_text.dart';
 import 'package:service_app/views/base/custom_text_field.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -49,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Image.asset(AppImages.appLogo1,
                         height: 48.h, width: 136.w, fit: BoxFit.cover),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoutes.notificationScreen);
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                             color: const Color(0xffF4F9EC),
