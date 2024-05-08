@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:service_app/utils/app_colors.dart';
 
-import '../../../../../utils/app_images.dart';
-import '../../../../../utils/app_strings.dart';
-import '../../../../base/custom_text.dart';
+import '../../../../utils/app_images.dart';
+import '../../../../utils/app_strings.dart';
+import '../../../base/custom_text.dart';
+import 'InnerWidget/textfield_section.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -16,6 +18,8 @@ class SignUpScreen extends StatelessWidget {
           text: AppString.signup,
           fontsize: 18.sp,
           fontWeight: FontWeight.w500,
+          color: AppColors.backgroundColor,
+
         ),
         centerTitle: true,
       ),
@@ -30,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
                   child: Image.asset(AppImages.appLogo,
                       width: 171.w, height: 49.h)),
               SizedBox(height: 42.h),
-
+              TextfieldSection(),
             ],
           ),
         ),
