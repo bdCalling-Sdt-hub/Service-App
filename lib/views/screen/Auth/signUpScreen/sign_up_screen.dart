@@ -10,6 +10,8 @@ import 'InnerWidget/textfield_section.dart';
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,7 @@ class SignUpScreen extends StatelessWidget {
           text: AppString.signup,
           fontsize: 18.sp,
           fontWeight: FontWeight.w500,
-          color: AppColors.backgroundColor,
+          color: Colors.black,
 
         ),
         centerTitle: true,
