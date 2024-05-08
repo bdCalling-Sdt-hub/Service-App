@@ -1,19 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-ThemeData light({Color color = const Color(0xFF039D55)}) => ThemeData(
-  fontFamily: 'Roboto',
+import '../utils/app_colors.dart';
+
+
+
+ThemeData light({Color color = const Color(0xFF95C343)}) => ThemeData(
+  fontFamily: 'Poppins',
   primaryColor: color,
-  secondaryHeaderColor: Color(0xFF1ED7AA),
-  disabledColor: Color(0xFFBABFC4),
-  brightness: Brightness.light,
+  scaffoldBackgroundColor:AppColors.backgroundColor,
+  secondaryHeaderColor:  color.withOpacity(0.4),
+  disabledColor:AppColors.subTextColor,
+  brightness: Brightness.dark,
 
-  hintColor: Color(0xFF9F9F9F),
-  cardColor: Colors.white,
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
-    elevation: 5,
+
+  inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+
+      hintStyle: TextStyle(fontSize:16.sp),
+      isDense: true,
+      contentPadding:EdgeInsets.symmetric(
+          horizontal:12.w,
+          vertical: 16.h
+      ),
+      enabledBorder: enableBorder(),
+      focusedBorder: focusedBorder(),
+      errorBorder:errorBorder()
+
   ),
-
-  textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: color)),
-  colorScheme: ColorScheme.light(primary: color, secondary: color).copyWith(background: const Color(0xFFF3F3F3)).copyWith(error: Color(0xFFE84D4F)),
+  bottomNavigationBarTheme:  BottomNavigationBarThemeData(
+    selectedLabelStyle: TextStyle(color:color),
+    unselectedLabelStyle: TextStyle(color:AppColors.subTextColor),
+  ),
+  textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: color)), colorScheme: ColorScheme.dark(primary: color, secondary: color).copyWith(background: Color(0xFF343636)).copyWith(error: Color(0xFFdd3135)),
 );
+
+OutlineInputBorder enableBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8.r),
+    borderSide: BorderSide.none,
+  );
+}
+OutlineInputBorder focusedBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8.r),
+    borderSide:BorderSide(
+      color: AppColors.primaryColor,
+    ),
+  );
+}
+
+OutlineInputBorder errorBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8.r),
+    borderSide:const BorderSide(
+      color: Colors.red,
+    ),
+  );
+}

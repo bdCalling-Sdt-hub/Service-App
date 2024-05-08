@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:service_app/themes/dark_theme.dart';
+import 'package:service_app/themes/light_theme.dart';
 import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/message.dart';
-import 'package:service_app/views/screen/Auth/signUpScreen/InnerWidget/sign_up_screen.dart';
+import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/OnBoarding/onboarding_screen.dart';
 import 'package:service_app/views/screen/Splash/splash_screen.dart';
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               navigatorKey: Get.key,
              // theme: themeController.darkTheme ? dark(): light(),
-              theme: dark(),
+              theme: light(),
               defaultTransition: Transition.topLevel,
               locale: localizeController.locale,
               translations: Messages(languages: languages),
