@@ -47,11 +47,11 @@ class CustomText extends StatelessWidget {
         maxLines: maxline,
         overflow: textOverflow??TextOverflow.ellipsis,
         style: TextStyle(
-          fontSize: fontsize,
+          fontSize: fontsize ?? 14.h,
           decorationColor: AppColors.backgroundColor,
           fontFamily: fontName ?? "Poppins",
           fontWeight: fontWeight,
-          color: color,
+          color: color ?? AppColors.textColor,
         ),
       ),
     );
