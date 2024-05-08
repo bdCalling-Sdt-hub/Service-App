@@ -7,14 +7,14 @@ class AppIcons{
   static String profileIcon="assets/icons/profile_icon.svg";
 
 
+  ///========================Sign Up ===================>?
 
-
-  static String mailIcon="assets/icons/mail_icon.svg";
-  static String lockIcon="assets/icons/lock_icon.svg";
-  static String eyeIcon="assets/icons/eye_icon.svg";
-  static String vectorIcon="assets/icons/vector_icon.svg";
-  static String personIcon="assets/icons/person_icon.svg";
-  static String phoneIcon="assets/icons/phone_icon.svg";
+  static String mailIcon="$path/mail_icon.svg";
+  static String lockIcon="$path/lock_icon.svg";
+  static String eyeIcon="$path/eye_icon.svg";
+  static String vectorIcon="$path/vector_icon.svg";
+  static String personIcon="$path/person_icon.svg";
+  static String phoneIcon="$path/phone_icon.svg";
 
 
 

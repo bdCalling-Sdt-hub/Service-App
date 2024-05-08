@@ -8,7 +8,7 @@ class AppColors{
   static Color hintextColorA1A1A1 = const Color(0xFFA1A1A1);
   static Color borderColorcee3a9 = const Color(0xFFCEE3A9);
   static Color textColor = const Color(0xFF333333);
-  static Color subTextColor = const Color(0xFF5C5C5C);
+  static Color subTextColor5C5C5C = const Color(0xFF5C5C5C);
 
   static BoxShadow shadow=const BoxShadow(
     blurRadius: 4,
