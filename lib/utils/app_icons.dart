@@ -32,6 +32,7 @@ class AppIcons{
 
   static String reparing ="$path/reparing.svg";
   static String star ="$path/stat.svg";
+  static String locationServiceCard ="$path/location_serviceCard.svg";
 
 
 }
