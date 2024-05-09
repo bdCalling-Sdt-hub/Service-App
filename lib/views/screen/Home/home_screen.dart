@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -159,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 16.h),
 
                 Container(
-                  height: 107.h,
+                  height: 110.h,
                   child: Obx(
                     () => ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -196,11 +197,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontsize: 18.h,
                       fontWeight: FontWeight.w500,
                     ),
-                    CustomText(
-                        text: AppString.seeAll,
-                        fontsize: Dimensions.fontSizeDefault.h,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.primaryColor),
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.allServiceScreen,  parameters: {"screenType" : AppString.nearbyHelps});
+                      },
+                      child: CustomText(
+                          text: AppString.seeAll,
+                          fontsize: Dimensions.fontSizeDefault.h,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.primaryColor),
+                    ),
                   ],
                 ),
 
@@ -216,8 +222,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
                         child: const ServiceCard(
                           distance: "15 km",
-                          personName: "Ingredia Nutrisha dddddddddddddddddddddddddd",
-                          serviceName: "House Cleaning dddddddddddddddddd",
+                          personName: "Ingredia Nutrisha ",
+                          serviceName: "House Cleaning ",
                           reting: "4.8",
                         ),
                       );
@@ -236,11 +242,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontsize: 18.h,
                       fontWeight: FontWeight.w500,
                     ),
-                    CustomText(
-                        text: AppString.seeAll,
-                        fontsize: Dimensions.fontSizeDefault.h,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.primaryColor),
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.allServiceScreen, parameters: {"screenType" : AppString.popularHelps});
+                      },
+                      child: CustomText(
+                          text: AppString.seeAll,
+                          fontsize: Dimensions.fontSizeDefault.h,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.primaryColor),
+                    ),
                   ],
                 ),
 
@@ -259,8 +270,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
                         child: const ServiceCard(
                           distance: "15 km",
-                          personName: "Ingredia Nutrisha dddddddddddddddddddddddddd",
-                          serviceName: "House Cleaning dddddddddddddddddd",
+                          personName: "Ingredia Nutrisha ",
+                          serviceName: "House Cleaning ",
                           reting: "4.8",
                         ),
                       );

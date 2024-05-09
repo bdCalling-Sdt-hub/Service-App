@@ -88,7 +88,8 @@ class ServiceCard extends StatelessWidget {
                 SvgPicture.asset(AppIcons.person,height: 12.h,color: AppColors.subTextColor5c5c5c,),
                 Expanded(
                   child: CustomText(
-                      text: " $personName",
+                    textAlign: TextAlign.start,
+                      text: "  $personName",
                       fontsize: 12.h,
                       color: AppColors.subTextColor5c5c5c),
                 ),
