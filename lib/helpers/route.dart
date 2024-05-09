@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:service_app/views/screen/Auth/moreInformationScreen/more_information_screen.dart';
 import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
+import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
 
 import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
@@ -17,6 +19,8 @@ class AppRoutes{
   static String notificationScreen="/NotificationScreen";
   static String categoryScreen="/CategoryScreen";
   static String signInScreen="/sign_in_screen";
+  static String verifyOTpScreen="/verify_otp_screen";
+  static String moreInformationScreen="/more_information_screen";
 
  static List<GetPage> page=[
     GetPage(name:splashScreen, page: ()=>const SplashScreen()),
@@ -26,6 +30,8 @@ class AppRoutes{
     GetPage(name:notificationScreen, page: ()=> NotificationScreen()),
     GetPage(name:categoryScreen, page: ()=> CategoryScreen()),
     GetPage(name:signInScreen, page: ()=> SignInScreen()),
+    GetPage(name:verifyOTpScreen, page: ()=> const VerifyOTPScreen()),
+    GetPage(name:moreInformationScreen, page: ()=> MoreInformationScreen()),
 
 
   ];

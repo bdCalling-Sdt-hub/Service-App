@@ -9,10 +9,12 @@ import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/custom_button.dart';
 
+import '../../../../../helpers/route.dart';
 import '../../../../../utils/app_strings.dart';
 import '../../../../base/custom_text_field.dart';
 
 class TextfieldSection extends StatelessWidget {
+
   TextfieldSection({super.key});
   bool isChecked = true;
   TextEditingController nameController = TextEditingController();
@@ -103,9 +105,7 @@ class TextfieldSection extends StatelessWidget {
                         value: true,
                         checkColor: AppColors.whiteF4F9EC,
                         activeColor: Get.theme.primaryColor,
-                        onChanged: (value) {
-
-                        },
+                        onChanged: (value) {},
                       ),
                     ),
                     SizedBox(
@@ -140,8 +140,13 @@ class TextfieldSection extends StatelessWidget {
                 ),
 
                 SizedBox(height: 42.h,),
-                CustomButton(onTap:(){}, text:"Sign Up"),
+                //===============================> Sign Up Button <===============================
+                CustomButton(onTap:(){
+                  Get.toNamed(AppRoutes.verifyOTpScreen);
+
+                }, text:"Sign Up"),
                 SizedBox(height: 16.h,),
+                //===============================> Already Account and Sign In <===============================
                 Center(
                   child: RichText(text:TextSpan(text:"Already Have An Account? ",children: [
                     TextSpan(
