@@ -64,7 +64,6 @@ class MoreInformationScreen extends StatelessWidget {
                                   color: AppColors.black333333),),
                             SizedBox(height: 12.h),
 
-
                           ],
                         ),
                       ))
