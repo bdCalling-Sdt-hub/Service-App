@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController  implements GetxService{
 
   String title="Home Screen";
+  TextEditingController searchController = TextEditingController();
 
   @override
   void onInit() {

@@ -7,6 +7,7 @@ import '../views/screen/all_service/all_service_screen.dart';
 import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screen/category/category_screen.dart';
 import '../views/screen/notifications/notifications.dart';
+import '../views/screen/search/search_screen.dart';
 
 class AppRoutes{
 
@@ -17,6 +18,7 @@ class AppRoutes{
   static String notificationScreen="/NotificationScreen";
   static String categoryScreen="/CategoryScreen";
   static String allServiceScreen="/AllServiceScreen";
+  static String scarchScreen="/scarchScreen";
 
  static List<GetPage> page=[
     GetPage(name:splashScreen, page: ()=>const SplashScreen()),
@@ -26,6 +28,7 @@ class AppRoutes{
     GetPage(name:notificationScreen, page: ()=> NotificationScreen()),
     GetPage(name:categoryScreen, page: ()=> CategoryScreen()),
     GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
+    GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
 
   ];
 
