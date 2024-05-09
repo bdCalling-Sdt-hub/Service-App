@@ -9,6 +9,7 @@ class AppColors{
   static Color hintextColorA1A1A1 = const Color(0xFFA1A1A1);
   static Color borderColorcee3a9 = const Color(0xFFCEE3A9);
   static Color black333333 = const Color(0xFF333333);
+  static Color black767676 = const Color(0xFF767676);
   static Color textColor2D2F32 = const Color(0xFF2D2F32);
   static Color subTextColor5c5c5c = const Color(0xFF5C5C5C);
   

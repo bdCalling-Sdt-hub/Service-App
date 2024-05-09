@@ -36,5 +36,6 @@ class AppString {
   static const String nearbyHelps = "Nearby Helps";
   static const String popularHelps = "Popular Helps";
   static const String notifications = "Notifications";
+  static const String messages = "Messages";
 }
 
