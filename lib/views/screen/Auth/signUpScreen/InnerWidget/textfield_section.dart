@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_icons.dart';
-import 'package:service_app/views/base/custom_text.dart';
+import 'package:service_app/views/base/custom_button.dart';
 
 import '../../../../../utils/app_strings.dart';
 import '../../../../base/custom_text_field.dart';
@@ -18,17 +21,17 @@ class TextfieldSection extends StatelessWidget {
   TextEditingController createPasswordController = TextEditingController();
   TextEditingController reEnterPasswordController = TextEditingController();
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
     return Column(
       children: [
         Form(
           key: _formKey,
           child: Padding(
-            padding:
-            EdgeInsets.symmetric(vertical: 16.h, horizontal: 5.w),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 5.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -36,39 +39,21 @@ class TextfieldSection extends StatelessWidget {
                 CustomTextField(
                   hintText: AppString.fullName,
                   controller: nameController,
-                  borderColor:  const Color(0xffCEE3A9),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6.r)),
-                        child: Padding(
-                          padding:  EdgeInsets.all(12.r),
-                          child: SvgPicture.asset(AppIcons.personIcon),
-                        )),
+                  prefixIcon:Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SvgPicture.asset(AppIcons.personIcon),
                   ),
-                  // validator: (value) {
-                  //   if (value == null || value.isEmpty) {
-                  //     return "Please enter your full name";
-                  //   }
-                  //   return null;
-                  // },
+
                 ),
                 SizedBox(height: 16.h),
                 //===============================> Email Text-field <===============================
                 CustomTextField(
                   hintText: AppString.email,
                   controller: emailController,
-                  borderColor:  const Color(0xffCEE3A9),
+                  isEmail: true,
                   prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6.r)),
-                        child: Padding(
-                          padding:  EdgeInsets.all(12.r),
-                          child: SvgPicture.asset(AppIcons.mailIcon),
-                        )),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SvgPicture.asset(AppIcons.mailIcon),
                   ),
                 ),
                 SizedBox(height: 16.h),
@@ -76,16 +61,10 @@ class TextfieldSection extends StatelessWidget {
                 CustomTextField(
                   hintText: AppString.phoneNumber,
                   controller: phoneController,
-                  borderColor:  const Color(0xffCEE3A9),
+                  borderColor: const Color(0xffCEE3A9),
                   prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6.r)),
-                        child: Padding(
-                          padding:  EdgeInsets.all(12.r),
-                          child: SvgPicture.asset(AppIcons.phoneIcon),
-                        )),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SvgPicture.asset(AppIcons.phoneIcon),
                   ),
                 ),
                 SizedBox(height: 16.h),
@@ -93,87 +72,90 @@ class TextfieldSection extends StatelessWidget {
                 CustomTextField(
                   hintText: AppString.createPassword,
                   controller: createPasswordController,
-                  borderColor:  const Color(0xffCEE3A9),
+                  borderColor: const Color(0xffCEE3A9),
                   prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6.r)),
-                        child: Padding(
-                          padding:  EdgeInsets.all(12.r),
-                          child: SvgPicture.asset(AppIcons.lockIcon),
-                        )),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SvgPicture.asset(AppIcons.lockIcon),
                   ),
-                  suffixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 21.w),
-                    child: GestureDetector(
-                      onTap: () {
-                      },
-                      child: SvgPicture.asset(
-                        AppIcons.eyeIcon,
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                    ),
-                  ),
-
+                 isPassword: true,
                 ),
                 SizedBox(height: 16.h),
                 //===============================> Re-Enter Password Text-field <===============================
                 CustomTextField(
                   hintText: AppString.reEnterPassword,
                   controller: reEnterPasswordController,
-                  borderColor:  const Color(0xffCEE3A9),
+                  borderColor: const Color(0xffCEE3A9),
                   prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6.r)),
-                        child: Padding(
-                          padding:  EdgeInsets.all(12.r),
-                          child: SvgPicture.asset(AppIcons.lockIcon),
-                        )),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SvgPicture.asset(AppIcons.lockIcon),
                   ),
-                  suffixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 21.w),
-                    child: GestureDetector(
-                      onTap: () {
-                      },
-                      child: SvgPicture.asset(
-                        AppIcons.eyeIcon,
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                    ),
-                  ),
-
+                  isPassword: true,
                 ),
                 SizedBox(height: 16.h),
                 //===============================> Terms and Conditions Check Box <===============================
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       width: 24.w,
                       height: 25.h,
                       child: Checkbox(
-                        value: isChecked,
+                        value: true,
                         checkColor: AppColors.whiteF4F9EC,
+                        activeColor: Get.theme.primaryColor,
                         onChanged: (value) {
 
                         },
                       ),
                     ),
-                    SizedBox(width: 16.h,),
-                    Text.rich(TextSpan(
-                      children: [
-
-                      ]
-
-                    ))
+                    SizedBox(
+                      width: 16.h,
+                    ),
+                    Expanded(
+                      child: Text.rich(TextSpan(children: [
+                        TextSpan(
+                            text: AppString.creatingAccount,
+                            style: Theme.of(context).textTheme.bodyMedium),
+                        TextSpan(
+                            text: AppString.termsConditions,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .apply(color: AppColors.primaryColor)),
+                        TextSpan(
+                            text: " & ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                               ),
+                        TextSpan(
+                            text: AppString.privacyPolicy,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .apply(color: AppColors.primaryColor))
+                      ])),
+                    )
                   ],
                 ),
-                SizedBox(height: 16.h,),
 
+                SizedBox(height: 42.h,),
+                CustomButton(onTap:(){}, text:"Sign Up"),
+                SizedBox(height: 16.h,),
+                Center(
+                  child: RichText(text:TextSpan(text:"Already Have An Account? ",children: [
+                    TextSpan(
+                      text: "Sign In",
+                      style: TextStyle(color:Get.theme.primaryColor),
+                      recognizer: TapGestureRecognizer()..onTap = (){
+                        Get.back();
+                      },
+                    )
+                  ]),),
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
               ],
             ),
           ),
@@ -182,17 +164,3 @@ class TextfieldSection extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

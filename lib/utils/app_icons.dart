@@ -1,6 +1,7 @@
 class AppIcons{
 
   static const String path = "assets/icons";
+  static const String appLogoSvg = "$path/logo_icon.svg";
 
   static String homeIcon="assets/icons/home_icon.svg";
   static String walletIcon="assets/icons/wallet_icon.svg";

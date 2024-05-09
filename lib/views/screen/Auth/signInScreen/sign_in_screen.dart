@@ -1,45 +1,101 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import '../../../../utils/app_images.dart';
-// import '../../../../utils/app_strings.dart';
-// import '../../../base/custom_text.dart';
-// import 'InnerWidget/text_form_section.dart';
-//
-// class SignInScreen extends StatelessWidget {
-//   const SignInScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//
-//     return Scaffold(
-//       resizeToAvoidBottomInset: false,
-//       //===============================> AppBar Section <===============================
-//       appBar: AppBar(
-//         title: CustomText(
-//           text: AppString.signin,
-//           fontName: 'Poppins',
-//           fontsize: 18.sp,
-//           fontWeight: FontWeight.w500,
-//         ),
-//         centerTitle: true,
-//       ),
-//       //===============================> Body Section <===============================
-//       body: SingleChildScrollView(
-//         child: Padding(
-//           padding: EdgeInsets.symmetric(horizontal: 20.w),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.center,
-//             children: [
-//               SizedBox(height: 88.h),
-//               Center(
-//                   child: Image.asset(AppImages.appLogo,
-//                       width: 171.w, height: 49.h)),
-//               //=================================> Text-field Section <===============================
-//               TextFormSection(),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:service_app/utils/app_icons.dart';
+import 'package:service_app/views/base/custom_button.dart';
+import 'package:service_app/views/base/custom_text_field.dart';
+import '../../../../helpers/route.dart';
+import '../../../../utils/app_strings.dart';
+
+class SignInScreen extends StatelessWidget {
+  SignInScreen({super.key});
+
+  final TextEditingController _emailCtrl = TextEditingController();
+  final TextEditingController _passCtrl = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      //===============================> AppBar Section <===============================
+      appBar: AppBar(
+        title: Text(
+          AppString.signIn,
+        ),
+      ),
+      //===============================> Body Section <===============================
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 114.h),
+              Center(
+                  child: SvgPicture.asset(
+                'assets/icons/logo_icon.svg',
+                width: 164.w,
+                height: 56.h,
+                fit: BoxFit.fill,
+              )),
+              //=================================> Text-field Section <===============================
+              SizedBox(height: 54.h),
+              CustomTextField(
+                controller: _emailCtrl,
+                isEmail: true,
+                hintText: AppString.email,
+                prefixIcon: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: SvgPicture.asset(AppIcons.mailIcon),
+                ),
+              ),
+              SizedBox(
+                height: 16.h,
+              ),
+              CustomTextField(
+                controller: _passCtrl,
+                isPassword: true,
+                hintText: AppString.password,
+                prefixIcon: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: SvgPicture.asset(AppIcons.lockIcon),
+                ),
+              ),
+
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                    onPressed: () {}, child: Text(AppString.forgotPassword)),
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
+              /// <-0------------------------- Sign in button -----------------0->
+              CustomButton(onTap: () {}, text: AppString.signIn),
+              SizedBox(
+                height: 209.h,
+              ),
+
+              Center(
+                child: RichText(
+                  text: TextSpan(text: "Don’t have an account? ", children: [
+                    TextSpan(
+                      text: "Sign Up",
+                      style: TextStyle(color: Get.theme.primaryColor),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Get.toNamed(AppRoutes.signUpScreen);
+                        },
+                    )
+                  ]),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

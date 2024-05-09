@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 
 import '../views/screen/OnBoarding/onboarding_screen.dart';
@@ -17,8 +18,12 @@ class AppRoutes{
   static String bottomNavBar="/bottomNavBar";
   static String notificationScreen="/NotificationScreen";
   static String categoryScreen="/CategoryScreen";
+
+  static String signInScreen="/sign_in_screen";
+
   static String allServiceScreen="/AllServiceScreen";
   static String scarchScreen="/scarchScreen";
+
 
  static List<GetPage> page=[
     GetPage(name:splashScreen, page: ()=>const SplashScreen()),
@@ -27,8 +32,13 @@ class AppRoutes{
     GetPage(name:bottomNavBar, page: ()=>const BottomNavBar()),
     GetPage(name:notificationScreen, page: ()=> NotificationScreen()),
     GetPage(name:categoryScreen, page: ()=> CategoryScreen()),
+
+    GetPage(name:signInScreen, page: ()=> SignInScreen()),
+
+
     GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
     GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
+
 
   ];
 
