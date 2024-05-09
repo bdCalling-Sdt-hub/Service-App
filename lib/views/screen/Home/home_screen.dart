@@ -16,6 +16,7 @@ import 'package:service_app/views/base/custom_text.dart';
 import 'package:service_app/views/base/custom_text_field.dart';
 
 import '../../base/category_card.dart';
+import '../../base/search_box.dart';
 import '../../base/service_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -97,51 +98,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 ///===============================search box===========================>
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.borderColorcee3a9),
-                      borderRadius: BorderRadius.circular(12.r)),
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomText(
-                            text: AppString.whatYouAreLooking,
-                            bottom: 8.h,
-                            fontsize: 16.h,
-                            fontWeight: FontWeight.w500),
-                        CustomTextField(
-                          hintextSize: 14.h,
-                          hintextColor: AppColors.hintextColorA1A1A1,
-                          hintText: AppString.searchForYourNearby,
-                          controller: homeController.searchController,
-                          borderColor: const Color(0xffEBEBEB),
-                          suffixIcon: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 12.w, vertical: 10.h),
 
-                          ///===========================Go to Search Screen when user Check Search Icon======================>
-                            child: GestureDetector(
-                              onTap: (){
-                                Get.toNamed(AppRoutes.scarchScreen);
-                              },
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColors.primaryColor,
-                                      borderRadius: BorderRadius.circular(6.r)),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(12.r),
-                                    child: SvgPicture.asset(AppIcons.search),
-                                  )),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                SearchBox(searchController: homeController.searchController),
 
 
                 ///===============================Category Section====================>
