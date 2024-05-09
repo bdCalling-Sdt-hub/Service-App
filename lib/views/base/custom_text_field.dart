@@ -11,11 +11,13 @@ class CustomTextField extends StatefulWidget {
   final String? obscure;
   final Color? filColor;
   final Color? borderColor;
+  final Color? hintextColor;
   final Widget? prefixIcon;
   final String? labelText;
   final String? hintText;
   final double? contentPaddingHorizontal;
   final double? contentPaddingVertical;
+  final double? hintextSize;
   final Widget? suffixIcon;
   final FormFieldValidator? validator;
   final bool isPassword;
@@ -29,6 +31,7 @@ class CustomTextField extends StatefulWidget {
       this.prefixIcon,
       this.suffixIcon,
       this.validator,
+        this.hintextColor,
         this.borderColor,
       this.isEmail,
       required this.controller,
@@ -36,6 +39,7 @@ class CustomTextField extends StatefulWidget {
       this.isObscureText = false,
       this.obscure = '*',
       this.filColor,
+        this.hintextSize,
       this.labelText,
       this.isPassword = false});
 
@@ -85,7 +89,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       cursorColor: AppColors.subTextColor5c5c5c,
 
       obscureText: widget.isPassword ? obscureText : false,
-      style: TextStyle(color: AppColors.hintextColorA1A1A1, fontSize: 16.h),
+      style: TextStyle(color: widget.hintextColor ?? const Color(0xff5C5C5C), fontSize: widget.hintextSize ?? 16.h),
+
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
             horizontal: widget.contentPaddingHorizontal ?? 20.w,
@@ -102,6 +107,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         prefixIconConstraints: BoxConstraints(minHeight: 24.w, minWidth: 24.w),
         labelText: widget.labelText,
         hintText: widget.hintText,
+        hintStyle: TextStyle(color: widget.hintextColor ?? const Color(0xff5C5C5C), fontSize: widget.hintextSize ?? 16.h,fontWeight: FontWeight.w400),
 
         focusedBorder: focusedBorder(),
         enabledBorder: enabledBorder()

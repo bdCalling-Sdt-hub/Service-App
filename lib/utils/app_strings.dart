@@ -51,8 +51,10 @@ class AppString {
   static const String searchForYourNearby = "Search for your nearby services.";
   static const String categories = "Categories";
   static const String seeAll = "See all";
+  static const String search = "Search";
   static const String nearbyHelps = "Nearby Helps";
   static const String popularHelps = "Popular Helps";
   static const String notifications = "Notifications";
+  static const String messages = "Messages";
 }
 

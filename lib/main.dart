@@ -46,8 +46,8 @@ class MyApp extends StatelessWidget {
                     AppConstants.languages[0].countryCode),
                 transitionDuration: const Duration(milliseconds: 500),
                 getPages: AppRoutes.page,
-                initialRoute: AppRoutes.signInScreen,
-                home: const SignUpScreen(),
+                initialRoute: AppRoutes.bottomNavBar,
+                home: const BottomNavBar(),
               );
             });
       });

@@ -9,14 +9,14 @@ import 'custom_text.dart';
 
 class CategoryCard extends StatelessWidget {
   final String? categorIcon;
-  final String categorName;
+  final String? categorName;
   final bool isSelected;
   final Function()? onTap;
 
   const CategoryCard(
       {super.key,
         this.categorIcon,
-        this.categorName = '',
+        this.categorName,
         this.isSelected = false,
         this.onTap});
 
@@ -50,13 +50,12 @@ class CategoryCard extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: CustomText(
-              text: categorName,
-              fontsize: 12.h,
-              fontWeight: FontWeight.w500,
-              color: isSelected ? Colors.white : Colors.black,
-            ),
+          CustomText(
+            text: categorName ?? "",
+            fontsize: 12.h,
+            bottom: 7.h,
+            fontWeight: FontWeight.w500,
+            color: isSelected ? Colors.white : Colors.black,
           )
         ],
       ),
