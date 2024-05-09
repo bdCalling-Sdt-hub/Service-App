@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 16.h),
 
                 Container(
-                  height: 107.h,
+                  height: 110.h,
                   child: Obx(
                     () => ListView.builder(
                       scrollDirection: Axis.horizontal,
