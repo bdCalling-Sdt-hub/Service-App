@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:service_app/controllers/category_controller.dart';
+import 'package:service_app/controllers/home_controller.dart';
 import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_dimentions.dart';
@@ -25,8 +26,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController searchController = TextEditingController();
 
+  final HomeController homeController = Get.put(HomeController());
   final CategoryController _categoryController = Get.put(CategoryController());
 
   int selectedIndex = (-1);
@@ -112,20 +113,29 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontsize: 16.h,
                             fontWeight: FontWeight.w500),
                         CustomTextField(
+                          hintextSize: 14.h,
+                          hintextColor: AppColors.hintextColorA1A1A1,
                           hintText: AppString.searchForYourNearby,
-                          controller: searchController,
+                          controller: homeController.searchController,
                           borderColor: const Color(0xffEBEBEB),
                           suffixIcon: Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 12.w, vertical: 10.h),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: AppColors.primaryColor,
-                                    borderRadius: BorderRadius.circular(6.r)),
-                                child: Padding(
-                                  padding: EdgeInsets.all(12.r),
-                                  child: SvgPicture.asset(AppIcons.search),
-                                )),
+
+                          ///===========================Go to Search Screen when user Check Search Icon======================>
+                            child: GestureDetector(
+                              onTap: (){
+                                Get.toNamed(AppRoutes.scarchScreen);
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColors.primaryColor,
+                                      borderRadius: BorderRadius.circular(6.r)),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(12.r),
+                                    child: SvgPicture.asset(AppIcons.search),
+                                  )),
+                            ),
                           ),
                         )
                       ],
