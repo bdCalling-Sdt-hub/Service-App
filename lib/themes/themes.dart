@@ -5,11 +5,12 @@ import '../utils/app_colors.dart';
 
 class Themes {
   final lightTheme = ThemeData.light().copyWith(
+    primaryColor:AppColors.primaryColor,
     ///-------------------------elevated button theme------------------------->
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.all(20),
-          backgroundColor: Colors.red,
+          backgroundColor:AppColors.primaryColor,
           foregroundColor: Colors.white,
           minimumSize: const Size(double.maxFinite, 56),
           shape: RoundedRectangleBorder(
@@ -17,18 +18,24 @@ class Themes {
           ),
           textStyle: const TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w500,
             color: Colors.white,
           ),
         ),
       ),
 
       ///-----------------app bar theme------------------>
-      appBarTheme: const AppBarTheme(
+      appBarTheme:  AppBarTheme(
           color: Colors.transparent,
           centerTitle: true,
+          titleTextStyle: TextStyle(fontSize:18,color:AppColors.black333333),
           elevation: 0,
       ),
+      iconTheme: IconThemeData(
+        color: AppColors.primaryColor
+      ),
+      textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: AppColors.primaryColor)), colorScheme: ColorScheme.dark(primary: AppColors.primaryColor, secondary: AppColors.primaryColor).copyWith(background: Color(0xFF343636)).copyWith(error: Color(0xFFdd3135)),
+
 
 
 
@@ -41,8 +48,8 @@ class Themes {
               fontSize: 16.h, fontWeight: FontWeight.w400, color: AppColors.subTextColor5c5c5c),
           focusedBorder:OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.r),
-            borderSide:BorderSide(
-              color: AppColors.borderColor,
+            borderSide:const BorderSide(
+              color: Color(0xFFCEE3A9),
             ),
           ),
           enabledBorder: OutlineInputBorder(

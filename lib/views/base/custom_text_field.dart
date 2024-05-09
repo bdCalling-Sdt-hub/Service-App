@@ -96,7 +96,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ? GestureDetector(
                 onTap: toggle,
                 child: _suffixIcon(
-                    obscureText ? Icons.visibility_off : Icons.visibility),
+                    obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined),
               )
             : widget.suffixIcon,
         prefixIconConstraints: BoxConstraints(minHeight: 24.w, minWidth: 24.w),
@@ -110,7 +110,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
 
   _suffixIcon(IconData icon) {
-    return Padding(padding: const EdgeInsets.all(12.0), child: Icon(icon));
+    return Padding(padding: const EdgeInsets.all(12.0), child: Icon(icon,color:AppColors.primaryColor,));
   }
 
   OutlineInputBorder focusedBorder() {

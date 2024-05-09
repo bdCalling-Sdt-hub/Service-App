@@ -11,9 +11,18 @@ class AppString {
   static String phoneNumber = "Phone Number";
   static String createPassword = "Create  a Password";
   static String reEnterPassword = "Re-enter password";
-  static String termsConditions = "By creating an account, I accept the Terms & Conditions & Privacy Policy.";
+  static String password = "Password";
+  static String creatingAccount= "By creating an account, I accept the ";
+  static String termsConditions = "Terms & Conditions";
+  static String and = "&";
+  static String privacyPolicy = "Privacy Policy.";
   static String verifyEmail = "verify Email";
-  static String alreadyAccount = "Already have an account? Sign In";
+  static String alreadyAccount = "Already have an account?";
+
+
+  /// <------------------------ Sign in ------------------------->
+  static String signIn = "Sign In";
+  static String forgotPassword="Forgot password?";
 
 
 
