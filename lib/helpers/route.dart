@@ -7,6 +7,7 @@ import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/all_service/all_service_screen.dart';
 import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screen/category/category_screen.dart';
+import '../views/screen/message/Inbox_message/chat_screen.dart';
 import '../views/screen/notifications/notifications.dart';
 import '../views/screen/search/search_screen.dart';
 
@@ -18,11 +19,10 @@ class AppRoutes{
   static String bottomNavBar="/bottomNavBar";
   static String notificationScreen="/NotificationScreen";
   static String categoryScreen="/CategoryScreen";
-
   static String signInScreen="/sign_in_screen";
-
   static String allServiceScreen="/AllServiceScreen";
   static String scarchScreen="/scarchScreen";
+  static String chatScreen="/ChatScreen";
 
 
  static List<GetPage> page=[
@@ -32,12 +32,10 @@ class AppRoutes{
     GetPage(name:bottomNavBar, page: ()=>const BottomNavBar()),
     GetPage(name:notificationScreen, page: ()=> NotificationScreen()),
     GetPage(name:categoryScreen, page: ()=> CategoryScreen()),
-
     GetPage(name:signInScreen, page: ()=> SignInScreen()),
-
-
     GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
     GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
+    GetPage(name:chatScreen, page: ()=> ChatScreen()),
 
 
   ];
