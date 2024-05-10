@@ -1,25 +1,36 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
-import 'package:service_app/views/base/custom_text_field.dart';
+import 'package:service_app/utils/app_icons.dart';
+import 'package:service_app/views/base/custom_loading.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_images.dart';
-import '../../../base/cachanetwork_image.dart';
 import '../../../base/custom_text.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+   ChatScreen({super.key});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+   StreamController _streamController = StreamController();
 
+
+   ScrollController _scrollController = ScrollController();
+
+
+
+   TextEditingController messageController = TextEditingController();
 
   List messageList = [
     {"name": "Alice", "status": "sender", "message": "Hey there!"},
@@ -28,14 +39,31 @@ class _ChatScreenState extends State<ChatScreen> {
     {"name": "David", "status": "receiver", "message": "Everything's good here, thanks!"},
     {"name": "Eve", "status": "sender", "message": "Cool."},
     {"name": "Frank", "status": "receiver", "message": "Did you see the latest update?"},
-    {"name": "Grace", "status": "sender", "message": "Yes, looks great!"},
-    {"name": "Hannah", "status": "receiver", "message": "Agreed, they did a good job."},
-    {"name": "Isaac", "status": "sender", "message": "Anyway, gotta go now."},
-    {"name": "Jack", "status": "receiver", "message": "Catch you later!"},
-  ]
-  ;
+    {"name": "Alice", "status": "sender", "message": "Hey there!"},
+    {"name": "Bob", "status": "receiver", "message": "Hi, what's up?"},
+    {"name": "Charlie", "status": "sender", "message": "Just checking in."},
+    {"name": "David", "status": "receiver", "message": "Everything's good here, thanks!"},
+    {"name": "Eve", "status": "sender", "message": "Cool."},
+    {"name": "Frank", "status": "receiver", "message": "Did you see the latest update?"},
+  ];
+
+
+   @override
+   void initState() {
+     super.initState();
+     WidgetsBinding.instance.addPostFrameCallback((_) {
+       _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+       // If you want a smooth scroll animation instead of jumping directly, use animateTo:
+       // _scrollController.animateTo(
+       //   _scrollController.position.maxScrollExtent,
+       //   duration: Duration(milliseconds: 300),
+       //   curve: Curves.easeOut,
+       // );
+     });
+   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -43,9 +71,21 @@ class _ChatScreenState extends State<ChatScreen> {
               horizontal: Dimensions.paddingSizeDefault.w,
               vertical: Dimensions.paddingSizeDefault.h),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
+
+                  GestureDetector(
+                    onTap: (){
+                      Get.back();
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: Icon(Icons.arrow_back_ios, color: AppColors.black333333,),
+                    ),
+                  ),
+
                   Stack(
                     children: [
                       Container(
@@ -91,7 +131,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomText(
-                        text: "name",
+                        text: "${Get.parameters['userName']}",
                         fontsize: 16.h,
                         fontWeight: FontWeight.w500,
                         color: Colors.black,
@@ -113,16 +153,87 @@ class _ChatScreenState extends State<ChatScreen> {
 
 
               Expanded(
-                child: ListView.builder(
-                  itemCount: messageList.length, // Placeholder for message count
-                  itemBuilder: (context, index){
-                    var message = messageList[index];
+                child: StreamBuilder(
+                  stream: _streamController.stream,
+                  builder: (context, snapshot) {
+                    if(true){
+                      return ListView.builder(
 
-                    return message['status'] == "sender" ?senderBubble(context) :receiverBubble(context);
-                  }
+                        controller: _scrollController,
+                          dragStartBehavior: DragStartBehavior.down,
+                          itemCount: messageList.length,
+                          itemBuilder: (context, index){
+                            var message = messageList[index];
 
+                            return message['status'] == "sender" ? senderBubble(context,  message) : receiverBubble(context, message );
+                          }
+
+                      );
+                    }else{
+                      return const CustomLoading();
+                    }
+                  },
                 ),
               ),
+
+              SizedBox(height: 10.h),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 295.w,
+                    child: TextFormField(
+                      controller: messageController,
+                      decoration:  InputDecoration(
+                        hintText: "Type something…",
+                        hintStyle: TextStyle(color: AppColors.hintextColorA1A1A1, fontSize: 12, fontWeight: FontWeight.w400),
+                        suffixIcon: Padding(
+                          padding:  EdgeInsets.symmetric(vertical: 11.h, horizontal: 16.w),
+                          child: SvgPicture.asset(AppIcons.photo),
+                        ),
+                        border: const OutlineInputBorder(
+
+                        )
+                      ),
+                    ),
+                  ),
+
+
+
+                  GestureDetector(
+                    onTap: (){
+                      Map<String, dynamic> newMessage = {
+                        "name": "John",
+                        "status": "sender",
+                        "message": "${messageController.text}",
+                      };
+
+                      if(messageController.text.isNotEmpty){
+                        messageList.add(newMessage);
+                        _streamController.sink.add(messageList);
+
+                        print(messageList);
+                        messageController.clear();
+                      }else{
+                        null;
+                      }
+
+                    },
+
+
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.primaryColor),
+                        borderRadius: BorderRadius.circular(8.r)
+                      ),
+                        child: Padding(
+                          padding:  const EdgeInsets.all(11.0),
+                          child: SvgPicture.asset(AppIcons.sendIcon),
+                        )),
+                  )
+                ],
+              )
 
 
             ],
@@ -132,45 +243,8 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-
-
-
   // ChatWidget(Map message) {
-  //   return Align(
-  //     alignment: message['status'] == "sender" ? Alignment.centerRight : Alignment.centerLeft,
-  //     child: Container(
-  //       width: 250.w,
-  //       decoration: BoxDecoration(
-  //         borderRadius: BorderRadius.circular(8.r),
-  //         color: message['status'] == "sender" ?  AppColors.primaryColor : Colors.white
-  //       ),
-  //
-  //       child: Padding(
-  //         padding:  EdgeInsets.all(14.r),
-  //         child: Column(
-  //           children: [
-  //
-  //             Align(
-  //                 alignment: Alignment.centerLeft,
-  //                 child: CustomText(text: message['message'], color:  message['status'] == "sender" ? Colors.white : AppColors.subTextColor5c5c5c ,textAlign: TextAlign.start,)),
-  //
-  //
-  //
-  //             Align(
-  //                 alignment: Alignment.centerRight,
-  //                 child: CustomText(text: "01:00 PM", color:  message['status'] == "sender" ? Colors.white : AppColors.subTextColor5c5c5c ,textAlign: TextAlign.start,))
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-
-
-
-
-  receiverBubble(BuildContext context) {
+  receiverBubble(BuildContext context, Map message) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -189,7 +263,7 @@ class _ChatScreenState extends State<ChatScreen> {
           child: ChatBubble(
             clipper: ChatBubbleClipper5(type: BubbleType.receiverBubble),
             backGroundColor: Colors.white,
-            // margin: const EdgeInsets.only(top: 20, bottom: 20),
+            margin: const EdgeInsets.only(top: 8, bottom: 8),
             child: Container(
               constraints: BoxConstraints(
                 maxWidth: MediaQuery.of(context).size.width * 0.57,
@@ -197,8 +271,8 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text(
-                    'how are you, sagor ahamed?' ?? "",
+                   Text(
+                    '${message['message']}' ?? "",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
@@ -231,7 +305,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  senderBubble(BuildContext context,  ) {
+  senderBubble(BuildContext context,  Map message) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -241,7 +315,7 @@ class _ChatScreenState extends State<ChatScreen> {
               type: BubbleType.sendBubble,
             ),
             alignment: Alignment.topRight,
-             margin: const EdgeInsets.only(top: 16, bottom: 16),
+             margin: const EdgeInsets.only(top: 8, bottom: 8),
             backGroundColor: AppColors.primaryColor,
             child: Container(
               constraints: BoxConstraints(
@@ -251,7 +325,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'i am fine , whats ' ?? "",
+                    '${message['message']}' ?? "",
                     style: const TextStyle(color: Colors.white),
                     textAlign: TextAlign.start,
                   ),
@@ -282,7 +356,5 @@ class _ChatScreenState extends State<ChatScreen> {
       ],
     );
   }
-
-
 }
 

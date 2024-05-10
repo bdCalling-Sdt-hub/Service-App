@@ -109,7 +109,7 @@ class MessageScreen extends StatelessWidget {
                     padding:  EdgeInsets.only(bottom: 12.h),
                     child: GestureDetector(
                       onTap: (){
-                        Get.toNamed(AppRoutes.chatScreen);
+                        Get.toNamed(AppRoutes.chatScreen, parameters: {"userName" : user['name']});
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),

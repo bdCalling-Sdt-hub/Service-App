@@ -15,6 +15,8 @@ import '../views/screen/category/category_screen.dart';
 import '../views/screen/message/Inbox_message/chat_screen.dart';
 import '../views/screen/notifications/notifications.dart';
 import '../views/screen/search/search_screen.dart';
+import '../views/screen/service_details/service_details_screen.dart';
+import '../views/screen/setting/setting_screen.dart';
 
 class AppRoutes{
 
@@ -26,14 +28,22 @@ class AppRoutes{
   static String categoryScreen="/CategoryScreen";
   static String signInScreen="/sign_in_screen";
 
+
   static String verifyOTpScreen="/verify_otp_screen";
   static String moreInformationScreen="/more_information_screen";
   static String forgotPasswordScreen="/forgot_password_screen";
   static String resetPasswordScreen="/reset_password_screen";
 
+
+
+
   static String allServiceScreen="/AllServiceScreen";
   static String scarchScreen="/scarchScreen";
   static String chatScreen="/ChatScreen";
+  static String serviceDetailsScreen="/ServiceDetailsScreen";
+  static String settingScreen="/SettingScreen";
+
+
 
 
 
@@ -49,6 +59,7 @@ class AppRoutes{
     GetPage(name:categoryScreen, page: ()=> CategoryScreen()),
     GetPage(name:signInScreen, page: ()=> SignInScreen()),
 
+
     GetPage(name:verifyOTpScreen, page: ()=> const VerifyOTPScreen()),
     GetPage(name:moreInformationScreen, page: ()=> MoreInformationScreen()),
     GetPage(name:forgotPasswordScreen, page: ()=> ForgotPasswordScreen()),
@@ -61,6 +72,15 @@ class AppRoutes{
 
 
 
+
+
+    GetPage(name:verifyOTpScreen, page: ()=> const VerifyOTPScreen()),
+    GetPage(name:moreInformationScreen, page: ()=> MoreInformationScreen()),
+    GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
+    GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
+    GetPage(name:chatScreen, page: ()=> ChatScreen()),
+    GetPage(name:serviceDetailsScreen, page: ()=> ServiceDetailsScreen()),
+    GetPage(name:settingScreen, page: ()=> SettingScreen()),
 
 
   ];

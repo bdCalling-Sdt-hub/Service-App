@@ -46,7 +46,19 @@ class AppIcons{
 
   static String reparing ="$path/reparing.svg";
   static String star ="$path/stat.svg";
+  static String photo ="$path/photo.svg";
+  static String sendIcon ="$path/send_icon.svg";
+  static String message ="$path/message_icons.svg";
+  static String user ="$path/user.svg";
+  static String bookingRequest ="$path/booking_request.svg";
+  static String setting ="$path/setting.svg";
+  static String logout ="$path/logout.svg";
   static String locationServiceCard ="$path/location_serviceCard.svg";
+  static String lock ="$path/lock.svg";
+  static String privacePolice ="$path/privace_police.svg";
+  static String termsConditions ="$path/termsConditions.svg";
+  static String aboutUs ="$path/about_us.svg";
+  static String arrowRight ="$path/arrow_right.svg";
 
 
 }

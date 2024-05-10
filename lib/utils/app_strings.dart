@@ -64,12 +64,28 @@ class AppString {
   static const String categories = "Categories";
   static const String seeAll = "See all";
   static const String search = "Search";
+  static const String personalInformaition = "Personal Information";
+  static const String switchToProviderAccount = "Switch to provider account";
+  static const String bookingRequest = "Booking Request";
+  static const String myBookings = "My Bookings";
+  static const String setting = "Settings";
+  static const String logout = "Log out";
   static const String nearbyHelps = "Nearby Helps";
   static const String popularHelps = "Popular Helps";
   static const String notifications = "Notifications";
   static const String messages = "Messages";
 
 
+
+
+
+  static const String helps = "Helps";
+  static const String details = "Details";
+  static const String profile = "Profile";
+  static const String changePassword = "Change password";
+  static const String privacyPolicys = "Privacy policy";
+  static const String termsConditionss = "Terms & conditions";
+  static const String aboutUs = "About us";
 
 }
 
