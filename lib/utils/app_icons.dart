@@ -17,6 +17,16 @@ class AppIcons{
   static String personIcon="$path/person_icon.svg";
   static String phoneIcon="$path/phone_icon.svg";
 
+  ///========================Verify OTP ===================>?
+
+  static String passwordOutlineIcon="$path/password_outline.svg";
+
+  ///======================== More Information ===================>?
+  static String uploadPhoto="$path/upload_photo.svg";
+  static String carbonCamera="$path/carbon_camera.svg";
+
+
+
 
 
   ///========================bottom nav bar ===================>?
