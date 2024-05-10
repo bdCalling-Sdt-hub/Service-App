@@ -24,6 +24,25 @@ class AppString {
   static String signIn = "Sign In";
   static String forgotPassword="Forgot password?";
 
+  /// <------------------------ Verify OTP ------------------------->
+
+  static String verifyOTP = "Verify OTP";
+  static String verifyText = "We have sent a verification code to youremail address. Please check and enter the code here.";
+  static String didntReceive = "Didn’t receive the code?";
+  static String resend = "Resend";
+
+  /// <------------------------ More Information ------------------------->
+
+  static String moreInformation = "More Information";
+  static String uploadPhoto = "Upload Your Photo";
+  static String address = "Address";
+  static String enterAddress = "Enter your address";
+  static String uploadLicenseFront = "Upload Driving License (Front side)";
+  static String uploadLicenseBack = "Upload Driving License (Back side)";
+  static String createAccount = "Create Account";
+
+
+
 
 
   ///========================Home screen====================>
