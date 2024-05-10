@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:service_app/views/screen/Home/home_screen.dart';
 import 'package:service_app/views/screen/message/Message/message_screen.dart';
+import 'package:service_app/views/screen/service/service_screen.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
@@ -23,7 +24,7 @@ class _BottomNavigationBarExampleState extends State<BottomNavBar> {
 
   static final List _widgetOptions = [
     HomeScreen(),
-    HomeScreen(),
+    ServiceScreen(),
     MessageScreen(),
     HomeScreen(),
   ];
