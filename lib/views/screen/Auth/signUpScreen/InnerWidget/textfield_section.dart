@@ -123,7 +123,7 @@ class TextfieldSection extends StatelessWidget {
                                 .bodyMedium!
                                 .apply(color: AppColors.primaryColor)),
                         TextSpan(
-                            text: " & ",
+                            text: AppString.and,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!
@@ -139,18 +139,19 @@ class TextfieldSection extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(height: 42.h,),
+                SizedBox(height: 24.h,),
                 //===============================> Sign Up Button <===============================
                 CustomButton(onTap:(){
                   Get.toNamed(AppRoutes.verifyOTpScreen);
 
-                }, text:"Sign Up"),
-                SizedBox(height: 16.h,),
+                }, text:AppString.signUp),
+                SizedBox(height: 14.h,),
                 //===============================> Already Account and Sign In <===============================
                 Center(
-                  child: RichText(text:TextSpan(text:"Already Have An Account? ",children: [
+                  child: RichText(text:TextSpan(
+                      text: AppString.alreadyAccount,children: [
                     TextSpan(
-                      text: "Sign In",
+                      text: AppString.signIn,
                       style: TextStyle(color:Get.theme.primaryColor),
                       recognizer: TapGestureRecognizer()..onTap = (){
                         Get.back();

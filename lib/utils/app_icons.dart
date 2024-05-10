@@ -26,6 +26,10 @@ class AppIcons{
   static String carbonCamera="$path/carbon_camera.svg";
 
 
+  ///========================Reset Password ===================>?
+
+  static String resetOutlineIcon="$path/resetpassword_outline.svg";
+
 
 
 
