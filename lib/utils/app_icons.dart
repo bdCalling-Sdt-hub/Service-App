@@ -34,6 +34,11 @@ class AppIcons{
   static String star ="$path/stat.svg";
   static String photo ="$path/photo.svg";
   static String sendIcon ="$path/send_icon.svg";
+  static String message ="$path/message_icons.svg";
+  static String user ="$path/user.svg";
+  static String bookingRequest ="$path/booking_request.svg";
+  static String setting ="$path/setting.svg";
+  static String logout ="$path/logout.svg";
   static String locationServiceCard ="$path/location_serviceCard.svg";
 
 

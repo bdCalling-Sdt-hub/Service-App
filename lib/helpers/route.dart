@@ -10,6 +10,7 @@ import '../views/screen/category/category_screen.dart';
 import '../views/screen/message/Inbox_message/chat_screen.dart';
 import '../views/screen/notifications/notifications.dart';
 import '../views/screen/search/search_screen.dart';
+import '../views/screen/service_details/service_details_screen.dart';
 
 class AppRoutes{
 
@@ -23,6 +24,7 @@ class AppRoutes{
   static String allServiceScreen="/AllServiceScreen";
   static String scarchScreen="/scarchScreen";
   static String chatScreen="/ChatScreen";
+  static String serviceDetailsScreen="/ServiceDetailsScreen";
 
 
  static List<GetPage> page=[
@@ -36,6 +38,7 @@ class AppRoutes{
     GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
     GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
     GetPage(name:chatScreen, page: ()=> ChatScreen()),
+    GetPage(name:serviceDetailsScreen, page: ()=> ServiceDetailsScreen()),
 
 
   ];

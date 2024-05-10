@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:service_app/helpers/route.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_images.dart';
@@ -38,7 +40,10 @@ class ServiceScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:  EdgeInsets.only(top: index == 0 ? 0 : 16.h),
-                    child: const AllServiceCard(
+                    child:  AllServiceCard(
+                      ontap: (){
+                        Get.toNamed(AppRoutes.serviceDetailsScreen);
+                      },
                       serviceImage: AppImages.serviceImage,
                       reting: "4.8",
                       distance: "15 km",

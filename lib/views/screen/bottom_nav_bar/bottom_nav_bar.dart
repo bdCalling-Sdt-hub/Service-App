@@ -8,6 +8,7 @@ import 'package:service_app/views/screen/service/service_screen.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
+import '../Profile/profile_screen.dart';
 
 
 
@@ -26,7 +27,7 @@ class _BottomNavigationBarExampleState extends State<BottomNavBar> {
     HomeScreen(),
     ServiceScreen(),
     MessageScreen(),
-    HomeScreen(),
+    ProfileScreen(),
   ];
 
 
