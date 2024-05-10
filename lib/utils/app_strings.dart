@@ -17,6 +17,7 @@ class AppString {
   static String and = "&";
   static String privacyPolicy = "Privacy Policy.";
   static String verifyEmail = "verify Email";
+  static String signUp = "Sign Up";
   static String alreadyAccount = "Already have an account?";
 
 
@@ -27,7 +28,7 @@ class AppString {
   /// <------------------------ Verify OTP ------------------------->
 
   static String verifyOTP = "Verify OTP";
-  static String verifyText = "We have sent a verification code to youremail address. Please check and enter the code here.";
+  static String verifyText = "We have sent a verification code to your email address. Please check and enter the code here.";
   static String didntReceive = "Didn’t receive the code?";
   static String resend = "Resend";
 
@@ -41,7 +42,18 @@ class AppString {
   static String uploadLicenseBack = "Upload Driving License (Back side)";
   static String createAccount = "Create Account";
 
+  ///======================== Forgot Password ====================>
 
+  static String forgotPasswords = "Forgot Password";
+  static String forgotText = "Enter email address to reset password.";
+  static String getOTP = "Get OTP";
+
+
+  ///======================== ResetPassword ====================>
+
+  static String resetPassword = "Reset Password";
+  static String setNewPassword = "Set new Password";
+  static String confirmPassword = "Confirm Password";
 
 
 
@@ -56,5 +68,8 @@ class AppString {
   static const String popularHelps = "Popular Helps";
   static const String notifications = "Notifications";
   static const String messages = "Messages";
+
+
+
 }
 

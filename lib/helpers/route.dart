@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
+import 'package:service_app/views/screen/Auth/forgotPasswordScreen/forgot_pasword.dart';
 import 'package:service_app/views/screen/Auth/moreInformationScreen/more_information_screen.dart';
 import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
 
+
+import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/all_service/all_service_screen.dart';
@@ -22,15 +25,20 @@ class AppRoutes{
   static String notificationScreen="/NotificationScreen";
   static String categoryScreen="/CategoryScreen";
   static String signInScreen="/sign_in_screen";
-<<<<<<< HEAD
+
   static String verifyOTpScreen="/verify_otp_screen";
   static String moreInformationScreen="/more_information_screen";
-=======
+  static String forgotPasswordScreen="/forgot_password_screen";
+  static String resetPasswordScreen="/reset_password_screen";
+
   static String allServiceScreen="/AllServiceScreen";
   static String scarchScreen="/scarchScreen";
   static String chatScreen="/ChatScreen";
 
->>>>>>> 9ed74383e3177b978a7240ba368e79cbf4ab2d7d
+
+
+
+
 
  static List<GetPage> page=[
     GetPage(name:splashScreen, page: ()=>const SplashScreen()),
@@ -40,14 +48,19 @@ class AppRoutes{
     GetPage(name:notificationScreen, page: ()=> NotificationScreen()),
     GetPage(name:categoryScreen, page: ()=> CategoryScreen()),
     GetPage(name:signInScreen, page: ()=> SignInScreen()),
-<<<<<<< HEAD
+
     GetPage(name:verifyOTpScreen, page: ()=> const VerifyOTPScreen()),
     GetPage(name:moreInformationScreen, page: ()=> MoreInformationScreen()),
-=======
+    GetPage(name:forgotPasswordScreen, page: ()=> ForgotPasswordScreen()),
+    GetPage(name:resetPasswordScreen, page: ()=> ResetPasswordScreen()),
+
     GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
     GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
     GetPage(name:chatScreen, page: ()=> ChatScreen()),
->>>>>>> 9ed74383e3177b978a7240ba368e79cbf4ab2d7d
+
+
+
+
 
 
   ];

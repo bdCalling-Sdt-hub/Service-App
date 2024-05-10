@@ -73,11 +73,12 @@ class SignInScreen extends StatelessWidget {
                 height: 24.h,
               ),
               /// <-0------------------------- Sign in button -----------------0->
-              CustomButton(onTap: () {}, text: AppString.signIn),
+              CustomButton(onTap: () {
+
+              }, text: AppString.signIn),
               SizedBox(
                 height: 209.h,
               ),
-
               Center(
                 child: RichText(
                   text: TextSpan(text: "Don’t have an account? ", children: [

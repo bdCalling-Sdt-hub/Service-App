@@ -30,11 +30,11 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 78.h),
+              SizedBox(height: 56.h),
               Center(
                   child: Image.asset(AppImages.appLogo,
                       width: 171.w, height: 49.h)),
-              SizedBox(height: 42.h),
+              SizedBox(height: 57.h),
               TextfieldSection(),
             ],
           ),
