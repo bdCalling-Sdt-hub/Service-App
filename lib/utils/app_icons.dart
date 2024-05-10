@@ -40,6 +40,11 @@ class AppIcons{
   static String setting ="$path/setting.svg";
   static String logout ="$path/logout.svg";
   static String locationServiceCard ="$path/location_serviceCard.svg";
+  static String lock ="$path/lock.svg";
+  static String privacePolice ="$path/privace_police.svg";
+  static String termsConditions ="$path/termsConditions.svg";
+  static String aboutUs ="$path/about_us.svg";
+  static String arrowRight ="$path/arrow_right.svg";
 
 
 }
