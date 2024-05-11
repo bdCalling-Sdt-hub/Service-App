@@ -76,8 +76,6 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                   ],
                 ),
               ),
-
-
               SizedBox(height: 12.h),
               //===============================> Text  <===============================
            Text(
@@ -146,6 +144,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                                   Get.toNamed(AppRoutes.forgotPasswordScreen);
                                 },
                                 text: AppString.createAccount),
+                            SizedBox(height: 25,)
                           ],
                         ),
                       ))
