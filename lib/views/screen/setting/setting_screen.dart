@@ -35,7 +35,9 @@ class SettingScreen extends StatelessWidget {
         children: [
 
           CustomListTile(
-            onTap: (){},
+            onTap: (){
+              Get.toNamed(AppRoutes.changePasswordScreen);
+            },
             title: AppString.changePassword,
             prefixIcon: SvgPicture.asset(AppIcons.lock),
             sufixIcon: SvgPicture.asset(AppIcons.arrowRight),

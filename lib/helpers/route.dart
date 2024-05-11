@@ -12,6 +12,7 @@ import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/all_service/all_service_screen.dart';
 import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screen/category/category_screen.dart';
+import '../views/screen/change_password/change_password_screen.dart';
 import '../views/screen/message/Inbox_message/chat_screen.dart';
 import '../views/screen/notifications/notifications.dart';
 import '../views/screen/privacy_policy_all/privacy_policy_all_screen.dart';
@@ -38,6 +39,7 @@ class AppRoutes{
   static String serviceDetailsScreen="/ServiceDetailsScreen";
   static String settingScreen="/SettingScreen";
   static String privacyPolicyAllScreen="/PrivacyPolicyAllScreen";
+  static String changePasswordScreen="/ChangePasswordScreen";
 
 
 
@@ -69,6 +71,7 @@ class AppRoutes{
     GetPage(name:serviceDetailsScreen, page: ()=> ServiceDetailsScreen()),
     GetPage(name:settingScreen, page: ()=> SettingScreen()),
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),
+    GetPage(name:changePasswordScreen, page: ()=> ChangePasswordScreen()),
   ];
 
 
