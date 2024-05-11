@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -9,8 +10,8 @@ import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/utils/app_strings.dart';
 
-import '../../base/custom_list_tile.dart';
-import 'Inner_widget/top_container_section.dart';
+import '../../../base/custom_list_tile.dart';
+import 'inner_widget/top_container_section.dart';
 
 class ProfileScreen extends StatefulWidget {
    ProfileScreen({super.key});
@@ -30,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
 
 
-          TopProfileCard(),
+          const TopProfileCard(),
 
 
           Padding(
@@ -38,20 +39,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               children: [
 
-                GestureDetector(
-                  onTap: (){
+                CustomListTile(
+                  title: AppString.switchToProviderAccount,
+                  prefixIcon: SvgPicture.asset(AppIcons.user,  color: AppColors.primaryColor),
+                  sufixIcon: GestureDetector(
+                    onTap: (){
 
-                    setState(() {
-                      switchToProvide = !switchToProvide;
-                      print("==============================> $switchToProvide");
-                    });
+                      setState(() {
+                        switchToProvide = !switchToProvide;
+                        print("==============================> $switchToProvide");
+                      });
 
 
-                  },
-                  child: CustomListTile(
-                    title: AppString.switchToProviderAccount,
-                    prefixIcon: SvgPicture.asset(AppIcons.user,  color: AppColors.primaryColor),
-                    sufixIcon: Stack(
+                    },
+                    child: Stack(
                       clipBehavior: Clip.none,
                       children: [
                         Container(
@@ -79,14 +80,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         )
 
                       ],
-                    )
-                  ),
+                    ),
+                  )
                 ),
 
 
 
 
                 CustomListTile(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.personalInformation);
+                  },
                   title: AppString.personalInformaition,
                   prefixIcon: SvgPicture.asset(AppIcons.user,  color: AppColors.primaryColor),
                 ),

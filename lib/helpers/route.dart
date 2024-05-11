@@ -8,6 +8,7 @@ import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
+import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/all_service/all_service_screen.dart';
 import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
@@ -40,9 +41,7 @@ class AppRoutes{
   static String settingScreen="/SettingScreen";
   static String privacyPolicyAllScreen="/PrivacyPolicyAllScreen";
   static String changePasswordScreen="/ChangePasswordScreen";
-
-
-
+  static String personalInformation="/PersonalInformation";
 
 
 
@@ -72,6 +71,7 @@ class AppRoutes{
     GetPage(name:settingScreen, page: ()=> SettingScreen()),
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),
     GetPage(name:changePasswordScreen, page: ()=> ChangePasswordScreen()),
+    GetPage(name:personalInformation, page: ()=> PersonalInformation()),
   ];
 
 
