@@ -28,6 +28,8 @@ class Themes {
       appBarTheme:  AppBarTheme(
           color: Colors.transparent,
           centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
+
           titleTextStyle: TextStyle(fontSize:18,color:AppColors.black333333),
           elevation: 0,
       ),

@@ -60,6 +60,10 @@ class AppIcons{
   static String termsConditions ="$path/termsConditions.svg";
   static String aboutUs ="$path/about_us.svg";
   static String arrowRight ="$path/arrow_right.svg";
+  static String email ="$path/email.svg";
+  static String call ="$path/call.svg";
+  static String locationss ="$path/locationkk.svg";
+  static String edit ="$path/edit.svg";
 
 
 }

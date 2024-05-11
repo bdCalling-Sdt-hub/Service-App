@@ -54,6 +54,7 @@ class AppString {
 
   static String resetPassword = "Reset Password";
   static String setNewPassword = "Set new Password";
+  static String oldPassword = "Old password";
   static String confirmPassword = "Confirm Password";
 
 
