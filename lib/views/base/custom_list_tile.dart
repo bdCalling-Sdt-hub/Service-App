@@ -39,11 +39,10 @@ class CustomListTile extends StatelessWidget {
               textAlign: TextAlign.left,
               text: title,
               maxline: 2,
-              fontsize: 16.sp,
+              fontsize: 15.sp,
               fontWeight: FontWeight.w400,
-              fontName: 'Lato',
             ),
-          ),
+          )
         ),
       ),
     );
