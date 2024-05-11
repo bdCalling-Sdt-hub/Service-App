@@ -8,5 +8,6 @@ class AppImages {
   static const String appLogo1 = "$path/logo-2.png";
   static const String onboarding = "$path/Onboarding.png";
   static const String serviceImage = "$path/serviceImage.png";
+  static const String houseKeepingWoman = "$path/houseKeeping.png";
 
 }

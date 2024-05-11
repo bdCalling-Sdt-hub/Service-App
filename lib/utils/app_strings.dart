@@ -90,5 +90,8 @@ class AppString {
   static const String termsConditionss = "Terms & conditions";
   static const String aboutUs = "About us";
 
+
+  static const String bookingRequests ="Booking Request";
+
 }
 
