@@ -33,7 +33,6 @@ class TopSection extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(left: 16.w,right: 10.w, top: 12.h, bottom: 12.h),
         child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             //=================================> Profile image <==========================
             Container(
@@ -51,7 +50,7 @@ class TopSection extends StatelessWidget {
             ),
 
             //=================================> Profile Name <==========================
-        Container(
+        SizedBox(
           width: 190.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,

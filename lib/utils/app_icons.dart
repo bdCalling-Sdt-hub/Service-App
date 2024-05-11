@@ -64,7 +64,11 @@ class AppIcons{
   static String call ="$path/call.svg";
   static String locationss ="$path/locationkk.svg";
   static String edit ="$path/edit.svg";
+
   static String housekeepingYoungWoman ="$path/housekeeping-young-woman.svg";
+
+  static String camera ="$path/camera.svg";
+
 
 
 }

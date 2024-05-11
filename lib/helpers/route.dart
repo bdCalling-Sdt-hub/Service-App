@@ -9,6 +9,7 @@ import 'package:service_app/views/screen/Profile/booking_request/booking_request
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
+import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/all_service/all_service_screen.dart';
@@ -16,6 +17,7 @@ import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screen/category/category_screen.dart';
 import '../views/screen/change_password/change_password_screen.dart';
 import '../views/screen/message/Inbox_message/chat_screen.dart';
+import '../views/screen/my_bookings/my_bookings_screen.dart';
 import '../views/screen/notifications/notifications.dart';
 import '../views/screen/privacy_policy_all/privacy_policy_all_screen.dart';
 import '../views/screen/search/search_screen.dart';
@@ -43,7 +45,12 @@ class AppRoutes{
   static String privacyPolicyAllScreen="/PrivacyPolicyAllScreen";
   static String changePasswordScreen="/ChangePasswordScreen";
   static String personalInformation="/PersonalInformation";
+
   static String bookingRequest="/BookingRequest";
+
+  static String editProfileScreen="/EditProfileScreen";
+  static String myBookingsScreen="/MyBookingsScreen";
+
 
 
 
@@ -74,7 +81,12 @@ class AppRoutes{
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),
     GetPage(name:changePasswordScreen, page: ()=> ChangePasswordScreen()),
     GetPage(name:personalInformation, page: ()=> PersonalInformation()),
+
     GetPage(name:bookingRequest, page: ()=> BookingRequestScreen()),
+
+    GetPage(name:editProfileScreen, page: ()=> EditProfileScreen()),
+    GetPage(name:myBookingsScreen, page: ()=> MyBookingsScreen()),
+
   ];
 
 

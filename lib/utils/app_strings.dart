@@ -8,6 +8,7 @@ class AppString {
   static String signup = "Sign up";
   static String fullName = "Full Name";
   static String email = "Email";
+  static String updatePrifle = "Update Profile";
   static String phoneNumber = "Phone Number";
   static String createPassword = "Create  a Password";
   static String reEnterPassword = "Re-enter password";
