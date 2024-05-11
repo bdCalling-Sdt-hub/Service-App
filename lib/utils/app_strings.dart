@@ -14,16 +14,17 @@ class AppString {
   static String password = "Password";
   static String creatingAccount= "By creating an account, I accept the ";
   static String termsConditions = "Terms & Conditions";
-  static String and = "&";
+  static String and = " & ";
   static String privacyPolicy = "Privacy Policy.";
   static String verifyEmail = "verify Email";
   static String signUp = "Sign Up";
-  static String alreadyAccount = "Already have an account?";
+  static String alreadyAccount = "Already have an account? ";
 
 
   /// <------------------------ Sign in ------------------------->
   static String signIn = "Sign In";
   static String forgotPassword="Forgot password?";
+  static String dontHaveAccount="Don’t have an account? ";
 
   /// <------------------------ Verify OTP ------------------------->
 

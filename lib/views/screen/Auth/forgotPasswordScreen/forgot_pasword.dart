@@ -69,9 +69,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                          // ===============================> Button Field <===============================
                           CustomButton(
                               onTap: () {
-                                Get.toNamed(AppRoutes.resetPasswordScreen);
+                                Get.toNamed(AppRoutes.verifyOTpScreen);
                               },
                               text: AppString.getOTP),
+                          SizedBox(height: 221,),
                         ],
                       ))
                 ],

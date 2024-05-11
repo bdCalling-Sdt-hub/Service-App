@@ -16,6 +16,7 @@ class AppIcons{
   static String vectorIcon="$path/vector_icon.svg";
   static String personIcon="$path/person_icon.svg";
   static String phoneIcon="$path/phone_icon.svg";
+  static String logoIcon="$path/logo_icon.svg";
 
   ///========================Verify OTP ===================>?
 

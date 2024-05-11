@@ -33,8 +33,7 @@ class ServiceScreen extends StatelessWidget {
         padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           children: [
-
-            Expanded(
+            Expanded (
               child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (context, index) {
