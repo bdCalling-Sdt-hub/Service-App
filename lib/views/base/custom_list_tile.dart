@@ -41,9 +41,8 @@ class CustomListTile extends StatelessWidget {
               maxline: 2,
               fontsize: 16.sp,
               fontWeight: FontWeight.w400,
-              fontName: 'Lato',
             ),
-          ),
+          )
         ),
       ),
     );
