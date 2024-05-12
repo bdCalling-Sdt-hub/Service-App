@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/views/base/all_service_card.dart';
 import 'package:service_app/views/base/search_box.dart';
 
-import '../../../controllers/home_controller.dart';
-import '../../../utils/app_colors.dart';
-import '../../../utils/app_icons.dart';
-import '../../../utils/app_images.dart';
-import '../../../utils/app_strings.dart';
-import '../../base/custom_text.dart';
-import '../../base/custom_text_field.dart';
+import '../../../../controllers/home_controller.dart';
+import '../../../../utils/app_colors.dart';
+import '../../../../utils/app_images.dart';
+import '../../../../utils/app_strings.dart';
+import '../../../base/custom_text.dart';
+
+
 
 class SearchScreen extends StatelessWidget {
    SearchScreen({super.key});
