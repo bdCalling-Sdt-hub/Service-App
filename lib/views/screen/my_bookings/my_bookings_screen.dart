@@ -1,17 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_strings.dart';
-import 'package:service_app/views/base/service_card.dart';
-
 import '../../../helpers/route.dart';
 import '../../../utils/app_colors.dart';
-import '../../../utils/app_icons.dart';
 import '../../../utils/app_images.dart';
 import '../../base/custom_text.dart';
 import 'Inner_widgets/my_booking_service_card.dart';
@@ -87,8 +80,11 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                   return Padding(
                     padding:  EdgeInsets.only(bottom: 10.h),
                     child: MyBookingServiceCard(
+                      ///========================route to details screen==========================>
                       ontap: (){
-                        Get.toNamed(AppRoutes.myBookignServiceDetailsScreen);
+                        Get.toNamed(AppRoutes.myBookignServiceDetailsScreen, parameters: {
+                          'bookingStatus' : selectedIndex.toString()
+                        });
                       },
                       serviceImage: AppImages.serviceImage,
                       selectedBottonItem: selectedIndex,

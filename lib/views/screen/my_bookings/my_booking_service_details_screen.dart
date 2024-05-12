@@ -28,6 +28,7 @@ class MyBookignServiceDetailsScreen extends StatefulWidget {
 class _MyBookignServiceDetailsScreenState
     extends State<MyBookignServiceDetailsScreen> {
   double reting = 0;
+  var paramiter = Get.parameters;
 
   List experienceeRatingServiceList = [
     {"experienceRating": "Experience", "yearRating": "8 Years"},
@@ -187,31 +188,33 @@ class _MyBookignServiceDetailsScreenState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(
                   experienceeRatingServiceList.length,
-                  (index) => Container(
-                      width: 112.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.r),
-                          border: Border.all(color: AppColors.primaryColor)),
-                      child: Padding(
-                        padding: EdgeInsets.all(8.r),
-                        child: Center(
-                          child: Column(
-                            children: [
-                              CustomText(
-                                text:
-                                    '${experienceeRatingServiceList[index]['experienceRating']}',
-                                fontsize: 12.h,
-                              ),
-                              CustomText(
-                                text:
-                                    '${experienceeRatingServiceList[index]['yearRating']}',
-                                fontsize: 16.h,
-                                fontWeight: FontWeight.w500,
-                              )
-                            ],
+                  (index) {
+                    return Container(
+                        width: 112.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4.r),
+                            border: Border.all(color: AppColors.primaryColor)),
+                        child: Padding(
+                          padding: EdgeInsets.all(8.r),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                CustomText(
+                                  text:
+                                      '${experienceeRatingServiceList[index]['experienceRating']}',
+                                  fontsize: 12.h,
+                                ),
+                                CustomText(
+                                  text:
+                                      '${experienceeRatingServiceList[index]['yearRating']}',
+                                  fontsize: 16.h,
+                                  fontWeight: FontWeight.w500,
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      )),
+                        ));
+                  },
                 ),
               ),
 
@@ -247,6 +250,7 @@ class _MyBookignServiceDetailsScreenState
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 3,
                   itemBuilder: (context, index) {
+                    print("====> ${paramiter['bookingStatus'].runtimeType}");
                     return Padding(
                       padding: EdgeInsets.only(bottom: 20.h),
                       child: const TopReviewsCard(),
@@ -255,20 +259,25 @@ class _MyBookignServiceDetailsScreenState
                 ),
               ),
 
-              CustomButton(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 190.h),
-                          child: AlartDialog(),
+              paramiter['bookingStatus'] == '0'
+                  ? CustomButton(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20.w, vertical: 190.h),
+                              child: AlartDialog(),
+                            );
+                          },
                         );
                       },
-                    );
-                  },
-                  text: "Give Review"),
+                      text: "Give Review")
+                  :  CustomTwoButon(
+                      btnNameList: ['Cancel', 'Complete'],
+                      width: 168.w,
+                    ),
 
               SizedBox(height: 20.h),
             ],
@@ -278,6 +287,3 @@ class _MyBookignServiceDetailsScreenState
     );
   }
 }
-
-
-

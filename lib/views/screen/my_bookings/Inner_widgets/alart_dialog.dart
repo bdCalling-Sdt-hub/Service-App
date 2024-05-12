@@ -83,6 +83,7 @@ class _AlartDialogState extends State<AlartDialog> {
 
               CustomTwoButon(
                 btnNameList: ["Cancel", "Submit"],
+                width: 147.w,
                 leftBtnOnTap: (){
                   Get.back();
                 },
