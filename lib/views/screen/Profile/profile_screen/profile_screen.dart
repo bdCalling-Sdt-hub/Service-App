@@ -27,110 +27,113 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
 
-      body: Column(
-        children: [
-
-
-          const TopProfileCard(),
-
-
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w, vertical: Dimensions.paddingSizeDefault.h),
-            child: Column(
-              children: [
-
-                CustomListTile(
-                  title: AppString.switchToProviderAccount,
-                  prefixIcon: SvgPicture.asset(AppIcons.user,  color: AppColors.primaryColor),
-                  sufixIcon: GestureDetector(
-                    onTap: (){
-
-                      setState(() {
-                        switchToProvide = !switchToProvide;
-                        print("==============================> $switchToProvide");
-                      });
-
-
-                    },
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Container(
-                          height: 18.h,
-                          width: 40.w,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.black333333.withOpacity(.20)),
-                            borderRadius: BorderRadius.circular(20.r)
-                          ),
-                        ),
-
-                        Positioned(
-                          left: switchToProvide ?  null : -1 ,
-                          right:  switchToProvide ? -1  :  null,
-
-                          child: Container(
+      body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        child: Column(
+          children: [
+        
+        
+            const TopProfileCard(),
+        
+        
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w, vertical: Dimensions.paddingSizeDefault.h),
+              child: Column(
+                children: [
+        
+                  CustomListTile(
+                    title: AppString.switchToProviderAccount,
+                    prefixIcon: SvgPicture.asset(AppIcons.user,  color: AppColors.primaryColor),
+                    sufixIcon: GestureDetector(
+                      onTap: (){
+        
+                        setState(() {
+                          switchToProvide = !switchToProvide;
+                          print("==============================> $switchToProvide");
+                        });
+        
+        
+                      },
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
                             height: 18.h,
-                            width: 20.w,
-                            clipBehavior: Clip.antiAlias,
+                            width: 40.w,
                             decoration: BoxDecoration(
-                                color: AppColors.primaryColor,
-                                shape: BoxShape.circle
+                              border: Border.all(color: AppColors.black333333.withOpacity(.20)),
+                              borderRadius: BorderRadius.circular(20.r)
                             ),
                           ),
-                        )
-
-                      ],
-                    ),
-                  )
-                ),
-
-
-
-
-                CustomListTile(
-                  onTap: (){
-                    Get.toNamed(AppRoutes.personalInformation);
-                  },
-                  title: AppString.personalInformaition,
-                  prefixIcon: SvgPicture.asset(AppIcons.user,  color: AppColors.primaryColor),
-                ),
-
-
-
-                CustomListTile(
-                  title: AppString.bookingRequest,
-                  prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,  color: AppColors.primaryColor),
-                ),
-
-
-                CustomListTile(
-                  onTap: (){
-                    Get.toNamed(AppRoutes.myBookingsScreen);
-                  },
-                  title:AppString.myBookings,
-                  prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,  color: AppColors.primaryColor),
-                ),
-
-
-
-                CustomListTile(
-                  onTap: (){
-                    Get.toNamed(AppRoutes.settingScreen);
-                  },
-                  title: AppString.setting,
-                  prefixIcon: SvgPicture.asset(AppIcons.setting,  color: AppColors.primaryColor),
-                ),
-
-
-                CustomListTile(
-                  title: AppString.logout,
-                  prefixIcon: SvgPicture.asset(AppIcons.setting,  color: AppColors.primaryColor),
-                ),
-              ],
-            ),
-          )
-
-        ],
+        
+                          Positioned(
+                            left: switchToProvide ?  null : -1 ,
+                            right:  switchToProvide ? -1  :  null,
+        
+                            child: Container(
+                              height: 18.h,
+                              width: 20.w,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                  color: AppColors.primaryColor,
+                                  shape: BoxShape.circle
+                              ),
+                            ),
+                          )
+        
+                        ],
+                      ),
+                    )
+                  ),
+        
+        
+        
+        
+                  CustomListTile(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.personalInformation);
+                    },
+                    title: AppString.personalInformaition,
+                    prefixIcon: SvgPicture.asset(AppIcons.user,  color: AppColors.primaryColor),
+                  ),
+        
+        
+        
+                  CustomListTile(
+                    title: AppString.bookingRequest,
+                    prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,  color: AppColors.primaryColor),
+                  ),
+        
+        
+                  CustomListTile(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.myBookingsScreen);
+                    },
+                    title:AppString.myBookings,
+                    prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,  color: AppColors.primaryColor),
+                  ),
+        
+        
+        
+                  CustomListTile(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.settingScreen);
+                    },
+                    title: AppString.setting,
+                    prefixIcon: SvgPicture.asset(AppIcons.setting,  color: AppColors.primaryColor),
+                  ),
+        
+        
+                  CustomListTile(
+                    title: AppString.logout,
+                    prefixIcon: SvgPicture.asset(AppIcons.setting,  color: AppColors.primaryColor),
+                  ),
+                ],
+              ),
+            )
+        
+          ],
+        ),
       ),
     );
   }
