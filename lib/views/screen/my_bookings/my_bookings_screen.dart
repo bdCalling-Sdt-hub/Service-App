@@ -88,7 +88,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                     padding:  EdgeInsets.only(bottom: 10.h),
                     child: MyBookingServiceCard(
                       ontap: (){
-                        Get.toNamed(AppRoutes.serviceDetailsScreen);
+                        Get.toNamed(AppRoutes.myBookignServiceDetailsScreen);
                       },
                       serviceImage: AppImages.serviceImage,
                       selectedBottonItem: selectedIndex,
