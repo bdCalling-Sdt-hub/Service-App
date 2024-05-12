@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_dimentions.dart';
-import '../../../../utils/app_icons.dart';
-import '../../../base/custom_text.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/app_dimentions.dart';
+import '../../../../../utils/app_icons.dart';
+import '../../../../base/custom_text.dart';
+
 
 class MyBookingServiceCard extends StatelessWidget {
   final VoidCallback? ontap;
@@ -100,12 +100,12 @@ class MyBookingServiceCard extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4.r),
-                            color: selectedBottonItem == 0 ? Color(0xffEAF6ED) : selectedBottonItem == 1 ? Color(0xffFFF8E6) : selectedBottonItem == 2 ? Color(0xffFBE9EC) : Colors.black,),
+                            color: selectedBottonItem == 0 ? const Color(0xffEAF6ED) : selectedBottonItem == 1 ? const Color(0xffFFF8E6) : selectedBottonItem == 2 ? const Color(0xffFBE9EC) : Colors.black,),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 12.w, vertical: 4.h),
                           child: CustomText(
-                              color: selectedBottonItem == 0 ? Color(0xff2BA24C) : selectedBottonItem == 1 ? Color(0xffFFB701) : selectedBottonItem == 2 ? Color(0xffD7263D) : Colors.black,
+                              color: selectedBottonItem == 0 ? const Color(0xff2BA24C) : selectedBottonItem == 1 ? const Color(0xffFFB701) : selectedBottonItem == 2 ? const Color(0xffD7263D) : Colors.black,
                               text: selectedBottonItem == 0 ? "Completed" : selectedBottonItem == 1 ? 'Pending' : selectedBottonItem == 2 ? 'Cancelled' : ''
                           ),
                         ),

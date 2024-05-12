@@ -6,11 +6,11 @@ import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/cachanetwork_image.dart';
 import 'package:service_app/views/base/custom_button.dart';
-import '../../../utils/app_colors.dart';
-import '../../../utils/app_strings.dart';
-import '../../base/custom_text.dart';
-import '../../base/custom_two_button.dart';
-import '../../base/top_review_card.dart';
+import '../../../../utils/app_colors.dart';
+import '../../../../utils/app_strings.dart';
+import '../../../base/custom_text.dart';
+import '../../../base/custom_two_button.dart';
+import '../../../base/top_review_card.dart';
 import 'Inner_widgets/alart_dialog.dart';
 
 class MyBookignServiceDetailsScreen extends StatefulWidget {

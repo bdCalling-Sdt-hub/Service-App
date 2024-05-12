@@ -6,9 +6,7 @@ import 'package:get/get.dart';
 import 'package:service_app/themes/themes.dart';
 import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/message.dart';
-import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
-import 'package:service_app/views/screen/Profile/booking_request/booking_request_screen.dart';
-import 'package:service_app/views/screen/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
 import 'helpers/di.dart' as di;
@@ -20,12 +18,13 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   Map<String, Map<String, String>> _languages = await di.init();
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(languages: {},), // Wrap your app
-    ),
-  );
+  runApp(MyApp(languages: {}));
+  // runApp(
+  //   DevicePreview(
+  //     enabled: !kReleaseMode,
+  //     builder: (context) => MyApp(languages: {},), // Wrap your app
+  //   ),
+  // );
 }
 
 
@@ -46,8 +45,8 @@ class MyApp extends StatelessWidget {
             builder: (_, child) {
               return GetMaterialApp(
 
-                useInheritedMediaQuery: true,
-                builder: DevicePreview.appBuilder,
+                // useInheritedMediaQuery: true,
+                // builder: DevicePreview.appBuilder,
 
 
 
@@ -64,8 +63,8 @@ class MyApp extends StatelessWidget {
                 transitionDuration: const Duration(milliseconds: 500),
                 getPages: AppRoutes.page,
 
-                initialRoute: AppRoutes.bottomNavBar,
-                home: const BottomNavBar(),
+                initialRoute: AppRoutes.signInScreen,
+                home:  SignInScreen(),
 
               );
             });

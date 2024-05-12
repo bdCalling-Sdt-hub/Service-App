@@ -6,10 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_icons.dart';
-import '../../../base/custom_text.dart';
-import '../../../base/custom_two_button.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/app_icons.dart';
+import '../../../../base/custom_text.dart';
+import '../../../../base/custom_two_button.dart';
+
 
 class AlartDialog extends StatefulWidget {
   const AlartDialog({super.key});

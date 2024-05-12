@@ -4,7 +4,6 @@ import 'package:service_app/views/screen/Auth/moreInformationScreen/more_informa
 import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
-import 'package:service_app/views/screen/Profile/booking_request/booking_request_screen.dart';
 
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
@@ -12,17 +11,18 @@ import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
-import '../views/screen/all_service/all_service_screen.dart';
+import '../views/screen/User/all_service/all_service_screen.dart';
+import '../views/screen/User/booking_request/booking_request_screen.dart';
+import '../views/screen/User/category/category_screen.dart';
+import '../views/screen/User/my_bookings/my_booking_service_details_screen.dart';
+import '../views/screen/User/my_bookings/my_bookings_screen.dart';
+import '../views/screen/User/search/search_screen.dart';
+import '../views/screen/User/service_details/service_details_screen.dart';
 import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
-import '../views/screen/category/category_screen.dart';
 import '../views/screen/change_password/change_password_screen.dart';
 import '../views/screen/message/chat_screen/chat_screen.dart';
-import '../views/screen/my_bookings/my_booking_service_details_screen.dart';
-import '../views/screen/my_bookings/my_bookings_screen.dart';
 import '../views/screen/notifications/notifications.dart';
 import '../views/screen/privacy_policy_all/privacy_policy_all_screen.dart';
-import '../views/screen/search/search_screen.dart';
-import '../views/screen/service_details/service_details_screen.dart';
 import '../views/screen/setting/setting_screen.dart';
 
 class AppRoutes{
@@ -75,8 +75,6 @@ class AppRoutes{
     GetPage(name:chatScreen, page: ()=> ChatScreen()),
     GetPage(name:verifyOTpScreen, page: ()=> const VerifyOTPScreen()),
     GetPage(name:moreInformationScreen, page: ()=> MoreInformationScreen()),
-    GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
-    GetPage(name:scarchScreen, page: ()=> SearchScreen()),
     GetPage(name:serviceDetailsScreen, page: ()=> ServiceDetailsScreen()),
     GetPage(name:settingScreen, page: ()=> SettingScreen()),
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),

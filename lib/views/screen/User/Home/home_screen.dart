@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -13,11 +11,11 @@ import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/utils/app_images.dart';
 import 'package:service_app/utils/app_strings.dart';
 import 'package:service_app/views/base/custom_text.dart';
-import 'package:service_app/views/base/custom_text_field.dart';
 
-import '../../base/category_card.dart';
-import '../../base/search_box.dart';
-import '../../base/service_card.dart';
+import '../../../base/category_card.dart';
+import '../../../base/search_box.dart';
+import '../../../base/service_card.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:service_app/views/screen/Home/home_screen.dart';
 import 'package:service_app/views/screen/message/Message/message_screen.dart';
-import 'package:service_app/views/screen/service/service_screen.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
 import '../Profile/profile_screen/profile_screen.dart';
+import '../User/Home/home_screen.dart';
+import '../User/service/service_screen.dart';
 
 
 

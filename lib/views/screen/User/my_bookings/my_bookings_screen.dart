@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_strings.dart';
-import '../../../helpers/route.dart';
-import '../../../utils/app_colors.dart';
-import '../../../utils/app_images.dart';
-import '../../base/custom_text.dart';
+import '../../../../helpers/route.dart';
+import '../../../../utils/app_colors.dart';
+import '../../../../utils/app_images.dart';
+import '../../../base/custom_text.dart';
 import 'Inner_widgets/my_booking_service_card.dart';
 import 'Inner_widgets/selected_button.dart';
 
