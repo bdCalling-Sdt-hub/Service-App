@@ -14,6 +14,8 @@ import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
 import '../../../utils/app_images.dart';
 import '../../base/custom_text.dart';
+import 'Inner_widgets/my_booking_service_card.dart';
+import 'Inner_widgets/selected_button.dart';
 
 class MyBookingsScreen extends StatefulWidget {
    MyBookingsScreen({super.key});
@@ -60,7 +62,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                     children: [
                       for (int i = index * 3; i < (index + 1) * 3; i++)
                         if (i < items.length)
-                          SelectableItem(
+                          SelectedButton(
                             text: items[i],
                             selected: selectedIndex == i,
                             onTap: () {
@@ -84,11 +86,12 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:  EdgeInsets.only(bottom: 10.h),
-                    child: AllServiceCards(
+                    child: MyBookingServiceCard(
                       ontap: (){
-                        Get.toNamed(AppRoutes.serviceDetailsScreen);
+                        Get.toNamed(AppRoutes.myBookignServiceDetailsScreen);
                       },
                       serviceImage: AppImages.serviceImage,
+                      selectedBottonItem: selectedIndex,
                       reting: "4.8",
                       distance: "15 km",
                       serviceName: 'House Cleaning',
@@ -109,180 +112,3 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
   }
 }
 
-
-
-
-class AllServiceCards extends StatelessWidget {
-  final VoidCallback? ontap;
-  final String? serviceImage;
-  final String? reting;
-  final String? distance;
-  final String? serviceName;
-  final String? personName;
-  const AllServiceCards({super.key, this.serviceImage, this.reting, this.distance, this.serviceName, this.personName, this.ontap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(color: AppColors.primaryColor),
-            borderRadius: BorderRadius.circular(8.r)),
-        child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          child: SizedBox(
-            child: Row(
-              children: [
-                Container(
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4.r)
-                    ),
-                    child: Image.asset('$serviceImage', height: 112.h,width: 130.w,fit: BoxFit.cover,)),
-
-                SizedBox(width: 24.w),
-
-
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-
-
-                      ///========================service name======================>
-                      Container(
-                        constraints: const BoxConstraints(maxWidth: 150),
-                        child: CustomText(
-                            text: "$serviceName",
-                            fontsize: Dimensions.fontSizeDefault.h,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
-                            top: 4.h,
-                            bottom: 4.h),
-                      ),
-
-
-                      ///=========================person name=========================>
-                      Container(
-                        constraints: const BoxConstraints(maxWidth: 150),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(AppIcons.person,height: 12.h,color: AppColors.subTextColor5c5c5c,),
-                            CustomText(
-                                textOverflow: TextOverflow.ellipsis,
-                                text: " $personName",
-                                fontsize: 12.h,
-                                color: AppColors.subTextColor5c5c5c),
-                          ],
-                        ),
-                      ),
-
-
-
-                      CustomText(
-                          textOverflow: TextOverflow.ellipsis,
-                          text: " 36.00",
-                          fontsize: 16.h,
-                          bottom: 15.h,
-                          top: 4.h,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.primaryColor),
-                      
-                      
-                      
-                      
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.r),
-                          color: Color(0xffEAF6ED)
-                        ),
-                        child: Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
-                          child: CustomText(text: "Complete",),
-                        ),
-                      )
-
-                    ],
-                  ),
-                ),
-
-
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class SelectableItem extends StatelessWidget {
-  final String text;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const SelectableItem({
-    Key? key,
-    required this.text,
-    required this.selected,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
-        decoration: BoxDecoration(
-          color: selected ? AppColors.primaryColor : AppColors.whiteF4F9EC,
-          borderRadius: BorderRadius.circular(8.r),
-
-
-
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.black767676.withOpacity(.5), // color of the shadow
-              spreadRadius: 0, // spread radius
-              blurRadius: 20, // blur radius
-              offset: Offset(0, 0), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: selected ? Colors.white : AppColors.subTextColor5c5c5c,
-            fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-          ),
-        ),
-      ),
-    );
-  }
-}

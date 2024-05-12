@@ -68,6 +68,8 @@ class AppIcons{
   static String housekeepingYoungWoman ="$path/housekeeping-young-woman.svg";
 
   static String camera ="$path/camera.svg";
+  static String call2 ="$path/call2.svg";
+  static String badge ="$path/badge.svg";
 
 
 

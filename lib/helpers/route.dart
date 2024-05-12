@@ -17,6 +17,7 @@ import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screen/category/category_screen.dart';
 import '../views/screen/change_password/change_password_screen.dart';
 import '../views/screen/message/Inbox_message/chat_screen.dart';
+import '../views/screen/my_bookings/my_booking_service_details_screen.dart';
 import '../views/screen/my_bookings/my_bookings_screen.dart';
 import '../views/screen/notifications/notifications.dart';
 import '../views/screen/privacy_policy_all/privacy_policy_all_screen.dart';
@@ -50,6 +51,7 @@ class AppRoutes{
 
   static String editProfileScreen="/EditProfileScreen";
   static String myBookingsScreen="/MyBookingsScreen";
+  static String myBookignServiceDetailsScreen="/MyBookignServiceDetailsScreen";
 
 
 
@@ -86,6 +88,7 @@ class AppRoutes{
 
     GetPage(name:editProfileScreen, page: ()=> EditProfileScreen()),
     GetPage(name:myBookingsScreen, page: ()=> MyBookingsScreen()),
+    GetPage(name:myBookignServiceDetailsScreen, page: ()=> MyBookignServiceDetailsScreen()),
 
   ];
 
