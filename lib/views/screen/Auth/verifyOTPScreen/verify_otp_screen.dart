@@ -70,8 +70,7 @@ class VerifyOTPScreen extends StatelessWidget {
                     Get.toNamed(AppRoutes.moreInformationScreen);
                   },
                   text: AppString.verifyOTP),
-              SizedBox(height: 200.h,)
-
+              SizedBox(height: 170.h,)
 
             ],
           ),

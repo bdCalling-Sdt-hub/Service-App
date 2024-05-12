@@ -146,15 +146,18 @@ class TextfieldSection extends StatelessWidget {
 
                 }, text:AppString.signUp),
                 SizedBox(height: 14.h,),
-                //===============================> Already Account and Sign In <===============================
+                //===============================> Already have an Account and Sign In <===============================
                 Center(
-                  child: RichText(text:TextSpan(
-                      text: AppString.alreadyAccount,children: [
+                  child: RichText(
+                    text:TextSpan(
+                      text: AppString.alreadyAccount,
+                      style: TextStyle(color:Colors.black),
+                      children: [
                     TextSpan(
                       text: AppString.signIn,
                       style: TextStyle(color:Get.theme.primaryColor),
                       recognizer: TapGestureRecognizer()..onTap = (){
-                        Get.back();
+                        Get.toNamed(AppRoutes.signInScreen);
                       },
                     )
                   ]),),

@@ -36,7 +36,8 @@ class ScarchScreen extends StatelessWidget {
 
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w, vertical: Dimensions.paddingSizeDefault.h),
+          padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w,
+              vertical: Dimensions.paddingSizeDefault.h),
           child: Column(
             children: [
 

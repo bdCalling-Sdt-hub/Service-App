@@ -35,11 +35,8 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: 114.h),
               Center(
                   child: SvgPicture.asset(
-                'assets/icons/logo_icon.svg',
-                width: 164.w,
-                height: 56.h,
-                fit: BoxFit.fill,
-              )),
+                AppIcons.logoIcon)
+              ),
               //=================================> Text-field Section <===============================
               SizedBox(height: 54.h),
               CustomTextField(
@@ -63,36 +60,43 @@ class SignInScreen extends StatelessWidget {
                   child: SvgPicture.asset(AppIcons.lockIcon),
                 ),
               ),
-
+              SizedBox(
+                height: 12.h,
+              ),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                    onPressed: () {}, child: Text(AppString.forgotPassword)),
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.forgotPasswordScreen);
+                    }, child: Text(AppString.forgotPassword)),
               ),
               SizedBox(
                 height: 24.h,
               ),
               /// <-0------------------------- Sign in button -----------------0->
               CustomButton(onTap: () {
-
               }, text: AppString.signIn),
               SizedBox(
                 height: 209.h,
               ),
               Center(
                 child: RichText(
-                  text: TextSpan(text: "Don’t have an account? ", children: [
+                  text: TextSpan(text: AppString.dontHaveAccount,
+                      style: TextStyle(color: Colors.black),
+                      children: [
                     TextSpan(
-                      text: "Sign Up",
+                      text: AppString.signUp,
                       style: TextStyle(color: Get.theme.primaryColor),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Get.toNamed(AppRoutes.signUpScreen);
+                          Get.back();
                         },
                     )
                   ]),
                 ),
               ),
+              SizedBox(height: 25.h),
+
             ],
           ),
         ),
