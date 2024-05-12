@@ -92,6 +92,7 @@ class AppString {
 
 
   static const String bookingRequests ="Booking Request";
+  static const String areYouSureToLogout ="Are you sure to logout your profile?";
 
 }
 

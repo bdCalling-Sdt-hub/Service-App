@@ -16,7 +16,7 @@ import '../views/screen/all_service/all_service_screen.dart';
 import '../views/screen/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screen/category/category_screen.dart';
 import '../views/screen/change_password/change_password_screen.dart';
-import '../views/screen/message/Inbox_message/chat_screen.dart';
+import '../views/screen/message/chat_screen/chat_screen.dart';
 import '../views/screen/my_bookings/my_booking_service_details_screen.dart';
 import '../views/screen/my_bookings/my_bookings_screen.dart';
 import '../views/screen/notifications/notifications.dart';
@@ -71,13 +71,12 @@ class AppRoutes{
     GetPage(name:forgotPasswordScreen, page: ()=> ForgotPasswordScreen()),
     GetPage(name:resetPasswordScreen, page: ()=> ResetPasswordScreen()),
     GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
-    GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
+    GetPage(name:scarchScreen, page: ()=> SearchScreen()),
     GetPage(name:chatScreen, page: ()=> ChatScreen()),
     GetPage(name:verifyOTpScreen, page: ()=> const VerifyOTPScreen()),
     GetPage(name:moreInformationScreen, page: ()=> MoreInformationScreen()),
     GetPage(name:allServiceScreen, page: ()=> AllServiceScreen()),
-    GetPage(name:scarchScreen, page: ()=> ScarchScreen()),
-    GetPage(name:chatScreen, page: ()=> ChatScreen()),
+    GetPage(name:scarchScreen, page: ()=> SearchScreen()),
     GetPage(name:serviceDetailsScreen, page: ()=> ServiceDetailsScreen()),
     GetPage(name:settingScreen, page: ()=> SettingScreen()),
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),

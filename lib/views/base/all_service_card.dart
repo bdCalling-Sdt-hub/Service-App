@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -108,11 +109,13 @@ class AllServiceCard extends StatelessWidget {
                         child: Row(
                           children: [
                             SvgPicture.asset(AppIcons.person,height: 12.h,color: AppColors.subTextColor5c5c5c,),
-                            CustomText(
-                                textOverflow: TextOverflow.ellipsis,
-                                text: " $personName",
-                                fontsize: 12.h,
-                                color: AppColors.subTextColor5c5c5c),
+                            Expanded(
+                              child: CustomText(
+                                  textOverflow: TextOverflow.ellipsis,
+                                  text: " $personName",
+                                  fontsize: 12.h,
+                                  color: AppColors.subTextColor5c5c5c),
+                            ),
                           ],
                         ),
                       )

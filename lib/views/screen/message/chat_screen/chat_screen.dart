@@ -23,10 +23,10 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-   StreamController _streamController = StreamController();
+   final StreamController _streamController = StreamController();
 
 
-   ScrollController _scrollController = ScrollController();
+   final ScrollController _scrollController = ScrollController();
 
 
 
@@ -182,12 +182,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: 295.w,
+                    width: 290.w,
                     child: TextFormField(
                       controller: messageController,
                       decoration:  InputDecoration(
                         hintText: "Type something…",
-                        hintStyle: TextStyle(color: AppColors.hintextColorA1A1A1, fontSize: 12, fontWeight: FontWeight.w400),
+                        hintStyle: TextStyle(color: AppColors.hintextColorA1A1A1, fontSize: 12.h, fontWeight: FontWeight.w400),
                         suffixIcon: Padding(
                           padding:  EdgeInsets.symmetric(vertical: 11.h, horizontal: 16.w),
                           child: SvgPicture.asset(AppIcons.photo),
@@ -206,14 +206,13 @@ class _ChatScreenState extends State<ChatScreen> {
                       Map<String, dynamic> newMessage = {
                         "name": "John",
                         "status": "sender",
-                        "message": "${messageController.text}",
+                        "message": messageController.text,
                       };
 
                       if(messageController.text.isNotEmpty){
                         messageList.add(newMessage);
                         _streamController.sink.add(messageList);
 
-                        print(messageList);
                         messageController.clear();
                       }else{
                         null;
@@ -228,7 +227,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         borderRadius: BorderRadius.circular(8.r)
                       ),
                         child: Padding(
-                          padding:  const EdgeInsets.all(11.0),
+                          padding: EdgeInsets.all(11.r),
                           child: SvgPicture.asset(AppIcons.sendIcon),
                         )),
                   )
@@ -273,7 +272,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: [
                    Text(
                     '${message['message']}' ?? "",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 14,
                     ),
