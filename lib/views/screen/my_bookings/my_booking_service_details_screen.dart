@@ -1,16 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/cachanetwork_image.dart';
 import 'package:service_app/views/base/custom_button.dart';
+import 'package:service_app/views/base/custom_text_field.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_strings.dart';
 import '../../base/custom_text.dart';
+import '../../base/custom_two_button.dart';
 import '../../base/top_review_card.dart';
 import '../service_details/service_details_screen.dart';
+import 'Inner_widgets/alart_dialog.dart';
 
 class MyBookignServiceDetailsScreen extends StatefulWidget {
   const MyBookignServiceDetailsScreen({super.key});
@@ -23,22 +28,12 @@ class MyBookignServiceDetailsScreen extends StatefulWidget {
 class _MyBookignServiceDetailsScreenState
     extends State<MyBookignServiceDetailsScreen> {
   double reting = 0;
-
+  var paramiter = Get.parameters;
 
   List experienceeRatingServiceList = [
-    {
-      "experienceRating" : "Experience",
-      "yearRating" : "8 Years"
-    },
-
-    {
-      "experienceRating" : "Ratings",
-      "yearRating" : "1012"
-    },
-    {
-      "experienceRating" : "Total Service",
-      "yearRating" : "550"
-    }
+    {"experienceRating": "Experience", "yearRating": "8 Years"},
+    {"experienceRating": "Ratings", "yearRating": "1012"},
+    {"experienceRating": "Total Service", "yearRating": "550"}
   ];
 
   @override
@@ -82,7 +77,6 @@ class _MyBookignServiceDetailsScreenState
                     fontWeight: FontWeight.w500,
                     fontsize: 20.h,
                   )),
-
                   Row(
                     children: [
                       Container(
@@ -194,34 +188,35 @@ class _MyBookignServiceDetailsScreenState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(
                   experienceeRatingServiceList.length,
-                  (index) => Container(
-                      width: 112.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.r),
-                          border: Border.all(color: AppColors.primaryColor)),
-                      child: Padding(
-                        padding: EdgeInsets.all(8.r),
-                        child: Center(
-                          child: Column(
-                            children: [
-                              CustomText(
-                                text: '${experienceeRatingServiceList[index]['experienceRating']}',
-                                fontsize: 12.h,
-                              ),
-                              CustomText(
-                                text:  '${experienceeRatingServiceList[index]['yearRating']}',
-                                fontsize: 16.h,
-                                fontWeight: FontWeight.w500,
-                              )
-                            ],
+                  (index) {
+                    return Container(
+                        width: 112.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4.r),
+                            border: Border.all(color: AppColors.primaryColor)),
+                        child: Padding(
+                          padding: EdgeInsets.all(8.r),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                CustomText(
+                                  text:
+                                      '${experienceeRatingServiceList[index]['experienceRating']}',
+                                  fontsize: 12.h,
+                                ),
+                                CustomText(
+                                  text:
+                                      '${experienceeRatingServiceList[index]['yearRating']}',
+                                  fontsize: 16.h,
+                                  fontWeight: FontWeight.w500,
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      )),
+                        ));
+                  },
                 ),
               ),
-
-
-
 
               ///====================about help =========================>
               CustomText(
@@ -255,6 +250,7 @@ class _MyBookignServiceDetailsScreenState
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 3,
                   itemBuilder: (context, index) {
+                    print("====> ${paramiter['bookingStatus'].runtimeType}");
                     return Padding(
                       padding: EdgeInsets.only(bottom: 20.h),
                       child: const TopReviewsCard(),
@@ -263,17 +259,25 @@ class _MyBookignServiceDetailsScreenState
                 ),
               ),
 
-
-
-
-              CustomButton(onTap: (){
-                showDialog(context: context, builder: (context) {
-                  return Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 213.h),
-                    child: AlartDialog(),
-                  );
-                },);
-              }, text: "Give Review"),
+              paramiter['bookingStatus'] == '0'
+                  ? CustomButton(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20.w, vertical: 190.h),
+                              child: AlartDialog(),
+                            );
+                          },
+                        );
+                      },
+                      text: "Give Review")
+                  :  CustomTwoButon(
+                      btnNameList: ['Cancel', 'Complete'],
+                      width: 168.w,
+                    ),
 
               SizedBox(height: 20.h),
             ],
@@ -283,27 +287,3 @@ class _MyBookignServiceDetailsScreenState
     );
   }
 }
-
-
-class AlartDialog extends StatelessWidget {
-  const AlartDialog({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8.r)
-      ),
-      child: Column(
-        children: [
-
-
-        ],
-      ),
-    );
-  }
-}
-
-
-
