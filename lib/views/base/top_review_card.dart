@@ -7,14 +7,9 @@ import '../../utils/app_colors.dart';
 import 'cachanetwork_image.dart';
 import 'custom_text.dart';
 
-class TopReviewsCard extends StatefulWidget {
+class TopReviewsCard extends StatelessWidget {
   const TopReviewsCard({super.key});
 
-  @override
-  State<TopReviewsCard> createState() => _TopReviewsCardState();
-}
-
-class _TopReviewsCardState extends State<TopReviewsCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +23,7 @@ class _TopReviewsCardState extends State<TopReviewsCard> {
                 Container(
                   margin: EdgeInsets.only(right: 12.w),
                   clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(shape: BoxShape.circle),
+                  decoration: const BoxDecoration(shape: BoxShape.circle),
                   child: CustomNetworkImage(
                     imageUrl: "https://media.licdn.com/dms/image/D5603AQFdl60xoR0NpQ/profile-displayphoto-shrink_800_800/0/1699503758188?e=2147483647&v=beta&t=HT1KNyCH1d5YWMWSkyDIZxY-6N-oi3x6PXD7kUOvKJ8",
                     height: 40.h,
