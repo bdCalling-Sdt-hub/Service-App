@@ -22,18 +22,18 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 78.w,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.r),
-          color:
-          isSelected! ? AppColors.primaryColor : const Color(0xffF4F9EC)),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: onTap ?? (){},
-            child: Padding(
-              padding: EdgeInsets.all(14.r),
+    return GestureDetector(
+      onTap: onTap ?? (){},
+      child: Container(
+        width: 78.w,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.r),
+            color:
+            isSelected ? AppColors.primaryColor : const Color(0xffF4F9EC)),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(13.r),
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -49,15 +49,15 @@ class CategoryCard extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          CustomText(
-            text: categorName ?? "",
-            fontsize: 12.h,
-            bottom: 7.h,
-            fontWeight: FontWeight.w500,
-            color: isSelected ? Colors.white : Colors.black,
-          )
-        ],
+            CustomText(
+              text: categorName ?? "",
+              fontsize: 12.h,
+              bottom: 7.h,
+              fontWeight: FontWeight.w500,
+              color: isSelected ? Colors.white : Colors.black,
+            )
+          ],
+        ),
       ),
     );
   }

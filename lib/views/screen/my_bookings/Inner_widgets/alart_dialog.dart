@@ -29,6 +29,7 @@ class _AlartDialogState extends State<AlartDialog> {
       borderRadius: BorderRadius.circular(8),
       child: Container(
         decoration: BoxDecoration(
+          border: Border.all(color: AppColors.primaryColor),
           color: Colors.white,
         ),
         child: Padding(

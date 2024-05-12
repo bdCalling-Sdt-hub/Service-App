@@ -141,7 +141,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                             //===============================>Button Field <===============================
                             CustomButton(
                                 onTap: () {
-                                  Get.toNamed(AppRoutes.forgotPasswordScreen);
+                                  Get.toNamed(AppRoutes.bottomNavBar);
                                 },
                                 text: AppString.createAccount),
                             SizedBox(height: 25,)

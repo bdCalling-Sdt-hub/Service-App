@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/views/base/all_service_card.dart';
 import 'package:service_app/views/base/search_box.dart';
@@ -14,8 +15,8 @@ import '../../../utils/app_strings.dart';
 import '../../base/custom_text.dart';
 import '../../base/custom_text_field.dart';
 
-class ScarchScreen extends StatelessWidget {
-   ScarchScreen({super.key});
+class SearchScreen extends StatelessWidget {
+   SearchScreen({super.key});
 
    final HomeController homeController = Get.put(HomeController());
 
@@ -54,7 +55,10 @@ class ScarchScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding:  EdgeInsets.only(top: index == 0 ?  10.h : 16.h),
-                      child: const AllServiceCard(
+                      child:  AllServiceCard(
+                        ontap: (){
+                          Get.toNamed(AppRoutes.serviceDetailsScreen);
+                        },
                         serviceImage: AppImages.serviceImage,
                         reting: "4.8",
                         distance: "15 km",

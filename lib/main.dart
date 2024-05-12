@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,12 +15,20 @@ import 'helpers/di.dart' as di;
 import 'helpers/route.dart';
 
 void main() async {
+
+
+
   WidgetsFlutterBinding.ensureInitialized();
   Map<String, Map<String, String>> _languages = await di.init();
-  runApp(MyApp(
-    languages: _languages,
-  ));
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(languages: {},), // Wrap your app
+    ),
+  );
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.languages});
@@ -35,6 +45,12 @@ class MyApp extends StatelessWidget {
             splitScreenMode: true,
             builder: (_, child) {
               return GetMaterialApp(
+
+                useInheritedMediaQuery: true,
+                builder: DevicePreview.appBuilder,
+
+
+
                 title: AppConstants.APP_NAME,
                 debugShowCheckedModeBanner: false,
                 navigatorKey: Get.key,

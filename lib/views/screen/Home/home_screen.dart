@@ -133,7 +133,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     () => ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: _categoryController.cetegoryList.length,
-                      // Use all categories
                       itemBuilder: (context, index) {
                         var category = _categoryController.cetegoryList[index];
                         bool isSelected = selectedIndex == index;
@@ -188,7 +187,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
-                        child: const ServiceCard(
+                        child:  ServiceCard(
+                          onTap: (){
+                            Get.toNamed(AppRoutes.serviceDetailsScreen);
+                          },
                           distance: "15 km",
                           personName: "Ingredia Nutrisha ",
                           serviceName: "House Cleaning ",
@@ -236,7 +238,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
-                        child: const ServiceCard(
+                        child:  ServiceCard(
+                          onTap: (){
+                            Get.toNamed(AppRoutes.serviceDetailsScreen);
+                          },
                           distance: "15 km",
                           personName: "Ingredia Nutrisha ",
                           serviceName: "House Cleaning ",

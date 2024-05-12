@@ -142,7 +142,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                     //===========================> Update profile button <===================
                     CustomButton(
-                        text: AppString.email,
+                        text: AppString.updatePrifle,
                         onTap: () {}),
                     SizedBox(height: 35.h),
                   ],
