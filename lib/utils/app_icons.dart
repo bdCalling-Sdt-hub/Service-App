@@ -16,6 +16,7 @@ class AppIcons{
   static String vectorIcon="$path/vector_icon.svg";
   static String personIcon="$path/person_icon.svg";
   static String phoneIcon="$path/phone_icon.svg";
+  static String logoIcon="$path/logo_icon.svg";
 
   ///========================Verify OTP ===================>?
 
@@ -63,9 +64,13 @@ class AppIcons{
   static String call ="$path/call.svg";
   static String locationss ="$path/locationkk.svg";
   static String edit ="$path/edit.svg";
+
+  static String housekeepingYoungWoman ="$path/housekeeping-young-woman.svg";
+
   static String camera ="$path/camera.svg";
   static String call2 ="$path/call2.svg";
   static String badge ="$path/badge.svg";
+
 
 
 }

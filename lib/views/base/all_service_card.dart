@@ -35,10 +35,7 @@ class AllServiceCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.r)
                     ),
                     child: Image.asset('$serviceImage', height: 112.h,width: 130.w,fit: BoxFit.cover,)),
-
                 SizedBox(width: 24.w),
-
-
                 Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +45,6 @@ class AllServiceCard extends StatelessWidget {
                       ///==========================Rating and Distance Row================================>
                       Row(
                         children: [
-
                           SingleChildScrollView(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,8 +102,6 @@ class AllServiceCard extends StatelessWidget {
                             top: 4.h,
                             bottom: 4.h),
                       ),
-
-
                       ///=========================person name=========================>
                       Container(
                         constraints: const BoxConstraints(maxWidth: 150),
