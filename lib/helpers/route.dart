@@ -8,6 +8,7 @@ import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
+import '../views/screen/Profile/booking_request/booking_request_screen.dart';
 import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Provider/booking_details/booking_details_screen.dart';
@@ -17,7 +18,6 @@ import '../views/screen/User/User_bottom_nav_bar/user_bottom_nav_bar.dart';
 import '../views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
 import '../views/screen/User/User_my_bookings/user_my_bookings_screen.dart';
 import '../views/screen/User/user_all_service/user_all_service_screen.dart';
-import '../views/screen/User/user_booking_request/user_booking_request_screen.dart';
 import '../views/screen/User/user_category/user_category_screen.dart';
 import '../views/screen/User/user_search/user_search_screen.dart';
 import '../views/screen/User/user_service_details/user_service_details_screen.dart';
@@ -49,7 +49,7 @@ class AppRoutes{
   static String changePasswordScreen="/ChangePasswordScreen";
   static String personalInformation="/PersonalInformation";
 
-  static String userBookingRequestScreen="/UserBookingRequestScreen";
+  static String bookingRequestScreen="/BookingRequestScreen";
 
   static String editProfileScreen="/EditProfileScreen";
   static String userMyBookingsScreen="/UserMyBookingsScreen";
@@ -84,7 +84,7 @@ class AppRoutes{
     GetPage(name:changePasswordScreen, page: ()=> ChangePasswordScreen()),
     GetPage(name:personalInformation, page: ()=> PersonalInformation()),
 
-    GetPage(name:userBookingRequestScreen, page: ()=> UserBookingRequestScreen()),
+    GetPage(name:bookingRequestScreen, page: ()=> BookingRequestScreen()),
 
     GetPage(name:editProfileScreen, page: ()=> EditProfileScreen()),
     GetPage(name:userMyBookingsScreen, page: ()=> UserMyBookingsScreen()),

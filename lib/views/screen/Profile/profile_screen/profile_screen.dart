@@ -87,6 +87,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppColors.primaryColor),
                   ),
                   CustomListTile(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.bookingRequestScreen);
+                    },
                     title: AppString.bookingRequest,
                     prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,
                         color: AppColors.primaryColor),
