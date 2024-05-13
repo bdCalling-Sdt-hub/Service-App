@@ -15,17 +15,18 @@ class BookingCard extends StatelessWidget {
   final String? bookingName;
   final String? personName;
   final String? location;
-  final String? dollar;
+  final String? rating;
+  final String? distance;
 
-   BookingCard({super.key,
+
+  BookingCard({
+    super.key,
     this.ontap,
     this.bookingImage,
     this.bookingName,
     this.personName,
-    this.location,
-    this.dollar,});
-
-
+    this.location, this.rating, this.distance,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class BookingCard extends StatelessWidget {
             border: Border.all(color: AppColors.primaryColor),
             borderRadius: BorderRadius.circular(8.r)),
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           child: SizedBox(
             child: Column(
               children: [
@@ -45,39 +46,46 @@ class BookingCard extends StatelessWidget {
                     Container(
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.r)
-                        ),
-                        child: Image.asset('$bookingImage',
+                            borderRadius: BorderRadius.circular(4.r)),
+                        child: Image.asset(
+                          '$bookingImage',
                           height: 112.h,
                           width: 130.w,
-                          fit: BoxFit.cover,)),
+                          fit: BoxFit.cover,
+                        )),
                     SizedBox(width: 22.w),
                     Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
                           ///==========================Rating and Distance Row================================>
                           Row(
                             children: [
                               SingleChildScrollView(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
-                                        SvgPicture.asset(AppIcons.star,fit: BoxFit.cover,),
+                                        SvgPicture.asset(
+                                          AppIcons.star,
+                                          fit: BoxFit.cover,
+                                        ),
+
                                         ///==================Rating Tex===================>
                                         CustomText(
                                             top: 3.h,
-                                            text: " reting",
+                                            text: " $rating",
                                             fontsize: 10.h,
                                             fontWeight: FontWeight.w400,
                                             color: AppColors.subTextColor5c5c5c)
                                       ],
                                     ),
-                                    SizedBox(width: 40.w,),
+                                    SizedBox(
+                                      width: 40.w,
+                                    ),
                                     Row(
                                       children: [
                                         SvgPicture.asset(
@@ -87,13 +95,16 @@ class BookingCard extends StatelessWidget {
 
                                         ///======================Distance======================>
                                         Container(
-                                          constraints: const BoxConstraints(maxWidth: 150),
+                                          constraints: const BoxConstraints(
+                                              maxWidth: 150),
                                           child: CustomText(
-                                              textOverflow: TextOverflow.ellipsis,
-                                              text: " distance",
+                                              textOverflow:
+                                                  TextOverflow.ellipsis,
+                                              text: " $distance",
                                               fontsize: 12.h,
                                               fontWeight: FontWeight.w400,
-                                              color: AppColors.subTextColor5c5c5c),
+                                              color:
+                                                  AppColors.subTextColor5c5c5c),
                                         )
                                       ],
                                     ),
@@ -102,11 +113,6 @@ class BookingCard extends StatelessWidget {
                               )
                             ],
                           ),
-
-
-
-
-
 
                           ///========================service name======================>
                           Container(
@@ -119,12 +125,17 @@ class BookingCard extends StatelessWidget {
                                 top: 4.h,
                                 bottom: 4.h),
                           ),
+
                           ///=========================person name=========================>
                           Container(
                             constraints: const BoxConstraints(maxWidth: 150),
                             child: Row(
                               children: [
-                                SvgPicture.asset(AppIcons.person,height: 12.h,color: AppColors.subTextColor5c5c5c,),
+                                SvgPicture.asset(
+                                  AppIcons.person,
+                                  height: 12.h,
+                                  color: AppColors.subTextColor5c5c5c,
+                                ),
                                 Expanded(
                                   child: CustomText(
                                       textAlign: TextAlign.start,
@@ -136,30 +147,27 @@ class BookingCard extends StatelessWidget {
                               ],
                             ),
                           )
-
                         ],
                       ),
                     ),
                   ],
                 ),
-
                 SizedBox(height: 16.h),
-
-
                 CustomTwoButon(
                   width: 152.w,
                   btnNameList: ['Cancel', 'Accept'],
-                  leftBtnOnTap: (){Get.back();},
-                  rightBtnOnTap: (){Get.back();},
+                  leftBtnOnTap: () {
+                    Get.back();
+                  },
+                  rightBtnOnTap: () {
+                    Get.back();
+                  },
                 )
               ],
             ),
           ),
         ),
       ),
-
-
     );
-
   }
 }

@@ -39,7 +39,8 @@ class BookingRequestScreen extends StatelessWidget {
                         personName: "Ingredia Nutrisha",
                         bookingName: 'Cleaning',
                         location: "437 Star St, Los Angeles, USA",
-                        dollar: "\$36.00",
+                        rating: "4.8",
+                        distance: '13 km',
                       ),
                     );
                   },
