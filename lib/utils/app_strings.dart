@@ -70,6 +70,7 @@ class AppString {
   static const String personalInformaition = "Personal Information";
   static const String switchToProviderAccount = "Switch to provider account";
   static const String bookingRequest = "Booking Request";
+  static const String bookingDetails = "Booking Details";
   static const String myBookings = "My Bookings";
   static const String setting = "Settings";
   static const String logout = "Log out";
@@ -93,6 +94,18 @@ class AppString {
 
   static const String bookingRequests ="Booking Request";
   static const String areYouSureToLogout ="Are you sure to logout your profile?";
+
+
+
+
+
+  ///================provider=================>
+  static const String recentBookings ="Recent Bookings";
+  static const String userName ="User name";
+  static const String service ="Service";
+  static const String status ="Status";
+  static const String markAsCompleted ="Mark as Completed";
+
 
 }
 
