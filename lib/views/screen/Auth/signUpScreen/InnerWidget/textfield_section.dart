@@ -142,7 +142,9 @@ class TextfieldSection extends StatelessWidget {
                 SizedBox(height: 24.h,),
                 //===============================> Sign Up Button <===============================
                 CustomButton(onTap:(){
-                  Get.toNamed(AppRoutes.verifyOTpScreen);
+                  Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
+                    'screenType' : 'signUpScreen'
+                  });
 
                 }, text:AppString.signUp),
                 SizedBox(height: 14.h,),
