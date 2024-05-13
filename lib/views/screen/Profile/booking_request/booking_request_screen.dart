@@ -8,8 +8,8 @@ import '../../../../utils/app_strings.dart';
 import '../../../base/all_booking_card.dart';
 import '../../../base/custom_text.dart';
 
-class UserBookingRequestScreen extends StatelessWidget {
-   const UserBookingRequestScreen({super.key});
+class BookingRequestScreen extends StatelessWidget {
+   const BookingRequestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +34,13 @@ class UserBookingRequestScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding:  EdgeInsets.only(top: index == 0 ?  10.h : 16.h),
-                      child:  AllBookingCard(
+                      child:  BookingCard(
                         bookingImage: AppImages.houseKeepingWoman,
                         personName: "Ingredia Nutrisha",
                         bookingName: 'Cleaning',
                         location: "437 Star St, Los Angeles, USA",
-                        dollar: "\$36.00",
+                        rating: "4.8",
+                        distance: '13 km',
                       ),
                     );
                   },
