@@ -24,6 +24,7 @@ class ProviderServiceScreen extends StatelessWidget {
           color: AppColors.black333333,
         ),
       ),
+
       body: Padding(
         padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(

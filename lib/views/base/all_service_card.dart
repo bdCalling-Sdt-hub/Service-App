@@ -90,9 +90,6 @@ class AllServiceCard extends StatelessWidget {
 
 
 
-
-
-
                       ///========================service name======================>
                       Container(
                         constraints: const BoxConstraints(maxWidth: 150),
