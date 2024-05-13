@@ -17,14 +17,14 @@ import '../../../base/search_box.dart';
 import '../../../base/service_card.dart';
 
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class UserHomeScreen extends StatefulWidget {
+  const UserHomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<UserHomeScreen> createState() => _UserHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UserHomeScreenState extends State<UserHomeScreen> {
 
   final HomeController homeController = Get.put(HomeController());
   final CategoryController _categoryController = Get.put(CategoryController());
@@ -46,6 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
+                ///=====================top app bar =================================>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -55,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Get.toNamed(AppRoutes.notificationScreen);
                       },
+                      ///=======================notification bell=======================>
                       child: Container(
                         decoration: BoxDecoration(
                             color: const Color(0xffF4F9EC),
@@ -75,6 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+
+                ///=======================welcome text and location=================>
                 CustomText(
                     text: AppString.wellComeEnrique,
                     fontsize: 20.h,
@@ -84,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     SvgPicture.asset(AppIcons.location),
                     CustomText(
-                      text: '  New York, USA  ',
+                      text: ' New York, USA  ',
                       color: const Color(0xff9DA0A3),
                     ),
                     SvgPicture.asset(AppIcons.dropdown)
@@ -112,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        Get.toNamed(AppRoutes.categoryScreen);
+                        Get.toNamed(AppRoutes.userCategoryScreen);
                       },
                       child: CustomText(
                           text: AppString.seeAll,
@@ -164,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        Get.toNamed(AppRoutes.allServiceScreen,  parameters: {"screenType" : AppString.nearbyHelps});
+                        Get.toNamed(AppRoutes.userAllServiceScreen,  parameters: {"screenType" : AppString.nearbyHelps});
                       },
                       child: CustomText(
                           text: AppString.seeAll,
@@ -187,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
                         child:  ServiceCard(
                           onTap: (){
-                            Get.toNamed(AppRoutes.serviceDetailsScreen);
+                            Get.toNamed(AppRoutes.userServiceDetailsScreen);
                           },
                           distance: "15 km",
                           personName: "Ingredia Nutrisha ",
@@ -212,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        Get.toNamed(AppRoutes.allServiceScreen, parameters: {"screenType" : AppString.popularHelps});
+                        Get.toNamed(AppRoutes.userAllServiceScreen, parameters: {"screenType" : AppString.popularHelps});
                       },
                       child: CustomText(
                           text: AppString.seeAll,
@@ -238,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
                         child:  ServiceCard(
                           onTap: (){
-                            Get.toNamed(AppRoutes.serviceDetailsScreen);
+                            Get.toNamed(AppRoutes.userServiceDetailsScreen);
                           },
                           distance: "15 km",
                           personName: "Ingredia Nutrisha ",

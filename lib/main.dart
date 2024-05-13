@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 import 'package:service_app/themes/themes.dart';
 import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/message.dart';
-import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
-import 'package:service_app/views/screen/User/booking_request/booking_request_screen.dart';
+import 'package:service_app/views/screen/User/user_booking_request/user_booking_request_screen.dart';
 import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
 import 'helpers/di.dart' as di;
@@ -62,8 +61,8 @@ class MyApp extends StatelessWidget {
                 transitionDuration: const Duration(milliseconds: 500),
                 getPages: AppRoutes.page,
 
-                initialRoute: AppRoutes.bookingRequest,
-                home:  BookingRequestScreen(),
+                initialRoute: AppRoutes.userBookingRequestScreen,
+                home:  const UserBookingRequestScreen(),
 
               );
             });

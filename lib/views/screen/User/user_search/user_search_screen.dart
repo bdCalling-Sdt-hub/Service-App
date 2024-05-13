@@ -1,59 +1,77 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_dimentions.dart';
+import 'package:service_app/views/base/all_service_card.dart';
+import 'package:service_app/views/base/search_box.dart';
 
+import '../../../../controllers/home_controller.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
-import '../../../base/all_booking_card.dart';
 import '../../../base/custom_text.dart';
-import '../../../base/custom_two_button.dart';
-
-class BookingRequestScreen extends StatelessWidget {
-   BookingRequestScreen({super.key});
 
 
+
+class UserSearchScreen extends StatelessWidget {
+   UserSearchScreen({super.key});
+
+   final HomeController homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+
       appBar: AppBar(
         title: CustomText(
-          text: AppString.bookingRequests,
+          text: AppString.search,
           fontsize: 18.h,
           fontWeight: FontWeight.w500,
           color: AppColors.black333333,
         ),
       ),
+
+
       body: SafeArea(
         child: Padding(
           padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w,
-          vertical: Dimensions.paddingSizeDefault.h),
-          child: Column (
+              vertical: Dimensions.paddingSizeDefault.h),
+          child: Column(
             children: [
+
+              ///=========================Search Box========================>
+              SearchBox(searchController: homeController.searchController),
+
+
+              SizedBox(height: 10.h),
+
+
               Expanded(
                 child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: 7,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding:  EdgeInsets.only(top: index == 0 ?  10.h : 16.h),
-                      child:  AllBookingCard(
-                        bookingImage: AppImages.houseKeepingWoman,
+                      child:  AllServiceCard(
+                        ontap: (){
+                          Get.toNamed(AppRoutes.userServiceDetailsScreen);
+                        },
+                        serviceImage: AppImages.serviceImage,
+                        reting: "4.8",
+                        distance: "15 km",
+                        serviceName: 'House Cleaning',
                         personName: "Ingredia Nutrisha",
-                        bookingName: 'Cleaning',
-                        location: "437 Star St, Los Angeles, USA",
-                        dollar: "\$36.00",
                       ),
                     );
                   },
                 ),
-              ),
-
+              )
+        
+        
             ],
           ),
-
-
         ),
       ),
     );
