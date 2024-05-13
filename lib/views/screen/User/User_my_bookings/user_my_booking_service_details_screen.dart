@@ -13,16 +13,16 @@ import '../../../base/custom_two_button.dart';
 import '../../../base/top_review_card.dart';
 import 'Inner_widgets/alart_dialog.dart';
 
-class MyBookignServiceDetailsScreen extends StatefulWidget {
-  const MyBookignServiceDetailsScreen({super.key});
+class UserMyBookignServiceDetailsScreen extends StatefulWidget {
+  const UserMyBookignServiceDetailsScreen({super.key});
 
   @override
-  State<MyBookignServiceDetailsScreen> createState() =>
-      _MyBookignServiceDetailsScreenState();
+  State<UserMyBookignServiceDetailsScreen> createState() =>
+      _UserMyBookignServiceDetailsScreenState();
 }
 
-class _MyBookignServiceDetailsScreenState
-    extends State<MyBookignServiceDetailsScreen> {
+class _UserMyBookignServiceDetailsScreenState
+    extends State<UserMyBookignServiceDetailsScreen> {
   double reting = 0;
   var paramiter = Get.parameters;
 
@@ -180,38 +180,8 @@ class _MyBookignServiceDetailsScreenState
               SizedBox(height: 16.h),
 
               ///===================Experience Container===================>
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(
-                  experienceeRatingServiceList.length,
-                  (index) {
-                    return Container(
-                        width: 112.w,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.r),
-                            border: Border.all(color: AppColors.primaryColor)),
-                        child: Padding(
-                          padding: EdgeInsets.all(8.r),
-                          child: Center(
-                            child: Column(
-                              children: [
-                                CustomText(
-                                  text:
-                                      '${experienceeRatingServiceList[index]['experienceRating']}',
-                                  fontsize: 12.h,
-                                ),
-                                CustomText(
-                                  text:
-                                      '${experienceeRatingServiceList[index]['yearRating']}',
-                                  fontsize: 16.h,
-                                  fontWeight: FontWeight.w500,
-                                )
-                              ],
-                            ),
-                          ),
-                        ));
-                  },
-                ),
+              ExperienceRatingsRow(
+                userInfoList: experienceeRatingServiceList,
               ),
 
               ///====================about help =========================>
@@ -285,3 +255,48 @@ class _MyBookignServiceDetailsScreenState
     );
   }
 }
+
+
+
+class ExperienceRatingsRow extends StatelessWidget {
+  final List? userInfoList;
+  const ExperienceRatingsRow({super.key, this.userInfoList});
+
+  @override
+  Widget build(BuildContext context) {
+    return               Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(
+        userInfoList!.length,
+            (index) {
+          return Container(
+              width: 112.w,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.r),
+                  border: Border.all(color: AppColors.primaryColor,width: 0.5)),
+              child: Padding(
+                padding: EdgeInsets.all(8.r),
+                child: Center(
+                  child: Column(
+                    children: [
+                      CustomText(
+                        text:
+                        '${userInfoList![index]['experienceRating']}',
+                        fontsize: 12.h,
+                      ),
+                      CustomText(
+                        text:
+                        '${userInfoList![index]['yearRating']}',
+                        fontsize: 16.h,
+                        fontWeight: FontWeight.w500,
+                      )
+                    ],
+                  ),
+                ),
+              ));
+        },
+      ),
+    );
+  }
+}
+

@@ -1,11 +1,9 @@
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:service_app/utils/app_colors.dart';
 
@@ -141,7 +139,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                             //===============================>Button Field <===============================
                             CustomButton(
                                 onTap: () {
-                                  Get.toNamed(AppRoutes.bottomNavBar);
+                                  Get.toNamed(AppRoutes.userBottomNavBar);
                                 },
                                 text: AppString.createAccount),
                             SizedBox(height: 25,)

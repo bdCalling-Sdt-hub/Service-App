@@ -8,14 +8,14 @@ import 'package:service_app/utils/app_strings.dart';
 import 'package:service_app/views/base/category_card.dart';
 import 'package:service_app/views/base/custom_text.dart';
 
-class CategoryScreen extends StatefulWidget {
-   CategoryScreen({super.key});
+class UserCategoryScreen extends StatefulWidget {
+   UserCategoryScreen({super.key});
 
   @override
-  State<CategoryScreen> createState() => _CategoryScreenState();
+  State<UserCategoryScreen> createState() => _UserCategoryScreenState();
 }
 
-class _CategoryScreenState extends State<CategoryScreen> {
+class _UserCategoryScreenState extends State<UserCategoryScreen> {
   final CategoryController _categoryController = Get.put(CategoryController());
 
 

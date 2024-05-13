@@ -55,6 +55,7 @@ class AllServiceCard extends StatelessWidget {
                                     SvgPicture.asset(AppIcons.star,fit: BoxFit.cover,),
                                     ///==================Rating Tex===================>
                                     CustomText(
+                                      top: 3.h,
                                         text: " $reting",
                                         fontsize: 10.h,
                                         fontWeight: FontWeight.w400,
@@ -111,6 +112,7 @@ class AllServiceCard extends StatelessWidget {
                             SvgPicture.asset(AppIcons.person,height: 12.h,color: AppColors.subTextColor5c5c5c,),
                             Expanded(
                               child: CustomText(
+                                textAlign: TextAlign.start,
                                   textOverflow: TextOverflow.ellipsis,
                                   text: " $personName",
                                   fontsize: 12.h,

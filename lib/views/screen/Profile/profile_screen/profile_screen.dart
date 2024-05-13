@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomListTile(
                     onTap: () {
-                      Get.toNamed(AppRoutes.myBookingsScreen);
+                      Get.toNamed(AppRoutes.userMyBookingsScreen);
                     },
                     title: AppString.myBookings,
                     prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,
@@ -121,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       );
                     },
                     title: AppString.logout,
-                    prefixIcon: SvgPicture.asset(AppIcons.setting,
+                    prefixIcon: SvgPicture.asset(AppIcons.logout,
                         color: AppColors.primaryColor),
                   ),
                 ],
