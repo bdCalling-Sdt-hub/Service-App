@@ -45,7 +45,7 @@ class SearchBox extends StatelessWidget {
                 ///===========================Go to Search Screen when user Check Search Icon======================>
                 child: GestureDetector(
                   onTap: (){
-                    Get.toNamed(AppRoutes.scarchScreen);
+                    Get.toNamed(AppRoutes.userSearchScreen);
                   },
                   child: Container(
                       decoration: BoxDecoration(

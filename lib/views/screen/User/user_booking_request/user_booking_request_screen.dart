@@ -9,8 +9,8 @@ import '../../../../utils/app_strings.dart';
 import '../../../base/all_booking_card.dart';
 import '../../../base/custom_text.dart';
 
-class BookingRequestScreen extends StatelessWidget {
-  const BookingRequestScreen({super.key});
+class UserBookingRequestScreen extends StatelessWidget {
+  const UserBookingRequestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

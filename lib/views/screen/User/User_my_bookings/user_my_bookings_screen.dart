@@ -10,14 +10,14 @@ import '../../../base/custom_text.dart';
 import 'Inner_widgets/my_booking_service_card.dart';
 import 'Inner_widgets/selected_button.dart';
 
-class MyBookingsScreen extends StatefulWidget {
-   MyBookingsScreen({super.key});
+class UserMyBookingsScreen extends StatefulWidget {
+   UserMyBookingsScreen({super.key});
 
   @override
-  State<MyBookingsScreen> createState() => _MyBookingsScreenState();
+  State<UserMyBookingsScreen> createState() => _UserMyBookingsScreenState();
 }
 
-class _MyBookingsScreenState extends State<MyBookingsScreen> {
+class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
   int selectedIndex = 0;
 
   List<String> items = ['Completed', 'Pending', 'Cancelled'];
@@ -82,7 +82,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                     child: MyBookingServiceCard(
                       ///========================route to details screen==========================>
                       ontap: (){
-                        Get.toNamed(AppRoutes.myBookignServiceDetailsScreen, parameters: {
+                        Get.toNamed(AppRoutes.userMyBookignServiceDetailsScreen, parameters: {
                           'bookingStatus' : selectedIndex.toString()
                         });
                       },

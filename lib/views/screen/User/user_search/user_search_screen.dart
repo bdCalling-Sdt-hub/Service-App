@@ -14,8 +14,8 @@ import '../../../base/custom_text.dart';
 
 
 
-class SearchScreen extends StatelessWidget {
-   SearchScreen({super.key});
+class UserSearchScreen extends StatelessWidget {
+   UserSearchScreen({super.key});
 
    final HomeController homeController = Get.put(HomeController());
 
@@ -56,7 +56,7 @@ class SearchScreen extends StatelessWidget {
                       padding:  EdgeInsets.only(top: index == 0 ?  10.h : 16.h),
                       child:  AllServiceCard(
                         ontap: (){
-                          Get.toNamed(AppRoutes.serviceDetailsScreen);
+                          Get.toNamed(AppRoutes.userServiceDetailsScreen);
                         },
                         serviceImage: AppImages.serviceImage,
                         reting: "4.8",

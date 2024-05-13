@@ -4,21 +4,28 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/cachanetwork_image.dart';
+import 'package:service_app/views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_text.dart';
 import '../../../base/top_review_card.dart';
 
 
-class ServiceDetailsScreen extends StatefulWidget {
-  const ServiceDetailsScreen({super.key});
+class UserServiceDetailsScreen extends StatefulWidget {
+  const UserServiceDetailsScreen({super.key});
 
   @override
-  State<ServiceDetailsScreen> createState() => _ServiceDetailsScreenState();
+  State<UserServiceDetailsScreen> createState() => _UserServiceDetailsScreenState();
 }
 
-class _ServiceDetailsScreenState extends State<ServiceDetailsScreen> {
+class _UserServiceDetailsScreenState extends State<UserServiceDetailsScreen> {
   double reting = 0;
+  List experienceeRatingServiceList = [
+    {"experienceRating": "Experience", "yearRating": "8 Years"},
+    {"experienceRating": "Ratings", "yearRating": "1012"},
+    {"experienceRating": "Total Service", "yearRating": "550"}
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +68,48 @@ class _ServiceDetailsScreenState extends State<ServiceDetailsScreen> {
                     fontWeight: FontWeight.w500,
                     fontsize: 20.h,
                   )),
+
+                  Container(
+                    decoration: BoxDecoration(
+                        color: AppColors.whiteF4F9EC,
+                        borderRadius: BorderRadius.circular(8.r)),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.h),
+                      child: Center(
+                        child: SvgPicture.asset(AppIcons.message),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+        
+              SizedBox(height: 14.h),
+
+
+              ///========================user name========================?>
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Row(
                     children: [
-                      SvgPicture.asset(AppIcons.star),
+                      SvgPicture.asset(
+                        AppIcons.personIcon,
+                        color: AppColors.color9DA0A3,
+                        height: 15.h,
+                        width: 11.5.w,
+                        fit: BoxFit.cover,
+                      ),
+                      CustomText(
+                        text: '  Ingredia Nutrisha',
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.color9DA0A3,
+                        fontsize: 16.h,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(AppIcons.star,height: 16.h,width: 16.h),
                       CustomText(
                         text: '4.8 ',
                         fontWeight: FontWeight.w400,
@@ -73,21 +119,20 @@ class _ServiceDetailsScreenState extends State<ServiceDetailsScreen> {
                   )
                 ],
               ),
-        
-              SizedBox(height: 9.h),
-        
+              SizedBox(height: 8.h),
+
               ///=========================location========================>
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      SvgPicture.asset(AppIcons.location),
+                      SvgPicture.asset(AppIcons.location,color: AppColors.color9DA0A3,),
                       CustomText(
-                        text: '437 Star St, Los Angeles, USA',
+                        text: ' 437 Star St, Los Angeles, USA',
                         fontWeight: FontWeight.w400,
                         fontsize: 12.h,
-                        color: AppColors.subTextColor5c5c5c,
+                        color: AppColors.color9DA0A3,
                       ),
                     ],
                   ),
@@ -104,50 +149,17 @@ class _ServiceDetailsScreenState extends State<ServiceDetailsScreen> {
                   )
                 ],
               ),
-        
-              CustomText(
-                  text: 'Provider ',
-                  fontWeight: FontWeight.w500,
-                  fontsize: 16.h,
-                  bottom: 16.h,
-                  top: 20.h),
-        
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppIcons.personIcon,
-                        color: AppColors.black767676,
-                        height: 15.h,
-                        width: 11.5.w,
-                        fit: BoxFit.cover,
-                      ),
-                      CustomText(
-                        text: '  Ingredia Nutrisha',
-                        fontWeight: FontWeight.w400,
-                        fontsize: 16.h,
-                      ),
-                    ],
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.whiteF4F9EC,
-                        borderRadius: BorderRadius.circular(8.r)),
-                    child: Padding(
-                      padding: EdgeInsets.all(10.h),
-                      child: Center(
-                        child: SvgPicture.asset(AppIcons.message),
-                      ),
-                    ),
-                  )
-                ],
+
+              SizedBox(height: 24.h),
+
+              ExperienceRatingsRow(
+                userInfoList: experienceeRatingServiceList,
               ),
-        
+
+
               ///====================about help =========================>
               CustomText(
-                  text: 'About Help ',
+                  text: 'About Provider',
                   fontWeight: FontWeight.w500,
                   fontsize: 16.h,
                   bottom: 12.h,

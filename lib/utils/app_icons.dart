@@ -42,7 +42,7 @@ class AppIcons{
   static String notificationBell ="$path/bell.svg";
   static String location ="$path/location.svg";
   static String dropdown ="$path/drop_down.svg";
-  static String search ="$path/search.svg";
+  static String search ="$path/user_search.svg";
   static String person ="$path/person.svg";
 
   static String reparing ="$path/reparing.svg";
@@ -51,7 +51,7 @@ class AppIcons{
   static String sendIcon ="$path/send_icon.svg";
   static String message ="$path/message_icons.svg";
   static String user ="$path/user.svg";
-  static String bookingRequest ="$path/booking_request.svg";
+  static String bookingRequest ="$path/user_booking_request.svg";
   static String setting ="$path/setting.svg";
   static String logout ="$path/logout.svg";
   static String locationServiceCard ="$path/location_serviceCard.svg";
