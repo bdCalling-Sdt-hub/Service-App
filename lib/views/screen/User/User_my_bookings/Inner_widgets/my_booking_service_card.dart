@@ -80,7 +80,8 @@ class MyBookingServiceCard extends StatelessWidget {
                             Expanded(
                               child: CustomText(
                                   textOverflow: TextOverflow.ellipsis,
-                                  text: " $personName",
+                                  text: "  $personName",
+                                  textAlign: TextAlign.start,
                                   fontsize: 12.h,
                                   color: AppColors.subTextColor5c5c5c),
                             ),
@@ -90,7 +91,7 @@ class MyBookingServiceCard extends StatelessWidget {
 
                       CustomText(
                           textOverflow: TextOverflow.ellipsis,
-                          text: " 36.00",
+                          text: "36.00",
                           fontsize: 16.h,
                           bottom: 15.h,
                           top: 4.h,
