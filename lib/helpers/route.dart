@@ -11,6 +11,7 @@ import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
+import '../views/screen/User/User_bottom_nav_bar/user_bottom_nav_bar.dart';
 import '../views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
 import '../views/screen/User/User_my_bookings/user_my_bookings_screen.dart';
 import '../views/screen/User/user_all_service/user_all_service_screen.dart';
@@ -18,7 +19,6 @@ import '../views/screen/User/user_booking_request/user_booking_request_screen.da
 import '../views/screen/User/user_category/user_category_screen.dart';
 import '../views/screen/User/user_search/user_search_screen.dart';
 import '../views/screen/User/user_service_details/user_service_details_screen.dart';
-import '../views/screen/User_bottom_nav_bar/user_bottom_nav_bar.dart';
 import '../views/screen/change_password/change_password_screen.dart';
 import '../views/screen/message/chat_screen/chat_screen.dart';
 import '../views/screen/notifications/notifications.dart';
@@ -52,8 +52,6 @@ class AppRoutes{
   static String editProfileScreen="/EditProfileScreen";
   static String userMyBookingsScreen="/UserMyBookingsScreen";
   static String userMyBookignServiceDetailsScreen="/UserMyBookignServiceDetailsScreen";
-
-
 
 
 
