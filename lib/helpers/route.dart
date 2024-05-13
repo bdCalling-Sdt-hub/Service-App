@@ -10,6 +10,7 @@ import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
+import '../views/screen/Provider/provider_bottm_nav_bar/provider_bottom_nav_bar.dart';
 import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/User/User_bottom_nav_bar/user_bottom_nav_bar.dart';
 import '../views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
@@ -52,6 +53,8 @@ class AppRoutes{
   static String editProfileScreen="/EditProfileScreen";
   static String userMyBookingsScreen="/UserMyBookingsScreen";
   static String userMyBookignServiceDetailsScreen="/UserMyBookignServiceDetailsScreen";
+  ///provider======>
+  static String providerBottomNavBar="/ProviderBottomNavBar";
 
 
 
@@ -84,6 +87,7 @@ class AppRoutes{
     GetPage(name:editProfileScreen, page: ()=> EditProfileScreen()),
     GetPage(name:userMyBookingsScreen, page: ()=> UserMyBookingsScreen()),
     GetPage(name:userMyBookignServiceDetailsScreen, page: ()=> UserMyBookignServiceDetailsScreen()),
+    GetPage(name:providerBottomNavBar, page: ()=> ProviderBottomNavBar()),
 
   ];
 

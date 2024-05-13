@@ -135,7 +135,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   child: Obx(
                     () => ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: _categoryController.cetegoryList.length,
+                      itemCount: _categoryController.cetegoryList.sublist(0,4).length,
                       itemBuilder: (context, index) {
                         var category = _categoryController.cetegoryList[index];
                         bool isSelected = selectedIndex == index;
