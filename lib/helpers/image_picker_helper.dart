@@ -1,22 +1,22 @@
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart'; // Corrected import statement
 
 class ImagePickerHelper {
   //==================================> Gallery <===============================
-  static Future pickImageFromGallery() async {
+  static Future<List<int>?> pickImageFromGallery() async {
     final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    await ImagePicker().pickImage(source: ImageSource.gallery);
     if (returnImage != null) {
-      return File(returnImage.path).readAsBytesSync();
+      return await File(returnImage.path).readAsBytes();
     }
   }
 
-//==================================> Camera <===============================
-  static Future pickImageFromCamera() async {
+  //==================================> Camera <===============================
+  static Future<List<int>?> pickImageFromCamera() async {
     final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
+    await ImagePicker().pickImage(source: ImageSource.camera);
     if (returnImage != null) {
-      return File(returnImage.path).readAsBytesSync();
+      return await File(returnImage.path).readAsBytes();
     }
   }
 }

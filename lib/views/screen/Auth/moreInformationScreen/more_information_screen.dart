@@ -1,16 +1,12 @@
-import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:service_app/helpers/image_picker_helper.dart';
 import 'package:service_app/utils/app_colors.dart';
-
 import '../../../../helpers/route.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
@@ -27,30 +23,17 @@ class MoreInformationScreen extends StatefulWidget {
 
 class _MoreInformationScreenState extends State<MoreInformationScreen> {
   TextEditingController addressController = TextEditingController();
-  TextEditingController selectImageController = TextEditingController();
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {});
-  }
 
   Uint8List? _image;
   Uint8List? frontSideImage;
   Uint8List? backSideImage;
-  File? selectedIMage;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      //===============================> AppBar Section <===============================
       appBar: AppBar(
-        title: Text(
-          AppString.moreInformation,
-        ),
+        title: Text(AppString.moreInformation),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -59,24 +42,26 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 24.h),
-
-              Center(
-                child: Stack(
-                  children: [
-                    _image != null
-                        ? CircleAvatar(
-                            radius: 60.r, backgroundImage: MemoryImage(_image!))
-                        : Center(
-                            child: GestureDetector(
-                                onTap: () {
-                                  showImagePickerOption(context);
-                                },
-                                child: SvgPicture.asset(AppIcons.uploadPhoto))),
-                  ],
+              GestureDetector(
+                onTap: () {
+                  showImagePickerOption(context, 'profile');
+                },
+                child: Center(
+                  child: Stack(
+                    children: [
+                      _image != null
+                          ? CircleAvatar(
+                              radius: 60.r,
+                              backgroundImage: MemoryImage(_image!),
+                            )
+                          : Center(
+                              child: SvgPicture.asset(AppIcons.uploadPhoto),
+                            ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 12.h),
-              //===============================> Text  <===============================
               Text(
                 AppString.uploadPhoto,
                 style: TextStyle(color: AppColors.primaryColor),
@@ -84,89 +69,88 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
               SizedBox(height: 24.h),
               Column(
                 children: [
-                  Form(
-                      key: _formKey,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 16.h),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //===============================> Address Text-field <===============================
-                            Text(
-                              AppString.address,
-                            ),
-                            SizedBox(height: 8.h),
-                            CustomTextField(
-                              hintText: AppString.enterAddress,
-                              controller: addressController,
-                            ),
-                            SizedBox(height: 16.h),
-                            //===============================> Font Field <===============================
-                            Text(
-                              AppString.uploadLicenseFront,
-                              style: TextStyle(color: AppColors.black333333),
-                            ),
-                            SizedBox(height: 12.h),
-                            GestureDetector(
-                              onTap: () {
-                                showImagePickerOption(context);
-                              },
-                              child: Container(
-                                height: 95.h,
-                                width: 353.w,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: AppColors.primaryColor,
-                                    width: 0.9,
-                                  ),
-                                ),
-                                child: frontSideImage != null
-                                    ? Image.memory(frontSideImage!)
-                                    : SvgPicture.asset(AppIcons.carbonCamera),
-                              ),
-                            ),
-                            SizedBox(height: 16.h),
-                            //===============================> Back Field <===============================
-                            Text(
-                              AppString.uploadLicenseBack,
-                              style: TextStyle(color: AppColors.black333333),
-                            ),
-                            SizedBox(height: 12.h),
-                            GestureDetector(
-                              onTap: () {
-                                showImagePickerOption(context);
-                              },
-                              child: Container(
-                                height: 95.h,
-                                width: 353.w,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: AppColors.primaryColor,
-                                    width: 0.9,
-                                  ),
-                                ),
-                                child: backSideImage != null
-                                    ? Image.memory(backSideImage!)
-                                    : SvgPicture.asset(AppIcons.carbonCamera),
-                              ),
-                            ),
-                            SizedBox(height: 31.h),
-                            //===============================>Button Field <===============================
-                            CustomButton(
-                                onTap: () {
-                                  Get.toNamed(AppRoutes.userBottomNavBar);
-                                },
-                                text: AppString.createAccount),
-                            SizedBox(
-                              height: 25,
-                            )
-                          ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(AppString.address),
+                        SizedBox(height: 8.h),
+                        CustomTextField(
+                          hintText: AppString.enterAddress,
+                          controller: addressController,
                         ),
-                      ))
+                        SizedBox(height: 16.h),
+                        Text(
+                          AppString.uploadLicenseFront,
+                          style: TextStyle(color: AppColors.black333333),
+                        ),
+                        SizedBox(height: 12.h),
+                        GestureDetector(
+                          onTap: () {
+                            showImagePickerOption(context, 'front');
+                          },
+                          child: Container(
+                            height: 95.h,
+                            width: 353.w,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColors.primaryColor,
+                                width: 0.9,
+                              ),
+                            ),
+                            child: frontSideImage != null
+                                ? Image.memory(
+                                    frontSideImage!,
+                                    width: double.infinity,
+                                    fit: BoxFit.fitWidth,
+                                  )
+                                : SvgPicture.asset(AppIcons.carbonCamera),
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          AppString.uploadLicenseBack,
+                          style: TextStyle(color: AppColors.black333333),
+                        ),
+                        SizedBox(height: 12.h),
+                        GestureDetector(
+                          onTap: () {
+                            showImagePickerOption(context, 'backSide');
+                          },
+                          child: Container(
+                            height: 95.h,
+                            width: 353.w,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColors.primaryColor,
+                                width: 0.9,
+                              ),
+                            ),
+                            child: backSideImage != null
+                                ? Image.memory(
+                                    backSideImage!,
+                                    width: double.infinity,
+                                    fit: BoxFit.fitWidth,
+                                  )
+                                : SvgPicture.asset(AppIcons.carbonCamera),
+                          ),
+                        ),
+                        SizedBox(height: 31.h),
+                        CustomButton(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.userBottomNavBar);
+                          },
+                          text: AppString.createAccount,
+                        ),
+                        SizedBox(height: 25.h),
+                      ],
+                    ),
+                  ),
                 ],
               )
             ],
@@ -176,92 +160,109 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
     );
   }
 
-  //==================================> ShowImagePickerOption Function <===============================
-  void showImagePickerOption(BuildContext context) {
+  void showImagePickerOption(BuildContext context, String type) {
     showModalBottomSheet(
-        backgroundColor: AppColors.backgroundColor,
-        context: context,
-        builder: (builder) {
-          return Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4.2,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        ImagePickerHelper.pickImageFromGallery();
-                      },
-                      child: SizedBox(
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.image,
-                              size: 50.w,
-                            ),
-                            CustomText(text: 'Gallery')
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        ImagePickerHelper.pickImageFromCamera();
-                      },
-                      child: SizedBox(
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.camera_alt,
-                              size: 50.w,
-                            ),
-                            CustomText(text: 'Camera')
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
-  }
+      backgroundColor: AppColors.backgroundColor,
+      context: context,
+      builder: (builder) {
+        return Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 4.2,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      Uint8List? imageBytes;
 
-//    //==================================> Gallery <===============================
-//    Future _pickImageFromGallery() async {
-//      final returnImage =
-//      await ImagePicker().pickImage(source: ImageSource.gallery);
-//      if (returnImage != null){
-//        setState(() {
-//          selectedIMage = File(returnImage.path);
-//          _image = File(returnImage.path).readAsBytesSync();
-//          backSideImage = File(returnImage.path).readAsBytesSync();
-//          frontSideImage = File(returnImage.path).readAsBytesSync();
-//          Get.back();
-//        });
-//      }
-//
-//    }
-//
-// //==================================> Camera <===============================
-//   Future _pickImageFromCamera() async {
-//     final returnImage =
-//     await ImagePicker().pickImage(source: ImageSource.camera);
-//     if (returnImage != null){
-//       setState(() {
-//         selectedIMage = File(returnImage.path);
-//         _image = File(returnImage.path).readAsBytesSync();
-//         backSideImage =  File(returnImage.path).readAsBytesSync();
-//         frontSideImage = File(returnImage.path).readAsBytesSync();
-//         Get.back();
-//       });
-//     }
-//
-//   }
+                      if (type == 'front') {
+                        imageBytes =
+                            (await ImagePickerHelper.pickImageFromGallery())
+                                as Uint8List?;
+                        setState(() {
+                          frontSideImage = imageBytes;
+                        });
+                      } else if (type == 'backSide') {
+                        imageBytes =
+                            (await ImagePickerHelper.pickImageFromGallery())
+                                as Uint8List?;
+                        setState(() {
+                          backSideImage = imageBytes;
+                        });
+                      } else if (type == 'profile') {
+                        imageBytes = imageBytes =
+                            (await ImagePickerHelper.pickImageFromGallery())
+                                as Uint8List?;
+                        setState(() {
+                          _image = imageBytes;
+                        });
+                      }
+
+                      Navigator.pop(context);
+                    },
+                    child: SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.image,
+                            size: 50.w,
+                          ),
+                          CustomText(text: 'Gallery'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      Uint8List? imageBytes;
+                      if (type == 'front') {
+                        imageBytes =
+                            (await ImagePickerHelper.pickImageFromCamera())
+                                as Uint8List?;
+                        setState(() {
+                          frontSideImage = imageBytes;
+                        });
+                      } else if (type == 'backSide') {
+                        imageBytes =
+                            (await ImagePickerHelper.pickImageFromCamera())
+                                as Uint8List?;
+                        setState(() {
+                          backSideImage = imageBytes;
+                        });
+                      } else if (type == 'profile') {
+                        imageBytes = imageBytes =
+                            (await ImagePickerHelper.pickImageFromCamera())
+                                as Uint8List?;
+                        setState(() {
+                          _image = imageBytes;
+                        });
+                      }
+
+                      Navigator.pop(context);
+                    },
+                    child: SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.camera_alt,
+                            size: 50.w,
+                          ),
+                          CustomText(text: 'Camera'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
