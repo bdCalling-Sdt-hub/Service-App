@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             const TopProfileCard(),
@@ -117,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         builder: (context) {
                           return Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 310.h),
+                                horizontal: 20.w, vertical: 334.h),
                             child: LogoutDialog(),
                           );
                         },
