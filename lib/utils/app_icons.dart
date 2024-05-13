@@ -73,4 +73,8 @@ class AppIcons{
 
 
 
+  static String add ="$path/Add.svg";
+
+
+
 }
