@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:service_app/views/base/custom_button.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_dimentions.dart';
 import '../../utils/app_icons.dart';
-import '../../utils/app_strings.dart';
 import 'custom_text.dart';
+import 'custom_two_button.dart';
 
 class AllBookingCard extends StatelessWidget {
   final VoidCallback? ontap;
@@ -18,13 +17,15 @@ class AllBookingCard extends StatelessWidget {
   final String? location;
   final String? dollar;
 
-  const AllBookingCard({super.key,
+   AllBookingCard({super.key,
     this.ontap,
     this.bookingImage,
     this.bookingName,
     this.personName,
     this.location,
     this.dollar,});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -102,17 +103,23 @@ class AllBookingCard extends StatelessWidget {
                                 color: AppColors.primaryColor)
                           ],
                         ),
-                        SizedBox(width: 8.h,),
+
                       ],
+                    ),
+                    SizedBox(height: 16.h,),
+                    const CustomTwoButon(
+                      btnNameList: ['Cancel', 'Accept'],
                     ),
                   ],
                 ),
-
               ],
             ),
           ),
         ),
       ),
+
+
     );
+
   }
 }

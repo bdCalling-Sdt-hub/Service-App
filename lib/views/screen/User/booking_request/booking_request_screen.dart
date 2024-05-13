@@ -8,9 +8,12 @@ import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/all_booking_card.dart';
 import '../../../base/custom_text.dart';
+import '../../../base/custom_two_button.dart';
 
 class BookingRequestScreen extends StatelessWidget {
-  const BookingRequestScreen({super.key});
+   BookingRequestScreen({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class BookingRequestScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding:  EdgeInsets.only(top: index == 0 ?  10.h : 16.h),
-                      child: const AllBookingCard(
+                      child:  AllBookingCard(
                         bookingImage: AppImages.houseKeepingWoman,
                         personName: "Ingredia Nutrisha",
                         bookingName: 'Cleaning',
@@ -45,9 +48,12 @@ class BookingRequestScreen extends StatelessWidget {
                     );
                   },
                 ),
-              )
+              ),
+
             ],
           ),
+
+
         ),
       ),
     );
