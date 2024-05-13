@@ -1,12 +1,10 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:service_app/themes/themes.dart';
 import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/message.dart';
-import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
+import 'package:service_app/views/screen/User/user_booking_request/user_booking_request_screen.dart';
 import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
 import 'helpers/di.dart' as di;
@@ -63,8 +61,8 @@ class MyApp extends StatelessWidget {
                 transitionDuration: const Duration(milliseconds: 500),
                 getPages: AppRoutes.page,
 
-                initialRoute: AppRoutes.signInScreen,
-                home:  SignInScreen(),
+                initialRoute: AppRoutes.userBookingRequestScreen,
+                home:  const UserBookingRequestScreen(),
 
               );
             });
