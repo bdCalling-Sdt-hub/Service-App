@@ -97,7 +97,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 ),
 
                 SizedBox(
-                  height: 16.h,
+                  height: 16.h
                 ),
 
                 ///===============================search box===========================>

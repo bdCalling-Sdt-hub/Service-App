@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:service_app/utils/app_strings.dart';
+import '../../../../helpers/image_picker_helper.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../base/cachanetwork_image.dart';
@@ -89,7 +90,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               right: 0.w,
                               child: GestureDetector(
                                   onTap: () {
-                                    showImagePickerOption(context);
+                                    showImagePickerOption(context, 'profile');
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -168,82 +169,80 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   ///==================================> ShowImagePickerOption Function <===============================
 
-  void showImagePickerOption(BuildContext context) {
+  void showImagePickerOption(BuildContext context, String type) {
     showModalBottomSheet(
-        backgroundColor: AppColors.backgroundColor,
-        context: context,
-        builder: (builder) {
-          return Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4.2,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        _pickImageFromGallery();
-                      },
-                      child: SizedBox(
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.image,
-                              size: 50.w,
-                              color: AppColors.primaryColor,
-                            ),
-                            CustomText(text: 'Gallery')
-                          ],
-                        ),
+      backgroundColor: AppColors.backgroundColor,
+      context: context,
+      builder: (builder) {
+        return Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 4.2,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      Uint8List? imageBytes;
+
+                      if (type == 'profile') {
+                        imageBytes =
+                        (await ImagePickerHelper.pickImageFromGallery())
+                        as Uint8List?;
+                        setState(() {
+                          _image = imageBytes;
+                        });
+                      }
+                      Navigator.pop(context);
+                    },
+                    child: SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.image,
+                            size: 50.w,
+                          ),
+                          CustomText(text: 'Gallery'),
+                        ],
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        _pickImageFromCamera();
-                      },
-                      child: SizedBox(
-                        child: Column(
-                          children: [
-                            Icon(Icons.camera_alt,
-                                size: 50.w, color: AppColors.primaryColor),
-                            CustomText(text: 'Camera')
-                          ],
-                        ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      Uint8List? imageBytes;
+                      if (type == 'profile') {
+                        imageBytes =
+                        (await ImagePickerHelper.pickImageFromCamera())
+                        as Uint8List?;
+                        setState(() {
+                          _image = imageBytes;
+                        });
+                      }
+
+                      Navigator.pop(context);
+                    },
+                    child: SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.camera_alt,
+                            size: 50.w,
+                          ),
+                          CustomText(text: 'Camera'),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        });
-  }
-
-  //==================================> Gallery <===============================
-  Future _pickImageFromGallery() async {
-    final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (returnImage == null) return;
-    setState(() {
-      selectedIMage = File(returnImage.path);
-      _image = File(returnImage.path).readAsBytesSync();
-    });
-    Get.back();
-  }
-
-//==================================> Camera <===============================
-  Future _pickImageFromCamera() async {
-    final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
-    if (returnImage == null) return;
-    setState(() {
-      selectedIMage = File(returnImage.path);
-      _image = File(returnImage.path).readAsBytesSync();
-    });
-    // Get.back();
+          ),
+        );
+      },
+    );
   }
 }
