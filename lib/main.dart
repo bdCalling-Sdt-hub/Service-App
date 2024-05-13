@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:service_app/themes/themes.dart';
 import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/message.dart';
+import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
+import 'package:service_app/views/screen/Splash/splash_screen.dart';
 import 'package:service_app/views/screen/User/user_booking_request/user_booking_request_screen.dart';
 import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
@@ -60,9 +62,8 @@ class MyApp extends StatelessWidget {
                     AppConstants.languages[0].countryCode),
                 transitionDuration: const Duration(milliseconds: 500),
                 getPages: AppRoutes.page,
-
-                initialRoute: AppRoutes.userBookingRequestScreen,
-                home:  const UserBookingRequestScreen(),
+                initialRoute: AppRoutes.splashScreen,
+                home:  SplashScreen(),
 
               );
             });

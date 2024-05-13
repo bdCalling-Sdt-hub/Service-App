@@ -67,7 +67,7 @@ class VerifyOTPScreen extends StatelessWidget {
               //===============================> Verify OTP Button <=========================
               CustomButton(
                   onTap: () {
-                    Get.toNamed(AppRoutes.moreInformationScreen);
+                   Get.parameters['screenType'] == 'signUpScreen' ? Get.toNamed(AppRoutes.moreInformationScreen) :  Get.toNamed(AppRoutes.resetPasswordScreen) ;
                   },
                   text: AppString.verifyOTP),
               SizedBox(height: 170.h,)

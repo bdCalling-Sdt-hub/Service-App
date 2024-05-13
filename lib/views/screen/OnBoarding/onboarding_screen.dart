@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_images.dart';
 import 'package:service_app/utils/app_strings.dart';
 
@@ -70,28 +72,41 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: Row(
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(AppRoutes.signInScreen);
+                          },
                           child: Container(
-                            color: AppColors.primaryColor,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4.r),
+                              color: AppColors.primaryColor,
+                            ),
+
                             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 50),
-                            child: const Text(
+                            child:  Text(
                               AppString.buttonUser,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 13.0),
+                                  fontSize: 14.r),
                             ),
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(AppRoutes.signInScreen);
+                          },
                           child: Container(
-                            color: AppColors.backgroundColor,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4.r),
+                              border: Border.all(color: AppColors.primaryColor),
+                              color: Colors.transparent,
+                            ),
+
                             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
-                            child: const Text(
+                            child:  Text(
                               AppString.buttonProvider,
                               style: TextStyle(
-                                  color: Colors.green,
-                                  fontSize: 13),
+                                  color: AppColors.primaryColor,
+                                  fontSize: 14.h),
                             ),
                           ),
                         ),

@@ -60,7 +60,7 @@ class AppRoutes{
 
 
  static List<GetPage> page=[
-    GetPage(name:splashScreen, page: ()=>const SplashScreen()),
+    GetPage(name:splashScreen, page: ()=> SplashScreen()),
     GetPage(name:onBoardingScreen, page: ()=>const OnBoardingScreen()),
     GetPage(name:signUpScreen, page: ()=>const SignUpScreen()),
     GetPage(name:userBottomNavBar, page: ()=>const UserBottomNavBar()),
