@@ -83,12 +83,16 @@ class AppString {
 
 
   static const String helps = "Helps";
+  static const String addHelp = "Add New Help";
   static const String details = "Details";
   static const String profile = "Profile";
   static const String changePassword = "Change password";
   static const String privacyPolicys = "Privacy policy";
   static const String termsConditionss = "Terms & conditions";
   static const String aboutUs = "About us";
+
+
+  static const String edit = "Edit";
 
 
   static const String bookingRequests ="Booking Request";

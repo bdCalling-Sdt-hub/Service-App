@@ -11,6 +11,7 @@ import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Provider/provider_bottm_nav_bar/provider_bottom_nav_bar.dart';
+import '../views/screen/Provider/provider_service_details_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/User/User_bottom_nav_bar/user_bottom_nav_bar.dart';
 import '../views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
@@ -43,6 +44,7 @@ class AppRoutes{
   static String userSearchScreen="/UserSearchScreen";
   static String chatScreen="/ChatScreen";
   static String userServiceDetailsScreen="/UserServiceDetailsScreen";
+  static String providerServiceDetailsScreen="/ProviderServiceDetailsScreen";
   static String settingScreen="/SettingScreen";
   static String privacyPolicyAllScreen="/PrivacyPolicyAllScreen";
   static String changePasswordScreen="/ChangePasswordScreen";
@@ -77,6 +79,7 @@ class AppRoutes{
     GetPage(name:verifyOTpScreen, page: ()=> const VerifyOTPScreen()),
     GetPage(name:moreInformationScreen, page: ()=> MoreInformationScreen()),
     GetPage(name:userServiceDetailsScreen, page: ()=> UserServiceDetailsScreen()),
+    GetPage(name:providerServiceDetailsScreen, page: ()=> ProviderServiceDetailsScreen()),
     GetPage(name:settingScreen, page: ()=> SettingScreen()),
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),
     GetPage(name:changePasswordScreen, page: ()=> ChangePasswordScreen()),
