@@ -5,6 +5,7 @@ import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
+import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
@@ -63,6 +64,7 @@ class AppRoutes{
   ///provider======>
   static String providerBottomNavBar="/ProviderBottomNavBar";
   static String bookingDetailsScreen="/BookingDetailsScreen";
+  static String providerServiceScreen="/ProviderServiceScreen";
 
 
 
@@ -90,7 +92,7 @@ class AppRoutes{
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),
     GetPage(name:changePasswordScreen, page: ()=> ChangePasswordScreen()),
     GetPage(name:personalInformation, page: ()=> PersonalInformation()),
-    GetPage(name:aboutServiceScreen, page: ()=> AboutServiceScreen()),
+    GetPage(name:aboutServiceScreen, page: ()=> AddServiceScreen()),
     GetPage(name:editServiceScreen, page: ()=> EditServiceScreen()),
 
     GetPage(name:bookingRequestScreen, page: ()=> BookingRequestScreen()),
@@ -100,6 +102,7 @@ class AppRoutes{
     GetPage(name:userMyBookignServiceDetailsScreen, page: ()=> UserMyBookignServiceDetailsScreen()),
     GetPage(name:providerBottomNavBar, page: ()=> ProviderBottomNavBar()),
     GetPage(name:bookingDetailsScreen, page: ()=> BookingDetailsScreen()),
+    GetPage(name:providerServiceScreen, page: ()=> ProviderServiceScreen()),
 
   ];
 

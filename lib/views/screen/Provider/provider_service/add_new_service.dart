@@ -14,14 +14,14 @@ import '../../../base/custom_button.dart';
 import '../../../base/custom_text.dart';
 import '../../../base/custom_text_field.dart';
 
-class AboutServiceScreen extends StatefulWidget {
-  AboutServiceScreen({Key? key}) : super(key: key);
+class AddServiceScreen extends StatefulWidget {
+  const AddServiceScreen({Key? key}) : super(key: key);
 
   @override
-  State<AboutServiceScreen> createState() => _AboutServiceScreenState();
+  State<AddServiceScreen> createState() => _AddServiceScreenState();
 }
 
-class _AboutServiceScreenState extends State<AboutServiceScreen> {
+class _AddServiceScreenState extends State<AddServiceScreen> {
   TextEditingController helpNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController helpDetailsController = TextEditingController();
@@ -134,7 +134,7 @@ class _AboutServiceScreenState extends State<AboutServiceScreen> {
                           ),
                           SizedBox(height: 16.h),
                           //===============================> Help Details Field <===============================
-                          Text(AppString.helpDetails),
+                          const Text(AppString.helpDetails),
                           SizedBox(height: 8.h),
                           Container(
                             height: 113.h,
@@ -148,7 +148,7 @@ class _AboutServiceScreenState extends State<AboutServiceScreen> {
                           //===============================> Service Button <===============================
                           CustomButton(
                             onTap: () {
-                              // Get.offAllNamed(AppRoutes.editServiceScreen);
+                              Get.offAllNamed(AppRoutes.providerServiceScreen);
                             },
                             text: AppString.addService,
                           ),

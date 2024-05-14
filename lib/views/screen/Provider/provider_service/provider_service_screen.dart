@@ -31,7 +31,6 @@ class ProviderServiceScreen extends StatelessWidget {
         padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           children: [
-            SizedBox(height: 24.h),
             GestureDetector(
               onTap: () {
                 Get.toNamed(AppRoutes.aboutServiceScreen);
