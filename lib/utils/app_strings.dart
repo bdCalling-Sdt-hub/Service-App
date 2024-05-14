@@ -93,7 +93,8 @@ class AppString {
   static const String aboutUs = "About us";
 
 
-  static const String edit = "Edit";
+
+
 
 
   static const String bookingRequests ="Booking Request";
@@ -109,6 +110,28 @@ class AppString {
   static const String service ="Service";
   static const String status ="Status";
   static const String markAsCompleted ="Mark as Completed";
+
+
+  static const String edit = "Edit";
+  static const String addService = "Add Service";
+  static const String uploadService = "Upload Service Photo";
+  static const String selectCategory = "Select Category";
+  static const String selectServiceCategory = "Select Service Category";
+  static const String helpName = "Help Name";
+  static const String enterServiceName = "Enter Service Name";
+  static const String providerAddress = "Enter provider address";
+  static const String helpDetails = "Help Details";
+  static const String writeServiceDetails = "Write service details";
+
+  static const String editService = "Edit Service";
+  static const String save = "Save";
+  static const String uploadHelp = "Upload Help Photo";
+  static const String selectsCategory = "Select Category";
+  static const String cleaningCategory = "Cleaning";
+  static const String houseCleaning = "House Cleaning";
+  static const String editAddress = "437 Star St, Los Angeles, USA";
+  static const String helpsDetails = "Etiam vel metus vel nunc tincidunt ornare. Vestibulum ac massa cursus, sagittis leo at, pulvinar elit. Duis quis urna in elit tempus accumsan.";
+
 
 
 }
