@@ -2,8 +2,11 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../helpers/image_picker_helper.dart';
+import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
@@ -32,7 +35,7 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppString.addService),
+        title: const Text(AppString.editService),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,7 +46,7 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 24.h),
-                //===============================> Upload Service Photo <===============================
+                //===============================> Upload help Photo <===============================
                 Column(
                   children: [
                     Padding(
@@ -131,11 +134,11 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
                           ),
                           SizedBox(height: 16.h),
                           //===============================> Help Details Field <===============================
-                          Text(AppString.helpDetails),
+                          const Text(AppString.helpDetails),
                           SizedBox(height: 8.h),
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 16.h),
-                            child: Container(
+                            child: SizedBox(
                               height: 113.h,
                               width: 353.w,
                               child: CustomTextField(
@@ -148,7 +151,7 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
                           //===============================> Service Button <===============================
                           CustomButton(
                             onTap: () {
-
+                              Get.offAllNamed(AppRoutes.providerServiceDetailsScreen);
                             },
                             text: AppString.save,
                           ),
