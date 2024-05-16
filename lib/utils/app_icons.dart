@@ -77,5 +77,9 @@ class AppIcons{
   static String chevronIcon ="$path/chevron-down.svg";
 
 
+  static String walletsIcon ="$path/wallet.svg";
+  static String reviewIcon ="$path/review.svg";
+
+
 
 }

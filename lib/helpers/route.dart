@@ -6,6 +6,7 @@ import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
+import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
 
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
@@ -16,7 +17,7 @@ import '../views/screen/Profile/personal_information/personal_information_screen
 import '../views/screen/Provider/booking_details/booking_details_screen.dart';
 import '../views/screen/Provider/provider_bottm_nav_bar/provider_bottom_nav_bar.dart';
 import '../views/screen/Provider/provider_service/edit_service_screen.dart';
-import '../views/screen/Provider/provider_service_details_screen.dart';
+import '../views/screen/Provider/provider_service/provider_service_details_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/User/User_bottom_nav_bar/user_bottom_nav_bar.dart';
 import '../views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
@@ -53,8 +54,10 @@ class AppRoutes{
   static String privacyPolicyAllScreen="/PrivacyPolicyAllScreen";
   static String changePasswordScreen="/ChangePasswordScreen";
   static String personalInformation="/PersonalInformation";
+
   static String aboutServiceScreen="/AboutServiceScreen";
   static String editServiceScreen="/EditServiceScreen";
+  static String reviewScreen="/ReviewScreen";
 
   static String bookingRequestScreen="/BookingRequestScreen";
 
@@ -94,6 +97,8 @@ class AppRoutes{
     GetPage(name:personalInformation, page: ()=> PersonalInformation()),
     GetPage(name:aboutServiceScreen, page: ()=> AddServiceScreen()),
     GetPage(name:editServiceScreen, page: ()=> EditServiceScreen()),
+    GetPage(name:reviewScreen, page: ()=> ReviewScreen()),
+
 
     GetPage(name:bookingRequestScreen, page: ()=> BookingRequestScreen()),
 

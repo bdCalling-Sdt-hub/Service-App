@@ -133,6 +133,9 @@ class AppString {
   static const String helpsDetails = "Etiam vel metus vel nunc tincidunt ornare. Vestibulum ac massa cursus, sagittis leo at, pulvinar elit. Duis quis urna in elit tempus accumsan.";
 
 
+  static const String myHelps = "My Helps";
+  static const String wallet = "wallet";
+  static const String reviews = "Reviews";
 
 }
 
