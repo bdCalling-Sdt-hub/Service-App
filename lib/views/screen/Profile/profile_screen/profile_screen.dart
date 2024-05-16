@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomListTile(
                     onTap: () {
-                      // Get.toNamed(AppRoutes.personalInformation);
+                      Get.toNamed(AppRoutes.walletScreen);
                     },
                     title: AppString.wallet,
                     prefixIcon: SvgPicture.asset(AppIcons.walletsIcon,

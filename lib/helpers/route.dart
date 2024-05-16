@@ -4,9 +4,11 @@ import 'package:service_app/views/screen/Auth/moreInformationScreen/more_informa
 import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
+import 'package:service_app/views/screen/Provider/Wallet/wallet_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
+import 'package:service_app/views/screen/Provider/wallet/wallet_withdrawal_screen.dart';
 
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
@@ -58,6 +60,7 @@ class AppRoutes{
   static String aboutServiceScreen="/AboutServiceScreen";
   static String editServiceScreen="/EditServiceScreen";
   static String reviewScreen="/ReviewScreen";
+  static String walletScreen="/WalletScreen";
 
   static String bookingRequestScreen="/BookingRequestScreen";
 
@@ -98,6 +101,8 @@ class AppRoutes{
     GetPage(name:aboutServiceScreen, page: ()=> AddServiceScreen()),
     GetPage(name:editServiceScreen, page: ()=> EditServiceScreen()),
     GetPage(name:reviewScreen, page: ()=> ReviewScreen()),
+    GetPage(name:walletScreen, page: ()=> WalletScreen()),
+
 
 
     GetPage(name:bookingRequestScreen, page: ()=> BookingRequestScreen()),
