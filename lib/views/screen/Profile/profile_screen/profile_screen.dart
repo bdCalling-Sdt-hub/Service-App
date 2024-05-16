@@ -104,10 +104,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomListTile(
                     onTap: () {
+                      // Get.toNamed(AppRoutes.personalInformation);
+                    },
+                    title: AppString.wallet,
+                    prefixIcon: SvgPicture.asset(AppIcons.walletsIcon,
+                        color: AppColors.primaryColor),
+                  ),
+                  CustomListTile(
+                    onTap: () {
                       Get.toNamed(AppRoutes.settingScreen);
                     },
                     title: AppString.setting,
                     prefixIcon: SvgPicture.asset(AppIcons.setting,
+                        color: AppColors.primaryColor),
+                  ),
+                  CustomListTile(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.reviewScreen);
+                    },
+                    title: AppString.reviews,
+                    prefixIcon: SvgPicture.asset(AppIcons.reviewIcon,
                         color: AppColors.primaryColor),
                   ),
                   CustomListTile(
