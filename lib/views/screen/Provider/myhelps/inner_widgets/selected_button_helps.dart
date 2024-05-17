@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../utils/app_colors.dart';
 
-class SelectedButton extends StatelessWidget {
+class SelectedButtonHelps extends StatelessWidget {
   final String text;
   final bool selected;
   final VoidCallback onTap;
 
-  const SelectedButton({
+  const SelectedButtonHelps({
     Key? key,
     required this.text,
     required this.selected,

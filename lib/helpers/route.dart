@@ -5,6 +5,7 @@ import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
 import 'package:service_app/views/screen/Provider/Wallet/wallet_screen.dart';
+import 'package:service_app/views/screen/Provider/myhelps/myhelps_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
@@ -61,6 +62,7 @@ class AppRoutes{
   static String editServiceScreen="/EditServiceScreen";
   static String reviewScreen="/ReviewScreen";
   static String walletScreen="/WalletScreen";
+  static String myHelps="/My Helps";
 
   static String bookingRequestScreen="/BookingRequestScreen";
 
@@ -71,6 +73,8 @@ class AppRoutes{
   static String providerBottomNavBar="/ProviderBottomNavBar";
   static String bookingDetailsScreen="/BookingDetailsScreen";
   static String providerServiceScreen="/ProviderServiceScreen";
+  static String walletWithdrawalScreen="/WalletWithdrawalScreen";
+  static String helpsScreen="/HelpsScreen";
 
 
 
@@ -102,7 +106,7 @@ class AppRoutes{
     GetPage(name:editServiceScreen, page: ()=> EditServiceScreen()),
     GetPage(name:reviewScreen, page: ()=> ReviewScreen()),
     GetPage(name:walletScreen, page: ()=> WalletScreen()),
-
+    GetPage(name:walletWithdrawalScreen, page: ()=> WalletWithdrawalScreen()),
 
 
     GetPage(name:bookingRequestScreen, page: ()=> BookingRequestScreen()),
@@ -113,6 +117,7 @@ class AppRoutes{
     GetPage(name:providerBottomNavBar, page: ()=> ProviderBottomNavBar()),
     GetPage(name:bookingDetailsScreen, page: ()=> BookingDetailsScreen()),
     GetPage(name:providerServiceScreen, page: ()=> ProviderServiceScreen()),
+    GetPage(name:helpsScreen, page: ()=> HelpsScreen()),
 
   ];
 

@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/views/base/custom_button.dart';
 
+import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_text.dart';
@@ -45,7 +46,7 @@ class WalletScreen extends StatelessWidget {
             SizedBox(height: 31.h),
             CustomButton(
                 onTap: () {
-                  // Get.offAllNamed(AppRoutes.editServiceScreen);
+                  Get.offAllNamed(AppRoutes.walletWithdrawalScreen);
                 },
                 text: AppString.withdraw),
             SizedBox(height: 30.h),

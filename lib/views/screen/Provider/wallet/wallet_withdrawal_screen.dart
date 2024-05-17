@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,15 +7,19 @@ import '../../../base/custom_button.dart';
 import '../../../base/custom_text.dart';
 import '../../../base/custom_text_field.dart';
 
-class WalletWithdrawalScreen extends StatelessWidget {
-   WalletWithdrawalScreen({super.key});
+class WalletWithdrawalScreen extends StatefulWidget {
+   const WalletWithdrawalScreen({super.key});
 
+  @override
+  State<WalletWithdrawalScreen> createState() => _WalletWithdrawalScreenState();
+}
+
+class _WalletWithdrawalScreenState extends State<WalletWithdrawalScreen> {
 
   TextEditingController bankNameController = TextEditingController();
   TextEditingController accountTypeController = TextEditingController();
   TextEditingController accountNumberController = TextEditingController();
   TextEditingController withdrawalAmountController = TextEditingController();
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -25,7 +28,7 @@ class WalletWithdrawalScreen extends StatelessWidget {
       //===============================> AppBar Section <===============================
       appBar: AppBar(
         title: CustomText(
-          text: AppString.requestWithdrawal,
+          text: AppString.withdrawal,
           fontsize: 18.h,
           fontWeight: FontWeight.w500,
           color: AppColors.black333333,
@@ -40,7 +43,7 @@ class WalletWithdrawalScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 24.h),
-                //===============================> Upload Service Photo <===============================
+                //===============================> Request <===============================
                 Column(
                   children: [
                     Padding(
@@ -49,12 +52,13 @@ class WalletWithdrawalScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            AppString.uploadService,
+                            AppString.requestWithdrawal,
                             style: TextStyle(color: AppColors.black333333),
                           ),
                           SizedBox(height: 16.h),
                           //===============================> Bank Name Field <===============================
                           const Text(AppString.bankName),
+                          SizedBox(height: 8.h),
                           CustomTextField(
                             hintText: AppString.enterBankName,
                             controller: bankNameController,
@@ -77,7 +81,7 @@ class WalletWithdrawalScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 16.h),
                           //===============================> Withdrawal Amount Field <===============================
-                          Text(AppString.withdrawalAmount),
+                          const Text(AppString.withdrawalAmount),
                           SizedBox(height: 8.h),
                           CustomTextField(
                             hintText: AppString.withdrawals,

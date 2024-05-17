@@ -75,6 +75,7 @@ class AppIcons{
 
   static String add ="$path/Add.svg";
   static String chevronIcon ="$path/chevron-down.svg";
+  static String helpIcons ="$path/myhelp_icon.svg";
 
 
   static String walletsIcon ="$path/wallet.svg";
