@@ -17,6 +17,7 @@ class CustomTextField extends StatefulWidget {
   final String? hintText;
   final double? contentPaddingHorizontal;
   final double? contentPaddingVertical;
+  final int? maxLine;
   final double? hintextSize;
   final Widget? suffixIcon;
   final FormFieldValidator? validator;
@@ -30,6 +31,7 @@ class CustomTextField extends StatefulWidget {
       this.hintText,
       this.prefixIcon,
       this.suffixIcon,
+        this.maxLine,
       this.validator,
         this.hintextColor,
         this.borderColor,
@@ -62,6 +64,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       controller: widget.controller,
       keyboardType: widget.keyboardType,
       obscuringCharacter: widget.obscure!,
+      maxLines: widget.maxLine ?? 1,
       // validator: widget.validator,
       validator: widget.validator ??
           (value) {

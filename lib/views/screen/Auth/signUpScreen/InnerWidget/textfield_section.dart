@@ -153,7 +153,7 @@ class TextfieldSection extends StatelessWidget {
                   child: RichText(
                     text:TextSpan(
                       text: AppString.alreadyAccount,
-                      style: TextStyle(color:Colors.black),
+                      style: const TextStyle(color:Colors.black),
                       children: [
                     TextSpan(
                       text: AppString.signIn,

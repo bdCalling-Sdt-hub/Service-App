@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_strings.dart';
-import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_images.dart';
 import '../../../base/custom_text.dart';
@@ -40,11 +38,10 @@ class _HelpsScreenState extends State<HelpsScreen> {
 
 
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
+        padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w,vertical: Dimensions.paddingSizeDefault.h),
         child: Column(
           children: [
 
-            SizedBox(height: 24.h,),
             SizedBox(
               height: 60.h,
               child: ListView.builder(
@@ -72,14 +69,14 @@ class _HelpsScreenState extends State<HelpsScreen> {
             ),
 
 
-
+            SizedBox(height: 24 .h),
 
             Expanded(
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: 7,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding:  EdgeInsets.only(bottom: 10.h),
+                    padding:  EdgeInsets.only(bottom: 16.h),
                     child: HelpsBookingsCard(
                       ///========================route to details screen==========================>
                       ontap: (){

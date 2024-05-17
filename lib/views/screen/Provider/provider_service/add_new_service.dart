@@ -137,11 +137,14 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                           const Text(AppString.helpDetails),
                           SizedBox(height: 8.h),
                           Container(
-                            height: 113.h,
-                            width: 353.w,
-                            child: CustomTextField(
-                              hintText: AppString.writeServiceDetails,
-                              controller: helpDetailsController,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: EdgeInsets.all(16.r),
+                              child: CustomTextField(
+                                maxLine: 4,
+                                hintText: AppString.writeServiceDetails,
+                                controller: helpDetailsController,
+                              ),
                             ),
                           ),
                           SizedBox(height: 16.h),

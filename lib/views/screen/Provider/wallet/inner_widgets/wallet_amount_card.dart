@@ -24,7 +24,7 @@ class WalletAmountCard extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: Container(
-              height: 135.h,
+              height: 140.h,
               width: 158.w,
               decoration: BoxDecoration(
                   border: Border.all(color: AppColors.primaryColor),
@@ -34,14 +34,13 @@ class WalletAmountCard extends StatelessWidget {
                 child: Center(
                   child: Column(
                     children: [
-                      SizedBox(height: 55.h),
+                      SizedBox(height: 52.h),
                       CustomText(text: '$title', fontsize: 16.h, bottom: 4.h),
                       CustomText(
                           text: '\$$amount',
                           fontsize: 18.h,
                           fontWeight: FontWeight.w600,
                           color: AppColors.primaryColor),
-                      SizedBox(height: 24.h)
                     ],
                   ),
                 ),
