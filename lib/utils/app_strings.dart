@@ -134,8 +134,30 @@ class AppString {
 
 
   static const String myHelps = "My Helps";
-  static const String wallet = "wallet";
+  static const String wallet = "Wallet";
+  static const String wallets = "Wallet";
   static const String reviews = "Reviews";
+  static const String walletText = "Earned this Month";
+  static const String totalEarned = "Total Earned";
+  static const String withdraw = "Withdraw Earnings";
+  static const String lastWithdraw = "Last Withdrawal";
+  static const String withDrawl = "Withdrawal";
+  static const String date = "2024 Jan 16";
+  static const String pending = "Pending";
+  static const String completed = "Completed";
+
+  static const String withdrawal = "Request Withdrawal";
+  static const String requestWithdrawal = "Please provide the following information for the withdrawal";
+  static const String bankName = "Bank Name";
+  static const String enterBankName = "Enter bank name";
+  static const String accountType = "Account Type";
+  static const String enterAccountType = "Enter account type";
+  static const String accountNumber = "Account Number";
+  static const String enterAccountNumber = "Enter account number";
+  static const String withdrawalAmount = "Withdrawal Amount";
+  static const String withdrawals = "\$";
+  static const String requestWithdraw = "Withdraw";
+
 
 }
 
