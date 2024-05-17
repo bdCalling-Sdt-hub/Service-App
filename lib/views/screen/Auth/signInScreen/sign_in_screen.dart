@@ -57,7 +57,7 @@ class SignInScreen extends StatelessWidget {
                 hintText: AppString.password,
                 prefixIcon: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: SvgPicture.asset(AppIcons.lockIcon,height: 24.h,width: 24.w,fit: BoxFit.cover),
+                  child: SvgPicture.asset(AppIcons.lockIcon),
                 ),
               ),
               SizedBox(

@@ -36,6 +36,7 @@ class HelpsBookingsCard extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           child: SizedBox(
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                     constraints: const BoxConstraints(maxWidth: 150),
@@ -104,7 +105,7 @@ class HelpsBookingsCard extends StatelessWidget {
                           color: selectedBottonItem == 0 ? const Color(0xffEAF6ED) : selectedBottonItem == 1 ? const Color(0xffFFF8E6) : selectedBottonItem == 2 ? const Color(0xffFBE9EC) : Colors.black,),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 12.w, vertical: 4.h),
+                              horizontal: 46.w, vertical: 4.h),
                           child: CustomText(
                               color: selectedBottonItem == 0 ? const Color(0xff2BA24C) : selectedBottonItem == 1 ? const Color(0xffFFB701) : selectedBottonItem == 2 ? const Color(0xffD7263D) : Colors.black,
                               text: selectedBottonItem == 0 ? "Complete" : selectedBottonItem == 1 ? 'Pending' : selectedBottonItem == 2 ? 'Cancelled' : ''

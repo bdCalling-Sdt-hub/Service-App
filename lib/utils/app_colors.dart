@@ -13,7 +13,8 @@ class AppColors{
   static Color black767676 = const Color(0xFF767676);
   static Color textColor2D2F32 = const Color(0xFF2D2F32);
   static Color subTextColor5c5c5c = const Color(0xFF5C5C5C);
-  
+  static Color yellow = const Color(0xFFFFB701);
+
   
   
   static BoxShadow shadow=const BoxShadow(

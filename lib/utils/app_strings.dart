@@ -146,7 +146,7 @@ class AppString {
   static const String pending = "Pending";
   static const String completed = "Completed";
 
-  static const String withdrawal = "Request Withdrawal";
+  static const String withdrawal = "Withdrawal";
   static const String requestWithdrawal = "Please provide the following information for the withdrawal";
   static const String bankName = "Bank Name";
   static const String enterBankName = "Enter bank name";

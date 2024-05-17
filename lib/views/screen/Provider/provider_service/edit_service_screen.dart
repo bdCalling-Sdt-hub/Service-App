@@ -139,9 +139,9 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 16.h),
                             child: SizedBox(
-                              height: 113.h,
-                              width: 353.w,
+                              width: double.infinity,
                               child: CustomTextField(
+                                maxLine: 4,
                                 hintText: AppString.helpsDetails,
                                 controller: helpDetailsController,
                               ),

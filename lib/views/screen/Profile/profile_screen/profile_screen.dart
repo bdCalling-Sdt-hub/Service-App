@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomListTile(
                     onTap: () {
-                      Get.toNamed(AppRoutes.helpsScreen);
+                      Get.toNamed(AppRoutes.myHelps);
                     },
                     title: AppString.myHelps,
                     prefixIcon: SvgPicture.asset(AppIcons.helpIcons,
@@ -141,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         builder: (context) {
                           return Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 334.h),
+                                horizontal: 20.w, vertical: 340.h),
                             child: LogoutDialog(),
                           );
                         },

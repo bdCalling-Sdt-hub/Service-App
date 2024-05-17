@@ -6,6 +6,7 @@ import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_text.dart';
 import '../../../base/provider_top_review_card.dart';
+import 'innerWidget/progress_indicator_rating.dart';
 
 class ReviewScreen extends StatelessWidget {
   const ReviewScreen({super.key});
@@ -30,7 +31,10 @@ class ReviewScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+               const progressRatingIndicator(),
+              SizedBox(height: 24.h),
+
+              SizedBox(
                 height: 139 * 3,
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
@@ -50,3 +54,7 @@ class ReviewScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
