@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomListTile(
                     onTap: () {
-                      Get.toNamed(AppRoutes.myHelps);
+                      Get.toNamed(AppRoutes.helpsScreen);
                     },
                     title: AppString.myHelps,
                     prefixIcon: SvgPicture.asset(AppIcons.helpIcons,

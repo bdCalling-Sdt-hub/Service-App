@@ -24,8 +24,6 @@ class _HelpsScreenState extends State<HelpsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       appBar: AppBar(
         title: CustomText(
           text: AppString.myHelps,
@@ -35,13 +33,10 @@ class _HelpsScreenState extends State<HelpsScreen> {
         ),
       ),
 
-
-
       body: Padding(
         padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w,vertical: Dimensions.paddingSizeDefault.h),
         child: Column(
           children: [
-
             SizedBox(
               height: 60.h,
               child: ListView.builder(
@@ -68,9 +63,7 @@ class _HelpsScreenState extends State<HelpsScreen> {
               ),
             ),
 
-
             SizedBox(height: 24 .h),
-
             Expanded(
               child: ListView.builder(
                 itemCount: 7,

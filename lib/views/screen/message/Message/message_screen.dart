@@ -9,6 +9,7 @@ import 'package:service_app/utils/app_images.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';
+import '../../../base/custom_button.dart';
 import '../../../base/custom_text.dart';
 
 class MessageScreen extends StatelessWidget {
@@ -93,13 +94,12 @@ class MessageScreen extends StatelessWidget {
         ),
       ),
 
-
-
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w, vertical: Dimensions.paddingSizeDefault.h),
+        padding:  EdgeInsets.symmetric(
+            horizontal: Dimensions.paddingSizeDefault.w,
+            vertical: Dimensions.paddingSizeDefault.h),
         child: Column(
           children: [
-
             Expanded(
               child: ListView.builder(
                 itemCount: userList.length,
@@ -117,11 +117,8 @@ class MessageScreen extends StatelessWidget {
                           color: AppColors.whiteF4F9EC,
                           borderRadius: BorderRadius.circular(8.r)
                         ),
-
                         child: Row(
                           children: [
-
-
                             Stack(
                               children: [
                                 Container(
@@ -161,21 +158,16 @@ class MessageScreen extends StatelessWidget {
                                 )
                               ],
                             ),
-
                             SizedBox(width: 8.w),
-
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-
                                 CustomText(
                                   text: "${user["name"]}",
                                   fontsize: 16.h,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black,
                                 ),
-
-
                                 CustomText(
                                   top: 4.h,
                                   text: "Hello, are you here?",

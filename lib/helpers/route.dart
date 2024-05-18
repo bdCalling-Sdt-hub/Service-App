@@ -10,6 +10,7 @@ import 'package:service_app/views/screen/Provider/provider_service/add_new_servi
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
 import 'package:service_app/views/screen/Provider/wallet/wallet_withdrawal_screen.dart';
+import 'package:service_app/views/screen/message/send_offer_screen.dart';
 
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
@@ -75,6 +76,7 @@ class AppRoutes{
   static String providerServiceScreen="/ProviderServiceScreen";
   static String walletWithdrawalScreen="/WalletWithdrawalScreen";
   static String helpsScreen="/HelpsScreen";
+  static String sendOfferScreen="/SendOfferScreen";
 
 
 
@@ -118,6 +120,7 @@ class AppRoutes{
     GetPage(name:bookingDetailsScreen, page: ()=> BookingDetailsScreen()),
     GetPage(name:providerServiceScreen, page: ()=> ProviderServiceScreen()),
     GetPage(name:helpsScreen, page: ()=> HelpsScreen()),
+    GetPage(name:sendOfferScreen, page: ()=> SendOfferScreen()),
 
   ];
 

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../helpers/image_picker_helper.dart';
 import '../../../../helpers/route.dart';
@@ -134,15 +133,15 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                           ),
                           SizedBox(height: 16.h),
                           //===============================> Help Details Field <===============================
-                          const Text(AppString.helpDetails),
+                          const Text(AppString.helpsDetail),
                           SizedBox(height: 8.h),
-                          Container(
-                            width: double.infinity,
-                            child: Padding(
-                              padding: EdgeInsets.all(16.r),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 16.h),
+                            child: SizedBox(
+                              width: double.infinity,
                               child: CustomTextField(
                                 maxLine: 4,
-                                hintText: AppString.writeServiceDetails,
+                                hintText: AppString.helpsDetails,
                                 controller: helpDetailsController,
                               ),
                             ),

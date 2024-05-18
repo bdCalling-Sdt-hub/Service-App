@@ -84,6 +84,7 @@ class AppString {
 
 
   static const String helps = "Helps";
+  static const String helpsDetail = "Helps Detail";
   static const String addHelp = "Add New Help";
   static const String details = "Details";
   static const String profile = "Profile";
@@ -157,6 +158,14 @@ class AppString {
   static const String withdrawalAmount = "Withdrawal Amount";
   static const String withdrawals = "\$";
   static const String requestWithdraw = "Withdraw";
+
+  ///========================Message Send offer====================>
+  static const String sendOffer = "Send Offer";
+  static const String selectHelp = "Select Help";
+  static const String helpDescription = "Help Description";
+  static const String writeHelpDescription = "Write help description";
+  static const String price = "Price";
+  static const String enterPrice = "Enter service price";
 
 
 }
