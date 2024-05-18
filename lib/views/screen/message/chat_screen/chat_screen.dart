@@ -1,7 +1,4 @@
-
-
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
@@ -13,12 +10,15 @@ import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/custom_loading.dart';
 
+import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_images.dart';
+import '../../../../utils/app_strings.dart';
+import '../../../base/custom_button.dart';
 import '../../../base/custom_text.dart';
 
 class ChatScreen extends StatefulWidget {
-   ChatScreen({super.key});
+   const ChatScreen({super.key});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -26,12 +26,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
    final StreamController _streamController = StreamController();
-
-
    final ScrollController _scrollController = ScrollController();
-
-
-
    TextEditingController messageController = TextEditingController();
 
   List messageList = [
@@ -51,7 +46,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
   String? selectedImage;
 
-
    @override
    void initState() {
      super.initState();
@@ -67,7 +61,6 @@ class _ChatScreenState extends State<ChatScreen> {
    }
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -79,7 +72,6 @@ class _ChatScreenState extends State<ChatScreen> {
             children: [
               Row(
                 children: [
-
                   GestureDetector(
                     onTap: (){
                       Get.back();
@@ -151,11 +143,18 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ],
               ),
-
-
+              const SizedBox(height: 33),
+              Center(
+                child: CustomButton(
+                  width: 147.w,
+                  height: 36.h,
+                  onTap: () {
+                    Get.offAllNamed(AppRoutes.sendOfferScreen);
+                  },
+                  text: AppString.sendOffer,
+                ),
+              ),
               SizedBox(height: 20.h,),
-
-
               Expanded(
                 child: StreamBuilder(
                   stream: _streamController.stream,
