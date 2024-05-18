@@ -82,6 +82,7 @@ class AppIcons{
   static String reviewIcon ="$path/review.svg";
   static String walletGroupIcon ="$path/walletgroup.svg";
   static String walletCash ="$path/wallet_cash.svg";
+  static String withdrawalIcon ="$path/withdrawal_icon.svg";
 
 
 

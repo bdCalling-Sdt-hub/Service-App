@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../helpers/route.dart';
 import '../../../utils/app_icons.dart';
@@ -10,14 +9,21 @@ import '../../../utils/app_strings.dart';
 import '../../base/custom_button.dart';
 import '../../base/custom_text_field.dart';
 
-class SendOfferScreen extends StatelessWidget {
-   SendOfferScreen({super.key});
+class SendOfferScreen extends StatefulWidget {
+   const SendOfferScreen({super.key});
+
+  @override
+  State<SendOfferScreen> createState() => _SendOfferScreenState();
+}
+
+class _SendOfferScreenState extends State<SendOfferScreen> {
 
   TextEditingController selectHelpController = TextEditingController();
   TextEditingController helpDescriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
    String? selectedCategory;
 
   @override

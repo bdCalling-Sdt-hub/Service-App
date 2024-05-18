@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:service_app/helpers/route.dart';
@@ -9,7 +7,6 @@ import 'package:service_app/utils/app_images.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';
-import '../../../base/custom_button.dart';
 import '../../../base/custom_text.dart';
 
 class MessageScreen extends StatelessWidget {
@@ -131,8 +128,6 @@ class MessageScreen extends StatelessWidget {
 
                                   child: Image.asset(AppImages.serviceImage,fit: BoxFit.cover,),
                                 ),
-
-
                                 Positioned(
                                   bottom: 0,
                                   right: 0,

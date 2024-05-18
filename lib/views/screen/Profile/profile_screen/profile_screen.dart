@@ -142,7 +142,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           return Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 20.w, vertical: 340.h),
-                            child: LogoutDialog(),
+                            child: const LogoutDialog(),
                           );
                         },
                       );
@@ -186,7 +186,6 @@ class LogoutDialog extends StatelessWidget {
               CustomTwoButon(
                 btnNameList: const ['Yes', 'No'],
                 width: 120.w,
-
                 leftBtnOnTap: (){
                   Get.offAllNamed(AppRoutes.signInScreen);
                 },

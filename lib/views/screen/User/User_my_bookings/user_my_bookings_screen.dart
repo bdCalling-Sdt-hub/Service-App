@@ -11,22 +11,18 @@ import 'Inner_widgets/my_booking_service_card.dart';
 import 'Inner_widgets/selected_button.dart';
 
 class UserMyBookingsScreen extends StatefulWidget {
-   UserMyBookingsScreen({super.key});
-
+   const UserMyBookingsScreen({super.key});
   @override
   State<UserMyBookingsScreen> createState() => _UserMyBookingsScreenState();
 }
 
 class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
   int selectedIndex = 0;
-
   List<String> items = ['Completed', 'Pending', 'Cancelled'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       appBar: AppBar(
         title: CustomText(
           text: AppString.myBookings,
@@ -35,8 +31,6 @@ class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
           color: AppColors.black333333,
         ),
       ),
-
-
 
       body: Padding(
         padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
@@ -47,7 +41,7 @@ class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
             SizedBox(
               height: 60.h,
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: (items.length / 3).ceil(),
                 itemBuilder: (context, index) {
                   return Row(
