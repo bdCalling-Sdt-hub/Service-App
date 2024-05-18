@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:service_app/views/screen/OnBoarding/onboarding_screen.dart';

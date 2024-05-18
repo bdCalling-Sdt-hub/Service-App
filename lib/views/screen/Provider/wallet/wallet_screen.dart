@@ -88,7 +88,7 @@ class WalletScreen extends StatelessWidget {
                           child: Padding(
                             padding:  EdgeInsets.symmetric(vertical: 10.h,horizontal: 17.w),
                             child: SvgPicture.asset(
-                              AppIcons.walletCash,
+                              AppIcons.withdrawalIcon,
                             ),
                           ),
                         ),
@@ -103,7 +103,7 @@ class WalletScreen extends StatelessWidget {
                             ),
                             SizedBox(height: 6.h),
                             CustomText(
-                              text: "coajdljkal;",
+                              text: "2024 Jan 16",
                               fontWeight: FontWeight.w400,
                               fontsize: 10.h,
                               color: AppColors.hintextColorA1A1A1,
@@ -124,7 +124,7 @@ class WalletScreen extends StatelessWidget {
 
                             ///============================Status ===============================>
                             CustomText(
-                              text: 'panding',
+                              text: 'pending',
                               fontWeight: FontWeight.w500,
                               fontsize: 12.h,
                               color: AppColors.primaryColor
