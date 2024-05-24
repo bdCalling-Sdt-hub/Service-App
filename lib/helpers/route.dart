@@ -4,6 +4,7 @@ import 'package:service_app/views/screen/Auth/moreInformationScreen/more_informa
 import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
+import 'package:service_app/views/screen/Profile/profile_screen/profile_screen.dart';
 import 'package:service_app/views/screen/Provider/Wallet/wallet_screen.dart';
 import 'package:service_app/views/screen/Provider/myhelps/myhelps_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
@@ -39,6 +40,7 @@ import '../views/screen/setting/setting_screen.dart';
 class AppRoutes{
 
   static String splashScreen="/splash_screen";
+  static String profileScreen="/profile_screen";
   static String onBoardingScreen="/onBoarding_screen";
   static String signUpScreen="/signup_screen";
   static String userBottomNavBar="/UserBottomNavBar";
@@ -83,6 +85,7 @@ class AppRoutes{
 
  static List<GetPage> page=[
     GetPage(name:splashScreen, page: ()=> SplashScreen()),
+    GetPage(name:profileScreen, page: ()=> ProfileScreen()),
     GetPage(name:onBoardingScreen, page: ()=>const OnBoardingScreen()),
     GetPage(name:signUpScreen, page: ()=>const SignUpScreen()),
     GetPage(name:userBottomNavBar, page: ()=>const UserBottomNavBar()),

@@ -141,7 +141,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                               width: double.infinity,
                               child: CustomTextField(
                                 maxLine: 4,
-                                hintText: AppString.helpsDetails,
+                                hintText: AppString.writeServiceDetails,
                                 controller: helpDetailsController,
                               ),
                             ),

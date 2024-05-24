@@ -149,7 +149,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   width: 147.w,
                   height: 36.h,
                   onTap: () {
-                    Get.offAllNamed(AppRoutes.sendOfferScreen);
+                    Get.toNamed(AppRoutes.sendOfferScreen);
                   },
                   text: AppString.sendOffer,
                 ),

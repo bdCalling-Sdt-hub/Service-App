@@ -85,8 +85,6 @@ class SignInScreen extends StatelessWidget {
                   text: TextSpan(text: AppString.dontHaveAccount,
                       style: const TextStyle(color: Colors.black),
                       children: [
-        
-        
                     TextSpan(
                       text: AppString.signUp,
                       style: TextStyle(color: Get.theme.primaryColor),

@@ -94,7 +94,7 @@ class _WalletWithdrawalScreenState extends State<WalletWithdrawalScreen> {
                           //===============================> Service Button <===============================
                           CustomButton(
                             onTap: () {
-                              Get.offAllNamed(AppRoutes.walletScreen);
+                              Get.offAllNamed(AppRoutes.profileScreen);
                             },
                             text: AppString.requestWithdraw,
                           ),
