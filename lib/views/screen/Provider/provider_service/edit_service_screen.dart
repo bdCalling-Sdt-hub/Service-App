@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../helpers/image_picker_helper.dart';
 import '../../../../helpers/route.dart';
@@ -151,7 +150,7 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
                           //===============================> Service Button <===============================
                           CustomButton(
                             onTap: () {
-                              Get.offAllNamed(AppRoutes.providerServiceDetailsScreen);
+                              Get.offAllNamed(AppRoutes.providerServiceScreen);
                             },
                             text: AppString.save,
                           ),

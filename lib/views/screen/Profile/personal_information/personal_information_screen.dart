@@ -54,7 +54,7 @@ class PersonalInformation extends StatelessWidget {
 
             //=================================> Profile Email <==========================
             CustomListTile(
-                title: 'sagorahamed@gmail.com',
+                title: 'ebrahim.cse.bu@gmail.com',
                 prefixIcon: _prefixIcon(AppIcons.email)),
 
 

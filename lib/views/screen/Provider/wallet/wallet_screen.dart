@@ -66,7 +66,7 @@ class WalletScreen extends StatelessWidget {
             SizedBox(height: 16.h),
             Expanded(
               child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
                 itemCount: 6,
                 // (_walletController.walletModel.value.data?.attributes?.length ?? 0) <= 3
                 //     ? _walletController

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -141,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         builder: (context) {
                           return Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 340.h),
+                                horizontal: 20.w, vertical: 300.h),
                             child: const LogoutDialog(),
                           );
                         },
