@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 
 import '../../../../utils/app_colors.dart';
@@ -34,13 +36,20 @@ class BookingRequestScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding:  EdgeInsets.only(top: index == 0 ?  10.h : 16.h),
-                      child:  BookingCard(
-                        bookingImage: AppImages.houseKeepingWoman,
-                        personName: "Ingredia Nutrisha",
-                        bookingName: 'Cleaning',
-                        location: "437 Star St, Los Angeles, USA",
-                        rating: "4.8",
-                        distance: '13 km',
+                      child:  GestureDetector(
+                        onTap: (){
+                          Get.toNamed(AppRoutes.bookingDetailsScreen, parameters: {
+                            "screenType" : "profile"
+                          });
+                        },
+                        child: BookingCard(
+                          bookingImage: AppImages.houseKeepingWoman,
+                          personName: "Ingredia Nutrisha",
+                          bookingName: 'Cleaning',
+                          location: "437 Star St, Los Angeles, USA",
+                          rating: "4.8",
+                          distance: '13 km',
+                        ),
                       ),
                     );
                   },

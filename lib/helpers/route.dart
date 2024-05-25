@@ -6,7 +6,6 @@ import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
 import 'package:service_app/views/screen/Profile/profile_screen/profile_screen.dart';
 import 'package:service_app/views/screen/Provider/Wallet/wallet_screen.dart';
-import 'package:service_app/views/screen/Provider/myhelps/myhelps_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
@@ -21,6 +20,7 @@ import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Provider/booking_details/booking_details_screen.dart';
 import '../views/screen/Provider/provider_bottm_nav_bar/provider_bottom_nav_bar.dart';
+import '../views/screen/Provider/provider_myhelps/provider_myhelps_screen.dart';
 import '../views/screen/Provider/provider_service/edit_service_screen.dart';
 import '../views/screen/Provider/provider_service/provider_service_details_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
@@ -37,8 +37,8 @@ import '../views/screen/notifications/notifications.dart';
 import '../views/screen/privacy_policy_all/privacy_policy_all_screen.dart';
 import '../views/screen/setting/setting_screen.dart';
 
-class AppRoutes{
 
+class AppRoutes{
   static String splashScreen="/splash_screen";
   static String profileScreen="/profile_screen";
   static String onBoardingScreen="/onBoarding_screen";
@@ -77,7 +77,7 @@ class AppRoutes{
   static String bookingDetailsScreen="/BookingDetailsScreen";
   static String providerServiceScreen="/ProviderServiceScreen";
   static String walletWithdrawalScreen="/WalletWithdrawalScreen";
-  static String helpsScreen="/HelpsScreen";
+  static String providerhelpsScreen="/ProviderHelpsScreen";
   static String sendOfferScreen="/SendOfferScreen";
 
 
@@ -122,7 +122,7 @@ class AppRoutes{
     GetPage(name:providerBottomNavBar, page: ()=> ProviderBottomNavBar()),
     GetPage(name:bookingDetailsScreen, page: ()=> BookingDetailsScreen()),
     GetPage(name:providerServiceScreen, page: ()=> ProviderServiceScreen()),
-    GetPage(name:helpsScreen, page: ()=> HelpsScreen()),
+    GetPage(name:providerhelpsScreen, page: ()=> ProviderHelpsScreen()),
     GetPage(name:sendOfferScreen, page: ()=> SendOfferScreen()),
 
   ];
