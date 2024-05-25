@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/cachanetwork_image.dart';
 import 'package:service_app/views/base/custom_button.dart';
+import 'package:service_app/views/base/custom_two_button.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_text.dart';
@@ -59,17 +60,41 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                     fontWeight: FontWeight.w500,
                     fontsize: 20.h,
                   )),
+
+
                   Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.whiteF4F9EC,
-                        borderRadius: BorderRadius.circular(8.r)),
-                    child: Padding(
-                      padding: EdgeInsets.all(10.h),
-                      child: Center(
-                        child: SvgPicture.asset(AppIcons.message),
-                      ),
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.whiteF4F9EC,
+                              borderRadius: BorderRadius.circular(8.r)),
+                          child: Padding(
+                            padding: EdgeInsets.all(10.h),
+                            child: Center(
+                              child: SvgPicture.asset(AppIcons.message),
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(width: 10.w,),
+
+                        Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.whiteF4F9EC,
+                              borderRadius: BorderRadius.circular(8.r)),
+                          child: Padding(
+                            padding: EdgeInsets.all(10.h),
+                            child: Center(
+                              child: SvgPicture.asset(AppIcons.call2),
+                            ),
+                          ),
+                        )
+
+                      ],
                     ),
                   )
+
                 ],
               ),
 
@@ -96,17 +121,17 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(AppIcons.star,
-                          height: 16.h, width: 16.h),
-                      CustomText(
-                        text: '4.8 ',
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.subTextColor5c5c5c,
-                      ),
-                    ],
-                  )
+                  // Row(
+                  //   children: [
+                  //     SvgPicture.asset(AppIcons.star,
+                  //         height: 16.h, width: 16.h),
+                  //     CustomText(
+                  //       text: '4.8 ',
+                  //       fontWeight: FontWeight.w400,
+                  //       color: AppColors.subTextColor5c5c5c,
+                  //     ),
+                  //   ],
+                  // )
                 ],
               ),
               SizedBox(height: 8.h),
@@ -129,17 +154,17 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(AppIcons.locationServiceCard),
-                      CustomText(
-                        text: '15 km ',
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.black767676,
-                        fontsize: 12.h,
-                      ),
-                    ],
-                  )
+                  // Row(
+                  //   children: [
+                  //     SvgPicture.asset(AppIcons.locationServiceCard),
+                  //     CustomText(
+                  //       text: '15 km ',
+                  //       fontWeight: FontWeight.w400,
+                  //       color: AppColors.black767676,
+                  //       fontsize: 12.h,
+                  //     ),
+                  //   ],
+                  // )
                 ],
               ),
 
@@ -198,6 +223,12 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
               SizedBox(height: 40.h),
 
               ///===========================Mark As Completed button=====================>
+              Get.parameters['screenType'] == "profile" ?
+                  CustomTwoButon(
+                    leftBtnOnTap: (){Get.back();},
+                    width: 165.w,
+                    btnNameList: ['Cancel' , 'Accept'],
+                  ) :
               CustomButton(onTap: () {}, text: AppString.markAsCompleted)
             ],
           ),
