@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:service_app/helpers/pref_helpers.dart';
 import 'package:service_app/helpers/route.dart';
+import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/app_images.dart';
 import 'package:service_app/utils/app_strings.dart';
 
@@ -70,10 +72,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 24),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
                           onPressed: () {
-                            Get.toNamed(AppRoutes.signInScreen);
+                            Get.toNamed(AppRoutes.signInScreen, parameters: {
+                              'role' : "user"
+                            });
+                            PrefsHelper.setString(AppConstants.role, "user");
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -92,7 +98,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Get.toNamed(AppRoutes.signInScreen);
+                            Get.toNamed(AppRoutes.signInScreen,
+                                parameters: {
+                                  'role' : "provider"
+                                });
+                            PrefsHelper.setString(AppConstants.role, "provider");
                           },
                           child: Container(
                             decoration: BoxDecoration(

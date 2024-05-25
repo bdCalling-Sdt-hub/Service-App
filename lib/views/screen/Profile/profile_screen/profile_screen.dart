@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:service_app/helpers/pref_helpers.dart';
 import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_colors.dart';
+import 'package:service_app/utils/app_constants.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/utils/app_strings.dart';
@@ -21,12 +23,27 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool switchToProvide = false;
+  String role = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getPrefsData();
+  }
+
+  getPrefsData() async {
+    String fetchedRole = await PrefsHelper.getString(AppConstants.role);
+    print('Fetched role: $fetchedRole');
+    setState(() {
+      role = fetchedRole;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SingleChildScrollView(
-        // physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             const TopProfileCard(),
@@ -41,11 +58,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       prefixIcon: SvgPicture.asset(AppIcons.user,
                           color: AppColors.primaryColor),
                       sufixIcon: GestureDetector(
-                        onTap: () {
+                        onTap: () async{
                           setState(() {
                             switchToProvide = !switchToProvide;
-                            print(
-                                "==============================> $switchToProvide");
+
+                            PrefsHelper.setString(AppConstants.role, switchToProvide ?  'user' : "provider");
+                            switchToProvide
+                                ? Get.toNamed(AppRoutes.providerBottomNavBar)
+                                : Get.toNamed(AppRoutes.userBottomNavBar);
                           });
                         },
                         child: Stack(
@@ -83,22 +103,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     prefixIcon: SvgPicture.asset(AppIcons.user,
                         color: AppColors.primaryColor),
                   ),
-                  CustomListTile(
-                    onTap: (){
-                      Get.toNamed(AppRoutes.bookingRequestScreen);
+
+                  ///====================helps offers===============>
+                  role == "provider"
+                      ? const SizedBox()
+                      : CustomListTile(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.helpsScreen);
                     },
-                    title: AppString.bookingRequest,
-                    prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,
+                    title: AppString.helpOffers,
+                    prefixIcon: SvgPicture.asset(AppIcons.helpIcons,
                         color: AppColors.primaryColor),
                   ),
+
+
+                  ///====================my booking ===============>
                   CustomListTile(
                     onTap: () {
                       Get.toNamed(AppRoutes.userMyBookingsScreen);
                     },
-                    title: AppString.myBookings,
+                    title: AppString.myHelps,
                     prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,
                         color: AppColors.primaryColor),
                   ),
+
+
+                  ///====================wallet===============>
+                  role == "user"
+                      ? SizedBox()
+                      : CustomListTile(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.walletScreen);
+                          },
+                          title: AppString.wallet,
+                          prefixIcon: SvgPicture.asset(AppIcons.walletsIcon,
+                              color: AppColors.primaryColor),
+                        ),
+
+                  ///====================setting===============>
                   CustomListTile(
                     onTap: () {
                       Get.toNamed(AppRoutes.settingScreen);
@@ -107,6 +149,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     prefixIcon: SvgPicture.asset(AppIcons.setting,
                         color: AppColors.primaryColor),
                   ),
+
+                  ///====================reviews===============
+                  role == "user"
+                      ? SizedBox()
+                      : CustomListTile(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.reviewScreen);
+                          },
+                          title: AppString.reviews,
+                          prefixIcon: SvgPicture.asset(AppIcons.reviewIcon,
+                              color: AppColors.primaryColor),
+                        ),
+
+                  ///====================log out===============>
                   CustomListTile(
                     onTap: () {
                       showDialog(
@@ -114,8 +170,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         builder: (context) {
                           return Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 334.h),
-                            child: LogoutDialog(),
+                                horizontal: 20.w, vertical: 300.h),
+                            child: const LogoutDialog(),
                           );
                         },
                       );
@@ -148,7 +204,7 @@ class LogoutDialog extends StatelessWidget {
             border: Border.all(color: AppColors.primaryColor),
             color: Colors.white),
         child: Padding(
-          padding:  EdgeInsets.all(24.r),
+          padding: EdgeInsets.all(24.r),
           child: Column(
             children: [
               CustomText(
@@ -159,11 +215,14 @@ class LogoutDialog extends StatelessWidget {
               CustomTwoButon(
                 btnNameList: const ['Yes', 'No'],
                 width: 120.w,
+                leftBtnOnTap: () async{
 
-                leftBtnOnTap: (){
-                  Get.offAllNamed(AppRoutes.signInScreen);
+                  print("=======> ${await PrefsHelper.getString(AppConstants.role)}");
+                  await PrefsHelper.remove(AppConstants.role);
+
+                  Get.offAllNamed(AppRoutes.onBoardingScreen);
                 },
-                rightBtnOnTap: (){
+                rightBtnOnTap: () {
                   Get.back();
                 },
               )

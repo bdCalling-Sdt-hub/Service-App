@@ -1,7 +1,5 @@
 import 'dart:typed_data';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -42,6 +40,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 24.h),
+              //===============================> Upload Photo Section <===============================
               GestureDetector(
                 onTap: () {
                   showImagePickerOption(context, 'profile');
@@ -67,6 +66,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                 style: TextStyle(color: AppColors.primaryColor),
               ),
               SizedBox(height: 24.h),
+              //===============================> Address Section <===============================
               Column(
                 children: [
                   Padding(
@@ -86,6 +86,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                           style: TextStyle(color: AppColors.black333333),
                         ),
                         SizedBox(height: 12.h),
+                        //===============================> Front Side  Section <===============================
                         GestureDetector(
                           onTap: () {
                             showImagePickerOption(context, 'front');
@@ -111,6 +112,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                           ),
                         ),
                         SizedBox(height: 16.h),
+                        //===============================> Back Side Section <===============================
                         Text(
                           AppString.uploadLicenseBack,
                           style: TextStyle(color: AppColors.black333333),
@@ -141,6 +143,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                           ),
                         ),
                         SizedBox(height: 31.h),
+                        //===============================> Create Button <===============================
                         CustomButton(
                           onTap: () {
                             Get.toNamed(AppRoutes.userBottomNavBar);

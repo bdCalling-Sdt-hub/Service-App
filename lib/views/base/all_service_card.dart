@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,7 +52,7 @@ class AllServiceCard extends StatelessWidget {
                                 Row(
                                   children: [
                                     SvgPicture.asset(AppIcons.star,fit: BoxFit.cover,),
-                                    ///==================Rating Tex===================>
+                                    ///==================Rating Text===================>
                                     CustomText(
                                       top: 3.h,
                                         text: " $reting",
@@ -87,9 +86,6 @@ class AllServiceCard extends StatelessWidget {
                           )
                         ],
                       ),
-
-
-
 
 
 

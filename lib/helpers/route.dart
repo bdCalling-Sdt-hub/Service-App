@@ -4,6 +4,14 @@ import 'package:service_app/views/screen/Auth/moreInformationScreen/more_informa
 import 'package:service_app/views/screen/Auth/signInScreen/sign_in_screen.dart';
 import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
+import 'package:service_app/views/screen/Profile/profile_screen/profile_screen.dart';
+import 'package:service_app/views/screen/Provider/Wallet/wallet_screen.dart';
+import 'package:service_app/views/screen/Provider/myhelps/myhelps_screen.dart';
+import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
+import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
+import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
+import 'package:service_app/views/screen/Provider/wallet/wallet_withdrawal_screen.dart';
+import 'package:service_app/views/screen/message/send_offer_screen.dart';
 
 
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
@@ -13,7 +21,8 @@ import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
 import '../views/screen/Provider/booking_details/booking_details_screen.dart';
 import '../views/screen/Provider/provider_bottm_nav_bar/provider_bottom_nav_bar.dart';
-import '../views/screen/Provider/provider_service_details_screen.dart';
+import '../views/screen/Provider/provider_service/edit_service_screen.dart';
+import '../views/screen/Provider/provider_service/provider_service_details_screen.dart';
 import '../views/screen/Splash/splash_screen.dart';
 import '../views/screen/User/User_bottom_nav_bar/user_bottom_nav_bar.dart';
 import '../views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
@@ -31,6 +40,7 @@ import '../views/screen/setting/setting_screen.dart';
 class AppRoutes{
 
   static String splashScreen="/splash_screen";
+  static String profileScreen="/profile_screen";
   static String onBoardingScreen="/onBoarding_screen";
   static String signUpScreen="/signup_screen";
   static String userBottomNavBar="/UserBottomNavBar";
@@ -51,6 +61,12 @@ class AppRoutes{
   static String changePasswordScreen="/ChangePasswordScreen";
   static String personalInformation="/PersonalInformation";
 
+  static String aboutServiceScreen="/AboutServiceScreen";
+  static String editServiceScreen="/EditServiceScreen";
+  static String reviewScreen="/ReviewScreen";
+  static String walletScreen="/WalletScreen";
+  static String myHelps="/My Helps";
+
   static String bookingRequestScreen="/BookingRequestScreen";
 
   static String editProfileScreen="/EditProfileScreen";
@@ -59,12 +75,17 @@ class AppRoutes{
   ///provider======>
   static String providerBottomNavBar="/ProviderBottomNavBar";
   static String bookingDetailsScreen="/BookingDetailsScreen";
+  static String providerServiceScreen="/ProviderServiceScreen";
+  static String walletWithdrawalScreen="/WalletWithdrawalScreen";
+  static String helpsScreen="/HelpsScreen";
+  static String sendOfferScreen="/SendOfferScreen";
 
 
 
 
  static List<GetPage> page=[
     GetPage(name:splashScreen, page: ()=> SplashScreen()),
+    GetPage(name:profileScreen, page: ()=> ProfileScreen()),
     GetPage(name:onBoardingScreen, page: ()=>const OnBoardingScreen()),
     GetPage(name:signUpScreen, page: ()=>const SignUpScreen()),
     GetPage(name:userBottomNavBar, page: ()=>const UserBottomNavBar()),
@@ -86,6 +107,12 @@ class AppRoutes{
     GetPage(name:privacyPolicyAllScreen, page: ()=> PrivacyPolicyAllScreen()),
     GetPage(name:changePasswordScreen, page: ()=> ChangePasswordScreen()),
     GetPage(name:personalInformation, page: ()=> PersonalInformation()),
+    GetPage(name:aboutServiceScreen, page: ()=> AddServiceScreen()),
+    GetPage(name:editServiceScreen, page: ()=> EditServiceScreen()),
+    GetPage(name:reviewScreen, page: ()=> ReviewScreen()),
+    GetPage(name:walletScreen, page: ()=> WalletScreen()),
+    GetPage(name:walletWithdrawalScreen, page: ()=> WalletWithdrawalScreen()),
+
 
     GetPage(name:bookingRequestScreen, page: ()=> BookingRequestScreen()),
 
@@ -94,6 +121,9 @@ class AppRoutes{
     GetPage(name:userMyBookignServiceDetailsScreen, page: ()=> UserMyBookignServiceDetailsScreen()),
     GetPage(name:providerBottomNavBar, page: ()=> ProviderBottomNavBar()),
     GetPage(name:bookingDetailsScreen, page: ()=> BookingDetailsScreen()),
+    GetPage(name:providerServiceScreen, page: ()=> ProviderServiceScreen()),
+    GetPage(name:helpsScreen, page: ()=> HelpsScreen()),
+    GetPage(name:sendOfferScreen, page: ()=> SendOfferScreen()),
 
   ];
 

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/cachanetwork_image.dart';
-import 'package:service_app/views/screen/User/User_my_bookings/user_my_booking_service_details_screen.dart';
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_strings.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/app_strings.dart';
 
-import '../../base/custom_button.dart';
-import '../../base/custom_text.dart';
+import '../../../../helpers/route.dart';
+import '../../../base/custom_button.dart';
+import '../../../base/custom_text.dart';
 
 
 class ProviderServiceDetailsScreen extends StatefulWidget {
@@ -91,17 +92,6 @@ class _ProviderServiceDetailsScreenState extends State<ProviderServiceDetailsScr
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(AppIcons.locationServiceCard),
-                      CustomText(
-                        text: '15 km ',
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.black767676,
-                        fontsize: 12.h,
-                      ),
-                    ],
-                  )
                 ],
               ),
               SizedBox(height: 17.h),
@@ -160,7 +150,7 @@ class _ProviderServiceDetailsScreenState extends State<ProviderServiceDetailsScr
               ///====================Edit Button =========================>
               CustomButton(
                   onTap: () {
-                    // Get.offAllNamed(AppRoutes.editServiceScreen);
+                    Get.offAllNamed(AppRoutes.editServiceScreen);
                   },
                   text: AppString.edit),
 

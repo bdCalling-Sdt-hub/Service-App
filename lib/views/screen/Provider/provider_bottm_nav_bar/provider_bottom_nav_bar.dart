@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app/views/screen/Provider/provider_home/provider_home_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
-import 'package:service_app/views/screen/User/user_service/user_service_screen.dart';
 import 'package:service_app/views/screen/message/Message/message_screen.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';

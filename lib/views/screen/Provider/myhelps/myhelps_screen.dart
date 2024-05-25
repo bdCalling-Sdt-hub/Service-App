@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_strings.dart';
-import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_images.dart';
 import '../../../base/custom_text.dart';
-import 'Inner_widgets/my_booking_service_card.dart';
-import 'Inner_widgets/selected_button.dart';
+import '../../User/User_my_bookings/Inner_widgets/selected_button.dart';
+import 'inner_widgets/helps_booking_card.dart';
 
-class UserMyBookingsScreen extends StatefulWidget {
-   const UserMyBookingsScreen({super.key});
+
+class HelpsScreen extends StatefulWidget {
+  const HelpsScreen({super.key});
+
   @override
-  State<UserMyBookingsScreen> createState() => _UserMyBookingsScreenState();
+  State<HelpsScreen> createState() => _HelpsScreenState();
 }
 
-class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
+class _HelpsScreenState extends State<HelpsScreen> {
   int selectedIndex = 0;
+
   List<String> items = ['Completed', 'Pending', 'Cancelled'];
 
   @override
@@ -25,7 +26,7 @@ class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
-          text: AppString.myBookings,
+          text: AppString.myHelps,
           fontsize: 18.h,
           fontWeight: FontWeight.w500,
           color: AppColors.black333333,
@@ -33,11 +34,9 @@ class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
       ),
 
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
+        padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w,vertical: Dimensions.paddingSizeDefault.h),
         child: Column(
           children: [
-
-            SizedBox(height: 24.h,),
             SizedBox(
               height: 60.h,
               child: ListView.builder(
@@ -64,28 +63,24 @@ class _UserMyBookingsScreenState extends State<UserMyBookingsScreen> {
               ),
             ),
 
-
-
-
+            SizedBox(height: 24 .h),
             Expanded(
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: 7,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding:  EdgeInsets.only(bottom: 10.h),
-                    child: MyBookingServiceCard(
+                    padding:  EdgeInsets.only(bottom: 16.h),
+                    child: HelpsBookingsCard(
                       ///========================route to details screen==========================>
                       ontap: (){
-                        Get.toNamed(AppRoutes.userMyBookignServiceDetailsScreen, parameters: {
-                          'bookingStatus' : selectedIndex.toString()
-                        });
+                        // Get.toNamed(AppRoutes.userMyBookignServiceDetailsScreen, parameters: {
+                        //   'bookingStatus' : selectedIndex.toString()
+                        // });
                       },
-                      serviceImage: AppImages.serviceImage,
+                      helpImage: AppImages.helpImage,
                       selectedBottonItem: selectedIndex,
-                      reting: "4.8",
-                      distance: "15 km",
-                      serviceName: 'House Cleaning',
-                      personName: "Ingredia Nutrisha",
+                      helpName: "House Cleaning",
+                      personName: "Jane Cooper",
                     ),
                   );
                 },

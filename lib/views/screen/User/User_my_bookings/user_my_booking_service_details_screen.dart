@@ -235,7 +235,7 @@ class _UserMyBookignServiceDetailsScreenState
                           builder: (context) {
                             return Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 20.w, vertical: 170.h),
+                                  horizontal: 20.w, vertical: 150.h),
                               child: AlartDialog(),
                             );
                           },
@@ -264,7 +264,7 @@ class ExperienceRatingsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return               Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: List.generate(
         userInfoList!.length,

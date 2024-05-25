@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:service_app/helpers/route.dart';
@@ -93,13 +91,12 @@ class MessageScreen extends StatelessWidget {
         ),
       ),
 
-
-
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w, vertical: Dimensions.paddingSizeDefault.h),
+        padding:  EdgeInsets.symmetric(
+            horizontal: Dimensions.paddingSizeDefault.w,
+            vertical: Dimensions.paddingSizeDefault.h),
         child: Column(
           children: [
-
             Expanded(
               child: ListView.builder(
                 itemCount: userList.length,
@@ -117,11 +114,8 @@ class MessageScreen extends StatelessWidget {
                           color: AppColors.whiteF4F9EC,
                           borderRadius: BorderRadius.circular(8.r)
                         ),
-
                         child: Row(
                           children: [
-
-
                             Stack(
                               children: [
                                 Container(
@@ -134,8 +128,6 @@ class MessageScreen extends StatelessWidget {
 
                                   child: Image.asset(AppImages.serviceImage,fit: BoxFit.cover,),
                                 ),
-
-
                                 Positioned(
                                   bottom: 0,
                                   right: 0,
@@ -161,21 +153,16 @@ class MessageScreen extends StatelessWidget {
                                 )
                               ],
                             ),
-
                             SizedBox(width: 8.w),
-
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-
                                 CustomText(
                                   text: "${user["name"]}",
                                   fontsize: 16.h,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black,
                                 ),
-
-
                                 CustomText(
                                   top: 4.h,
                                   text: "Hello, are you here?",

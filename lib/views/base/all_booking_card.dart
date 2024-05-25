@@ -19,7 +19,7 @@ class BookingCard extends StatelessWidget {
   final String? distance;
 
 
-  BookingCard({
+  const BookingCard({
     super.key,
     this.ontap,
     this.bookingImage,
@@ -74,7 +74,7 @@ class BookingCard extends StatelessWidget {
                                           fit: BoxFit.cover,
                                         ),
 
-                                        ///==================Rating Tex===================>
+                                        ///==================Rating Text===================>
                                         CustomText(
                                             top: 3.h,
                                             text: " $rating",

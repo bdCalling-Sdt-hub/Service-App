@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import  'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -217,7 +217,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        Get.toNamed(AppRoutes.userAllServiceScreen, parameters: {"screenType" : AppString.popularHelps});
+                        Get.toNamed(AppRoutes.userAllServiceScreen,
+                            parameters: {"screenType" : AppString.popularHelps});
                       },
                       child: CustomText(
                           text: AppString.seeAll,

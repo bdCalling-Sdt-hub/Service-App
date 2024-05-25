@@ -84,6 +84,7 @@ class AppString {
 
 
   static const String helps = "Helps";
+  static const String helpsDetail = "Helps Detail";
   static const String addHelp = "Add New Help";
   static const String details = "Details";
   static const String profile = "Profile";
@@ -93,7 +94,8 @@ class AppString {
   static const String aboutUs = "About us";
 
 
-  static const String edit = "Edit";
+
+
 
 
   static const String bookingRequests ="Booking Request";
@@ -109,6 +111,62 @@ class AppString {
   static const String service ="Service";
   static const String status ="Status";
   static const String markAsCompleted ="Mark as Completed";
+
+
+  static const String edit = "Edit";
+  static const String addService = "Add Service";
+  static const String uploadService = "Upload Service Photo";
+  static const String selectCategory = "Select Category";
+  static const String selectServiceCategory = "Select Service Category";
+  static const String helpName = "Help Name";
+  static const String enterServiceName = "Enter Service Name";
+  static const String providerAddress = "Enter provider address";
+  static const String helpDetails = "Help Details";
+  static const String writeServiceDetails = "Write service details";
+
+  static const String editService = "Edit Service";
+  static const String save = "Save";
+  static const String uploadHelp = "Upload Help Photo";
+  static const String selectsCategory = "Select Category";
+  static const String cleaningCategory = "Cleaning";
+  static const String houseCleaning = "House Cleaning";
+  static const String editAddress = "437 Star St, Los Angeles, USA";
+  static const String helpsDetails = "Etiam vel metus vel nunc tincidunt ornare. Vestibulum ac massa cursus, sagittis leo at, pulvinar elit. Duis quis urna in elit tempus accumsan.";
+
+
+  static const String myHelps = "My Helps";
+  static const String helpOffers = "Help Offers";
+  static const String wallet = "Wallet";
+  static const String wallets = "Wallet";
+  static const String reviews = "Reviews";
+  static const String walletText = "Earned this Month";
+  static const String totalEarned = "Total Earned";
+  static const String withdraw = "Withdraw Earnings";
+  static const String lastWithdraw = "Last Withdrawal";
+  static const String withDrawl = "Withdrawal";
+  static const String date = "2024 Jan 16";
+  static const String pending = "Pending";
+  static const String completed = "Completed";
+
+  static const String withdrawal = "Withdrawal";
+  static const String requestWithdrawal = "Please provide the following information for the withdrawal";
+  static const String bankName = "Bank Name";
+  static const String enterBankName = "Enter bank name";
+  static const String accountType = "Account Type";
+  static const String enterAccountType = "Enter account type";
+  static const String accountNumber = "Account Number";
+  static const String enterAccountNumber = "Enter account number";
+  static const String withdrawalAmount = "Withdrawal Amount";
+  static const String withdrawals = "\$";
+  static const String requestWithdraw = "Withdraw";
+
+  ///========================Message Send offer====================>
+  static const String sendOffer = "Send Offer";
+  static const String selectHelp = "Select Help";
+  static const String helpDescription = "Help Description";
+  static const String writeHelpDescription = "Write help description";
+  static const String price = "Price";
+  static const String enterPrice = "Enter service price";
 
 
 }
