@@ -107,7 +107,7 @@ class _SendOfferScreenState extends State<SendOfferScreen> {
                           //===============================> Send offer Button <===============================
                           CustomButton(
                             onTap: () {
-                              Get.offAllNamed(AppRoutes.chatScreen);
+                              // Get.offAllNamed(AppRoutes.chatScreen);
                             },
                             text: AppString.sendOffer,
                           ),

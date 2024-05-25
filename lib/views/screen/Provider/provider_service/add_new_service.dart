@@ -150,7 +150,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                           //===============================> Service Button <===============================
                           CustomButton(
                             onTap: () {
-                              Get.offAllNamed(AppRoutes.providerServiceScreen);
+                              // Get.offAllNamed(AppRoutes.providerServiceScreen);
                             },
                             text: AppString.addService,
                           ),
