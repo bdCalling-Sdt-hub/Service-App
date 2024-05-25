@@ -9,12 +9,23 @@ import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
-import '../../../base/all_service_card.dart';
 import '../../../base/custom_text.dart';
 import '../provider_myhelps/inner_widgets/helps_booking_card.dart';
 
-class ProviderHomeScreen extends StatelessWidget {
+class ProviderHomeScreen extends StatefulWidget {
   const ProviderHomeScreen({super.key});
+
+  @override
+  State<ProviderHomeScreen> createState() => _ProviderHomeScreenState();
+}
+
+class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
+
+  List totalBookingsCompletedCancelledList = [
+    {"bookingsCompleted": "Total Bookings", "bookingsNumber": "800"},
+    {"bookingsCompleted": "Completed", "bookingsNumber": "720"},
+    {"bookingsCompleted": "Cancelled", "bookingsNumber": "420"}
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -79,15 +90,15 @@ class ProviderHomeScreen extends StatelessWidget {
                   SvgPicture.asset(AppIcons.dropdown)
                 ],
               ),
+              SizedBox(height: 17.h),
 
+              ///===================Booking Container===================>
+              TotalBookingsCompletedRow(
+                providerInfoList: totalBookingsCompletedCancelledList,
+              ),
               SizedBox(
                   height: 20.h
               ),
-
-
-
-
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -133,6 +144,49 @@ class ProviderHomeScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+
+class TotalBookingsCompletedRow extends StatelessWidget {
+  final List? providerInfoList;
+  const TotalBookingsCompletedRow({super.key, this.providerInfoList});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(
+        providerInfoList!.length,
+            (index) {
+          return Container(
+              width: 112.w,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.r),
+                  border: Border.all(color: AppColors.primaryColor,width: 0.5)),
+              child: Padding(
+                padding: EdgeInsets.all(8.r),
+                child: Center(
+                  child: Column(
+                    children: [
+                      CustomText(
+                        text:
+                        '${providerInfoList![index]['bookingsCompleted']}',
+                        fontsize: 12.h,
+                      ),
+                      CustomText(
+                        text:
+                        '${providerInfoList![index]['bookingsNumber']}',
+                        fontsize: 16.h,
+                        fontWeight: FontWeight.w500,
+                      )
+                    ],
+                  ),
+                ),
+              ));
+        },
       ),
     );
   }
