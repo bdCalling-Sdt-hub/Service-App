@@ -5,7 +5,7 @@ import '../../../../../utils/app_colors.dart';
 import '../../../../base/custom_text.dart';
 
 
-class HelpsBookingsCard extends StatelessWidget {
+class ProviderHelpsBookingsCard extends StatelessWidget {
   final VoidCallback? ontap;
   final String? helpImage;
   final int? selectedBottonItem;
@@ -14,7 +14,7 @@ class HelpsBookingsCard extends StatelessWidget {
   final String? helpName;
   final String? personName;
 
-  const HelpsBookingsCard(
+  const ProviderHelpsBookingsCard(
       {super.key,
         this.helpImage,
         this.reting,
@@ -33,7 +33,7 @@ class HelpsBookingsCard extends StatelessWidget {
             border: Border.all(color: AppColors.primaryColor),
             borderRadius: BorderRadius.circular(8.r)),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w,top: 12.h),
           child: SizedBox(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
