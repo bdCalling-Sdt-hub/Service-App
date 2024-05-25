@@ -2,10 +2,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 import '../../../../helpers/image_picker_helper.dart';
-import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
@@ -34,7 +32,12 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppString.editService),
+        title: CustomText(
+          text: AppString.editService,
+          fontsize: 18.h,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black333333,
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -150,7 +153,7 @@ class _EditServiceScreenState extends State<EditServiceScreen> {
                           //===============================> Service Button <===============================
                           CustomButton(
                             onTap: () {
-                              Get.offAllNamed(AppRoutes.providerServiceScreen);
+                              // Get.offAllNamed(AppRoutes.providerServiceScreen);
                             },
                             text: AppString.save,
                           ),

@@ -77,19 +77,19 @@ class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScr
                           ),
                         ),
 
-                        SizedBox(width: 10.w,),
+                        // SizedBox(width: 10.w,),
 
-                        Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.whiteF4F9EC,
-                              borderRadius: BorderRadius.circular(8.r)),
-                          child: Padding(
-                            padding: EdgeInsets.all(10.h),
-                            child: Center(
-                              child: SvgPicture.asset(AppIcons.call2),
-                            ),
-                          ),
-                        )
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //       color: AppColors.whiteF4F9EC,
+                        //       borderRadius: BorderRadius.circular(8.r)),
+                        //   child: Padding(
+                        //     padding: EdgeInsets.all(10.h),
+                        //     child: Center(
+                        //       child: SvgPicture.asset(AppIcons.call2),
+                        //     ),
+                        //   ),
+                        // )
 
                       ],
                     ),
