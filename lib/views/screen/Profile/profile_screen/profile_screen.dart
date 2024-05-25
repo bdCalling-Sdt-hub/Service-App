@@ -26,23 +26,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool switchToProvide = false;
   String role = '';
 
-
   @override
   void initState() {
-    getPrefsData();
     super.initState();
+    getPrefsData();
   }
 
-  getPrefsData()async{
-    role = await PrefsHelper.getString(AppConstants.role);
+  getPrefsData() async {
+    String fetchedRole = await PrefsHelper.getString(AppConstants.role);
+    print('Fetched role: $fetchedRole');
+    setState(() {
+      role = fetchedRole;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    print("=======>>> $role");
+
     return Scaffold(
       body: SingleChildScrollView(
-        // physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             const TopProfileCard(),
@@ -57,11 +59,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       prefixIcon: SvgPicture.asset(AppIcons.user,
                           color: AppColors.primaryColor),
                       sufixIcon: GestureDetector(
-                        onTap: () {
+                        onTap: () async{
                           setState(() {
                             switchToProvide = !switchToProvide;
-                            print(
-                                "==============================> $switchToProvide");
+
+                            PrefsHelper.setString(AppConstants.role, switchToProvide ?  'user' : "provider");
                             switchToProvide
                                 ? Get.toNamed(AppRoutes.providerBottomNavBar)
                                 : Get.toNamed(AppRoutes.userBottomNavBar);
@@ -103,37 +105,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppColors.primaryColor),
                   ),
 
-                  ///====================booking request===============>
-                  // CustomListTile(
-                  //   onTap: (){
-                  //     Get.toNamed(AppRoutes.bookingRequestScreen);
-                  //   },
-                  //   title: AppString.bookingRequest,
-                  //   prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,
-                  //       color: AppColors.primaryColor),
-                  // ),
+                  ///====================helps offers===============>
+                  role == "provider"
+                      ? const SizedBox()
+                      : CustomListTile(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.helpsScreen);
+                    },
+                    title: AppString.helpOffers,
+                    prefixIcon: SvgPicture.asset(AppIcons.helpIcons,
+                        color: AppColors.primaryColor),
+                  ),
+
 
                   ///====================my booking ===============>
                   CustomListTile(
                     onTap: () {
                       Get.toNamed(AppRoutes.userMyBookingsScreen);
                     },
-                    title: AppString.myBookings,
+                    title: AppString.myHelps,
                     prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,
                         color: AppColors.primaryColor),
                   ),
 
-                  ///====================my helps===============>
-                  role == "provider"
-                      ? const SizedBox()
-                      : CustomListTile(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.helpsScreen);
-                          },
-                          title: AppString.helpOffers,
-                          prefixIcon: SvgPicture.asset(AppIcons.helpIcons,
-                              color: AppColors.primaryColor),
-                        ),
 
                   ///====================wallet===============>
                   role == "user"
