@@ -12,26 +12,22 @@ import 'custom_two_button.dart';
 class BookingCard extends StatelessWidget {
   final VoidCallback? ontap;
   final String? bookingImage;
-  final String? bookingName;
-  final String? personName;
-  final String? location;
-  final String? rating;
-  final String? distance;
+  final String? serviceName;
+  final String? userName;
+  final String? details;
 
-
-  const BookingCard({
-    super.key,
-    this.ontap,
-    this.bookingImage,
-    this.bookingName,
-    this.personName,
-    this.location, this.rating, this.distance,
-  });
+  const BookingCard(
+      {super.key,
+      this.ontap,
+      this.bookingImage,
+      this.serviceName,
+      this.userName,
+      this.details});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ontap,
+      // onTap: ontap,
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: AppColors.primaryColor),
@@ -45,8 +41,9 @@ class BookingCard extends StatelessWidget {
                   children: [
                     Container(
                         clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.r)),
+                        decoration: const BoxDecoration(
+                        shape: BoxShape.circle
+                        ),
                         child: Image.asset(
                           '$bookingImage',
                           height: 112.h,
@@ -59,66 +56,10 @@ class BookingCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ///==========================Rating and Distance Row================================>
-                          Row(
-                            children: [
-                              SingleChildScrollView(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset(
-                                          AppIcons.star,
-                                          fit: BoxFit.cover,
-                                        ),
-
-                                        ///==================Rating Text===================>
-                                        CustomText(
-                                            top: 3.h,
-                                            text: " $rating",
-                                            fontsize: 10.h,
-                                            fontWeight: FontWeight.w400,
-                                            color: AppColors.subTextColor5c5c5c)
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 40.w,
-                                    ),
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset(
-                                          AppIcons.locationServiceCard,
-                                          color: AppColors.primaryColor,
-                                        ),
-
-                                        ///======================Distance======================>
-                                        Container(
-                                          constraints: const BoxConstraints(
-                                              maxWidth: 150),
-                                          child: CustomText(
-                                              textOverflow:
-                                                  TextOverflow.ellipsis,
-                                              text: " $distance",
-                                              fontsize: 12.h,
-                                              fontWeight: FontWeight.w400,
-                                              color:
-                                                  AppColors.subTextColor5c5c5c),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-
-                          ///========================service name======================>
                           Container(
                             constraints: const BoxConstraints(maxWidth: 150),
                             child: CustomText(
-                                text: "serviceName",
+                                text: "$userName",
                                 fontsize: Dimensions.fontSizeDefault.h,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black,
@@ -126,25 +67,42 @@ class BookingCard extends StatelessWidget {
                                 bottom: 4.h),
                           ),
 
-                          ///=========================person name=========================>
+                          ///========================service name======================>
                           Container(
                             constraints: const BoxConstraints(maxWidth: 150),
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  AppIcons.person,
-                                  height: 12.h,
-                                  color: AppColors.subTextColor5c5c5c,
-                                ),
-                                Expanded(
-                                  child: CustomText(
-                                      textAlign: TextAlign.start,
-                                      textOverflow: TextOverflow.ellipsis,
-                                      text: " $personName",
-                                      fontsize: 12.h,
-                                      color: AppColors.subTextColor5c5c5c),
-                                ),
-                              ],
+                            child: CustomText(
+                                text: "$serviceName",
+                                fontsize: 16.h,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                                top: 4.h,
+                                bottom: 4.h),
+                          ),
+
+                          ///=========================details =========================>
+                          Container(
+                            constraints: const BoxConstraints(maxWidth: 150),
+                            child: Expanded(
+                              child: CustomText(
+                                  textAlign: TextAlign.start,
+                                  textOverflow: TextOverflow.ellipsis,
+                                  text: "$details",
+                                  fontsize: 12.h,
+                                  maxline: 2,
+                                  color: AppColors.subTextColor5c5c5c),
+                            ),
+                          ),
+
+                          Container(
+                            constraints: const BoxConstraints(maxWidth: 200),
+                            child: Expanded(
+                              child: CustomText(
+                                  top: 4.h,
+                                  textAlign: TextAlign.start,
+                                  text: "36.00",
+                                  fontWeight: FontWeight.w600,
+                                  fontsize: 20.h,
+                                  color: AppColors.primaryColor),
                             ),
                           )
                         ],
@@ -155,7 +113,7 @@ class BookingCard extends StatelessWidget {
                 SizedBox(height: 16.h),
                 CustomTwoButon(
                   width: 152.w,
-                  btnNameList: ['Cancel', 'Accept'],
+                  btnNameList: const ['Cancel', 'Accept'],
                   leftBtnOnTap: () {
                     Get.back();
                   },

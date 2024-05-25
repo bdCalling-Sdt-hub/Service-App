@@ -117,9 +117,9 @@ class ProviderHomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
-                      child: HelpsBookingsCard(
+                      child: ProviderHelpsBookingsCard(
                         ontap: () {
-                          Get.toNamed(AppRoutes.bookingDetailsScreen);
+                          Get.toNamed(AppRoutes.providerBookingDetailsScreen);
                         },
                         helpImage: AppImages.helpImage,
                         // selectedBottonItem: selectedIndex,

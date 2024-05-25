@@ -52,7 +52,7 @@ class WalletScreen extends StatelessWidget {
             SizedBox(height: 31.h),
             CustomButton(
                 onTap: () {
-                  Get.offAllNamed(AppRoutes.walletWithdrawalScreen);
+                  Get.toNamed(AppRoutes.walletWithdrawalScreen);
                 },
                 text: AppString.withdraw),
             SizedBox(height: 30.h),

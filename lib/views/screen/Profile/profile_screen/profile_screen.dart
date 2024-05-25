@@ -63,10 +63,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           setState(() {
                             switchToProvide = !switchToProvide;
 
-                            PrefsHelper.setString(AppConstants.role, switchToProvide ?  'user' : "provider");
+                            // PrefsHelper.setString(AppConstants.role, switchToProvide ?  'user' : "provider");
                             // switchToProvide
                             //     ? Get.toNamed(AppRoutes.providerBottomNavBar)
                             //     : Get.toNamed(AppRoutes.userBottomNavBar);
+
                           });
                         },
                         child: Stack(
@@ -110,7 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ? const SizedBox()
                       : CustomListTile(
                     onTap: () {
-                      Get.toNamed(AppRoutes.providerhelpsScreen);
+                      Get.toNamed(AppRoutes.userHelpOfferScreen);
                     },
                     title: AppString.helpOffers,
                     prefixIcon: SvgPicture.asset(AppIcons.helpIcons,
@@ -124,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                      role == 'provider' ?   Get.toNamed(AppRoutes.providerhelpsScreen) :  Get.toNamed(AppRoutes.userMyBookingsScreen);
                     },
                     title: AppString.myHelps,
-                    prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,
+                    prefixIcon: SvgPicture.asset(AppIcons.helpIcons,
                         color: AppColors.primaryColor),
                   ),
 

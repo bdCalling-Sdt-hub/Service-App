@@ -110,7 +110,7 @@ class AppString {
   static const String userName ="User name";
   static const String service ="Service";
   static const String status ="Status";
-  static const String markAsCompleted ="Mark as Completed";
+  static const String completeWork ="Complete Work";
 
 
   static const String edit = "Edit";

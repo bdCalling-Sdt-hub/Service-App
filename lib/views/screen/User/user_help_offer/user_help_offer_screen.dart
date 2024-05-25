@@ -3,22 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_dimentions.dart';
-
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_images.dart';
-import '../../../../utils/app_strings.dart';
 import '../../../base/all_booking_card.dart';
 import '../../../base/custom_text.dart';
 
-class BookingRequestScreen extends StatelessWidget {
-   const BookingRequestScreen({super.key});
+class UserHelpOfferScreen extends StatelessWidget {
+   const UserHelpOfferScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
-          text: AppString.bookingRequests,
+          text: 'Help Offers',
           fontsize: 18.h,
           fontWeight: FontWeight.w500,
           color: AppColors.black333333,
@@ -37,18 +35,16 @@ class BookingRequestScreen extends StatelessWidget {
                     return Padding(
                       padding:  EdgeInsets.only(top: index == 0 ?  10.h : 16.h),
                       child:  GestureDetector(
-                        onTap: (){
-                          Get.toNamed(AppRoutes.bookingDetailsScreen, parameters: {
-                            "screenType" : "profile"
-                          });
-                        },
+                        // onTap: (){
+                        //   Get.toNamed(AppRoutes.providerBookingDetailsScreen, parameters: {
+                        //     "screenType" : "profile"
+                        //   });
+                        // },
                         child: BookingCard(
                           bookingImage: AppImages.houseKeepingWoman,
-                          personName: "Ingredia Nutrisha",
-                          bookingName: 'Cleaning',
-                          location: "437 Star St, Los Angeles, USA",
-                          rating: "4.8",
-                          distance: '13 km',
+                          userName: "Ingredia Nutrisha",
+                          serviceName: 'Cleaning',
+                          details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit....",
                         ),
                       ),
                     );
