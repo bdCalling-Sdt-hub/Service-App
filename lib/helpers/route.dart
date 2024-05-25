@@ -11,14 +11,11 @@ import 'package:service_app/views/screen/Provider/provider_service/provider_serv
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
 import 'package:service_app/views/screen/Provider/wallet/wallet_withdrawal_screen.dart';
 import 'package:service_app/views/screen/message/send_offer_screen.dart';
-
-
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
-import '../views/screen/Profile/booking_request/booking_request_screen.dart';
 import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
-import '../views/screen/Provider/booking_details/booking_details_screen.dart';
+import '../views/screen/Provider/provider_booking_details/provider_booking_details_screen.dart';
 import '../views/screen/Provider/provider_bottm_nav_bar/provider_bottom_nav_bar.dart';
 import '../views/screen/Provider/provider_myhelps/provider_myhelps_screen.dart';
 import '../views/screen/Provider/provider_service/edit_service_screen.dart';
@@ -29,6 +26,7 @@ import '../views/screen/User/User_my_bookings/user_my_booking_service_details_sc
 import '../views/screen/User/User_my_bookings/user_my_bookings_screen.dart';
 import '../views/screen/User/user_all_service/user_all_service_screen.dart';
 import '../views/screen/User/user_category/user_category_screen.dart';
+import '../views/screen/User/user_help_offer/user_help_offer_screen.dart';
 import '../views/screen/User/user_search/user_search_screen.dart';
 import '../views/screen/User/user_service_details/user_service_details_screen.dart';
 import '../views/screen/change_password/change_password_screen.dart';
@@ -67,14 +65,14 @@ class AppRoutes{
   static String walletScreen="/WalletScreen";
   static String myHelps="/My Helps";
 
-  static String bookingRequestScreen="/BookingRequestScreen";
+   static String userHelpOfferScreen="/UserHelpOfferScreen";
 
   static String editProfileScreen="/EditProfileScreen";
   static String userMyBookingsScreen="/UserMyBookingsScreen";
   static String userMyBookignServiceDetailsScreen="/UserMyBookignServiceDetailsScreen";
   ///provider======>
   static String providerBottomNavBar="/ProviderBottomNavBar";
-  static String bookingDetailsScreen="/BookingDetailsScreen";
+  static String providerBookingDetailsScreen="/ProviderBookingDetailsScreen";
   static String providerServiceScreen="/ProviderServiceScreen";
   static String walletWithdrawalScreen="/WalletWithdrawalScreen";
   static String providerhelpsScreen="/ProviderHelpsScreen";
@@ -114,13 +112,13 @@ class AppRoutes{
     GetPage(name:walletWithdrawalScreen, page: ()=> WalletWithdrawalScreen()),
 
 
-    GetPage(name:bookingRequestScreen, page: ()=> BookingRequestScreen()),
+    GetPage(name:userHelpOfferScreen, page: ()=> UserHelpOfferScreen()),
 
     GetPage(name:editProfileScreen, page: ()=> EditProfileScreen()),
     GetPage(name:userMyBookingsScreen, page: ()=> UserMyBookingsScreen()),
     GetPage(name:userMyBookignServiceDetailsScreen, page: ()=> UserMyBookignServiceDetailsScreen()),
     GetPage(name:providerBottomNavBar, page: ()=> ProviderBottomNavBar()),
-    GetPage(name:bookingDetailsScreen, page: ()=> BookingDetailsScreen()),
+    GetPage(name:providerBookingDetailsScreen, page: ()=> ProviderBookingDetailsScreen()),
     GetPage(name:providerServiceScreen, page: ()=> ProviderServiceScreen()),
     GetPage(name:providerhelpsScreen, page: ()=> ProviderHelpsScreen()),
     GetPage(name:sendOfferScreen, page: ()=> SendOfferScreen()),

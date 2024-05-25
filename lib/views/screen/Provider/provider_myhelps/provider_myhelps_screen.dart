@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_strings.dart';
+import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_images.dart';
 import '../../../base/custom_text.dart';
@@ -71,15 +74,15 @@ class _ProviderHelpsScreenState extends State<ProviderHelpsScreen> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:  EdgeInsets.only(bottom: 16.h),
-                    child: HelpsBookingsCard(
+                    child: ProviderHelpsBookingsCard(
                       ///========================route to details screen==========================>
                       ontap: (){
-                        // Get.toNamed(AppRoutes.userMyBookignServiceDetailsScreen, parameters: {
-                        //   'bookingStatus' : selectedIndex.toString()
-                        // });
+                        Get.toNamed(AppRoutes.providerBookingDetailsScreen, parameters: {
+                          'bookingStatus' : selectedIndex.toString()
+                        });
                       },
                       helpImage: AppImages.helpImage,
-                      selectedBottonItem: selectedIndex,
+                      // selectedBottonItem: selectedIndex,
                       helpName: "House Cleaning",
                       personName: "Jane Cooper",
                     ),

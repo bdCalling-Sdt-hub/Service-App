@@ -11,14 +11,14 @@ import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_text.dart';
 
-class BookingDetailsScreen extends StatefulWidget {
-  const BookingDetailsScreen({super.key});
+class ProviderBookingDetailsScreen extends StatefulWidget {
+  const ProviderBookingDetailsScreen({super.key});
 
   @override
-  State<BookingDetailsScreen> createState() => _BookingDetailsScreenState();
+  State<ProviderBookingDetailsScreen> createState() => _ProviderBookingDetailsScreenState();
 }
 
-class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
+class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,42 +98,42 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                 ],
               ),
 
-              SizedBox(height: 14.h),
-
-              ///========================user name========================?>
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppIcons.personIcon,
-                        color: AppColors.color9DA0A3,
-                        height: 15.h,
-                        width: 11.5.w,
-                        fit: BoxFit.cover,
-                      ),
-                      CustomText(
-                        text: '  Ingredia Nutrisha',
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.color9DA0A3,
-                        fontsize: 16.h,
-                      ),
-                    ],
-                  ),
-                  // Row(
-                  //   children: [
-                  //     SvgPicture.asset(AppIcons.star,
-                  //         height: 16.h, width: 16.h),
-                  //     CustomText(
-                  //       text: '4.8 ',
-                  //       fontWeight: FontWeight.w400,
-                  //       color: AppColors.subTextColor5c5c5c,
-                  //     ),
-                  //   ],
-                  // )
-                ],
-              ),
+              // SizedBox(height: 14.h),
+              //
+              // ///========================user name========================?>
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Row(
+              //       children: [
+              //         SvgPicture.asset(
+              //           AppIcons.personIcon,
+              //           color: AppColors.color9DA0A3,
+              //           height: 15.h,
+              //           width: 11.5.w,
+              //           fit: BoxFit.cover,
+              //         ),
+              //         CustomText(
+              //           text: '  Ingredia Nutrisha',
+              //           fontWeight: FontWeight.w400,
+              //           color: AppColors.color9DA0A3,
+              //           fontsize: 16.h,
+              //         ),
+              //       ],
+              //     ),
+              //     // Row(
+              //     //   children: [
+              //     //     SvgPicture.asset(AppIcons.star,
+              //     //         height: 16.h, width: 16.h),
+              //     //     CustomText(
+              //     //       text: '4.8 ',
+              //     //       fontWeight: FontWeight.w400,
+              //     //       color: AppColors.subTextColor5c5c5c,
+              //     //     ),
+              //     //   ],
+              //     // )
+              //   ],
+              // ),
               SizedBox(height: 8.h),
 
               ///=========================location========================>
@@ -176,7 +176,26 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                 top: 10.h,
               ),
 
-              ///====================about help =========================>
+
+              ///====================Help Details=========================>
+
+              CustomText(
+                  text: 'Help Details',
+                  fontWeight: FontWeight.w500,
+                  fontsize: 20.h,
+                  top: 16.h),
+
+              CustomText(
+                  text: 'Etiam vel metus vel nunc tincidunt ornare. Vestibulum ac massa cursus, sagittis leo at, pulvinar elit. Duis quis urna in elit tempus accumsan.',
+                  fontsize: 14.h,
+                  textAlign: TextAlign.start,
+                  color: AppColors.subTextColor5c5c5c,
+                  maxline: 10,
+                  top: 12.h),
+
+
+
+              ///====================user details =========================>
               CustomText(
                   text: 'User Details',
                   fontWeight: FontWeight.w500,
@@ -229,7 +248,7 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                     width: 165.w,
                     btnNameList: ['Cancel' , 'Accept'],
                   ) :
-              CustomButton(onTap: () {}, text: AppString.markAsCompleted)
+              CustomButton(onTap: () {}, text: AppString.completeWork)
             ],
           ),
         ),
