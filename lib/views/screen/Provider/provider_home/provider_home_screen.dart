@@ -11,6 +11,7 @@ import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/all_service_card.dart';
 import '../../../base/custom_text.dart';
+import '../provider_myhelps/inner_widgets/helps_booking_card.dart';
 
 class ProviderHomeScreen extends StatelessWidget {
   const ProviderHomeScreen({super.key});
@@ -116,15 +117,14 @@ class ProviderHomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
-                      child: AllServiceCard(
+                      child: HelpsBookingsCard(
                         ontap: () {
                           Get.toNamed(AppRoutes.bookingDetailsScreen);
                         },
-                        serviceImage: AppImages.serviceImage,
-                        reting: "4.8",
-                        distance: "15 km",
-                        serviceName: 'House Cleaning',
-                        personName: "Ingredia Nutrisha",
+                        helpImage: AppImages.helpImage,
+                        // selectedBottonItem: selectedIndex,
+                        helpName: "House Cleaning",
+                        personName: "Jane Cooper",
                       ),
                     );
                   },

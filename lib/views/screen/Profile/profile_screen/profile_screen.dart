@@ -29,6 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     getPrefsData();
+    role;
   }
 
   getPrefsData() async {
@@ -41,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    print("======> role : $role");
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -63,9 +64,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             switchToProvide = !switchToProvide;
 
                             PrefsHelper.setString(AppConstants.role, switchToProvide ?  'user' : "provider");
-                            switchToProvide
-                                ? Get.toNamed(AppRoutes.providerBottomNavBar)
-                                : Get.toNamed(AppRoutes.userBottomNavBar);
+                            // switchToProvide
+                            //     ? Get.toNamed(AppRoutes.providerBottomNavBar)
+                            //     : Get.toNamed(AppRoutes.userBottomNavBar);
                           });
                         },
                         child: Stack(
@@ -109,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ? const SizedBox()
                       : CustomListTile(
                     onTap: () {
-                      Get.toNamed(AppRoutes.helpsScreen);
+                      Get.toNamed(AppRoutes.providerhelpsScreen);
                     },
                     title: AppString.helpOffers,
                     prefixIcon: SvgPicture.asset(AppIcons.helpIcons,
@@ -117,10 +118,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
 
 
-                  ///====================my booking ===============>
+                  ///====================my helps ===============>
                   CustomListTile(
                     onTap: () {
-                      Get.toNamed(AppRoutes.userMyBookingsScreen);
+                     role == 'provider' ?   Get.toNamed(AppRoutes.providerhelpsScreen) :  Get.toNamed(AppRoutes.userMyBookingsScreen);
                     },
                     title: AppString.myHelps,
                     prefixIcon: SvgPicture.asset(AppIcons.bookingRequest,

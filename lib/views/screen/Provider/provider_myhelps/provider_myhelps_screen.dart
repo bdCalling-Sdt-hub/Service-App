@@ -9,14 +9,14 @@ import '../../User/User_my_bookings/Inner_widgets/selected_button.dart';
 import 'inner_widgets/helps_booking_card.dart';
 
 
-class HelpsScreen extends StatefulWidget {
-  const HelpsScreen({super.key});
+class ProviderHelpsScreen extends StatefulWidget {
+  const ProviderHelpsScreen({super.key});
 
   @override
-  State<HelpsScreen> createState() => _HelpsScreenState();
+  State<ProviderHelpsScreen> createState() => _ProviderHelpsScreenState();
 }
 
-class _HelpsScreenState extends State<HelpsScreen> {
+class _ProviderHelpsScreenState extends State<ProviderHelpsScreen> {
   int selectedIndex = 0;
 
   List<String> items = ['Completed', 'Pending', 'Cancelled'];
@@ -37,6 +37,7 @@ class _HelpsScreenState extends State<HelpsScreen> {
         padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w,vertical: Dimensions.paddingSizeDefault.h),
         child: Column(
           children: [
+
             SizedBox(
               height: 60.h,
               child: ListView.builder(

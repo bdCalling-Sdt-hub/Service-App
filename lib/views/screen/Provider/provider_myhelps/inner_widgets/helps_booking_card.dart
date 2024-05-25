@@ -99,6 +99,7 @@ class HelpsBookingsCard extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           color: AppColors.primaryColor),
 
+                      selectedBottonItem== null ? SizedBox() :
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4.r),
