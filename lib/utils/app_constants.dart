@@ -1,6 +1,10 @@
 import '../models/language_model.dart';
 
 class AppConstants{
+  static String isLogged="IsLogged";
+  static String role="role";
+
+
 
   static String APP_NAME="project_template";
 

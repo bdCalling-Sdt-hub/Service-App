@@ -135,6 +135,7 @@ class AppString {
 
 
   static const String myHelps = "My Helps";
+  static const String helpOffers = "Help Offers";
   static const String wallet = "Wallet";
   static const String wallets = "Wallet";
   static const String reviews = "Reviews";
