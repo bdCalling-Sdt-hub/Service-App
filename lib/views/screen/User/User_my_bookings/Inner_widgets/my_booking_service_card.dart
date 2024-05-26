@@ -88,15 +88,16 @@ class MyBookingServiceCard extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(height: 24.h,),
 
-                      CustomText(
-                          textOverflow: TextOverflow.ellipsis,
-                          text: "36.00",
-                          fontsize: 16.h,
-                          bottom: 15.h,
-                          top: 4.h,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.primaryColor),
+                      // CustomText(
+                      //     textOverflow: TextOverflow.ellipsis,
+                      //     text: "36.00",
+                      //     fontsize: 16.h,
+                      //     bottom: 15.h,
+                      //     top: 4.h,
+                      //     fontWeight: FontWeight.w500,
+                      //     color: AppColors.primaryColor),
 
                       Container(
                         decoration: BoxDecoration(

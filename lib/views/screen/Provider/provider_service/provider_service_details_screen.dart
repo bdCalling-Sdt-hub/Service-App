@@ -150,7 +150,7 @@ class _ProviderServiceDetailsScreenState extends State<ProviderServiceDetailsScr
               ///====================Edit Button =========================>
               CustomButton(
                   onTap: () {
-                    Get.offAllNamed(AppRoutes.editServiceScreen);
+                    Get.toNamed(AppRoutes.editServiceScreen);
                   },
                   text: AppString.edit),
 

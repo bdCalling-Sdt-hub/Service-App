@@ -93,18 +93,18 @@ class BookingCard extends StatelessWidget {
                             ),
                           ),
 
-                          Container(
-                            constraints: const BoxConstraints(maxWidth: 200),
-                            child: Expanded(
-                              child: CustomText(
-                                  top: 4.h,
-                                  textAlign: TextAlign.start,
-                                  text: "36.00",
-                                  fontWeight: FontWeight.w600,
-                                  fontsize: 20.h,
-                                  color: AppColors.primaryColor),
-                            ),
-                          )
+                          // Container(
+                          //   constraints: const BoxConstraints(maxWidth: 200),
+                          //   child: Expanded(
+                          //     child: CustomText(
+                          //         top: 4.h,
+                          //         textAlign: TextAlign.start,
+                          //         text: "36.00",
+                          //         fontWeight: FontWeight.w600,
+                          //         fontsize: 20.h,
+                          //         color: AppColors.primaryColor),
+                          //   ),
+                          // )
                         ],
                       ),
                     ),

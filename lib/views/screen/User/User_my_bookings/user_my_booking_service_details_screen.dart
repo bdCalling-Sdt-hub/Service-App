@@ -160,22 +160,22 @@ class _UserMyBookignServiceDetailsScreenState
 
               SizedBox(height: 12.h),
 
-              ///=================amount text================>
-              Row(
-                children: [
-                  CustomText(
-                    text: '\$36.00 ',
-                    color: AppColors.primaryColor,
-                    fontWeight: FontWeight.w600,
-                    fontsize: 20.h,
-                  ),
-                  CustomText(
-                    text: '  (floor price)',
-                    color: AppColors.subTextColor5c5c5c,
-                    fontsize: 12.h,
-                  ),
-                ],
-              ),
+              // ///=================amount text================>
+              // Row(
+              //   children: [
+              //     CustomText(
+              //       text: '\$36.00 ',
+              //       color: AppColors.primaryColor,
+              //       fontWeight: FontWeight.w600,
+              //       fontsize: 20.h,
+              //     ),
+              //     CustomText(
+              //       text: '  (floor price)',
+              //       color: AppColors.subTextColor5c5c5c,
+              //       fontsize: 12.h,
+              //     ),
+              //   ],
+              // ),
 
               SizedBox(height: 16.h),
 

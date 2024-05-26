@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:service_app/utils/app_strings.dart';
 import '../../../../helpers/image_picker_helper.dart';
 import '../../../../utils/app_colors.dart';
