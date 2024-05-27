@@ -89,15 +89,16 @@ class ProviderHelpsBookingsCard extends StatelessWidget {
                             top: 4.h,
                             bottom: 4.h),
                       ),
+                      SizedBox(height: 10.h,),
 
-                      CustomText(
-                          textOverflow: TextOverflow.ellipsis,
-                          text: "\$36.00",
-                          fontsize: 20.h,
-                          bottom: 15.h,
-                          top: 4.h,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.primaryColor),
+                      // CustomText(
+                      //     textOverflow: TextOverflow.ellipsis,
+                      //     text: "\$36.00",
+                      //     fontsize: 20.h,
+                      //     bottom: 15.h,
+                      //     top: 4.h,
+                      //     fontWeight: FontWeight.w500,
+                      //     color: AppColors.primaryColor),
 
                       selectedBottonItem== null ? SizedBox() :
                       Container(

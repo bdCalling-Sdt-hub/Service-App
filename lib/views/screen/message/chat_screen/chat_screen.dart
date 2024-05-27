@@ -145,13 +145,16 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               const SizedBox(height: 33),
               Center(
-                child: CustomButton(
-                  width: 147.w,
-                  height: 36.h,
-                  onTap: () {
-                    Get.toNamed(AppRoutes.sendOfferScreen);
-                  },
-                  text: AppString.sendOffer,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  child: CustomButton(
+                    width: 147.h,
+                    height: 36.h,
+                    onTap: () {
+                      Get.toNamed(AppRoutes.sendOfferScreen);
+                    },
+                    text: AppString.sendOffer,
+                  ),
                 ),
               ),
               SizedBox(height: 20.h,),

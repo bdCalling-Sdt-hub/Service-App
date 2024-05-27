@@ -76,7 +76,7 @@ class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScr
                             ),
                           ),
                         ),
-
+                        
                         // SizedBox(width: 10.w,),
 
                         // Container(
@@ -168,13 +168,13 @@ class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScr
                 ],
               ),
 
-              CustomText(
-                text: "\$36.00",
-                fontsize: 20.h,
-                fontWeight: FontWeight.w600,
-                color: AppColors.primaryColor,
-                top: 10.h,
-              ),
+              // CustomText(
+              //   text: "\$36.00",
+              //   fontsize: 20.h,
+              //   fontWeight: FontWeight.w600,
+              //   color: AppColors.primaryColor,
+              //   top: 10.h,
+              // ),
 
 
               ///====================Help Details=========================>
