@@ -1,98 +1,75 @@
-// import 'dart:convert';
-// import 'package:flutter/material.dart';
-//
-// import 'package:get/get.dart';
-//
-// import '../../services/api_checker.dart';
-// import '../../services/api_client.dart';
-//
-// class AuthController extends GetxController {
-//
-//
-//
-//
-//   final fullNameCtrl = TextEditingController();
-//   final emailCtrl = TextEditingController();
-//   final passwordCtrl = TextEditingController();
-//   final conPasswordCtrl = TextEditingController();
-//   RxBool isSelectedRole = true.obs;
-//   RxString role = "client".obs;
-//   var signUpLoading = false.obs;
-//   var token = "";
-//
-//   ///==================role selected==============>
-//   void selectRole(String selectedRole) {
-//     role.value = selectedRole;
-//   }
-//
-//
-//
-//
-//
-//
-//   /// <====================== Sign in =================->
-//   TextEditingController signInPassCtrl = TextEditingController();
-//   TextEditingController signInEmailCtrl = TextEditingController();
-//   var signInLoading =false.obs;
-//
-//
-//   handleSignIn()async{
-//     signInLoading(true);
-//     var headers = {
-//       //'Content-Type': 'application/x-www-form-urlencoded'
-//       'Content-Type': 'application/json'
-//     };
-//     Map<String,dynamic> body={
-//       'email': signInEmailCtrl.text.trim(),
-//       'password': signInPassCtrl.text.trim()
-//     };
-//     Response response= await ApiClient.postData(ApiConstants.loginEndPoint,json.encode(body),headers: headers);
-//     print("====> ${response.body}");
-//     if(response.statusCode==200){
-//
-//       await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
-//       await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['user']['id']);
-//
-//       String userRole = response.body['data']['attributes']['user']['role'];
-//       await PrefsHelper.setString(AppConstants.role, userRole);
-//       // await PrefsHelper.setBool(AppConstants.isLogged, true);
-//
-//       if(userRole == Role.employee.name){
-//         if(response.body['data']['attributes']['user']['isInterest']){
-//           Get.offAllNamed(AppRoutes.taskerBottomNavBar);
-//           await PrefsHelper.setBool(AppConstants.isLogged, true);
-//         }else{
-//           Get.offAllNamed(AppRoutes.addInterestScreen);
-//         }
-//       }else if(userRole == Role.client.name){
-//         Get.offAllNamed(AppRoutes.requesterBottomNavBar);
-//         await PrefsHelper.setBool(AppConstants.isLogged, true);
-//       }
-//
-//       print("====================================================Sagor ");
-//       signInEmailCtrl.clear();
-//       signInPassCtrl.clear();
-//     } else{
-//       //  ApiChecker.checkApi(response);
-//       Fluttertoast.showToast(msg:response.statusText??"");
-//     }
-//     signInLoading(false);
-//   }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// }
+import 'dart:convert';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+
+import '../../services/api_checker.dart';
+import '../../services/api_client.dart';
+import '../helpers/route.dart';
+import '../services/api_constants.dart';
+
+class AuthController extends GetxController {
+
+
+  TextEditingController fullNameCtrl = TextEditingController();
+  TextEditingController emailCtrl = TextEditingController();
+  TextEditingController phoneCtrl = TextEditingController();
+  TextEditingController passwordCtrl = TextEditingController();
+  TextEditingController conPasswordCtrl = TextEditingController();
+
+  RxBool isSelectedRole = true.obs;
+  RxString role = "client".obs;
+  var signUpLoading = false.obs;
+  var token = "";
+
+  ///==================role selected==============>
+  void selectRole(String selectedRole) {
+    role.value = selectedRole;
+  }
+
+  ///<=============Sign Up===========>
+  handleSignUp() async {
+    signUpLoading(true);
+    try {
+      Map<String, dynamic> body = {
+        "fullName": fullNameCtrl.text.trim(),
+        "email": emailCtrl.text.trim(),
+        "phone": phoneCtrl.text.trim(),
+        "password": passwordCtrl.text,
+        "role": "${role.value}",
+      };
+
+      print("=================>ROLE ${role.value}");
+      print("===================> ${body}");
+
+      var headers = {'Content-Type': 'application/json'};
+
+      Response response = await ApiClient.postData(
+          ApiConstants.signUp, jsonEncode(body),
+          headers: headers);
+
+      print("============> ${response.body} and ==> ${response.statusCode}");
+      if (response.statusCode == 200) {
+        Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
+          "email": emailCtrl.text.trim(),
+          "screenType": "signup",
+        });
+
+        fullNameCtrl.clear();
+        emailCtrl.clear();
+        phoneCtrl.clear();
+        passwordCtrl.clear();
+        conPasswordCtrl.clear();
+      } else {
+        ApiChecker.checkApi(response);
+      }
+    } catch (e, s) {
+      print("===> error : $e");
+      print("===> error : $s");
+    }
+    signUpLoading(false);
+  }
+
+
+}

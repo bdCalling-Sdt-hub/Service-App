@@ -85,7 +85,7 @@ class AppRoutes{
     GetPage(name:splashScreen, page: ()=> SplashScreen()),
     GetPage(name:profileScreen, page: ()=> ProfileScreen()),
     GetPage(name:onBoardingScreen, page: ()=>const OnBoardingScreen()),
-    GetPage(name:signUpScreen, page: ()=>const SignUpScreen()),
+    GetPage(name:signUpScreen, page: ()=> SignUpScreen()),
     GetPage(name:userBottomNavBar, page: ()=>const UserBottomNavBar()),
     GetPage(name:notificationScreen, page: ()=> NotificationScreen()),
     GetPage(name:userCategoryScreen, page: ()=> UserCategoryScreen()),
