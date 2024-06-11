@@ -76,7 +76,8 @@ class SignInScreen extends StatelessWidget {
               ),
               /// <-0------------------------- Sign in button ------------------>
               CustomButton(onTap: () {
-               Get.parameters["role"] == 'user' ? Get.offAllNamed(AppRoutes.userBottomNavBar) :Get.offAllNamed(AppRoutes.providerBottomNavBar);
+               Get.parameters["role"] == 'user' ? Get.offAllNamed(AppRoutes.userBottomNavBar)
+                   :Get.offAllNamed(AppRoutes.providerBottomNavBar);
               }, text: AppString.signIn),
         
              SizedBox(height: 209.h),

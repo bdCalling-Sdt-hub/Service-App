@@ -52,7 +52,8 @@ class _UserServiceDetailsScreenState extends State<UserServiceDetailsScreen> {
                       BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
                   child: CustomNetworkImage(
                       imageUrl:
-                          'https://i.dailymail.co.uk/1s/2019/08/26/01/17686528-7393969-image-a-51_1566780716617.jpg',
+                          'https://i.dailymail.co.uk/1s/2019/08/26/01/17686528-7393969-image-a-51_1566780716617.'
+                              'jpg',
                       height: 164.h,
                       width: double.infinity)),
         
@@ -100,7 +101,7 @@ class _UserServiceDetailsScreenState extends State<UserServiceDetailsScreen> {
                         fit: BoxFit.cover,
                       ),
                       CustomText(
-                        text: '  Ingredia Nutrisha',
+                        text: 'Ingredia Nutrisha',
                         fontWeight: FontWeight.w400,
                         color: AppColors.color9DA0A3,
                         fontsize: 16.h,
@@ -109,7 +110,7 @@ class _UserServiceDetailsScreenState extends State<UserServiceDetailsScreen> {
                   ),
                   Row(
                     children: [
-                      SvgPicture.asset(AppIcons.star,height: 16.h,width: 16.h),
+                      SvgPicture.asset(AppIcons.star,height: 16.h,width: 16.w),
                       CustomText(
                         text: '4.8 ',
                         fontWeight: FontWeight.w400,

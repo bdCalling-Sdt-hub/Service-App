@@ -3,6 +3,9 @@ import '../models/language_model.dart';
 class AppConstants{
   static String isLogged="IsLogged";
   static String role="role";
+  static const String bearerToken = "BearerToken";
+  static String id = "id";
+
 
 
 
@@ -28,3 +31,6 @@ class AppConstants{
   ];
 
 }
+
+enum Status { loading, completed, error, internetError }
+enum Role { client, employee, admin}

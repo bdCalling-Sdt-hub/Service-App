@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -9,25 +7,42 @@ import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/custom_button.dart';
 
+import '../../../../../controllers/auth_controller.dart';
 import '../../../../../helpers/route.dart';
 import '../../../../../utils/app_strings.dart';
 import '../../../../base/custom_text_field.dart';
 
-class TextfieldSection extends StatelessWidget {
+class TextfieldSection extends StatefulWidget {
+  const TextfieldSection({super.key});
 
-  TextfieldSection({super.key});
-  bool isChecked = true;
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController createPasswordController = TextEditingController();
-  TextEditingController reEnterPasswordController = TextEditingController();
+  @override
+  State<TextfieldSection> createState() => _TextfieldSectionState();
+}
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class _TextfieldSectionState extends State<TextfieldSection> {
 
+   AuthController _authController = Get.put(AuthController());
+
+  bool _isChecked = false;
+
+  bool isCheckboxError = false;
+
+  // ///================toggle obscure===============>
+  // RxBool isObscure = true.obs;
+  //
+  // RxBool isObscures = true.obs;
+  //
+  // toggleIsObscure() {
+  //   isObscure.value = !isObscure.value;
+  // }
+  //
+  // toggleReIsObscures() {
+  //   isObscures.value = !isObscures.value;
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     return Column(
       children: [
         Form(
@@ -40,7 +55,7 @@ class TextfieldSection extends StatelessWidget {
                 //===============================> Full Name Text-field <===============================
                 CustomTextField(
                   hintText: AppString.fullName,
-                  controller: nameController,
+                  controller: _authController.fullNameCtrl,
                   prefixIcon:Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: SvgPicture.asset(AppIcons.personIcon),
@@ -51,7 +66,7 @@ class TextfieldSection extends StatelessWidget {
                 //===============================> Email Text-field <===============================
                 CustomTextField(
                   hintText: AppString.email,
-                  controller: emailController,
+                  controller: _authController.emailCtrl,
                   isEmail: true,
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -62,7 +77,7 @@ class TextfieldSection extends StatelessWidget {
                 //===============================> Phone Number Text-field <===============================
                 CustomTextField(
                   hintText: AppString.phoneNumber,
-                  controller: phoneController,
+                  controller: _authController.phoneCtrl,
                   borderColor: const Color(0xffCEE3A9),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -71,9 +86,10 @@ class TextfieldSection extends StatelessWidget {
                 ),
                 SizedBox(height: 16.h),
                 //===============================> Create Password Text-field <===============================
+
                 CustomTextField(
                   hintText: AppString.createPassword,
-                  controller: createPasswordController,
+                  controller: _authController.passwordCtrl,
                   borderColor: const Color(0xffCEE3A9),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -85,7 +101,7 @@ class TextfieldSection extends StatelessWidget {
                 //===============================> Re-Enter Password Text-field <===============================
                 CustomTextField(
                   hintText: AppString.reEnterPassword,
-                  controller: reEnterPasswordController,
+                  controller: _authController.conPasswordCtrl,
                   borderColor: const Color(0xffCEE3A9),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -141,10 +157,19 @@ class TextfieldSection extends StatelessWidget {
 
                 SizedBox(height: 24.h,),
                 //===============================> Sign Up Button <===============================
-                CustomButton(onTap:(){
+                CustomButton(
+                    onTap:(){
+                    if (_formKey.currentState!.validate()) {
+                      if (_isChecked) {
+                        _authController.handleSignUp();
+                      } else {
+                        setState(() {
+                          isCheckboxError = true;
+                        });
+                      }
+                    }
                   Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
-                    'screenType' : 'signUpScreen'
-                  });
+                    'screenType' : 'signUpScreen'});
 
                 }, text:AppString.signUp),
                 SizedBox(height: 14.h,),

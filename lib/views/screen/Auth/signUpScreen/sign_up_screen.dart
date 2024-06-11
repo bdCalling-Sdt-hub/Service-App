@@ -35,7 +35,7 @@ class SignUpScreen extends StatelessWidget {
                   child: Image.asset(AppImages.appLogo,
                       width: 171.w, height: 49.h)),
               SizedBox(height: 57.h),
-              TextfieldSection(),
+              const TextfieldSection(),
             ],
           ),
         ),
