@@ -37,7 +37,7 @@ class SignInScreen extends StatelessWidget {
                   child: SvgPicture.asset(
                 AppIcons.logoIcon,height: 54.h, width: 164.w,fit: BoxFit.cover,)
               ),
-              //=================================> Text-field Section <===============================
+              //=================================> Email Text-field Section <===============================
               SizedBox(height: 56.h),
               CustomTextField(
                 controller: _emailCtrl,
@@ -48,6 +48,7 @@ class SignInScreen extends StatelessWidget {
                   child: SvgPicture.asset(AppIcons.mailIcon),
                 ),
               ),
+              //=================================> Password Text-field Section <===============================
               SizedBox(
                 height: 16.h,
               ),
