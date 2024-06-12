@@ -21,9 +21,9 @@ class TextfieldSection extends StatefulWidget {
 
 class _TextfieldSectionState extends State<TextfieldSection> {
 
-   AuthController _authController = Get.put(AuthController());
+   final AuthController _authController = Get.put(AuthController());
 
-  bool _isChecked = false;
+  final bool _isChecked = false;
 
   bool isCheckboxError = false;
 
@@ -42,11 +42,14 @@ class _TextfieldSectionState extends State<TextfieldSection> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
     return Column(
       children: [
         Form(
-          key: _formKey,
+          key: formKey,
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 5.w),
             child: Column(
@@ -60,7 +63,6 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: SvgPicture.asset(AppIcons.personIcon),
                   ),
-
                 ),
                 SizedBox(height: 16.h),
                 //===============================> Email Text-field <===============================
@@ -159,7 +161,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 //===============================> Sign Up Button <===============================
                 CustomButton(
                     onTap:(){
-                    if (_formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       if (_isChecked) {
                         _authController.handleSignUp();
                       } else {
