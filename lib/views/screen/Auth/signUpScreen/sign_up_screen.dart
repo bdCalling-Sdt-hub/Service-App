@@ -7,12 +7,12 @@ import '../../../base/custom_text.dart';
 import 'InnerWidget/textfield_section.dart';
 
 class SignUpScreen extends StatelessWidget {
+
   const SignUpScreen({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: CustomText(

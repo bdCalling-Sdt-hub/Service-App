@@ -1,23 +1,32 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/custom_button.dart';
 
+import '../../../../controllers/auth_controller.dart';
 import '../../../../helpers/route.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_text.dart';
 import 'InnerWidget/pin_code_field.dart';
 
-class VerifyOTPScreen extends StatelessWidget {
+class VerifyOTPScreen extends StatefulWidget {
   const VerifyOTPScreen({super.key});
 
   @override
+  State<VerifyOTPScreen> createState() => _VerifyOTPScreenState();
+}
+
+class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
+
+  var prameters = Get.parameters;
+  final _authCtrl = Get.put(AuthController());
+
+  @override
   Widget build(BuildContext context) {
+    print("=================${prameters["email"]} and ${prameters["screenType"]}");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       //===============================> AppBar Section <===============================
@@ -26,12 +35,14 @@ class VerifyOTPScreen extends StatelessWidget {
           AppString.verifyOTP,
         ),
       ),
+      //===============================> Body Section <===============================
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              //=================================> PasswordOutline Section <===============================
               SizedBox(height: 120.h),
               Center(
                   child: SvgPicture.asset(AppIcons.passwordOutlineIcon)),
@@ -43,8 +54,9 @@ class VerifyOTPScreen extends StatelessWidget {
                 textAlign: TextAlign.start,
                 bottom: 12.h,
               ),
+              //=================================> PinCodeField Section <===============================
               SizedBox(height: 16.h),
-              const CustomPinCodeTextField(),
+               CustomPinCodeTextField(otpCTE: _authCtrl.otpCtrl,),
               SizedBox(height: 24.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,9 +65,12 @@ class VerifyOTPScreen extends StatelessWidget {
                   CustomText(
                     text: AppString.didntReceive,
                   ),
-                  //===============================> Resent Text <=========================
+                  //===============================> Resend Text <=========================
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+
+
+                    },
                     child: CustomText(
                       text: AppString.resend,
                       color: AppColors.primaryColor,
@@ -66,12 +81,18 @@ class VerifyOTPScreen extends StatelessWidget {
               SizedBox(height: 24.h,),
               //===============================> Verify OTP Button <=========================
               CustomButton(
+                  loading: _authCtrl.verifyLoading.value,
+                  text: AppString.verifyOTP.tr,
                   onTap: () {
-                   Get.parameters['screenType'] == 'signUpScreen' ?
-                   Get.toNamed(AppRoutes.moreInformationScreen) :
-                   Get.toNamed(AppRoutes.resetPasswordScreen) ;
+                    if (_authCtrl.otpCtrl.text.length > 5) {
+                      _authCtrl.handleOtpVery(
+                          phone: "${_authCtrl.selectedCountryCode}${prameters['phone']}",
+                          otp: _authCtrl.otpCtrl.text,
+                          type: "${prameters['screenType']}");
+                    }
+
                   },
-                  text: AppString.verifyOTP),
+                  ),
               SizedBox(height: 170.h,)
 
             ],

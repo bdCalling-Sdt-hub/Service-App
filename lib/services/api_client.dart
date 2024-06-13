@@ -83,7 +83,6 @@ class ApiClient extends GetxService {
     debugPrint(
         '====> API Response: [${response0.statusCode}] $uri\n${response0
             .body}');
-    // log.e("Handle Response error} ");
     return response0;
   }
 }
