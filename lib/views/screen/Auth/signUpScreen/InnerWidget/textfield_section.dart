@@ -149,7 +149,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 //===============================> Sign Up Button <===============================
                 CustomButton(
                     onTap:(){
-                    if (formKey.currentState!.validate()) {
+                    if (!formKey.currentState!.validate()) {
                       if (_isChecked) {
                         _authController.handleSignUp();
                       } else {
@@ -158,8 +158,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                         });
                       }
                     }
-                  Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
-                    'screenType' : 'signUpScreen'});
+                  // Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
+                  //   'screenType' : 'signUpScreen'});
 
                 }, text:AppString.signUp),
                 SizedBox(height: 14.h,),

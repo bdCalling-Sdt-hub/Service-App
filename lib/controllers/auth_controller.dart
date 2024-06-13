@@ -39,14 +39,15 @@ class AuthController extends GetxController {
             "email": emailCtrl.text.trim(),
             "phone": phoneCtrl.text.trim(),
             "password": passwordCtrl.text,
-            "role": role.value,
-
+            "role": 'User',
     };
     var response = await ApiClient.postData(
       ApiConstants.signUp,
-      json.encode(body),
+      jsonEncode(body),
       headers: header,
     );
+
+    print("======================================>>> ${response.body}, and \n $body and ${body.runtimeType}");
     if (response.statusCode == 200) {
       debugPrint("Sign up===============================");
       Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
