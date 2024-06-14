@@ -23,34 +23,17 @@ class _TextfieldSectionState extends State<TextfieldSection> {
 
    final AuthController _authController = Get.put(AuthController());
 
-  final bool _isChecked = false;
-
-  bool isCheckboxError = false;
-
-  // ///================toggle obscure===============>
-  // RxBool isObscure = true.obs;
-  //
-  // RxBool isObscures = true.obs;
-  //
-  // toggleIsObscure() {
-  //   isObscure.value = !isObscure.value;
-  // }
-  //
-  // toggleReIsObscures() {
-  //   isObscures.value = !isObscures.value;
-  // }
+   bool _isChecked = false;
+   bool isCheckboxError = false;
+   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
-
-    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-    return Column(
-      children: [
-        Form(
-          key: formKey,
-          child: Padding(
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          Padding(
             padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 5.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,10 +103,15 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                       width: 24.w,
                       height: 25.h,
                       child: Checkbox(
-                        value: true,
+                        value: _isChecked,
                         checkColor: AppColors.whiteF4F9EC,
                         activeColor: Get.theme.primaryColor,
-                        onChanged: (value) {},
+                        isError: isCheckboxError,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            _isChecked = value!;
+                          });
+                        },
                       ),
                     ),
                     SizedBox(
@@ -161,7 +149,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 //===============================> Sign Up Button <===============================
                 CustomButton(
                     onTap:(){
-                    if (formKey.currentState!.validate()) {
+                    if (!formKey.currentState!.validate()) {
                       if (_isChecked) {
                         _authController.handleSignUp();
                       } else {
@@ -170,8 +158,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                         });
                       }
                     }
-                  Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
-                    'screenType' : 'signUpScreen'});
+                  // Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
+                  //   'screenType' : 'signUpScreen'});
 
                 }, text:AppString.signUp),
                 SizedBox(height: 14.h,),
@@ -197,8 +185,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
