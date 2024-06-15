@@ -162,7 +162,6 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
       ),
     );
   }
-
   void showImagePickerOption(BuildContext context, String type) {
     showModalBottomSheet(
       backgroundColor: AppColors.backgroundColor,
@@ -203,7 +202,6 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                           _image = imageBytes;
                         });
                       }
-
                       Navigator.pop(context);
                     },
                     child: SizedBox(
@@ -245,7 +243,6 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                           _image = imageBytes;
                         });
                       }
-
                       Navigator.pop(context);
                     },
                     child: SizedBox(
