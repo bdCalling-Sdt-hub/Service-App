@@ -13,7 +13,7 @@ import '../../../base/custom_text.dart';
 import '../../../base/custom_text_field.dart';
 
 class MoreInformationScreen extends StatefulWidget {
-  MoreInformationScreen({super.key});
+  const MoreInformationScreen({super.key});
 
   @override
   State<MoreInformationScreen> createState() => _MoreInformationScreenState();

@@ -7,7 +7,6 @@ import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/custom_button.dart';
 
 import '../../../../controllers/auth_controller.dart';
-import '../../../../helpers/route.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_text.dart';
 import 'InnerWidget/pin_code_field.dart';
@@ -68,8 +67,8 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
                   //===============================> Resend Text <=========================
                   InkWell(
                     onTap: () {
-
-
+                      _authCtrl.resendOtp("${prameters["email"]}");
+                      _authCtrl.otpCtrl.clear();
                     },
                     child: CustomText(
                       text: AppString.resend,
@@ -80,19 +79,17 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
               ),
               SizedBox(height: 24.h,),
               //===============================> Verify OTP Button <=========================
+
               CustomButton(
                   loading: _authCtrl.verifyLoading.value,
-                  text: AppString.verifyOTP.tr,
+                  text: AppString.verifyOTP,
                   onTap: () {
-                    if (_authCtrl.otpCtrl.text.length > 5) {
-                      _authCtrl.handleOtpVery(
-                          phone: "${_authCtrl.selectedCountryCode}${prameters['phone']}",
-                          otp: _authCtrl.otpCtrl.text,
-                          type: "${prameters['screenType']}");
-                    }
+                if (_authCtrl.otpCtrl.text.length > 5) {
+                  _authCtrl.handleOtpVery(email: "${prameters["email"]}", otp: _authCtrl.otpCtrl.text, type: "${prameters["screenType"]}");
+                }
 
-                  },
-                  ),
+              }
+              ),
               SizedBox(height: 170.h,)
 
             ],

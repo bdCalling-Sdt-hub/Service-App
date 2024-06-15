@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
 
@@ -17,7 +18,6 @@ class AuthController extends GetxController {
   RxString role = "client".obs;
   var signUpLoading = false.obs;
   var token = "";
-  String selectedCountryCode = '+880';
 
   ///==================role selected==============>
   void selectRole(String selectedRole) {
@@ -42,7 +42,7 @@ class AuthController extends GetxController {
             "role": 'User',
     };
     var response = await ApiClient.postData(
-      ApiConstants.signUp,
+      ApiConstants.signUpEndPoint,
       jsonEncode(body),
       headers: header,
     );
@@ -59,34 +59,52 @@ class AuthController extends GetxController {
   }
 
 
+  /// ============== resend otp================>
+  var resendOtpLoading = false.obs;
+  resendOtp(String email) async {
+    resendOtpLoading(true);
+    var body = {"email": email};
+    Map<String, String> header = {'Content-Type': 'application/json'};
+    var response = await ApiClient.postData(
+        ApiConstants.forgotEndPoint, json.encode(body),
+        headers: header);
+    print("===> ${response.body}");
+    if (response.statusCode == 200) {
+
+    } else {
+      Fluttertoast.showToast(
+          msg: response.statusText ?? "",
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          gravity: ToastGravity.CENTER);
+    }
+    resendOtpLoading(false);
+  }
+
   //=====================================> Otp verify <====================================
   TextEditingController otpCtrl = TextEditingController();
   var verifyLoading = false.obs;
 
   handleOtpVery(
-      {required String phone,
+      {required String email,
         required String otp,
         required String type}) async {
-    var headers = {
-      'Content-Type': 'application/json',
-    };
-
     try {
-      var body = {'phone': phone, 'otpCode': otp};
+      var body = {'code': otp, 'email': email};
+      var headers = {'Content-Type': 'application/json'};
       verifyLoading(true);
-      Response response = await ApiClient.postData(ApiConstants.otpVerify, jsonEncode(body), headers: headers);
-
-      print("===========.> $response");
+      Response response = await ApiClient.postData(
+          ApiConstants.otpVerifyEndPoint, json.encode(body),
+          headers: headers);
       print("============${response.body} and ${response.statusCode}");
       if (response.statusCode == 200) {
-        await PrefsHelper.setString(AppConstants.bearerToken, response.body["data"]['token']);
-
-        print('================token ${response.body["data"]['token']}');
-
-        if (type == "forgotPasswordScreen") {
-          Get.toNamed(AppRoutes.resetPasswordScreen,
-              parameters: {"phone": phone});
-        } else {
+        await PrefsHelper.setString(AppConstants.role, response.body["data"]['token']);
+        var role = response.body["data"]['token'];
+        print("===> role : $role");
+        otpCtrl.clear();
+        if( type ==  "signup"){
+          Get.toNamed(AppRoutes.moreInformationScreen, parameters: {"email" : email});
+        }else{
           Get.offAllNamed(AppRoutes.signInScreen);
         }
 
@@ -99,6 +117,5 @@ class AuthController extends GetxController {
     }
     verifyLoading(false);
   }
-
 
 }
