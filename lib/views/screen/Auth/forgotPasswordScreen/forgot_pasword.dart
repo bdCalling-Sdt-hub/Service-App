@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:service_app/utils/app_strings.dart';
 
-import '../../../../helpers/route.dart';
+import '../../../../controllers/auth_controller.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../base/custom_button.dart';
 import '../../../base/custom_text.dart';
@@ -12,8 +12,7 @@ import '../../../base/custom_text_field.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
    ForgotPasswordScreen({super.key});
-
-  TextEditingController emailController = TextEditingController();
+   final _authcontroller = Get.put(AuthController());
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -55,7 +54,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                           //===============================> Email Text-field <===============================
                           SizedBox(height: 12.h),
                           CustomTextField(
-                            controller: emailController,
+                            controller: _authcontroller.forgetEmailTextCtrl,
                             isEmail: true,
                             hintText: AppString.email,
                             prefixIcon: Padding(
@@ -66,10 +65,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                           SizedBox(height: 44.h),
                          // ===============================> Button Field <===============================
                           CustomButton(
+                              text: AppString.getOTP,
                               onTap: () {
-                                Get.toNamed(AppRoutes.verifyOTpScreen);
-                              },
-                              text: AppString.getOTP),
+                                if (_formKey.currentState!.validate()) {
+                                  _authcontroller.handleForget();
+                                }
+                              }),
                           SizedBox(height: 221,),
                         ],
                       ))
