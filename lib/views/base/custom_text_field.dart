@@ -75,7 +75,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 bool data = AppConstants.passwordValidator.hasMatch(value);
                 if (value.isEmpty) {
                   return "Please enter ${widget.hintText!.toLowerCase()}";
-                } else if (!data) {
+                } else if (data) {
                   return "Insecure password detected.";
                 }
               }

@@ -79,10 +79,10 @@ class AuthController extends GetxController {
     print("====> ${response.body}");
     if(response.statusCode==200){
 
-      await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
-      await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['user']['id']);
-
-      String userRole = response.body['data']['attributes']['user']['role'];
+      await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['token']);
+      await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['_id']);
+print("=========================================================");
+      String userRole = response.body['data']['attributes']['role'];
       await PrefsHelper.setString(AppConstants.role, userRole);
 
 
@@ -183,7 +183,6 @@ class AuthController extends GetxController {
       "email":forgetEmailTextCtrl.text.trim(),
     };
     var headers = {
-      'Accept': 'application/json',
       'Content-Type': 'application/json'
     };
     var response= await ApiClient.postData(ApiConstants.forgotPasswordEndPoint, json.encode(body),headers: headers);
