@@ -4,9 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:service_app/helpers/route.dart';
-import 'package:service_app/utils/app_dimentions.dart';
 
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';

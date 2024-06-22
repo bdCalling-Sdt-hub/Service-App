@@ -7,5 +7,8 @@ class ApiConstants{
   static String otpVerifyEndPoint = "/users/verify";
   static String forgotEndPoint = "/users/resendOtp";
   static String updateProfileEndPoint = "/users/createAccountByimage";
+  static const String signInEndPoint = "/users/signIn";
+  static const String forgotPasswordEndPoint = "/users/forgotPassword";
+  static const String resetPasswordEndPoint = "/users/cahngePassword";
 
 }

@@ -158,8 +158,6 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                         });
                       }
                     }
-                  // Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
-                  //   'screenType' : 'signUpScreen'});
 
                 }, text:AppString.signUp),
                 SizedBox(height: 14.h,),

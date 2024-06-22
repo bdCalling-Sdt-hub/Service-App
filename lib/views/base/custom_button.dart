@@ -7,7 +7,14 @@ import '../../utils/style.dart';
 
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key,this.color,this.textStyle, this.padding =EdgeInsets.zero, required this.onTap,required this.text ,this.loading=false,this.width,this.height});
+  const CustomButton({super.key,
+    this.color,
+    this.textStyle,
+    this.padding =EdgeInsets.zero,
+    required this.onTap,
+    required this.text ,
+    this.loading=false,
+    this.width,this.height});
  final Function() onTap;
   final String text;
   final bool loading;

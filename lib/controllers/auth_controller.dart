@@ -59,6 +59,58 @@ class AuthController extends GetxController {
   }
 
 
+  // <====================== Sign in =================->
+
+  TextEditingController signInPassCtrl = TextEditingController();
+  TextEditingController signInEmailCtrl = TextEditingController();
+  var signInLoading =false.obs;
+
+
+  handleSignIn()async{
+    signInLoading(true);
+    var headers = {
+      'Content-Type': 'application/json'
+    };
+    Map<String,dynamic> body={
+      'email': signInEmailCtrl.text.trim(),
+      'password': signInPassCtrl.text.trim()
+    };
+    Response response= await ApiClient.postData(ApiConstants.signInEndPoint,json.encode(body),headers: headers);
+    print("====> ${response.body}");
+    if(response.statusCode==200){
+
+      await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
+      await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['user']['id']);
+
+      String userRole = response.body['data']['attributes']['user']['role'];
+      await PrefsHelper.setString(AppConstants.role, userRole);
+
+
+      if(userRole == Role.Provider.name){
+        if(response.body['data']['attributes']['user']){
+
+          Get.offAllNamed(AppRoutes.userBottomNavBar);
+          await PrefsHelper.setBool(AppConstants.isLogged, true);
+
+        }else{
+          // Get.offAllNamed(AppRoutes.addInterestScreen);
+        }
+      }else if(userRole == Role.User.name){
+        Get.offAllNamed(AppRoutes.providerBottomNavBar);
+        await PrefsHelper.setBool(AppConstants.isLogged, true);
+      }
+
+      print("====================================================Ebrahim");
+      signInEmailCtrl.clear();
+      signInPassCtrl.clear();
+    } else{
+      Fluttertoast.showToast(msg:response.statusText??"");
+    }
+    signInLoading(false);
+  }
+
+
+
   /// ============== resend otp================>
   var resendOtpLoading = false.obs;
   resendOtp(String email) async {
@@ -117,5 +169,74 @@ class AuthController extends GetxController {
     }
     verifyLoading(false);
   }
+
+
+  ///==================forgot pass word===============>
+  TextEditingController forgetEmailTextCtrl=TextEditingController();
+  TextEditingController forgetConfirmPassTextCtrl=TextEditingController();
+  TextEditingController forgetNewPassTextCtrl=TextEditingController();
+  var forgotLoading = false.obs;
+
+  handleForget()async{
+    forgotLoading(true);
+    var body = {
+      "email":forgetEmailTextCtrl.text.trim(),
+    };
+    var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    var response= await ApiClient.postData(ApiConstants.forgotPasswordEndPoint, json.encode(body),headers: headers);
+    if(response.statusCode==200 || response.statusCode == 201){
+
+      Get.toNamed(AppRoutes.verifyOTpScreen, parameters: {
+        "email": forgetEmailTextCtrl.text.trim(),
+        "screenType": "forgetPasswordScreen",
+      });
+
+      forgetEmailTextCtrl.clear();
+    }else{
+      ApiChecker.checkApi(response);
+    }
+    forgotLoading(false);
+  }
+
+
+
+  /// <-------------------------- reset password --------------->
+  var resetPasswordLoading = false.obs;
+
+  resetPassword(String email, String password) async {
+    print("=======> $email, and $password");
+    resetPasswordLoading(true);
+    var body = {"email": email, "password": password};
+    Map<String, String> header = {'Content-Type': 'application/json'};
+    var response = await ApiClient.postData(
+        ApiConstants.resetPasswordEndPoint, json.encode(body),
+        headers: header);
+    if (response.statusCode == 200){
+      showDialog(context: Get.context!,
+          barrierDismissible:false,
+          builder:(_)=> AlertDialog(
+            title: const Text("Password reset!"),
+            content: const Text("Your password has been reset successfully."),
+            actions: [
+              TextButton(
+                  onPressed:(){
+                    Get.back();
+                    Get.back();
+                    Get.back();
+                    Get.back();
+                  }, child:const Text("Ok"))
+            ],
+          ));
+
+    } else {
+      debugPrint("error set password ${response.statusText}");
+      Fluttertoast.showToast(msg: "${response.statusText}",);
+    }
+    resetPasswordLoading(false);
+  }
+
 
 }
