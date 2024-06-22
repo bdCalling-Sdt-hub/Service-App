@@ -1,7 +1,10 @@
 
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PrefsHelper {
+class PrefsHelper extends GetxController{
+  static String token = "";
+
   static Future<String> getString(String key) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 

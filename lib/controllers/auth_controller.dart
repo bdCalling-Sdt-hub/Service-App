@@ -171,7 +171,7 @@ class AuthController extends GetxController {
   }
 
 
-  ///==================forgot pass word===============>
+  ///==================forgot password===============>
   TextEditingController forgetEmailTextCtrl=TextEditingController();
   TextEditingController forgetConfirmPassTextCtrl=TextEditingController();
   TextEditingController forgetNewPassTextCtrl=TextEditingController();
