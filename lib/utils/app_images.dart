@@ -9,6 +9,7 @@ class AppImages {
   static const String onboarding = "$path/Onboarding.png";
   static const String serviceImage = "$path/serviceImage.png";
   static const String helpImage = "$path/helpImage.png";
+  static const String person = "$path/person.png";
   static const String houseKeepingWoman = "$path/houseKeeping.png";
 
 }
