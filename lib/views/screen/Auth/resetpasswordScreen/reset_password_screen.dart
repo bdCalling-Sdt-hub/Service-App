@@ -5,16 +5,28 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:service_app/helpers/route.dart';
 
+import '../../../../controllers/auth_controller.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_button.dart';
 import '../../../base/custom_text_field.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
+class ResetPasswordScreen extends StatefulWidget {
+
   ResetPasswordScreen({super.key});
 
+
+
+  @override
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+}
+
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final TextEditingController setPassController = TextEditingController();
+
   final TextEditingController conformPassController = TextEditingController();
+
+  AuthController _authController = Get.put(AuthController());
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -70,10 +82,24 @@ class ResetPasswordScreen extends StatelessWidget {
                           SizedBox(height: 44.h),
                          // ===============================> Conform Password Button <===============================
                           CustomButton(
+                              text: AppString.resetPassword,
                               onTap: () {
-                                Get.offAllNamed(AppRoutes.signInScreen);
-                              },
-                              text: AppString.resetPassword),
+                                // if (_formKey.currentState!.validate()) {
+                                //   _authController.resetPassword(
+                                //       widget.email, setPassController.text);
+                                //   // Get.toNamed(AppRoutes.verifyOtpScreen);
+                                // }
+                              }),
+
+                          //  CustomButton(
+                         //      text: AppString.resetPassword,
+                         //      onpress: () {
+                         //        if (_formKey.currentState!.validate()) {
+                         //          _authController.resetPassword(
+                         //              widget.email, _newPassController.text);
+                         //          // Get.toNamed(AppRoutes.verifyOtpScreen);
+                         //        }
+                         //      }),),
                         ],
                       ))
                 ],

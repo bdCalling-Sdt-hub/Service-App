@@ -33,4 +33,4 @@ class AppConstants{
 }
 
 enum Status { loading, completed, error, internetError }
-enum Role { User, Provider, admin}
+enum Role { User, Provider, Admin}
