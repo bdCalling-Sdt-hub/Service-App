@@ -21,6 +21,33 @@ class ApiClient extends GetxService {
   static const int timeoutInSeconds = 30;
   static String bearerToken = "";
 
+
+
+
+  //==========================================> Get Data <======================================
+  static Future<Response> getData(String uri,
+      {Map<String, dynamic>? query, Map<String, String>? headers}) async {
+    bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
+
+    var mainHeaders = {
+      'Authorization': 'Bearer $bearerToken'
+    };
+    try {
+      debugPrint('====> API Call: $uri\nHeader: ${headers ?? mainHeaders}');
+
+      http.Response response = await client
+          .get(
+        Uri.parse(ApiConstants.baseUrl + uri),
+        headers: headers ?? mainHeaders,
+      )
+          .timeout(const Duration(seconds: timeoutInSeconds));
+      return handleResponse(response, uri);
+    } catch (e) {
+      debugPrint('------------${e.toString()}');
+      return const Response(statusCode: 1, statusText: noInternetMessage);
+    }
+  }
+
 //==========================================> Post Data <======================================
   static Future<Response> postData(String uri, dynamic body,
       {Map<String, String>? headers}) async {
