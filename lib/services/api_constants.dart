@@ -11,5 +11,6 @@ class ApiConstants{
   static const String forgotPasswordEndPoint = "/users/forgotPassword";
   static const String resetPasswordEndPoint = "/users/cahngePassword";
   static const String showBookingEndPoint = "/offer/showOfferBooking";
+  static const String recentBookingEndPoint = "/offer/recentBooking";
 
 }

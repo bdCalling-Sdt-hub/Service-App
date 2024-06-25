@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
+import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 
 import '../../services/api_client.dart';
 import '../helpers/pref_helpers.dart';
@@ -81,7 +82,7 @@ class AuthController extends GetxController {
 
       await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['token']);
       await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['_id']);
-print("=========================================================");
+      print("=========================================================");
       String userRole = response.body['data']['attributes']['role'];
       await PrefsHelper.setString(AppConstants.role, userRole);
 

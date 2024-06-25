@@ -3,12 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../controllers/show_booking_controller.dart';
 import '../../../../helpers/route.dart';
+import '../../../../models/show_booking_model.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
+import '../../../base/custom_page_loading.dart';
 import '../../../base/custom_text.dart';
 import '../provider_myhelps/inner_widgets/helps_booking_card.dart';
 
@@ -21,11 +24,13 @@ class ProviderHomeScreen extends StatefulWidget {
 
 class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
 
-  List totalBookingsCompletedCancelledList = [
-    {"bookingsCompleted": "Total Bookings", "bookingsNumber": "800"},
-    {"bookingsCompleted": "Completed", "bookingsNumber": "720"},
-    {"bookingsCompleted": "Cancelled", "bookingsNumber": "420"}
-  ];
+  final ShowBookingController showBookingController = Get.put(ShowBookingController());
+
+  // List totalBookingsCompletedCancelledList = [
+  //   {"bookingsCompleted": "Total Bookings", "bookingsNumber": "800"},
+  //   {"bookingsCompleted": "Completed", "bookingsNumber": "720"},
+  //   {"bookingsCompleted": "Cancelled", "bookingsNumber": "420"}
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -93,9 +98,22 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
               SizedBox(height: 17.h),
 
               ///===================Booking Container===================>
-              TotalBookingsCompletedRow(
-                providerInfoList: totalBookingsCompletedCancelledList,
-              ),
+
+              // TotalBookingsCompletedRow(
+              //   providerInfoList: showBookingController.groupList,
+              // ),
+
+              Obx(() {
+                showBookingController.showGetGroupList();
+                // print('=========================> ${showBookingController.groupList[0].cancelledBooking}');
+                if (showBookingController.isLoading.value) {
+                  return const Center(child: CustomPageLoading());
+                } else {
+                  return TotalBookingsCompletedRow(
+                    providerInfoList: showBookingController.showGroupList,
+                  );
+                }
+              }),
               SizedBox(
                   height: 20.h
               ),
@@ -133,7 +151,6 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                           Get.toNamed(AppRoutes.providerBookingDetailsScreen);
                         },
                         helpImage: AppImages.helpImage,
-                        // selectedBottonItem: selectedIndex,
                         helpName: "House Cleaning",
                         personName: "Jane Cooper",
                       ),
@@ -151,7 +168,7 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
 
 
 class TotalBookingsCompletedRow extends StatelessWidget {
-  final List? providerInfoList;
+  final List<ShowBookingModel>? providerInfoList;
   const TotalBookingsCompletedRow({super.key, this.providerInfoList});
 
   @override
@@ -172,13 +189,16 @@ class TotalBookingsCompletedRow extends StatelessWidget {
                   child: Column(
                     children: [
                       CustomText(
-                        text:
-                        '${providerInfoList![index]['bookingsCompleted']}',
+                        text: '${providerInfoList![index].totalBooking}',
                         fontsize: 12.h,
                       ),
                       CustomText(
-                        text:
-                        '${providerInfoList![index]['bookingsNumber']}',
+                        text: '${providerInfoList![index].completedBooking}',
+                        fontsize: 16.h,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      CustomText(
+                        text: '${providerInfoList![index].cancelledBooking}',
                         fontsize: 16.h,
                         fontWeight: FontWeight.w500,
                       )
