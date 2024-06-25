@@ -7,8 +7,8 @@ import '../services/api_checker.dart';
 import '../services/api_constants.dart';
 
 class ShowBookingController extends GetxController {
-  var groupList = <ShowBookingModel>[].obs;
-  var isLoading = true.obs;
+  var showGroupList = <ShowBookingModel>[].obs;
+  var isLoading = false.obs;
 
 
 
@@ -18,7 +18,7 @@ class ShowBookingController extends GetxController {
 
   }
 
-  getGroupList() async {
+  showGetGroupList() async {
     isLoading(true);
     String bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
     var headers = {
@@ -30,7 +30,7 @@ class ShowBookingController extends GetxController {
 
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = response.body['data']['attributes'];
-      groupList.value = jsonResponse.map((data) => ShowBookingModel.fromJson(data)).toList();
+      showGroupList.value = jsonResponse.map((data) => ShowBookingModel.fromJson(data)).toList();
       isLoading(false);
     } else {
       ApiChecker.checkApi(response);
