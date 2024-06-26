@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:service_app/controllers/auth_controller.dart';
 import 'package:service_app/helpers/pref_helpers.dart';
 import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_constants.dart';
@@ -19,6 +20,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  AuthController _authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       children: [
                         TextButton(
                           onPressed: () {
+                            _authController.role.value = "User";
                             Get.toNamed(AppRoutes.signInScreen, parameters: {
                               'role' : "user"
                             });
@@ -98,6 +101,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                         TextButton(
                           onPressed: () {
+                            _authController.role.value = "Provider";
                             Get.toNamed(AppRoutes.signInScreen,
                                 parameters: {
                                   'role' : "provider"

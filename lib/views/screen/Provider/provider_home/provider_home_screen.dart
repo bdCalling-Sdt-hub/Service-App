@@ -25,6 +25,7 @@ class ProviderHomeScreen extends StatefulWidget {
 class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
 
   final ShowBookingController showBookingController = Get.put(ShowBookingController());
+  // final RecentBookingController recentBookingController = Get.put(RecentBookingController());
 
   // List totalBookingsCompletedCancelledList = [
   //   {"bookingsCompleted": "Total Bookings", "bookingsNumber": "800"},
@@ -140,6 +141,34 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
 
 
               SizedBox(height: 16.h),
+
+              // Obx(() {
+              //   recentBookingController.recentGetGroupList();
+              //   if (RecentBookingController.isLoading.value) {
+              //     return  Center(child: CustomPageLoading());
+              //   }
+              //    else {
+              //     return Expanded(
+              //       child: ListView.builder(
+              //         itemCount: RecentBookingController.recentGroupList.length,
+              //         itemBuilder: (context, index) {
+              //           final booking = RecentBookingController().recentGetGroupList[index];
+              //           return Padding(
+              //             padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
+              //             child: ProviderHelpsBookingsCard(
+              //               ontap: () {
+              //                 Get.toNamed(AppRoutes.providerBookingDetailsScreen);
+              //               },
+              //               helpImage: AppImages.helpImage,
+              //               helpName: booking.selectHelp,
+              //               personName: "Jane Cooper", // Update this with dynamic data if needed
+              //             ),
+              //           );
+              //         },
+              //       ),
+              //     );
+              //   }
+              // }),
               Expanded(
                 child: ListView.builder(
                   itemCount: 10,
@@ -211,3 +240,9 @@ class TotalBookingsCompletedRow extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+

@@ -16,7 +16,7 @@ import '../utils/app_constants.dart';
 class AuthController extends GetxController {
 
   RxBool isSelectedRole = true.obs;
-  RxString role = "client".obs;
+  RxString role = "Provider".obs;
   var signUpLoading = false.obs;
   var token = "";
 
@@ -34,14 +34,16 @@ class AuthController extends GetxController {
 
   handleSignUp() async {
     signUpLoading(true);
-    Map<String, String> header = {'Content-Type': 'application/json'};
+    var header = {'Content-Type': 'application/json'};
     var body = {
             "name": fullNameCtrl.text.trim(),
             "email": emailCtrl.text.trim(),
             "phone": phoneCtrl.text.trim(),
             "password": passwordCtrl.text,
-            "role": 'User',
+             "role": '$role',
     };
+
+    print("=======>>> $body");
     var response = await ApiClient.postData(
       ApiConstants.signUpEndPoint,
       jsonEncode(body),
@@ -94,7 +96,7 @@ class AuthController extends GetxController {
           await PrefsHelper.setBool(AppConstants.isLogged, true);
 
         }else{
-          // Get.offAllNamed(AppRoutes.addInterestScreen);
+          Get.offAllNamed(AppRoutes.providerHomeScreen);
         }
       }else if(userRole == Role.User.name){
         Get.offAllNamed(AppRoutes.providerBottomNavBar);
@@ -158,7 +160,7 @@ class AuthController extends GetxController {
         if( type ==  "signup"){
           Get.toNamed(AppRoutes.moreInformationScreen, parameters: {"email" : email});
         }else{
-          Get.offAllNamed(AppRoutes.signInScreen);
+          Get.offAllNamed(AppRoutes.resetPasswordScreen);
         }
 
       } else {
