@@ -6,6 +6,7 @@ import 'package:service_app/views/screen/Auth/signUpScreen/sign_up_screen.dart';
 import 'package:service_app/views/screen/Auth/verifyOTPScreen/verify_otp_screen.dart';
 import 'package:service_app/views/screen/Profile/profile_screen/profile_screen.dart';
 import 'package:service_app/views/screen/Provider/Wallet/wallet_screen.dart';
+import 'package:service_app/views/screen/Provider/provider_home/provider_home_screen.dart';
 import 'package:service_app/views/screen/Provider/provider_service/add_new_service.dart';
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
@@ -72,6 +73,7 @@ class AppRoutes{
   static String userMyBookignServiceDetailsScreen="/UserMyBookignServiceDetailsScreen";
   ///provider======>
   static String providerBottomNavBar="/ProviderBottomNavBar";
+  static String providerHomeScreen="/ProviderHomeScreen";
   static String providerBookingDetailsScreen="/ProviderBookingDetailsScreen";
   static String providerServiceScreen="/ProviderServiceScreen";
   static String walletWithdrawalScreen="/WalletWithdrawalScreen";
@@ -122,6 +124,7 @@ class AppRoutes{
     GetPage(name:providerServiceScreen, page: ()=> ProviderServiceScreen()),
     GetPage(name:providerhelpsScreen, page: ()=> ProviderHelpsScreen()),
     GetPage(name:sendOfferScreen, page: ()=> SendOfferScreen()),
+    GetPage(name:providerHomeScreen, page: ()=> ProviderHomeScreen()),
 
   ];
 

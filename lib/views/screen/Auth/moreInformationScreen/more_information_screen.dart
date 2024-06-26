@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -168,7 +169,12 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                             loading:  _informationController.loading.value,
                             onTap: () {
                               if (_formKey.currentState!.validate()) {
-
+                                _informationController.moreInformationProfile(
+                                    addressController.text,
+                                    _image as File?,
+                                    frontSideImage,
+                                    backSideImage
+                                );
                               }
                               // Get.toNamed(AppRoutes.userBottomNavBar);
                             },

@@ -149,8 +149,11 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 //===============================> Sign Up Button <===============================
                 CustomButton(
                     onTap:(){
-                    if (!formKey.currentState!.validate()) {
+
+                    if (formKey.currentState!.validate()) {
+
                       if (_isChecked) {
+
                         _authController.handleSignUp();
                       } else {
                         setState(() {
