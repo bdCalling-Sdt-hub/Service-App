@@ -19,4 +19,13 @@ class ImagePickerHelper {
       return await File(returnImage.path).readAsBytes();
     }
   }
+
+  static Future<File?> pickImage(ImageSource imageSource) async {
+    final returnImage =
+    await ImagePicker().pickImage(source:imageSource);
+    if (returnImage != null) {
+      return File(returnImage.path);
+    }
+    return null;
+  }
 }

@@ -168,13 +168,7 @@ class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScr
                 ],
               ),
 
-              // CustomText(
-              //   text: "\$36.00",
-              //   fontsize: 20.h,
-              //   fontWeight: FontWeight.w600,
-              //   color: AppColors.primaryColor,
-              //   top: 10.h,
-              // ),
+
 
 
               ///====================Help Details=========================>
@@ -248,7 +242,8 @@ class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScr
                     width: 165.w,
                     btnNameList: ['Cancel' , 'Accept'],
                   ) :
-              CustomButton(onTap: () {}, text: AppString.completeWork)
+              CustomButton(onTap: () {},
+                  text: AppString.completeWork)
             ],
           ),
         ),

@@ -86,7 +86,7 @@ class ApiClient extends GetxService {
         List<MultipartListBody>? multipartListBody,
         Map<String, String>? headers}) async {
     try {
-      bearerToken = PrefsHelper.token;
+      bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
 
       var mainHeaders = {
         'Authorization': 'Bearer $bearerToken'
@@ -95,7 +95,7 @@ class ApiClient extends GetxService {
       debugPrint('====> API Body: $body with ${multipartBody?.length} picture');
 
       var request =
-      http.MultipartRequest('POST', Uri.parse(ApiConstants.baseUrl + uri));
+      http.MultipartRequest('PATCH', Uri.parse(ApiConstants.baseUrl + uri));
       request.fields.addAll(body);
 
       if (multipartBody!.isNotEmpty) {

@@ -56,6 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: SvgPicture.asset(AppIcons.mailIcon),
                   ),
+
                 ),
                 //=================================> Password Text-field Section <===============================
                 SizedBox(

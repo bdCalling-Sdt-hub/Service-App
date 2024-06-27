@@ -1,46 +1,46 @@
 import 'dart:io';
+import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../services/api_client.dart';
-import '../models/more_information_model.dart';
+
+import '../helpers/route.dart';
+import '../services/api_checker.dart';
+import '../services/api_constants.dart';
 
 class InformationController extends GetxController {
   var loading = false.obs;
+  Uint8List? image;
+  Uint8List? frontSideImage;
+  Uint8List? backSideImage;
 
   ///======================update profile============================>
   moreInformationProfile(String address, File? profileImage,
-      driverLicenseFront, driverLicenseback) async {
-    List<MultipartBody> multipartBody = profileImage == null ||
-            driverLicenseback == null ||
-            driverLicenseFront == null
-        ? []
-        : [
-            ///image list will be here
-          ];
+      File? driverLicenseFront,File? driverLicenseback) async {
+    List<MultipartBody> multipartBody = [
+      MultipartBody("profile", profileImage!),
+      MultipartBody("driverLicenseFront", driverLicenseFront!),
+      MultipartBody("driverLicenseback", driverLicenseback!),
 
+    ];
     Map<String, String> body = {
       "address": address,
     };
 
+
     print('======================> $multipartBody  ==> $body');
 
-    // // debugPrint("================$address, $profile, $driverLicenseFront, $driverLicenseback, $latitude,$longitude ${image!.path}");
-    //
-    // var response = await ApiClient.patchMultipartData(
-    //   ApiConstants.updateProfileEndPoint,
-    //   body,
-    //   multipartBody: multipartBody,
-    // );
-    // print(
-    //     "===========response body : ${response.body} \nand status code : ${response.statusCode}");
-    // if (response.statusCode == 200 || response.statusCode == 201) {
-    //   informationModel.value =
-    //       informationModel(response.body['data']['attributes']);
-    //   informationModel.refresh();
-    //   Get.offAllNamed(AppRoutes.signInScreen);
-    // } else {
-    //   ApiChecker.checkApi(response);
-    // }
+    var response = await ApiClient.patchMultipartData(
+      ApiConstants.updateProfileEndPoint,
+      body,
+      multipartBody: multipartBody,
+    );
+    print(
+        "===========response body : ${response.body} \nand status code : ${response.statusCode}");
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      Get.offAllNamed(AppRoutes.signInScreen);
+    } else {
+      ApiChecker.checkApi(response);
+    }
   }
 }
