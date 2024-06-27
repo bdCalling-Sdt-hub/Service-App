@@ -12,5 +12,6 @@ class ApiConstants{
   static const String resetPasswordEndPoint = "/users/cahngePassword";
   static const String showBookingEndPoint = "/offer/showOfferBooking";
   static const String recentBookingEndPoint = "/offer/recentBooking";
+  static const String bookingDetailsEndPoint = "/offer/bookingDetails?id=667652a23835810430581cfc";
 
 }

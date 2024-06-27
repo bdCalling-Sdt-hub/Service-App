@@ -2,10 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:get/get.dart';
-import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
-
 import '../../services/api_client.dart';
 import '../helpers/pref_helpers.dart';
 import '../helpers/route.dart';
@@ -153,8 +150,8 @@ class AuthController extends GetxController {
           headers: headers);
       print("============${response.body} and ${response.statusCode}");
       if (response.statusCode == 200) {
-        await PrefsHelper.setString(AppConstants.role, response.body["data"]['token']);
-        var role = response.body["data"]['token'];
+        await PrefsHelper.setString(AppConstants.bearerToken, response.body["data"]['token']);
+        var role = response.body["data"]['type'];
         print("===> role : $role");
         otpCtrl.clear();
         if( type ==  "signup"){

@@ -1,15 +1,12 @@
-import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:service_app/controllers/informationController.dart';
 import 'package:service_app/helpers/image_picker_helper.dart';
 import 'package:service_app/utils/app_colors.dart';
-import '../../../../services/api_constants.dart';
 import '../../../../utils/app_icons.dart';
-import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_button.dart';
 import '../../../base/custom_text.dart';
@@ -23,23 +20,22 @@ class MoreInformationScreen extends StatefulWidget {
 }
 
 class _MoreInformationScreenState extends State<MoreInformationScreen> {
-
- final _informationController = Get.put(InformationController());
+  final _informationController = Get.put(InformationController());
 
   TextEditingController addressController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-
   var parameter = Get.parameters;
-  Uint8List? _image;
-  Uint8List? frontSideImage;
-  Uint8List? backSideImage;
 
   void initState() {
     super.initState();
     addressController.text = parameter['address'] ?? '';
   }
+
+  var profileImage;
+  var frontImage;
+  var backImage;
 
   @override
   Widget build(BuildContext context) {
@@ -61,23 +57,25 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                   showImagePickerOption(context, 'profile');
                 },
                 child: Center(
-                  child: Stack(
-                    children: [
-                      _image != null
-                          ? CircleAvatar(
-                  radius: 60.r,
-                    backgroundImage: _image != null
-                        ? MemoryImage(_image!)
-                        : (parameter['image'] != null && parameter['image']!.isNotEmpty
-                        ? NetworkImage('${ApiConstants.imageBaseUrl}${parameter['image']}')
-                        : AssetImage(AppImages.person)) as ImageProvider,
-                  )
-                          : Center(
-                              child: SvgPicture.asset(AppIcons.uploadPhoto),
-                            ),
-                    ],
+                    child: Container(
+                  height: 150.h,
+                  width: 150.h,
+                  padding: EdgeInsets.all(7.w),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.primaryColor, width: 2),
+                    shape: BoxShape.circle,
                   ),
-                ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.primaryColor.withOpacity(0.3),
+                        image: DecorationImage(
+                            image: AssetImage(profileImage != null
+                                ? profileImage.path
+                                : "assets/icons/carbon_camera.png"),
+                            fit: BoxFit.cover)),
+                  ),
+                )),
               ),
               SizedBox(height: 12.h),
               Text(
@@ -87,7 +85,7 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
               SizedBox(height: 24.h),
               //===============================> Address Section <===============================
               Form(
-                key:  _formKey,
+                key: _formKey,
                 child: Column(
                   children: [
                     Padding(
@@ -123,9 +121,9 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                                   width: 0.9,
                                 ),
                               ),
-                              child: frontSideImage != null
-                                  ? Image.memory(
-                                      frontSideImage!,
+                              child: frontImage != null
+                                  ? Image.asset(
+                                      frontImage.path,
                                       width: double.infinity,
                                       fit: BoxFit.fitWidth,
                                     )
@@ -154,9 +152,9 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                                   width: 0.9,
                                 ),
                               ),
-                              child: backSideImage != null
-                                  ? Image.memory(
-                                      backSideImage!,
+                              child: backImage != null
+                                  ? Image.asset(
+                                      backImage.path,
                                       width: double.infinity,
                                       fit: BoxFit.fitWidth,
                                     )
@@ -166,15 +164,17 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                           SizedBox(height: 31.h),
                           //===============================> Create Button <===============================
                           CustomButton(
-                            loading:  _informationController.loading.value,
+                            loading: _informationController.loading.value,
                             onTap: () {
-                              if (_formKey.currentState!.validate()) {
+                              if (_formKey.currentState!.validate() &&
+                                  profileImage != null &&
+                                  frontImage != null &&
+                                  backImage != null) {
                                 _informationController.moreInformationProfile(
                                     addressController.text,
-                                    _image as File?,
-                                    frontSideImage,
-                                    backSideImage
-                                );
+                                    profileImage,
+                                    frontImage,
+                                    backImage);
                               }
                               // Get.toNamed(AppRoutes.userBottomNavBar);
                             },
@@ -193,7 +193,8 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
       ),
     );
   }
-  void showImagePickerOption(BuildContext context, String type) {
+
+  showImagePickerOption(BuildContext context, String source) {
     showModalBottomSheet(
       backgroundColor: AppColors.backgroundColor,
       context: context,
@@ -209,31 +210,17 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                 Expanded(
                   child: InkWell(
                     onTap: () async {
-                      Uint8List? imageBytes;
-
-                      if (type == 'front') {
-                        imageBytes =
-                            (await ImagePickerHelper.pickImageFromGallery())
-                                as Uint8List?;
-                        setState(() {
-                          frontSideImage = imageBytes;
-                        });
-                      } else if (type == 'backSide') {
-                        imageBytes =
-                            (await ImagePickerHelper.pickImageFromGallery())
-                                as Uint8List?;
-                        setState(() {
-                          backSideImage = imageBytes;
-                        });
-                      } else if (type == 'profile') {
-                        imageBytes = imageBytes =
-                            (await ImagePickerHelper.pickImageFromGallery())
-                                as Uint8List?;
-                        setState(() {
-                          _image = imageBytes;
-                        });
+                      var imagePath = await ImagePickerHelper.pickImage(
+                          ImageSource.gallery);
+                      if (source == "profile") {
+                        profileImage = imagePath;
+                      } else if (source == "front") {
+                        frontImage = imagePath;
+                      } else {
+                        backImage = imagePath;
                       }
-                      Navigator.pop(context);
+                      Get.back();
+                      setState(() {});
                     },
                     child: SizedBox(
                       child: Column(
@@ -251,30 +238,17 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                 Expanded(
                   child: InkWell(
                     onTap: () async {
-                      Uint8List? imageBytes;
-                      if (type == 'front') {
-                        imageBytes =
-                            (await ImagePickerHelper.pickImageFromCamera())
-                                as Uint8List?;
-                        setState(() {
-                          frontSideImage = imageBytes;
-                        });
-                      } else if (type == 'backSide') {
-                        imageBytes =
-                            (await ImagePickerHelper.pickImageFromCamera())
-                                as Uint8List?;
-                        setState(() {
-                          backSideImage = imageBytes;
-                        });
-                      } else if (type == 'profile') {
-                        imageBytes = imageBytes =
-                            (await ImagePickerHelper.pickImageFromCamera())
-                                as Uint8List?;
-                        setState(() {
-                          _image = imageBytes;
-                        });
+                      var imagePath = await ImagePickerHelper.pickImage(
+                          ImageSource.gallery);
+                      if (source == "profile") {
+                        profileImage = imagePath;
+                      } else if (source == "front") {
+                        frontImage = imagePath;
+                      } else {
+                        backImage = imagePath;
                       }
-                      Navigator.pop(context);
+                      Get.back();
+                      setState(() {});
                     },
                     child: SizedBox(
                       child: Column(
