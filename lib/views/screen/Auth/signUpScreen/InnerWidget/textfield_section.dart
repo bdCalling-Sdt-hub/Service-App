@@ -96,6 +96,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 ),
                 SizedBox(height: 16.h),
                 //===============================> Terms and Conditions Check Box <===============================
+
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
