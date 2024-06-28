@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -63,50 +62,63 @@ class AuthController extends GetxController {
 
   TextEditingController signInPassCtrl = TextEditingController();
   TextEditingController signInEmailCtrl = TextEditingController();
-  var signInLoading =false.obs;
+  var signInLoading = false.obs;
 
+  handleSignIn() async {
+    try {
+      signInLoading(true);
+      var headers = {
+        'Content-Type': 'application/json',
+      };
+      Map<String, dynamic> body = {
+        'email': signInEmailCtrl.text.trim(),
+        'password': signInPassCtrl.text.trim(),
+      };
+      Response response = await ApiClient.postData(
+        ApiConstants.signInEndPoint,
+        json.encode(body),
+        headers: headers,
+      );
 
-  handleSignIn()async{
-    signInLoading(true);
-    var headers = {
-      'Content-Type': 'application/json'
-    };
-    Map<String,dynamic> body={
-      'email': signInEmailCtrl.text.trim(),
-      'password': signInPassCtrl.text.trim()
-    };
-    Response response= await ApiClient.postData(ApiConstants.signInEndPoint,json.encode(body),headers: headers);
-    print("====> ${response.body}");
-    if(response.statusCode==200){
+      print("====> ${response.body}");
+      if (response.statusCode == 200) {
+        var responseBody = response.body;
 
-      await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['token']);
-      await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['_id']);
-      print("=========================================================");
-      String userRole = response.body['data']['attributes']['role'];
-      await PrefsHelper.setString(AppConstants.role, userRole);
+        if (responseBody != null && responseBody['data'] != null) {
+          var data = responseBody['data'];
+          await PrefsHelper.setString(AppConstants.bearerToken, data['token']);
+          await PrefsHelper.setString(AppConstants.id, data['attributes']['_id']);
 
+          String userRole = data['attributes']['role'];
+          await PrefsHelper.setString(AppConstants.role, userRole);
 
-      if(userRole == Role.Provider.name){
-        if(response.body['data']['attributes']['user']){
+          if (userRole == Role.Provider.name) {
+            if (data['attributes']['user'] != null && data['attributes']['user']) {
+              Get.offAllNamed(AppRoutes.userBottomNavBar);
+              await PrefsHelper.setBool(AppConstants.isLogged, true);
+            } else {
+              Get.offAllNamed(AppRoutes.providerHomeScreen);
+            }
+          } else if (userRole == Role.User.name) {
+            Get.offAllNamed(AppRoutes.providerBottomNavBar);
+            await PrefsHelper.setBool(AppConstants.isLogged, true);
+          }
 
-          Get.offAllNamed(AppRoutes.userBottomNavBar);
-          await PrefsHelper.setBool(AppConstants.isLogged, true);
-
-        }else{
-          Get.offAllNamed(AppRoutes.providerHomeScreen);
+          print("====================================================Ebrahim");
+          signInEmailCtrl.clear();
+          signInPassCtrl.clear();
+        } else {
+          Fluttertoast.showToast(msg: "Unexpected response structure");
         }
-      }else if(userRole == Role.User.name){
-        Get.offAllNamed(AppRoutes.providerBottomNavBar);
-        await PrefsHelper.setBool(AppConstants.isLogged, true);
+      } else {
+        Fluttertoast.showToast(msg: response.statusText ?? "Error");
       }
-
-      print("====================================================Ebrahim");
-      signInEmailCtrl.clear();
-      signInPassCtrl.clear();
-    } else{
-      Fluttertoast.showToast(msg:response.statusText??"");
+    } catch (e) {
+      print("Error: $e");
+      Fluttertoast.showToast(msg: "An error occurred");
+    } finally {
+      signInLoading(false);
     }
-    signInLoading(false);
   }
 
 

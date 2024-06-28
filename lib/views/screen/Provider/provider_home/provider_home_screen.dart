@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../controllers/recent_booking_controller.dart';
 import '../../../../controllers/show_booking_controller.dart';
 import '../../../../helpers/route.dart';
 import '../../../../models/show_booking_model.dart';
@@ -25,13 +26,15 @@ class ProviderHomeScreen extends StatefulWidget {
 class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
 
   final ShowBookingController showBookingController = Get.put(ShowBookingController());
-  // final RecentBookingController recentBookingController = Get.put(RecentBookingController());
+  final RecentBookingController recentBookingController = Get.put(RecentBookingController());
 
-  // List totalBookingsCompletedCancelledList = [
-  //   {"bookingsCompleted": "Total Bookings", "bookingsNumber": "800"},
-  //   {"bookingsCompleted": "Completed", "bookingsNumber": "720"},
-  //   {"bookingsCompleted": "Cancelled", "bookingsNumber": "420"}
-  // ];
+  @override
+  void initState() {
+    showBookingController.showGetGroupList();
+    recentBookingController.recentGetGroupList();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,23 +89,21 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                     bottom: 4.h,
                     top: 29.h),
               ),
+              SizedBox(height: 17.h),
               Row(
                 children: [
                   SvgPicture.asset(AppIcons.location),
-                  CustomText(
-                    text: ' New York, USA  ',
+                  Obx(() => CustomText(
+                    text: ' ${showBookingController.showGroupList()} ',
                     color: const Color(0xff9DA0A3),
-                  ),
+                  )),
                   SvgPicture.asset(AppIcons.dropdown)
                 ],
               ),
               SizedBox(height: 17.h),
+              SizedBox(height: 17.h),
 
               ///===================Booking Container===================>
-
-              // TotalBookingsCompletedRow(
-              //   providerInfoList: showBookingController.groupList,
-              // ),
 
               Obx(() {
                 showBookingController.showGetGroupList();
@@ -142,37 +143,11 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
 
               SizedBox(height: 16.h),
 
-              // Obx(() {
-              //   recentBookingController.recentGetGroupList();
-              //   if (RecentBookingController.isLoading.value) {
-              //     return  Center(child: CustomPageLoading());
-              //   }
-              //    else {
-              //     return Expanded(
-              //       child: ListView.builder(
-              //         itemCount: RecentBookingController.recentGroupList.length,
-              //         itemBuilder: (context, index) {
-              //           final booking = RecentBookingController().recentGetGroupList[index];
-              //           return Padding(
-              //             padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
-              //             child: ProviderHelpsBookingsCard(
-              //               ontap: () {
-              //                 Get.toNamed(AppRoutes.providerBookingDetailsScreen);
-              //               },
-              //               helpImage: AppImages.helpImage,
-              //               helpName: booking.selectHelp,
-              //               personName: "Jane Cooper", // Update this with dynamic data if needed
-              //             ),
-              //           );
-              //         },
-              //       ),
-              //     );
-              //   }
-              // }),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: recentBookingController.recentGroupList.length,
                   itemBuilder: (context, index) {
+                    final booking = recentBookingController.recentGroupList[index];
                     return Padding(
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
                       child: ProviderHelpsBookingsCard(
@@ -186,7 +161,37 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                     );
                   },
                 ),
-              )
+              ),
+
+
+              // Obx(() {
+              //   if (recentBookingController.isLoading.value) {
+              //     return const Center(child: CustomPageLoading());
+              //   } else if (recentBookingController.recentGroupList.isEmpty) {
+              //     return  Center(child: CustomText(text: 'No recent bookings found'));
+              //   } else {
+              //     return Expanded(
+              //       child: ListView.builder(
+              //         itemCount: recentBookingController.recentGroupList.length,
+              //         itemBuilder: (context, index) {
+              //           final booking = recentBookingController.recentGroupList[index];
+              //           return Padding(
+              //             padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
+              //             child: ProviderHelpsBookingsCard(
+              //               ontap: () {
+              //                 Get.toNamed(AppRoutes.providerBookingDetailsScreen);
+              //               },
+              //               helpImage: AppImages.helpImage,
+              //               helpName: booking.selectHelp,
+              //               personName: booking.user,
+              //             ),
+              //           );
+              //         },
+              //       ),
+              //     );
+              //   }
+              // }),],
+
             ],
           ),
         ),
