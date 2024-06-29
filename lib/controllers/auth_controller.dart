@@ -97,7 +97,7 @@ class AuthController extends GetxController {
               Get.offAllNamed(AppRoutes.userBottomNavBar);
               await PrefsHelper.setBool(AppConstants.isLogged, true);
             } else {
-              Get.offAllNamed(AppRoutes.providerHomeScreen);
+              Get.offAllNamed(AppRoutes.providerBottomNavBar);
             }
           } else if (userRole == Role.User.name) {
             Get.offAllNamed(AppRoutes.providerBottomNavBar);

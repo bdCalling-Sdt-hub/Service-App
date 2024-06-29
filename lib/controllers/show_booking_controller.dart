@@ -1,41 +1,37 @@
 import 'package:get/get.dart';
 import 'package:service_app/models/show_booking_model.dart';
 import '../../services/api_client.dart';
-import '../../utils/app_constants.dart';
-import '../helpers/pref_helpers.dart';
 import '../services/api_checker.dart';
 import '../services/api_constants.dart';
 
 class ShowBookingController extends GetxController {
   var showGroupList = <ShowBookingModel>[].obs;
+  var selectedAddress = ''.obs;
   var isLoading = false.obs;
-
-
 
   @override
   void onInit() {
     super.onInit();
-
-
+    showGetGroupList();
   }
 
   showGetGroupList() async {
     isLoading(true);
-    String bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
-    var headers = {
-      'Authorization': 'Bearer $bearerToken',
-    };
-    print(headers);
+    final response = await ApiClient.getData(ApiConstants.showBookingEndPoint);
 
-    final response = await ApiClient.getData(ApiConstants.showBookingEndPoint, headers: headers);
-
+    print("=======> ${response.body} \n ${response.statusCode} ");
     if (response.statusCode == 200) {
-      List<dynamic> jsonResponse = response.body['data']['attributes'];
-      showGroupList.value = jsonResponse.map((data) => ShowBookingModel.fromJson(data)).toList();
-      isLoading(false);
+      var jsonResponse = response.body;
+      var showBookingModel = ShowBookingModel.fromJson(jsonResponse);
+      showGroupList.value = [showBookingModel];
+      if (showGroupList.isNotEmpty) {
+        selectedAddress.value = showGroupList[0].data?.attributes?.address ?? '';
+      }
     } else {
+      print("Error fetching data: ${response.body['message']}");
       ApiChecker.checkApi(response);
     }
 
+    isLoading(false);
   }
 }

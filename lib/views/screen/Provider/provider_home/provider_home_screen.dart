@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../controllers/recent_booking_controller.dart';
 import '../../../../controllers/show_booking_controller.dart';
 import '../../../../helpers/route.dart';
 import '../../../../models/show_booking_model.dart';
@@ -24,16 +23,12 @@ class ProviderHomeScreen extends StatefulWidget {
 }
 
 class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
-
   final ShowBookingController showBookingController = Get.put(ShowBookingController());
-  final RecentBookingController recentBookingController = Get.put(RecentBookingController());
 
   @override
   void initState() {
-    showBookingController.showGetGroupList();
-    recentBookingController.recentGetGroupList();
-    // TODO: implement initState
     super.initState();
+    showBookingController.showGetGroupList();
   }
 
   @override
@@ -44,70 +39,81 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: Column(
             children: [
-
-              ///=====================top app bar =================================>
+              // Top App Bar
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-
-                  CustomText(text: "I Help",fontsize: 30.h,fontWeight: FontWeight.w500,color: AppColors.primaryColor,),
-
+                  CustomText(
+                    text: "I Help",
+                    fontsize: 30.h,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primaryColor,
+                  ),
                   GestureDetector(
                     onTap: () {
                       Get.toNamed(AppRoutes.notificationScreen);
                     },
-                    ///=======================notification bell=======================>
                     child: Container(
                       decoration: BoxDecoration(
-                          color: const Color(0xffF4F9EC),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.primaryColor)),
+                        color: const Color(0xffF4F9EC),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppColors.primaryColor),
+                      ),
                       child: Padding(
                         padding: EdgeInsets.all(4.r),
                         child: Badge(
-                            backgroundColor: AppColors.primaryColor,
-                            smallSize: 10,
-                            child: SvgPicture.asset(
-                              AppIcons.notificationBell,
-                              height: 26.h,
-                              width: 26.w,
-                            )),
+                          backgroundColor: AppColors.primaryColor,
+                          smallSize: 10,
+                          child: SvgPicture.asset(
+                            AppIcons.notificationBell,
+                            height: 26.h,
+                            width: 26.w,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-
-
-              ///=======================welcome text and location=================>
+              // Welcome Text and Location Dropdown
               Align(
                 alignment: Alignment.centerLeft,
                 child: CustomText(
-                    text: AppString.wellComeEnrique,
-                    fontsize: 20.h,
-                    fontWeight: FontWeight.w500,
-                    bottom: 4.h,
-                    top: 29.h),
+                  text: AppString.wellComeEnrique,
+                  fontsize: 20.h,
+                  fontWeight: FontWeight.w500,
+                  bottom: 4.h,
+                  top: 29.h,
+                ),
               ),
-              SizedBox(height: 17.h),
               Row(
                 children: [
                   SvgPicture.asset(AppIcons.location),
-                  Obx(() => CustomText(
-                    text: ' ${showBookingController.showGroupList()} ',
-                    color: const Color(0xff9DA0A3),
-                  )),
-                  SvgPicture.asset(AppIcons.dropdown)
-                ],
+          Obx(() => DropdownButton<String>(
+            value: showBookingController.selectedAddress.value.isEmpty ? null : showBookingController.selectedAddress.value,
+            icon: SvgPicture.asset(AppIcons.dropdown),
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                showBookingController.selectedAddress.value = newValue;
+              }
+            },
+            items: showBookingController.showGroupList
+                .map((ShowBookingModel value) {
+              return DropdownMenuItem<String>(
+                value: value.data?.attributes?.address ?? '',
+                child: CustomText(
+                  text: value.data?.attributes?.address ?? '',
+                  color: const Color(0xff9DA0A3),
+                ),
+              );
+            }).toList(),
+          ))
+
+          ],
               ),
               SizedBox(height: 17.h),
-              SizedBox(height: 17.h),
-
-              ///===================Booking Container===================>
-
+              // Booking Container
               Obx(() {
-                showBookingController.showGetGroupList();
-                // print('=========================> ${showBookingController.groupList[0].cancelledBooking}');
                 if (showBookingController.isLoading.value) {
                   return const Center(child: CustomPageLoading());
                 } else {
@@ -116,9 +122,7 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                   );
                 }
               }),
-              SizedBox(
-                  height: 20.h
-              ),
+              SizedBox(height: 20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -132,22 +136,19 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                       // Get.toNamed(AppRoutes.userCategoryScreen);
                     },
                     child: CustomText(
-                        text: AppString.seeAll,
-                        fontsize: Dimensions.fontSizeDefault.h,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.primaryColor),
+                      text: AppString.seeAll,
+                      fontsize: Dimensions.fontSizeDefault.h,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                 ],
               ),
-
-
               SizedBox(height: 16.h),
-
               Expanded(
                 child: ListView.builder(
-                  itemCount: recentBookingController.recentGroupList.length,
+                  itemCount: 10,
                   itemBuilder: (context, index) {
-                    final booking = recentBookingController.recentGroupList[index];
                     return Padding(
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
                       child: ProviderHelpsBookingsCard(
@@ -162,36 +163,6 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                   },
                 ),
               ),
-
-
-              // Obx(() {
-              //   if (recentBookingController.isLoading.value) {
-              //     return const Center(child: CustomPageLoading());
-              //   } else if (recentBookingController.recentGroupList.isEmpty) {
-              //     return  Center(child: CustomText(text: 'No recent bookings found'));
-              //   } else {
-              //     return Expanded(
-              //       child: ListView.builder(
-              //         itemCount: recentBookingController.recentGroupList.length,
-              //         itemBuilder: (context, index) {
-              //           final booking = recentBookingController.recentGroupList[index];
-              //           return Padding(
-              //             padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
-              //             child: ProviderHelpsBookingsCard(
-              //               ontap: () {
-              //                 Get.toNamed(AppRoutes.providerBookingDetailsScreen);
-              //               },
-              //               helpImage: AppImages.helpImage,
-              //               helpName: booking.selectHelp,
-              //               personName: booking.user,
-              //             ),
-              //           );
-              //         },
-              //       ),
-              //     );
-              //   }
-              // }),],
-
             ],
           ),
         ),
@@ -199,58 +170,104 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
     );
   }
 }
-
-
 class TotalBookingsCompletedRow extends StatelessWidget {
-  final List<ShowBookingModel>? providerInfoList;
-  const TotalBookingsCompletedRow({super.key, this.providerInfoList});
+  final List<ShowBookingModel> providerInfoList;
+
+  const TotalBookingsCompletedRow({super.key, required this.providerInfoList});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: List.generate(
-        providerInfoList!.length,
-            (index) {
-          return Container(
-              width: 112.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4.r),
-                  border: Border.all(color: AppColors.primaryColor,width: 0.5)),
-              child: Padding(
-                padding: EdgeInsets.all(8.r),
-                child: Center(
-                  child: Column(
-                    children: [
-                      CustomText(
-                        text: '${providerInfoList![index].totalBooking}',
-                        fontsize: 12.h,
-                      ),
-                      CustomText(
-                        text: '${providerInfoList![index].completedBooking}',
-                        fontsize: 16.h,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      CustomText(
-                        text: '${providerInfoList![index].cancelledBooking}',
-                        fontsize: 16.h,
-                        fontWeight: FontWeight.w500,
-                      )
-                    ],
-                  ),
-                ),
-              ));
-        },
+      children: [
+
+      Container(
+      width: 112.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4.r),
+        border: Border.all(color: AppColors.primaryColor, width: 0.5),
       ),
+      child: Padding(
+        padding: EdgeInsets.all(8.r),
+        child: Center(
+          child: Column(
+            children: [
+              CustomText(
+                text: 'Total Bookings',
+                fontsize: 12.h,
+              ),
+
+              CustomText(
+                text: '${providerInfoList.first.data?.attributes?.totalBooking}',
+                fontsize: 12.h,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+
+
+
+        Container(
+          width: 112.w,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.r),
+            border: Border.all(color: AppColors.primaryColor, width: 0.5),
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(8.r),
+            child: Center(
+              child: Column(
+                children: [
+                  CustomText(
+                    text: 'Completed',
+                    fontsize: 12.h,
+                  ),
+
+                  CustomText(
+                    text: '${providerInfoList.first.data?.attributes?.complitedBooking}',
+                    fontsize: 12.h,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+
+
+
+
+        Container(
+          width: 112.w,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.r),
+            border: Border.all(color: AppColors.primaryColor, width: 0.5),
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(8.r),
+            child: Center(
+              child: Column(
+                children: [
+                  CustomText(
+                    text: 'Cancelled',
+                    fontsize: 12.h,
+                  ),
+
+                  CustomText(
+                    text: '${providerInfoList.first.data?.attributes?.cancelledBooking}',
+                    fontsize: 12.h,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        )
+
+
+
+
+      ]
     );
   }
 }
-
-
-
-
-
-
-
-
-
