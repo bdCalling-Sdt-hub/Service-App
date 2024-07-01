@@ -147,6 +147,35 @@ class UserHomeController extends GetxController {
 
   }
 
+  popularloadMore()async{
+    if(firstLoading !=true &&loadMoreLoading ==false && totalPage !=currentPage){
+      page +=1;
+      loadMoreLoading (true);
+      var response=await ApiClient.getData('${ApiConstants.userNearbyHelpEndPoint}?page=$page&limit=5');
+      if(response.statusCode==200){
+        var result= List<HelpModel>.from(response.body['data']['attributes'].map((x) => HelpModel.fromJson(x)));
+        currentPage=response.body['pagination']['attributes']['currentPage'];
+        totalPage=response.body['pagination']['attributes']['totalPages'];
+        popularHelpModel.value.addAll(result);
+        popularHelpModel.refresh();
+        rxRequestStatus(Status.completed);
+        loadMoreLoading(false);
+        update();
+      }
+      else{
+        if (ApiClient.noInternetMessage == response.statusText) {
+          setRxRequestStatus(Status.internetError);
+        } else
+        {
+          setRxRequestStatus(Status.error);
+        }
+        ApiChecker.checkApi(response);
+        firstLoading.value=false;
+        update();
+      }
+
+    }
+  }
 
 
 

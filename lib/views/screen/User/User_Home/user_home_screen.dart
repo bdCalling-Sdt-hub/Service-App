@@ -241,7 +241,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   ),
                   GestureDetector(
                     onTap: (){
-                      Get.toNamed(AppRoutes.userAllServiceScreen,
+                      Get.toNamed(AppRoutes.allpopulerScreen,
                           parameters: {"screenType" : AppString.popularHelps});
                     },
                     child: CustomText(

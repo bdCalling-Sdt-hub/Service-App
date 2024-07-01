@@ -12,6 +12,7 @@ import 'package:service_app/views/screen/Provider/provider_service/provider_serv
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
 import 'package:service_app/views/screen/Provider/wallet/wallet_withdrawal_screen.dart';
 import 'package:service_app/views/screen/User/All_nearby_help_screen/all_nearby_help_screen.dart';
+import 'package:service_app/views/screen/User/all_popular_help_screen/all_popular_help_screen.dart';
 import 'package:service_app/views/screen/message/send_offer_screen.dart';
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
@@ -71,6 +72,7 @@ class AppRoutes{
   static String userMyBookingsScreen="/UserMyBookingsScreen";
   static String userMyBookignServiceDetailsScreen="/UserMyBookignServiceDetailsScreen";
   static String allNearbayScreen="/allNearbyScreen";
+  static String allpopulerScreen="/allPopularHelpScreen";
 
 
 
@@ -116,6 +118,7 @@ class AppRoutes{
     GetPage(name:walletScreen, page: ()=> WalletScreen()),
     GetPage(name:walletWithdrawalScreen, page: ()=> WalletWithdrawalScreen()),
     GetPage(name:allNearbayScreen, page: ()=> AllNearbyScreen()),
+    GetPage(name:allpopulerScreen, page: ()=> AllPopularHelpScreen()),
 
 
     GetPage(name:userHelpOfferScreen, page: ()=> UserHelpOfferScreen()),
