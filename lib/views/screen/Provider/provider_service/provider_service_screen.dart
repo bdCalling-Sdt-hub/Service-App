@@ -7,11 +7,14 @@ import 'package:service_app/utils/app_icons.dart';
 
 import '../../../../helpers/route.dart';
 import '../../../../utils/app_colors.dart';
+import '../../../../utils/app_constants.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/all_service_card.dart';
 import '../../../base/custom_page_loading.dart';
 import '../../../base/custom_text.dart';
+import '../../../base/general_error_screen.dart';
+import '../../../base/no_internet_screen.dart';
 
 class ProviderServiceScreen extends StatefulWidget {
   const ProviderServiceScreen({super.key});
@@ -60,8 +63,26 @@ class _ProviderServiceScreenState extends State<ProviderServiceScreen> {
           color: AppColors.black333333,
         ),
       ),
+
 //===============================> Body Section <===============================
-      body: _body(context),
+        body:  Obx((){
+          switch (_helpCtrl.rxRequestStatus.value) {
+            case Status.loading:
+              return const CustomPageLoading();
+            case Status.internetError:
+              return NoInternetScreen(onTap:(){
+                _helpCtrl.providerhelpFirsLoad();
+              });
+            case Status.error:
+              return GeneralErrorScreen(onTap: (){
+                _helpCtrl.providerhelpFirsLoad();
+              });
+            case Status.completed:
+              return   _body(context);
+            default:
+              return Container();
+          }
+        })
 
     );
   }
@@ -120,11 +141,6 @@ class _ProviderServiceScreenState extends State<ProviderServiceScreen> {
                             Get.toNamed(AppRoutes.providerServiceDetailsScreen);
                           },
                            helpInfo: helpCartInfo,
-                          serviceImage: AppImages.serviceImage,
-                          reting: "4.8",
-                          distance: "15 km",
-                          serviceName: 'Cleaning',
-                          personName: "Ingredia Nutrisha",
                         ),
                       );
                     }

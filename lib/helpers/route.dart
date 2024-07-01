@@ -11,6 +11,7 @@ import 'package:service_app/views/screen/Provider/provider_service/add_new_servi
 import 'package:service_app/views/screen/Provider/provider_service/provider_service_screen.dart';
 import 'package:service_app/views/screen/Provider/reviews/review_screen.dart';
 import 'package:service_app/views/screen/Provider/wallet/wallet_withdrawal_screen.dart';
+import 'package:service_app/views/screen/User/All_nearby_help_screen/all_nearby_help_screen.dart';
 import 'package:service_app/views/screen/message/send_offer_screen.dart';
 import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
@@ -65,12 +66,14 @@ class AppRoutes{
   static String reviewScreen="/ReviewScreen";
   static String walletScreen="/WalletScreen";
   static String myHelps="/My Helps";
-
    static String userHelpOfferScreen="/UserHelpOfferScreen";
-
   static String editProfileScreen="/EditProfileScreen";
   static String userMyBookingsScreen="/UserMyBookingsScreen";
   static String userMyBookignServiceDetailsScreen="/UserMyBookignServiceDetailsScreen";
+  static String allNearbayScreen="/allNearbyScreen";
+
+
+
   ///provider======>
   static String providerBottomNavBar="/ProviderBottomNavBar";
   static String providerHomeScreen="/ProviderHomeScreen";
@@ -112,6 +115,7 @@ class AppRoutes{
     GetPage(name:reviewScreen, page: ()=> ReviewScreen()),
     GetPage(name:walletScreen, page: ()=> WalletScreen()),
     GetPage(name:walletWithdrawalScreen, page: ()=> WalletWithdrawalScreen()),
+    GetPage(name:allNearbayScreen, page: ()=> AllNearbyScreen()),
 
 
     GetPage(name:userHelpOfferScreen, page: ()=> UserHelpOfferScreen()),

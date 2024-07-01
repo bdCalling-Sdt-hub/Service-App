@@ -11,10 +11,15 @@ import '../../../utils/app_constants.dart';
 class UserHomeController extends GetxController {
   @override
   void onInit() {
-    userCategory();
-    nearbyhelpFirsLoad();
+      allData();
     // TODO: implement onInit
     super.onInit();
+  }
+
+  allData(){
+    userCategory();
+    nearbyhelpFirsLoad();
+    populerFirsLoad();
   }
 
   final rxRequestStatus = Status.loading.obs;
@@ -27,6 +32,7 @@ class UserHomeController extends GetxController {
   var currentPage = 0;
 
   RxList<HelpModel> nearbyHelpModel = <HelpModel>[].obs;
+  RxList<HelpModel> popularHelpModel = <HelpModel>[].obs;
 
   ScrollController scrollController=ScrollController();
   var catagoryLoading = false.obs;
@@ -82,7 +88,6 @@ class UserHomeController extends GetxController {
 
   }
 
-
   loadMore()async{
     if(firstLoading !=true &&loadMoreLoading ==false && totalPage !=currentPage){
       page +=1;
@@ -112,6 +117,37 @@ class UserHomeController extends GetxController {
 
     }
   }
+
+
+  /// All Popular Help
+
+  Future populerFirsLoad()async{
+    firstLoading(true);
+    var response=await ApiClient.getData('${ApiConstants.userpopulerHelpEndPoint}?page=$page&limit=5');
+    if(response.statusCode==200){
+      popularHelpModel.value= List<HelpModel>.from(response.body['data']['attributes'].map((x) => HelpModel.fromJson(x)));
+      currentPage=response.body['pagination']['currentPage'];
+      totalPage=response.body['pagination']['totalPages'];
+      rxRequestStatus(Status.completed);
+      firstLoading(false);
+      update();
+
+    }
+    else{
+      if (ApiClient.noInternetMessage == response.statusText) {
+        setRxRequestStatus(Status.internetError);
+      } else
+      {
+        setRxRequestStatus(Status.error);
+      }
+      ApiChecker.checkApi(response);
+      firstLoading.value=false;
+      update();
+    }
+
+  }
+
+
 
 
 }

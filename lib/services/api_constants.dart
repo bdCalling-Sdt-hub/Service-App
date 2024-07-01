@@ -19,6 +19,7 @@ class ApiConstants{
   /// User Api
   static const String userAllCategoryEndPoint = "/admin/showAllcategory";
   static const String userNearbyHelpEndPoint = "/service/showTheNearbyServices";
+  static const String userpopulerHelpEndPoint = "/service/populerServices";
 
 
 }

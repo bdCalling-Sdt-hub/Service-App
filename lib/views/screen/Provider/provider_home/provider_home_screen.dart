@@ -57,9 +57,9 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
             default:
               return Container();
           }
-        }));
+        })
+    );
   }
-
    _body(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),

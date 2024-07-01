@@ -15,13 +15,13 @@ import '../../../base/general_error_screen.dart';
 import '../../../base/no_internet_screen.dart';
 
 
-class UserAllServiceScreen extends StatefulWidget {
-   UserAllServiceScreen({super.key});
+class AllNearbyScreen extends StatefulWidget {
+  AllNearbyScreen({super.key});
   @override
-  State<UserAllServiceScreen> createState() => _UserAllServiceScreenState();
+  State<AllNearbyScreen> createState() => _AllNearbyScreenState();
 }
 
-class _UserAllServiceScreenState extends State<UserAllServiceScreen> {
+class _AllNearbyScreenState extends State<AllNearbyScreen> {
   var parameters = Get.parameters;
 
   UserHomeController _homeCtrl=Get.put(UserHomeController());
@@ -41,6 +41,8 @@ class _UserAllServiceScreenState extends State<UserAllServiceScreen> {
     }
   }
 
+
+
   @override
   void dispose() {
     _homeCtrl.scrollController.removeListener(_scrollListener);
@@ -50,14 +52,14 @@ class _UserAllServiceScreenState extends State<UserAllServiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: CustomText(
-          text: '${parameters['screenType']}',
-          fontsize: 18.h,
-          fontWeight: FontWeight.w500,
-          color: AppColors.black333333,
+        appBar: AppBar(
+          title: CustomText(
+            text: '${parameters['screenType']}',
+            fontsize: 18.h,
+            fontWeight: FontWeight.w500,
+            color: AppColors.black333333,
+          ),
         ),
-      ),
         body:  Obx((){
           switch (_homeCtrl.rxRequestStatus.value) {
             case Status.loading:
@@ -79,7 +81,7 @@ class _UserAllServiceScreenState extends State<UserAllServiceScreen> {
     );
   }
 
-   _body(BuildContext context) {
+  _body(BuildContext context) {
 
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 20.w),
@@ -96,7 +98,6 @@ class _UserAllServiceScreenState extends State<UserAllServiceScreen> {
             }else{
               var helpCartInfo=_homeCtrl.nearbyHelpModel.value[index];
 
-              print('Item>>${_homeCtrl.nearbyHelpModel.value.length}');
               return Padding(
                 padding:  EdgeInsets.only(top: 10.h),
                 child: AllServiceCard(
@@ -104,11 +105,6 @@ class _UserAllServiceScreenState extends State<UserAllServiceScreen> {
                     Get.toNamed(AppRoutes.providerServiceDetailsScreen);
                   },
                   helpInfo: helpCartInfo,
-                  serviceImage: AppImages.serviceImage,
-                  reting: "4.8",
-                  distance: "15 km",
-                  serviceName: 'Cleaning',
-                  personName: "Ingredia Nutrisha",
                 ),
               );
             }
