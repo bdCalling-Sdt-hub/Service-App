@@ -20,10 +20,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Timer? _timer;
 
   void startTimer()async{
-    var token=await PrefsHelper.getString(AppConstants.bearerToken);
+    var role=await PrefsHelper.getString(AppConstants.role);
     const Duration(seconds: 3);
-    if(token==null){
+    if(role==''){
       Get.toNamed(AppRoutes.onBoardingScreen);
+    }
+    else if(role==Role.User.name){
+      Get.toNamed(AppRoutes.userBottomNavBar);
     }
     else{
       Get.toNamed(AppRoutes.providerBottomNavBar);

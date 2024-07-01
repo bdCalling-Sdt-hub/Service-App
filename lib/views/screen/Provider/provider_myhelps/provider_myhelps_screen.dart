@@ -39,7 +39,6 @@ class _ProviderHelpsScreenState extends State<ProviderHelpsScreen> {
         padding:  EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w,vertical: Dimensions.paddingSizeDefault.h),
         child: Column(
           children: [
-
             SizedBox(
               height: 60.h,
               child: ListView.builder(

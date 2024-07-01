@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -65,14 +67,20 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                     border: Border.all(color: AppColors.primaryColor, width: 2),
                     shape: BoxShape.circle,
                   ),
-                  child: Container(
+                  child:profileImage != null?    Container(
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColors.primaryColor.withOpacity(0.3),
                         image: DecorationImage(
-                            image: AssetImage(profileImage != null
-                                ? profileImage.path
-                                : "assets/icons/carbon_camera.png"),
+                            image: FileImage(profileImage),
+                            fit: BoxFit.cover)),
+                  ):
+                  Container(
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.primaryColor.withOpacity(0.3),
+                        image: DecorationImage(
+                            image: AssetImage("assets/icons/carbon_camera.png"),
                             fit: BoxFit.cover)),
                   ),
                 )),
@@ -122,8 +130,8 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                                 ),
                               ),
                               child: frontImage != null
-                                  ? Image.asset(
-                                      frontImage.path,
+                                  ? Image.file(
+                                      File(frontImage.path),
                                       width: double.infinity,
                                       fit: BoxFit.fitWidth,
                                     )
@@ -153,8 +161,8 @@ class _MoreInformationScreenState extends State<MoreInformationScreen> {
                                 ),
                               ),
                               child: backImage != null
-                                  ? Image.asset(
-                                      backImage.path,
+                                  ? Image.file(
+                                     File( backImage.path),
                                       width: double.infinity,
                                       fit: BoxFit.fitWidth,
                                     )
