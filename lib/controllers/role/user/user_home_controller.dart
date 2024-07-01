@@ -28,6 +28,7 @@ class UserHomeController extends GetxController {
 
   RxList<HelpModel> nearbyHelpModel = <HelpModel>[].obs;
 
+  ScrollController scrollController=ScrollController();
   var catagoryLoading = false.obs;
   RxList<UserAllCategoryModel> categoryModel = <UserAllCategoryModel>[].obs;
 
@@ -79,6 +80,37 @@ class UserHomeController extends GetxController {
       update();
     }
 
+  }
+
+
+  loadMore()async{
+    if(firstLoading !=true &&loadMoreLoading ==false && totalPage !=currentPage){
+      page +=1;
+      loadMoreLoading (true);
+      var response=await ApiClient.getData('${ApiConstants.userNearbyHelpEndPoint}?page=$page&limit=5');
+      if(response.statusCode==200){
+        var result= List<HelpModel>.from(response.body['data']['attributes'].map((x) => HelpModel.fromJson(x)));
+        currentPage=response.body['pagination']['attributes']['currentPage'];
+        totalPage=response.body['pagination']['attributes']['totalPages'];
+        nearbyHelpModel.value.addAll(result);
+        nearbyHelpModel.refresh();
+        rxRequestStatus(Status.completed);
+        loadMoreLoading(false);
+        update();
+      }
+      else{
+        if (ApiClient.noInternetMessage == response.statusText) {
+          setRxRequestStatus(Status.internetError);
+        } else
+        {
+          setRxRequestStatus(Status.error);
+        }
+        ApiChecker.checkApi(response);
+        firstLoading.value=false;
+        update();
+      }
+
+    }
   }
 
 
