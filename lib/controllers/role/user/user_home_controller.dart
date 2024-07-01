@@ -49,11 +49,17 @@ class UserHomeController extends GetxController {
       categoryModel.value = List<UserAllCategoryModel>.from(response
           .body['data']['attributes']
           .map((x) => UserAllCategoryModel.fromJson(x)));
-      catagoryLoading(false);
+      rxRequestStatus(Status.completed);
       update();
-    } else {
+    }  else{
+      if (ApiClient.noInternetMessage == response.statusText) {
+        setRxRequestStatus(Status.internetError);
+      } else
+      {
+        setRxRequestStatus(Status.error);
+      }
       ApiChecker.checkApi(response);
-      catagoryLoading(false);
+      firstLoading.value=false;
       update();
     }
   }
@@ -82,7 +88,6 @@ class UserHomeController extends GetxController {
         setRxRequestStatus(Status.error);
       }
       ApiChecker.checkApi(response);
-      firstLoading.value=false;
       update();
     }
 
