@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:service_app/controllers/category_controller.dart';
 import 'package:service_app/controllers/home_controller.dart';
+import 'package:service_app/controllers/role/user/user_home_controller.dart';
 import 'package:service_app/helpers/route.dart';
 import 'package:service_app/utils/app_colors.dart';
 import 'package:service_app/utils/app_dimentions.dart';
@@ -28,6 +29,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 
   final HomeController homeController = Get.put(HomeController());
   final CategoryController _categoryController = Get.put(CategoryController());
+
+  final UserHomeController _homeCtrl=Get.put(UserHomeController());
+
 
   int selectedIndex = (-1);
 
@@ -135,21 +139,17 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   child: Obx(
                     () => ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: _categoryController.cetegoryList.sublist(0,4).length,
+                      itemCount: _homeCtrl.categoryModel.value.length,
                       itemBuilder: (context, index) {
-                        var category = _categoryController.cetegoryList[index];
+                        var categoryInfo = _homeCtrl.categoryModel.value[index];
                         bool isSelected = selectedIndex == index;
                         return Padding(
                           padding: EdgeInsets.only(left: index == 0 ? 0 : 13.5.w),
                           child: CategoryCard(
                             onTap: () {
-                              setState(() {
-                                setSelectedIndex(index);
-                              });
                             },
-                            categorIcon: category['categoryIcon'],
-                            categorName: category['categoryName'],
-                            isSelected: isSelected,
+                            categoriInfo: categoryInfo,
+
                           ),
                         );
                       },

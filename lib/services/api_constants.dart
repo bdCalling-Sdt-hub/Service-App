@@ -2,7 +2,6 @@ class ApiConstants{
   static const String baseUrl = "http://192.168.10.155:4040/api/v1";
   static const String imageBaseUrl = "http://192.168.10.155:4040";
 
-
   static String signUpEndPoint = "/users/sign-up";
   static String otpVerifyEndPoint = "/users/verify";
   static String forgotEndPoint = "/users/resendOtp";
@@ -15,5 +14,11 @@ class ApiConstants{
   static const String bookingDetailsEndPoint = "/offer/bookingDetails?id=667652a23835810430581cfc";
   static const String completeWorkEndPoint = "/offer/completeWork?id=667652883835810430581cfa";
   static const String providerHelpEndPoint = "/service/getallServices";
+
+
+
+  /// User Api
+  static const String userAllCategoryEndPoint = "/admin/showAllcategory";
+
 
 }
