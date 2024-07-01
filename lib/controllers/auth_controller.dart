@@ -88,7 +88,6 @@ class AuthController extends GetxController {
           var data = responseBody['data'];
           await PrefsHelper.setString(AppConstants.bearerToken, data['token']);
           await PrefsHelper.setString(AppConstants.id, data['attributes']['_id']);
-
           String userRole = data['attributes']['role'];
           await PrefsHelper.setString(AppConstants.role, userRole);
 
@@ -192,7 +191,7 @@ class AuthController extends GetxController {
   handleForget()async{
     forgotLoading(true);
     var body = {
-      "email":forgetEmailTextCtrl.text.trim(),
+      "email":forgetEmailTextCtrl.text,
     };
     var headers = {
       'Content-Type': 'application/json'
@@ -234,9 +233,6 @@ class AuthController extends GetxController {
             actions: [
               TextButton(
                   onPressed:(){
-                    Get.back();
-                    Get.back();
-                    Get.back();
                     Get.back();
                   }, child:const Text("Ok"))
             ],

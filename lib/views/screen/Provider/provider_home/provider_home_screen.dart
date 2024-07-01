@@ -7,12 +7,15 @@ import '../../../../controllers/show_booking_controller.dart';
 import '../../../../helpers/route.dart';
 import '../../../../models/show_booking_model.dart';
 import '../../../../utils/app_colors.dart';
+import '../../../../utils/app_constants.dart';
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../base/custom_page_loading.dart';
 import '../../../base/custom_text.dart';
+import '../../../base/general_error_screen.dart';
+import '../../../base/no_internet_screen.dart';
 import '../provider_myhelps/inner_widgets/helps_booking_card.dart';
 
 class ProviderHomeScreen extends StatefulWidget {
@@ -23,21 +26,44 @@ class ProviderHomeScreen extends StatefulWidget {
 }
 
 class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
-  final ShowBookingController showBookingController = Get.put(ShowBookingController());
+  final ShowBookingController _showBookingController = Get.put(ShowBookingController());
 
   @override
   void initState() {
     super.initState();
-    showBookingController.showGetGroupList();
+    _showBookingController.showGetGroupList();
+    _showBookingController.recentBooking();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-          child: Column(
+        body:  Obx((){
+          switch (_showBookingController.rxRequestStatus.value) {
+            case Status.loading:
+              return const CustomPageLoading();
+            case Status.internetError:
+              return NoInternetScreen(onTap:(){
+                _showBookingController.showGetGroupList();
+                _showBookingController.recentBooking();
+              });
+            case Status.error:
+              return GeneralErrorScreen(onTap: (){
+                _showBookingController.showGetGroupList();
+                _showBookingController.recentBooking();
+              });
+            case Status.completed:
+              return   _body(context);
+            default:
+              return Container();
+          }
+        }));
+  }
+
+   _body(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      child: Column(
             children: [
               // Top App Bar
               Row(
@@ -89,15 +115,15 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
               Row(
                 children: [
                   SvgPicture.asset(AppIcons.location),
-          Obx(() => DropdownButton<String>(
-            value: showBookingController.selectedAddress.value.isEmpty ? null : showBookingController.selectedAddress.value,
-            icon: SvgPicture.asset(AppIcons.dropdown),
+               Obx(() => DropdownButton<String>(
+                 value: _showBookingController.selectedAddress.value.isEmpty ? '': _showBookingController.selectedAddress.value,
+                 icon: SvgPicture.asset(AppIcons.dropdown),
             onChanged: (String? newValue) {
               if (newValue != null) {
-                showBookingController.selectedAddress.value = newValue;
+                _showBookingController.selectedAddress.value = newValue;
               }
             },
-            items: showBookingController.showGroupList
+            items: _showBookingController.showGroupList
                 .map((ShowBookingModel value) {
               return DropdownMenuItem<String>(
                 value: value.data?.attributes?.address ?? '',
@@ -114,11 +140,15 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
               SizedBox(height: 17.h),
               // Booking Container
               Obx(() {
-                if (showBookingController.isLoading.value) {
+                if (_showBookingController.isLoading.value) {
                   return const Center(child: CustomPageLoading());
-                } else {
+                }
+                // else if(showBookingController.showGroupList.value.first.data!.attributes.){
+                //   return Text('ads');
+                // }
+                else {
                   return TotalBookingsCompletedRow(
-                    providerInfoList: showBookingController.showGroupList,
+                    providerInfoList: _showBookingController.showGroupList,
                   );
                 }
               }),
@@ -145,16 +175,18 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                 ],
               ),
               SizedBox(height: 16.h),
-              Expanded(
+            _showBookingController.recentbookingModel.isEmpty?Text('No data') : Expanded(
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: _showBookingController.recentbookingModel.value.length,
                   itemBuilder: (context, index) {
+                    var dataInfo=_showBookingController.recentbookingModel.value[index];
                     return Padding(
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
                       child: ProviderHelpsBookingsCard(
                         ontap: () {
                           Get.toNamed(AppRoutes.providerBookingDetailsScreen);
                         },
+                        bookingInfo:dataInfo,
                         helpImage: AppImages.helpImage,
                         helpName: "House Cleaning",
                         personName: "Jane Cooper",
@@ -165,8 +197,6 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
               ),
             ],
           ),
-        ),
-      ),
     );
   }
 }

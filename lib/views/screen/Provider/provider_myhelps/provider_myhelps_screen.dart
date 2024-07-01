@@ -67,28 +67,28 @@ class _ProviderHelpsScreenState extends State<ProviderHelpsScreen> {
             ),
 
             SizedBox(height: 24 .h),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 7,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding:  EdgeInsets.only(bottom: 16.h),
-                    child: ProviderHelpsBookingsCard(
-                      ///========================route to details screen==========================>
-                      ontap: (){
-                        Get.toNamed(AppRoutes.providerBookingDetailsScreen, parameters: {
-                          'bookingStatus' : selectedIndex.toString()
-                        });
-                      },
-                      helpImage: AppImages.helpImage,
-                      // selectedBottonItem: selectedIndex,
-                      helpName: "House Cleaning",
-                      personName: "Jane Cooper",
-                    ),
-                  );
-                },
-              ),
-            )
+            // Expanded(
+            //   child: ListView.builder(
+            //     itemCount: 7,
+            //     itemBuilder: (context, index) {
+            //       return Padding(
+            //         padding:  EdgeInsets.only(bottom: 16.h),
+            //         child: ProviderHelpsBookingsCard(
+            //           ///========================route to details screen==========================>
+            //           ontap: (){
+            //             Get.toNamed(AppRoutes.providerBookingDetailsScreen, parameters: {
+            //               'bookingStatus' : selectedIndex.toString()
+            //             });
+            //           },
+            //           helpImage: AppImages.helpImage,
+            //           // selectedBottonItem: selectedIndex,
+            //           helpName: "House Cleaning",
+            //           personName: "Jane Cooper",
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // )
 
 
 

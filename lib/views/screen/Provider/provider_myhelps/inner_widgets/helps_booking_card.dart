@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:service_app/services/api_constants.dart';
+import 'package:service_app/views/base/cachanetwork_image.dart';
 
+import '../../../../../models/recent_booking_model.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../base/custom_text.dart';
 
@@ -14,6 +17,8 @@ class ProviderHelpsBookingsCard extends StatelessWidget {
   final String? helpName;
   final String? personName;
 
+  final RecentBookingModel bookingInfo;
+
   const ProviderHelpsBookingsCard(
       {super.key,
         this.helpImage,
@@ -22,6 +27,7 @@ class ProviderHelpsBookingsCard extends StatelessWidget {
         this.helpName,
         this.personName,
         this.ontap,
+        required this.bookingInfo,
         this.selectedBottonItem});
 
   @override
@@ -38,26 +44,24 @@ class ProviderHelpsBookingsCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    constraints: const BoxConstraints(maxWidth: 150),
-                    clipBehavior: Clip.antiAlias,
-                    decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(4.r)),
-                    child: Image.asset(
-                      '$helpImage',
-                      height: 98.h,
-                      width: 98.w,
-                    )),
+                CustomNetworkImage(
+                  imageUrl:"${ApiConstants.imageBaseUrl}${bookingInfo.serviceId!.servicePhoto![0].publicFileUrl}",
+                  height: 98.h,
+                  width: 98.w,
+                  boxShape: BoxShape.circle,
+
+                ),
                 SizedBox(width: 12.w),
                 Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ///========================person name======================>
+
                       Container(
                         constraints: const BoxConstraints(maxWidth: 150),
                         child: CustomText(
-                            text: "$personName",
+                            text: bookingInfo.provider!.name.toString(),
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.black333333,
@@ -69,7 +73,7 @@ class ProviderHelpsBookingsCard extends StatelessWidget {
                       Container(
                         constraints: const BoxConstraints(maxWidth: 150),
                         child: CustomText(
-                            text: "$helpName",
+                            text: bookingInfo.selectHelp.toString(),
                             fontsize: 16.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.black333333,
@@ -80,7 +84,7 @@ class ProviderHelpsBookingsCard extends StatelessWidget {
                       Container(
                         constraints: const BoxConstraints(maxWidth: 150),
                         child: CustomText(
-                            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit....",
+                            text: bookingInfo.helpDescription.toString(),
                             fontsize: 10.h,
                             fontWeight: FontWeight.w400,
                             color: AppColors.subTextColor5c5c5c,
@@ -114,7 +118,6 @@ class ProviderHelpsBookingsCard extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ),
