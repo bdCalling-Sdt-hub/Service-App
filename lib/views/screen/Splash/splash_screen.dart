@@ -1,10 +1,11 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:service_app/helpers/route.dart';
+import '../../../helpers/pref_helpers.dart';
+import '../../../utils/app_constants.dart';
 import '../../../utils/app_images.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,24 +17,28 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  Timer? _timer; // Declare a Timer variable
+  Timer? _timer;
 
-  void startTimer() {
-    _timer = Timer(Duration(seconds: 3), () {
-      // Callback function to execute after 3 seconds
-      Get.toNamed(AppRoutes.onBoardingScreen); // Navigate to signInScreen
-    });
+  void startTimer()async{
+    var token=await PrefsHelper.getString(AppConstants.bearerToken);
+    const Duration(seconds: 3);
+    if(token==null){
+      Get.toNamed(AppRoutes.onBoardingScreen);
+    }
+    else{
+      Get.toNamed(AppRoutes.providerBottomNavBar);
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    startTimer(); // Start the timer when the widget is initialized
+    startTimer();
   }
 
   @override
   void dispose() {
-    _timer?.cancel(); // Cancel the timer to prevent memory leaks
+    _timer?.cancel();
     super.dispose();
   }
   @override

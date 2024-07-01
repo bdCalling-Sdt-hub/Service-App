@@ -16,7 +16,7 @@ import '../views/screen/Auth/resetpasswordScreen/reset_password_screen.dart';
 import '../views/screen/OnBoarding/onboarding_screen.dart';
 import '../views/screen/Profile/edit_profile/edit_profile_screen.dart';
 import '../views/screen/Profile/personal_information/personal_information_screen.dart';
-import '../views/screen/Provider/provider_booking_details/provider_booking_details_screen.dart';
+import '../views/screen/Provider/provider_home/provider_booking_details_screen.dart';
 import '../views/screen/Provider/provider_bottm_nav_bar/provider_bottom_nav_bar.dart';
 import '../views/screen/Provider/provider_myhelps/provider_myhelps_screen.dart';
 import '../views/screen/Provider/provider_service/edit_service_screen.dart';
