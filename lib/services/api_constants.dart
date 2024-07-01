@@ -16,7 +16,6 @@ class ApiConstants{
   static const String providerHelpEndPoint = "/service/getallServices";
 
 
-
   /// User Api
   static const String userAllCategoryEndPoint = "/admin/showAllcategory";
 
