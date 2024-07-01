@@ -186,18 +186,17 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   height: 220.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 6,
+                    itemCount: _homeCtrl.nearbyHelpModel.value.length,
                     itemBuilder: (context, index) {
+                      var nearbyInfo=_homeCtrl.nearbyHelpModel.value[index];
                       return Padding(
                         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
                         child:  ServiceCard(
                           onTap: (){
                             Get.toNamed(AppRoutes.userServiceDetailsScreen);
                           },
-                          distance: "15 km",
-                          personName: "Ingredia Nutrisha ",
-                          serviceName: "House Cleaning ",
-                          reting: "4.8",
+                          helpInfo: nearbyInfo,
+
                         ),
                       );
                     },
@@ -234,27 +233,27 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 
 
 
-                Container(
-                  height: 220.h,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
-                        child:  ServiceCard(
-                          onTap: (){
-                            Get.toNamed(AppRoutes.userServiceDetailsScreen);
-                          },
-                          distance: "15 km",
-                          personName: "Ingredia Nutrisha ",
-                          serviceName: "House Cleaning ",
-                          reting: "4.8",
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                // Container(
+                //   height: 220.h,
+                //   child: ListView.builder(
+                //     scrollDirection: Axis.horizontal,
+                //     itemCount: 6,
+                //     itemBuilder: (context, index) {
+                //       return Padding(
+                //         padding: EdgeInsets.only(left: index == 0 ? 0 : 18.w),
+                //         child:  ServiceCard(
+                //           onTap: (){
+                //             Get.toNamed(AppRoutes.userServiceDetailsScreen);
+                //           },
+                //           distance: "15 km",
+                //           personName: "Ingredia Nutrisha ",
+                //           serviceName: "House Cleaning ",
+                //           reting: "4.8",
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
 
               ],
             ),

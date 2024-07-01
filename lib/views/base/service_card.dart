@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:service_app/models/role/provider/help_model.dart';
+import 'package:service_app/services/api_constants.dart';
+import 'package:service_app/views/base/cachanetwork_image.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_dimentions.dart';
@@ -15,12 +18,14 @@ class ServiceCard extends StatelessWidget {
   final String? serviceName;
   final String? personName;
   final VoidCallback? onTap;
+  HelpModel? helpInfo;
 
-  const ServiceCard(
+   ServiceCard(
       {super.key,
         this.image,
         this.reting,
         this.distance,
+        this.helpInfo,
         this.serviceName,
         this.onTap,
         this.personName});
@@ -43,8 +48,12 @@ class ServiceCard extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(4.r)),
-                  child: Image.asset(AppImages.serviceImage,
-                      height: 112.h, fit: BoxFit.cover, width: double.infinity)),
+                  child: CustomNetworkImage(
+                      imageUrl: '${ApiConstants.imageBaseUrl}${helpInfo!.servicePhoto![0].publicFileUrl}',
+                      height: 112.h,
+                      width: double.infinity)),
+                  // child: Image.asset(AppImages.serviceImage,
+                  //     height: 112.h, fit: BoxFit.cover, width: double.infinity)),
 
               ///========================rating and distance=====================>
               SizedBox(height: 8.h),
@@ -54,8 +63,9 @@ class ServiceCard extends StatelessWidget {
                   Row(
                     children: [
                       SvgPicture.asset(AppIcons.star,fit: BoxFit.cover,),
+                      SizedBox(width: 5.w),
                       CustomText(
-                          text: " $reting",
+                          text: "${helpInfo!.rating}",
                           fontsize: 10.h,
                           fontWeight: FontWeight.w400,
                           color: AppColors.subTextColor5c5c5c)
@@ -67,8 +77,9 @@ class ServiceCard extends StatelessWidget {
                         AppIcons.location,
                         color: AppColors.primaryColor,
                       ),
+                      SizedBox(width: 5.w),
                       CustomText(
-                          text: " $distance",
+                          text: "${helpInfo!.distance}",
                           fontsize: 12.h,
                           fontWeight: FontWeight.w400,
                           color: AppColors.subTextColor5c5c5c)
@@ -79,7 +90,7 @@ class ServiceCard extends StatelessWidget {
 
               Flexible(
                 child: CustomText(
-                    text: "$serviceName",
+                    text: "${helpInfo!.helpName}",
                     fontsize: Dimensions.fontSizeDefault.h,
                     fontWeight: FontWeight.w500,
                     color: AppColors.textColor2D2F32,
@@ -90,10 +101,11 @@ class ServiceCard extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(AppIcons.person,height: 12.h,color: AppColors.subTextColor5c5c5c,),
+                  SizedBox(width: 10.w),
                   Expanded(
                     child: CustomText(
                       textAlign: TextAlign.start,
-                        text: "  $personName",
+                        text: "${helpInfo!.userId!.name}",
                         fontsize: 12.h,
                         color: AppColors.subTextColor5c5c5c),
                   ),
