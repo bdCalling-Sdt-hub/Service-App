@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:service_app/controllers/booking_details_controller.dart';
 import 'package:service_app/utils/app_dimentions.dart';
 import 'package:service_app/utils/app_icons.dart';
 import 'package:service_app/views/base/cachanetwork_image.dart';
 import 'package:service_app/views/base/custom_button.dart';
+import 'package:service_app/views/base/custom_loading.dart';
 import 'package:service_app/views/base/custom_two_button.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';
@@ -19,6 +21,17 @@ class ProviderBookingDetailsScreen extends StatefulWidget {
 }
 
 class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScreen> {
+
+  var productId = Get.arguments;
+
+  final BookingDetailsController _detailsBookingController = Get.put(BookingDetailsController());
+
+  @override
+  void initState() {
+    super.initState();
+    _detailsBookingController.bookingDetailsGetGroupList(productId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,223 +48,140 @@ class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScr
           padding: EdgeInsets.symmetric(
               horizontal: Dimensions.paddingSizeDefault.w,
               vertical: Dimensions.paddingSizeDefault.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
+          child: Obx((){
+            return  _detailsBookingController.isLoading.value ? const CustomLoading() : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
                   clipBehavior: Clip.antiAlias,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
                   child: CustomNetworkImage(
-                      imageUrl:
-                          'https://i.dailymail.co.uk/1s/2019/08/26/01/17686528-7393969-image-a-51_1566780716617.jpg',
-                      height: 164.h,
-                      width: double.infinity)),
-
-              SizedBox(height: 8.h),
-
-              ///=========================House Cleaning========================>
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
+                    imageUrl: 'https://i.dailymail.co.uk/1s/2019/08/26/01/17686528-7393969-image-a-51_1566780716617.jpg',
+                    height: 164.h,
+                    width: double.infinity,
+                  ),
+                ),
+                SizedBox(height: 8.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
                       child: CustomText(
-                    text: 'House Cleaning ',
-                    fontWeight: FontWeight.w500,
-                    fontsize: 20.h,
-                  )),
-
-
-                  Container(
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.whiteF4F9EC,
-                              borderRadius: BorderRadius.circular(8.r)),
-                          child: Padding(
-                            padding: EdgeInsets.all(10.h),
-                            child: Center(
-                              child: SvgPicture.asset(AppIcons.message),
-                            ),
-                          ),
+                        text: 'House Cleaning',
+                        fontWeight: FontWeight.w500,
+                        fontsize: 20.h,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.whiteF4F9EC,
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(10.h),
+                        child: Center(
+                          child: SvgPicture.asset(AppIcons.message),
                         ),
-                        
-                        // SizedBox(width: 10.w,),
-
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //       color: AppColors.whiteF4F9EC,
-                        //       borderRadius: BorderRadius.circular(8.r)),
-                        //   child: Padding(
-                        //     padding: EdgeInsets.all(10.h),
-                        //     child: Center(
-                        //       child: SvgPicture.asset(AppIcons.call2),
-                        //     ),
-                        //   ),
-                        // )
-
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppIcons.location,
+                          color: AppColors.color9DA0A3,
+                        ),
+                        CustomText(
+                          text: ' ${_detailsBookingController.bookingDetailsModel.value.provider?.address}',
+                          fontWeight: FontWeight.w400,
+                          fontsize: 12.h,
+                          color: AppColors.color9DA0A3,
+                        ),
                       ],
                     ),
-                  )
-
-                ],
-              ),
-
-              // SizedBox(height: 14.h),
-              //
-              // ///========================user name========================?>
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Row(
-              //       children: [
-              //         SvgPicture.asset(
-              //           AppIcons.personIcon,
-              //           color: AppColors.color9DA0A3,
-              //           height: 15.h,
-              //           width: 11.5.w,
-              //           fit: BoxFit.cover,
-              //         ),
-              //         CustomText(
-              //           text: '  Ingredia Nutrisha',
-              //           fontWeight: FontWeight.w400,
-              //           color: AppColors.color9DA0A3,
-              //           fontsize: 16.h,
-              //         ),
-              //       ],
-              //     ),
-              //     // Row(
-              //     //   children: [
-              //     //     SvgPicture.asset(AppIcons.star,
-              //     //         height: 16.h, width: 16.h),
-              //     //     CustomText(
-              //     //       text: '4.8 ',
-              //     //       fontWeight: FontWeight.w400,
-              //     //       color: AppColors.subTextColor5c5c5c,
-              //     //     ),
-              //     //   ],
-              //     // )
-              //   ],
-              // ),
-              SizedBox(height: 8.h),
-
-              ///=========================location========================>
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppIcons.location,
-                        color: AppColors.color9DA0A3,
-                      ),
-                      CustomText(
-                        text: ' 437 Star St, Los Angeles, USA',
-                        fontWeight: FontWeight.w400,
-                        fontsize: 12.h,
-                        color: AppColors.color9DA0A3,
-                      ),
-                    ],
-                  ),
-                  // Row(
-                  //   children: [
-                  //     SvgPicture.asset(AppIcons.locationServiceCard),
-                  //     CustomText(
-                  //       text: '15 km ',
-                  //       fontWeight: FontWeight.w400,
-                  //       color: AppColors.black767676,
-                  //       fontsize: 12.h,
-                  //     ),
-                  //   ],
-                  // )
-                ],
-              ),
-
-
-
-
-              ///====================Help Details=========================>
-
-              CustomText(
+                  ],
+                ),
+                CustomText(
                   text: 'Help Details',
                   fontWeight: FontWeight.w500,
                   fontsize: 20.h,
-                  top: 16.h),
-
-              CustomText(
-                  text: 'Etiam vel metus vel nunc tincidunt ornare. Vestibulum ac massa cursus, sagittis leo at, pulvinar elit. Duis quis urna in elit tempus accumsan.',
+                  top: 16.h,
+                ),
+                CustomText(
+                  text: '${_detailsBookingController.bookingDetailsModel.value.helpDescription}',
                   fontsize: 14.h,
                   textAlign: TextAlign.start,
                   color: AppColors.subTextColor5c5c5c,
                   maxline: 10,
-                  top: 12.h),
-
-
-
-              ///====================user details =========================>
-              CustomText(
+                  top: 12.h,
+                ),
+                CustomText(
                   text: 'User Details',
                   fontWeight: FontWeight.w500,
                   fontsize: 20.h,
                   bottom: 16.h,
-                  top: 16.h),
-
-              ///============================bottom this Row====================>
-              _Row(AppString.userName, 'John Doe'),
-              _Row(AppString.service, 'Cleaning'),
-
-              SizedBox(height: 16.h),
-
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomText(
-                    text: AppString.status,
-                    color: AppColors.subTextColor5c5c5c,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
+                  top: 16.h,
+                ),
+                _row(AppString.userName, '${_detailsBookingController.bookingDetailsModel.value.user?.name}'),
+                _row(AppString.service, '${_detailsBookingController.bookingDetailsModel.value.selectHelp}'),
+                SizedBox(height: 16.h),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(
+                      text: AppString.status,
+                      color: AppColors.subTextColor5c5c5c,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4.r),
-                        color: AppColors.whiteF4F9EC),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 4.h, horizontal: 6.w),
-                      child: CustomText(
+                        color: AppColors.whiteF4F9EC,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 6.w),
+                        child: CustomText(
                           maxline: 4,
                           textAlign: TextAlign.end,
-                          text: "Approved",
+                          text: "${_detailsBookingController.bookingDetailsModel.value.status}",
                           color: AppColors.black333333,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
-                  )
-                ],
-              ),
-              _Row(AppString.address,
-                  '2972 Westheimer Rd. Santa Ana, Illinois 85486 '),
-              _Row(AppString.userName, 'John Doe'),
-              _Row(AppString.phoneNumber, '+4432101846 '),
-
-              SizedBox(height: 40.h),
-
-              ///===========================Mark As Completed button=====================>
-              Get.parameters['screenType'] == "profile" ?
-                  CustomTwoButon(
-                    leftBtnOnTap: (){Get.back();},
-                    width: 165.w,
-                    btnNameList: ['Cancel' , 'Accept'],
-                  ) :
-              CustomButton(onTap: () {},
-                  text: AppString.completeWork)
-            ],
-          ),
+                  ],
+                ),
+                _row(AppString.address, '${_detailsBookingController.bookingDetailsModel.value.user?.address}'),
+                _row(AppString.phoneNumber, '${_detailsBookingController.bookingDetailsModel.value.user?.phone}'),
+                SizedBox(height: 40.h),
+                Get.parameters['screenType'] == "profile" ?
+                CustomTwoButon(
+                  leftBtnOnTap: () { Get.back(); },
+                  width: 165.w,
+                  btnNameList: ['Cancel', 'Accept'],
+                ) :
+                CustomButton(
+                  onTap: () {
+                    Get.back();
+                  },
+                  text: AppString.completeWork,
+                ),
+              ],
+            );
+          }),
         ),
       ),
     );
   }
 
-  _Row(String tralingText, leadingText) {
+  Widget _row(String trailingText, String leadingText) {
     return Padding(
       padding: EdgeInsets.only(top: 16.h),
       child: Row(
@@ -259,20 +189,19 @@ class _ProviderBookingDetailsScreenState extends State<ProviderBookingDetailsScr
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomText(
-            text: "$tralingText",
+            text: trailingText,
             color: AppColors.subTextColor5c5c5c,
           ),
           SizedBox(
             width: 204.w,
-            child: Flexible(
-              child: CustomText(
-                  maxline: 4,
-                  textAlign: TextAlign.end,
-                  text: "$leadingText",
-                  color: AppColors.black333333,
-                  fontWeight: FontWeight.w500),
+            child: CustomText(
+              maxline: 4,
+              textAlign: TextAlign.end,
+              text: leadingText,
+              color: AppColors.black333333,
+              fontWeight: FontWeight.w500,
             ),
-          )
+          ),
         ],
       ),
     );

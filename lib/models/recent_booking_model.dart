@@ -70,8 +70,6 @@
 //
 //     final recentBokingMOdel = recentBokingMOdelFromJson(jsonString);
 
-
-
 class RecentBookingModel {
   String? id;
   Provider? provider;
