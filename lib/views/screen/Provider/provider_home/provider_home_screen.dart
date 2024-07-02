@@ -134,7 +134,6 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
               );
             }).toList(),
           ))
-
           ],
               ),
               SizedBox(height: 17.h),
@@ -184,7 +183,7 @@ class _ProviderHomeScreenState extends State<ProviderHomeScreen> {
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
                       child: ProviderHelpsBookingsCard(
                         ontap: () {
-                          Get.toNamed(AppRoutes.providerBookingDetailsScreen);
+                          Get.toNamed(AppRoutes.providerBookingDetailsScreen,arguments: dataInfo.id);
                         },
                         bookingInfo:dataInfo,
                         helpImage: AppImages.helpImage,
@@ -265,9 +264,6 @@ class TotalBookingsCompletedRow extends StatelessWidget {
           ),
         ),
 
-
-
-
         Container(
           width: 112.w,
           decoration: BoxDecoration(
@@ -293,10 +289,6 @@ class TotalBookingsCompletedRow extends StatelessWidget {
             ),
           ),
         )
-
-
-
-
       ]
     );
   }
