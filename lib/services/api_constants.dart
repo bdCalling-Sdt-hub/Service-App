@@ -15,5 +15,6 @@ class ApiConstants{
   static const String bookingDetailsEndPoint = "/offer/bookingDetails";
   static const String completeWorkEndPoint = "/offer/completeWork?id=667652883835810430581cfa";
   static const String providerHelpEndPoint = "/service/getallServices";
+  static const String addServiceEndPoint = "/service/createServices";
 
 }
